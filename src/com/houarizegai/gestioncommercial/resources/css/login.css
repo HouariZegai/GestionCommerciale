@@ -38,3 +38,17 @@
     -fx-font-size: 18px;
     -fx-text-fill: #666
 }
+
+/* Start JFXSnackBar (toast msg) */
+
+.jfx-snackbar-content {
+    -fx-background-color: #00aacf;
+    -fx-pref-width: 460
+}
+.jfx-snackbar-toast {
+    -fx-text-fill: #FFF;
+    -fx-font-size: 18px;
+    -fx-font-family: Tahoma
+}
+
+/* End JFXSnackBar (toast msg) */
