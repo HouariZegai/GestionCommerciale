@@ -1,21 +1,11 @@
 -- Delete Database Gestion Commercial if exists
-<<<<<<< HEAD
 DROP DATABASE IF EXISTS GestionCommercialDB;
 
 -- Create database Gestion Commercial
 CREATE DATABASE GestionCommercialDB;
 
--- Branchée vers la base de donnée Gestion Commercial
+-- Connect to the database Gestion Commercial
 USE GestionCommercialDB;
-=======
-DROP DATABASE IF EXISTS gestionCommercialDb;
-
--- Create database Gestion Commercial
-CREATE DATABASE gestionCommercialDb;
-
--- Branchée vers la base de donnée Gestion Commercial
-USE gestionCommercialDb;
->>>>>>> 864e0808c99d4b5554ea39a45a4579f7bdee0fc6
 
 -- Structure of table Paramètre
 CREATE TABLE Parametre (
@@ -321,11 +311,7 @@ CREATE TABLE LigneFac (
 	PrixVente DOUBLE,
 	Remise DOUBLE,
 	TauxTva DOUBLE,
-<<<<<<< HEAD
 	IDLigneCde INT(8),
-=======
-	IDLigneCde DOUBLE,
->>>>>>> 864e0808c99d4b5554ea39a45a4579f7bdee0fc6
 	OrdreAffichage INT(2) DEFAULT 0
 );
 
@@ -369,61 +355,70 @@ CREATE TABLE LigneDevis (
 
 -- -----------------------------------------------
 --
--- Add constraint foreign key to tables
+-- Constraints for tables
 --
 
-ALTER TABLE ActionRealisee ADD CONSTRAINT fk_ar FOREIGN KEY (IDActionPossible) REFERENCES ActionPossible (IDActionPossible);
-ALTER TABLE ActionRealisee ADD CONSTRAINT fk_ar2  FOREIGN KEY (NumClient) REFERENCES Client (NumClient);
+ALTER TABLE ActionRealisee
+	ADD CONSTRAINT fk_ar FOREIGN KEY (IDActionPossible) REFERENCES ActionPossible (IDActionPossible),
+	ADD CONSTRAINT fk_ar2  FOREIGN KEY (NumClient) REFERENCES Client (NumClient);
 
-ALTER TABLE Adr_Facturation ADD CONSTRAINT fk_af FOREIGN KEY (NumClient) REFERENCES Client (NumClient);
+ALTER TABLE Adr_Facturation
+	ADD CONSTRAINT fk_af FOREIGN KEY (NumClient) REFERENCES Client (NumClient);
 
-ALTER TABLE Adr_Livraison ADD CONSTRAINT fk_al  FOREIGN KEY (NumClient) REFERENCES Client (NumClient);
+ALTER TABLE Adr_Livraison
+	ADD CONSTRAINT fk_al  FOREIGN KEY (NumClient) REFERENCES Client (NumClient);
 
-ALTER TABLE Avoir ADD CONSTRAINT fk_a  FOREIGN KEY (NumClient) REFERENCES Client (NumClient);
+ALTER TABLE Avoir
+	ADD CONSTRAINT fk_a  FOREIGN KEY (NumClient) REFERENCES Client (NumClient);
 
-ALTER TABLE Commande ADD CONSTRAINT fk_com  FOREIGN KEY (NumClient) REFERENCES Client (NumClient);
-<<<<<<< HEAD
-ALTER TABLE Commande ADD CONSTRAINT fk_com2  FOREIGN KEY (IDAdresseLivraison) REFERENCES Adr_Livraison (IDAdresseLivraison);
-ALTER TABLE Commande ADD CONSTRAINT fk_com3  FOREIGN KEY (IDModeLivraison) REFERENCES ModeLivraison (IDModeLivraison);
-ALTER TABLE Commande ADD CONSTRAINT fk_com4  FOREIGN KEY (IDAdresseFacturation) REFERENCES Adr_Facturation (IDAdresseFacturation);
-ALTER TABLE Commande ADD CONSTRAINT fk_com5  FOREIGN KEY (IDModeReglement) REFERENCES ModeReglement (IDModeReglement);
-=======
-ALTER TABLE Commande ADD CONSTRAINT fk_com2  FOREIGN KEY (IDModeReglement) REFERENCES ModeReglement (IDModeReglement);
-ALTER TABLE Commande ADD CONSTRAINT fk_com3  FOREIGN KEY (IDAdresseFacturation) REFERENCES Adr_Facturation (IDAdresseFacturation);
-ALTER TABLE Commande ADD CONSTRAINT fk_com4  FOREIGN KEY (IDAdresseLivraison) REFERENCES Adr_Livraison (IDAdresseLivraison);
->>>>>>> 864e0808c99d4b5554ea39a45a4579f7bdee0fc6
+ALTER TABLE Commande
+	ADD CONSTRAINT fk_com  FOREIGN KEY (NumClient) REFERENCES Client (NumClient),
+	ADD CONSTRAINT fk_com2  FOREIGN KEY (IDAdresseLivraison) REFERENCES Adr_Livraison (IDAdresseLivraison),
+	ADD CONSTRAINT fk_com3  FOREIGN KEY (IDModeLivraison) REFERENCES ModeLivraison (IDModeLivraison),
+	ADD CONSTRAINT fk_com4  FOREIGN KEY (IDAdresseFacturation) REFERENCES Adr_Facturation (IDAdresseFacturation),
+	ADD CONSTRAINT fk_com5  FOREIGN KEY (IDModeReglement) REFERENCES ModeReglement (IDModeReglement);
 
-ALTER TABLE Devis ADD CONSTRAINT fk_dv  FOREIGN KEY (NumClient) REFERENCES Client (NumClient);
+ALTER TABLE Devis ADD
+	CONSTRAINT fk_dv  FOREIGN KEY (NumClient) REFERENCES Client (NumClient);
 
-ALTER TABLE Facture ADD CONSTRAINT fk_fc  FOREIGN KEY (NumClient) REFERENCES Client (NumClient);
-ALTER TABLE Facture ADD CONSTRAINT fk_fc2  FOREIGN KEY (IDModeReglement) REFERENCES ModeReglement (IDModeReglement);
-ALTER TABLE Facture ADD CONSTRAINT fk_fc3  FOREIGN KEY (IDAdresseFacturation) REFERENCES Adr_Facturation (IDAdresseFacturation);
+ALTER TABLE Facture
+	ADD CONSTRAINT fk_fc  FOREIGN KEY (NumClient) REFERENCES Client (NumClient),
+	ADD CONSTRAINT fk_fc2  FOREIGN KEY (IDModeReglement) REFERENCES ModeReglement (IDModeReglement),
+	ADD CONSTRAINT fk_fc3  FOREIGN KEY (IDAdresseFacturation) REFERENCES Adr_Facturation (IDAdresseFacturation);
 
-ALTER TABLE Produit ADD CONSTRAINT fk_pr FOREIGN KEY (TauxTVA) REFERENCES TVA (TauxTVA);
-ALTER TABLE Produit ADD CONSTRAINT fk_pr2 FOREIGN KEY (CodePort) REFERENCES FraisPort (CodePort);
-ALTER TABLE Produit ADD CONSTRAINT fk_pr3 FOREIGN KEY (CodeFamille) REFERENCES Famille (CodeFamille);
-ALTER TABLE Produit ADD CONSTRAINT fk_pr4 FOREIGN KEY (NumFournisseur) REFERENCES Fournisseur (NumFournisseur);
+ALTER TABLE Produit
+	ADD CONSTRAINT fk_pr FOREIGN KEY (TauxTVA) REFERENCES TVA (TauxTVA),
+	ADD CONSTRAINT fk_pr2 FOREIGN KEY (CodePort) REFERENCES FraisPort (CodePort),
+	ADD CONSTRAINT fk_pr3 FOREIGN KEY (CodeFamille) REFERENCES Famille (CodeFamille),
+	ADD CONSTRAINT fk_pr4 FOREIGN KEY (NumFournisseur) REFERENCES Fournisseur (NumFournisseur);
 
-ALTER TABLE LigneCde ADD CONSTRAINT fk_lcde FOREIGN KEY (TauxTVA) REFERENCES TVA (TauxTVA);
-ALTER TABLE LigneCde ADD CONSTRAINT fk_lcde2 FOREIGN KEY (Reference) REFERENCES Produit (Reference);
-ALTER TABLE LigneCde ADD CONSTRAINT fk_lcde3 FOREIGN KEY (NumCommande) REFERENCES Commande (NumCommande);
+ALTER TABLE LigneCde
+	ADD CONSTRAINT fk_lcde FOREIGN KEY (TauxTVA) REFERENCES TVA (TauxTVA),
+	ADD CONSTRAINT fk_lcde2 FOREIGN KEY (Reference) REFERENCES Produit (Reference),
+	ADD CONSTRAINT fk_lcde3 FOREIGN KEY (NumCommande) REFERENCES Commande (NumCommande);
 
-ALTER TABLE LigneFac ADD CONSTRAINT fk_lfac FOREIGN KEY (Reference) REFERENCES Produit (Reference);
-ALTER TABLE LigneFac ADD CONSTRAINT fk_lfac2 FOREIGN KEY (NumFacture) REFERENCES Facture (NumFacture);
-ALTER TABLE LigneFac ADD CONSTRAINT fk_lfac3 FOREIGN KEY (IDLigneCde) REFERENCES LigneCde (IDLigneCde);
+ALTER TABLE LigneFac
+	ADD CONSTRAINT fk_lfac FOREIGN KEY (Reference) REFERENCES Produit (Reference),
+	ADD CONSTRAINT fk_lfac2 FOREIGN KEY (NumFacture) REFERENCES Facture (NumFacture),
+	ADD CONSTRAINT fk_lfac3 FOREIGN KEY (IDLigneCde) REFERENCES LigneCde (IDLigneCde);
 
-ALTER TABLE LigneAvoir ADD CONSTRAINT fk_lav FOREIGN KEY (Reference) REFERENCES Produit (Reference);
-ALTER TABLE LigneAvoir ADD CONSTRAINT fk_lav2 FOREIGN KEY (NumAvoir) REFERENCES Avoir (NumAvoir);
-ALTER TABLE LigneAvoir ADD CONSTRAINT fk_lav3 FOREIGN KEY (IDLigneFac) REFERENCES LigneFac (IDLigneFac);
+ALTER TABLE LigneAvoir
+	ADD CONSTRAINT fk_lav FOREIGN KEY (Reference) REFERENCES Produit (Reference),
+	ADD CONSTRAINT fk_lav2 FOREIGN KEY (NumAvoir) REFERENCES Avoir (NumAvoir),
+	ADD CONSTRAINT fk_lav3 FOREIGN KEY (IDLigneFac) REFERENCES LigneFac (IDLigneFac);
 
-ALTER TABLE LigneDevis ADD CONSTRAINT fk_ldv FOREIGN KEY (Reference) REFERENCES Produit (Reference);
-ALTER TABLE LigneDevis ADD CONSTRAINT fk_ldv2 FOREIGN KEY (TauxTVA) REFERENCES TVA (TauxTVA);
-ALTER TABLE LigneDevis ADD CONSTRAINT fk_ldv3 FOREIGN KEY (IDDevis) REFERENCES Devis (IDDevis);
+ALTER TABLE LigneDevis
+	ADD CONSTRAINT fk_ldv FOREIGN KEY (Reference) REFERENCES Produit (Reference),
+	ADD CONSTRAINT fk_ldv2 FOREIGN KEY (TauxTVA) REFERENCES TVA (TauxTVA),
+	ADD CONSTRAINT fk_ldv3 FOREIGN KEY (IDDevis) REFERENCES Devis (IDDevis);
 
-ALTER TABLE EntreeStock ADD CONSTRAINT fk_es FOREIGN KEY (NumFournisseur) REFERENCES Fournisseur (NumFournisseur);
-ALTER TABLE EntreeStock ADD CONSTRAINT fk_es2 FOREIGN KEY (Reference) REFERENCES Produit (Reference);
+ALTER TABLE EntreeStock 
+	ADD CONSTRAINT fk_es FOREIGN KEY (NumFournisseur) REFERENCES Fournisseur (NumFournisseur),
+	ADD CONSTRAINT fk_es2 FOREIGN KEY (Reference) REFERENCES Produit (Reference);
 
-ALTER TABLE Reglement ADD CONSTRAINT  fk_reg FOREIGN KEY (IDModeReglement) REFERENCES ModeReglement (IDModeReglement);
-ALTER TABLE Reglement ADD CONSTRAINT  fk_reg2 FOREIGN KEY (NumFacture) REFERENCES Facture (NumFacture);
+ALTER TABLE Reglement
+	ADD CONSTRAINT  fk_reg FOREIGN KEY (IDModeReglement) REFERENCES ModeReglement (IDModeReglement),
+	ADD CONSTRAINT  fk_reg2 FOREIGN KEY (NumFacture) REFERENCES Facture (NumFacture);
 
-ALTER TABLE SortieStock ADD CONSTRAINT fk_ss FOREIGN KEY (Reference) REFERENCES Produit (Reference);
+ALTER TABLE SortieStock
+	ADD CONSTRAINT fk_ss FOREIGN KEY (Reference) REFERENCES Produit (Reference);
