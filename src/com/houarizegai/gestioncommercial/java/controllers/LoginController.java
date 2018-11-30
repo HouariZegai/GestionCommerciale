@@ -1,5 +1,7 @@
 package com.houarizegai.gestioncommercial.java.controllers;
 
+import com.houarizegai.gestioncommercial.java.database.LoginDao;
+import com.houarizegai.gestioncommercial.java.database.models.Login;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXSnackbar;
@@ -37,6 +39,21 @@ public class LoginController implements Initializable {
         if(fieldPass.getText() == null || fieldPass.getText().length() < 4) {
             toastMsg.show("Mot de passe faux !", 2000);
             return;
+        }
+
+        Login login = new Login(fieldUser.getText().trim().toLowerCase(), fieldPass.getText());
+
+        int status = new LoginDao().checkLogin(login);
+        switch (status) {
+            case -1 :
+                toastMsg.show("Connection failed !", 2000);
+                break;
+            case 0 :
+                toastMsg.show("Nom Utilisateur et/ou le mot de passe faux !", 2000);
+                break;
+            case 1 :
+                toastMsg.show("Login success !", 2000);
+                break;
         }
 
     }
