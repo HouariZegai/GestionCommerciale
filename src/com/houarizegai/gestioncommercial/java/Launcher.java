@@ -14,7 +14,7 @@ public class Launcher extends Application {
     public void start(Stage stage) {
         Parent root = null;
         try { // load the FXML file
-            root = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Login.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Client.fxml"));
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
@@ -24,5 +24,9 @@ public class Launcher extends Application {
         stage.getIcons().add(new Image("/com/houarizegai/gestioncommercial/resources/images/gc-logo-48px.png"));
         stage.setTitle("Gestion Commercial"); // Change the title of app
         stage.show(); // make stage visible
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 }

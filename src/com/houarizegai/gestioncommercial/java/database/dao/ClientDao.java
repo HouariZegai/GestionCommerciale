@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ClientDao {
 
-    public List<Client> getAllClients() { // Get all client from database
+    public List<Client> getClients() { // Get all client from database
         String sql = "SELECT * FROM Client;";
 
         List<Client> clients = new LinkedList<>();
