@@ -1,6 +1,6 @@
-package com.houarizegai.gestioncommercial.java.dao.vo.designpattern.builder;
+package com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder;
 
-import com.houarizegai.gestioncommercial.java.dao.vo.Client;
+import com.houarizegai.gestioncommercial.java.database.models.Client;
 
 import java.util.Date;
 

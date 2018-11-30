@@ -1,4 +1,4 @@
-package com.houarizegai.gestioncommercial.java.dao.vo;
+package com.houarizegai.gestioncommercial.java.database.models;
 
 import java.util.Date;
 
