@@ -1,4 +1,13 @@
 -- Delete Database Gestion Commercial if exists
+<<<<<<< HEAD
+DROP DATABASE IF EXISTS GestionCommercialDB;
+
+-- Create database Gestion Commercial
+CREATE DATABASE GestionCommercialDB;
+
+-- Branchée vers la base de donnée Gestion Commercial
+USE GestionCommercialDB;
+=======
 DROP DATABASE IF EXISTS gestionCommercialDb;
 
 -- Create database Gestion Commercial
@@ -6,6 +15,7 @@ CREATE DATABASE gestionCommercialDb;
 
 -- Branchée vers la base de donnée Gestion Commercial
 USE gestionCommercialDb;
+>>>>>>> 864e0808c99d4b5554ea39a45a4579f7bdee0fc6
 
 -- Structure of table Paramètre
 CREATE TABLE Parametre (
@@ -311,7 +321,11 @@ CREATE TABLE LigneFac (
 	PrixVente DOUBLE,
 	Remise DOUBLE,
 	TauxTva DOUBLE,
+<<<<<<< HEAD
+	IDLigneCde INT(8),
+=======
 	IDLigneCde DOUBLE,
+>>>>>>> 864e0808c99d4b5554ea39a45a4579f7bdee0fc6
 	OrdreAffichage INT(2) DEFAULT 0
 );
 
@@ -368,9 +382,16 @@ ALTER TABLE Adr_Livraison ADD CONSTRAINT fk_al  FOREIGN KEY (NumClient) REFERENC
 ALTER TABLE Avoir ADD CONSTRAINT fk_a  FOREIGN KEY (NumClient) REFERENCES Client (NumClient);
 
 ALTER TABLE Commande ADD CONSTRAINT fk_com  FOREIGN KEY (NumClient) REFERENCES Client (NumClient);
+<<<<<<< HEAD
+ALTER TABLE Commande ADD CONSTRAINT fk_com2  FOREIGN KEY (IDAdresseLivraison) REFERENCES Adr_Livraison (IDAdresseLivraison);
+ALTER TABLE Commande ADD CONSTRAINT fk_com3  FOREIGN KEY (IDModeLivraison) REFERENCES ModeLivraison (IDModeLivraison);
+ALTER TABLE Commande ADD CONSTRAINT fk_com4  FOREIGN KEY (IDAdresseFacturation) REFERENCES Adr_Facturation (IDAdresseFacturation);
+ALTER TABLE Commande ADD CONSTRAINT fk_com5  FOREIGN KEY (IDModeReglement) REFERENCES ModeReglement (IDModeReglement);
+=======
 ALTER TABLE Commande ADD CONSTRAINT fk_com2  FOREIGN KEY (IDModeReglement) REFERENCES ModeReglement (IDModeReglement);
 ALTER TABLE Commande ADD CONSTRAINT fk_com3  FOREIGN KEY (IDAdresseFacturation) REFERENCES Adr_Facturation (IDAdresseFacturation);
 ALTER TABLE Commande ADD CONSTRAINT fk_com4  FOREIGN KEY (IDAdresseLivraison) REFERENCES Adr_Livraison (IDAdresseLivraison);
+>>>>>>> 864e0808c99d4b5554ea39a45a4579f7bdee0fc6
 
 ALTER TABLE Devis ADD CONSTRAINT fk_dv  FOREIGN KEY (NumClient) REFERENCES Client (NumClient);
 
