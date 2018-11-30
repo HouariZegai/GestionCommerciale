@@ -1,0 +1,40 @@
+* {
+    -fx-font-family: tahoma arial;
+}
+
+.lbl-desc {
+    -fx-font-size: 12px;
+    -fx-text-fill: linear-gradient(from 0 0 to 100px 100px, #00aacf, #2196f3);
+}
+
+.field {
+    -fx-font-size: 18px;
+    -fx-prompt-text-fill: #888;
+    -jfx-unfocus-color: #2196f3;
+    -jfx-focus-color: #2196f3
+}
+
+.checkbox {
+    -fx-font-size: 20px
+}
+
+.checkbox:hover {
+    -fx-cursor: hand
+}
+
+.btn {
+    -fx-font-size: 22px;
+    -fx-background-color: #007bff;
+    -fx-text-fill: #FFF;
+    -fx-background-radius: 5
+}
+
+.btn:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #2196f3
+}
+
+.footer-text {
+    -fx-font-size: 18px;
+    -fx-text-fill: #666
+}

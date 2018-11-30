@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="root" alignment="TOP_CENTER" fillWidth="false" prefHeight="550.0" prefWidth="500.0" spacing="40.0" style="-fx-background-color: #FFF;" stylesheets="@../css/login.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="TOP_CENTER" spacing="5.0">
+         <children>
+            <ImageView fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/login/gc-logo-title.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" prefWidth="283.0" styleClass="lbl-desc" text="La gestion simple et pratique des activités commerciales de votre entreprise" textAlignment="CENTER" wrapText="true" />
+         </children>
+      </VBox>
+      <VBox spacing="30.0" VBox.vgrow="ALWAYS">
+         <children>
+            <JFXTextField fx:id="usernameField" labelFloat="true" promptText="Nom utilisateur" styleClass="field" />
+            <JFXPasswordField labelFloat="true" promptText="Mot de passe" styleClass="field" />
+            <JFXButton prefHeight="50.0" prefWidth="360.0" styleClass="btn" text="Login" />
+         </children>
+      </VBox>
+      <Label styleClass="footer-text" text="© 2018-2019">
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </Label>
+   </children>
+   <padding>
+      <Insets bottom="20.0" top="40.0" />
+   </padding>
+</VBox>
