@@ -37,7 +37,8 @@ public class ClientController implements Initializable {
     @FXML
     private JFXTreeTableView<TableClient> tableClient;
 
-    private JFXTreeTableColumn<TableClient, String> colNumClient, colSociete, colCivilite, colNomClient, colPrenom, colAdresse, colSupprimer;
+    private JFXTreeTableColumn<TableClient, String> colNumClient, colSociete, colCivilite, colNomClient, colPrenom,
+            colAdresse, colVille, colPays, colEmail;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,32 +55,31 @@ public class ClientController implements Initializable {
         StringProperty nomClient;
         StringProperty prenom;
         StringProperty adresse;
-        JFXButton btnSupprimer;
+        StringProperty ville;
+        StringProperty pays;
+        StringProperty email;
 
         public TableClient() {
 
         }
 
         public TableClient(int numClient, String societe, String civilite, String nomClient, String prenom,
-                           String adresse) {
+                           String adresse, String ville, String pays, String email) {
             this.numClient = new SimpleStringProperty(String.valueOf(numClient));
             this.societe = new SimpleStringProperty(societe);
             this.civilite = new SimpleStringProperty(civilite);
             this.nomClient = new SimpleStringProperty(nomClient);
             this.prenom = new SimpleStringProperty(prenom);
             this.adresse = new SimpleStringProperty(adresse);
-
-            btnSupprimer = new JFXButton("Supprimer");
-
-            btnSupprimer.setOnAction(e -> {
-                tableClient.getRoot().getChildren().remove(this);
-            });
+            this.ville = new SimpleStringProperty(ville);
+            this.pays = new SimpleStringProperty(pays);
+            this.email = new SimpleStringProperty(email);
         }
     }
 
     private void initClientTable() { // This function initialize the table by colunms
         colNumClient = new JFXTreeTableColumn<>("N°");
-        colNumClient.setPrefWidth(150);
+        colNumClient.setPrefWidth(100);
         colNumClient.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableClient, String> param) -> param.getValue().getValue().numClient);
 
         colSociete = new JFXTreeTableColumn<>("Societe");
@@ -99,41 +99,23 @@ public class ClientController implements Initializable {
         colPrenom.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableClient, String> param) -> param.getValue().getValue().prenom);
 
         colAdresse = new JFXTreeTableColumn<>("Adresse");
-        colAdresse.setPrefWidth(200);
+        colAdresse.setPrefWidth(250);
         colAdresse.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableClient, String> param) -> param.getValue().getValue().adresse);
 
-        Callback<TreeTableColumn<TableClient, String>, TreeTableCell<TableClient, String>> cellFactory = //
-                new Callback<TreeTableColumn<TableClient, String>, TreeTableCell<TableClient, String>>() {
-                    @Override
-                    public TreeTableCell call(final TreeTableColumn<TableClient, String> param) {
-                        final TreeTableCell<TableClient, String> cell = new TreeTableCell<TableClient, String>() {
+        colVille = new JFXTreeTableColumn<>("Ville");
+        colVille.setPrefWidth(150);
+        colVille.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableClient, String> param) -> param.getValue().getValue().ville);
 
-                            final JFXButton btn = new JFXButton("Just Do it");
+        colPays = new JFXTreeTableColumn<>("Pays");
+        colPays.setPrefWidth(120);
+        colPays.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableClient, String> param) -> param.getValue().getValue().pays);
 
-                            @Override
-                            public void updateItem(String item, boolean empty) {
-                                super.updateItem(item, empty);
-                                if (empty) {
-                                    setGraphic(null);
-                                    setText(null);
-                                } else {
-                                    btn.setButtonType(JFXButton.ButtonType.RAISED);
-                                    btn.setOnAction(event -> {
-                                        //Button Action here
-                                    });
-                                    setGraphic(btn);
-                                    setText(null);
-                                }
-                            }
-                        };
-                        return cell;
-                    }
-                };
-
-        colSupprimer.setCellFactory(cellFactory);
+        colEmail = new JFXTreeTableColumn<>("Email");
+        colEmail.setPrefWidth(200);
+        colEmail.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableClient, String> param) -> param.getValue().getValue().email);
 
         // Add columns to table
-        tableClient.getColumns().addAll(colNumClient, colSociete, colCivilite, colNomClient, colPrenom, colAdresse, colSupprimer);
+        tableClient.getColumns().addAll(colNumClient, colSociete, colCivilite, colNomClient, colPrenom, colAdresse, colVille, colPays, colEmail);
         tableClient.setPrefWidth(1260d);
         tableClient.setShowRoot(false);
     }
@@ -150,14 +132,17 @@ public class ClientController implements Initializable {
                         client.getCivilite(),
                         client.getNomClient(),
                         client.getPrenom(),
-                        client.getAdresse());
+                        client.getAdresse(),
+                        client.getVille(),
+                        client.getPays(),
+                        client.getEmail());
 
                 listClients.add(clientT);
             }
         }
 
         // This line below just for testing
-        listClients.add(new TableClient(1, "TiaretSoft", "Civavo", "ZEGAI", "Houari", "Cité sidi khaled N 94 Tiaret"));
+        listClients.add(new TableClient(1, "TiaretSoft", "Civavo", "ZEGAI", "Houari", "Cité sidi khaled N 94 Tiaret", "Tiaret", "Algerie", "HouariZegai14@gmail.com"));
 
         final TreeItem<TableClient> treeItem = new RecursiveTreeItem<>(listClients, RecursiveTreeObject::getChildren);
         try {
