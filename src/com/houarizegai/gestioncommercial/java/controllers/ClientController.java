@@ -13,16 +13,22 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.net.URL;
@@ -50,9 +56,12 @@ public class ClientController implements Initializable {
     // Dialog showing in (add/update) table
     public static JFXDialog dialogClientAdd, dialogClientEdit;
 
+    private JFXSnackbar toastMsg;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         comboSearchBy.getItems().addAll("N° Client", "Societe", "Civilite", "Nom", "Prenom", "Adresse", "Ville", "Pays", "Email");
+        toastMsg = new JFXSnackbar(root);
 
         initClientTable();
         loadClientTableData();
@@ -191,7 +200,7 @@ public class ClientController implements Initializable {
         }
 
         // This line below just for testing
-        listClients.add(new TableClient(1, "TiaretSoft", "Civavo", "ZEGAI", "Houari", "Cité sidi khaled N 94 Tiaret", "Tiaret", "Algerie", "HouariZegai14@gmail.com"));
+        //listClients.add(new TableClient(1, "TiaretSoft", "Civavo", "ZEGAI", "Houari", "Cité sidi khaled N 94 Tiaret", "Tiaret", "Algerie", "HouariZegai14@gmail.com"));
 
         final TreeItem<TableClient> treeItem = new RecursiveTreeItem<>(listClients, RecursiveTreeObject::getChildren);
         try {
@@ -220,7 +229,57 @@ public class ClientController implements Initializable {
 
     @FXML
     private void onDelete() {
+        String numClientSelected = colNumClient.getCellData(tableClient.getSelectionModel().getSelectedIndex());
+        if (numClientSelected == null) {
+            toastMsg.show("Svp, selectionné le client qui vous voulez supprimer !", 2000);
+            return;
+        }
 
+        JFXDialogLayout content = new JFXDialogLayout();
+        Text headerText = new Text("Confirmation");
+        Text contentText = new Text("Tu a sur pour supprimer cette Client ?");
+        headerText.setStyle("-fx-font-size: 19px");
+        contentText.setStyle("-fx-font-size: 18px");
+
+        content.setHeading(headerText);
+        content.setBody(contentText);
+
+        JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER);
+
+        JFXButton btnOk = new JFXButton("Oui");
+        btnOk.setOnAction(e -> {
+            int status = new ClientDao().deleteClient(Integer.parseInt(numClientSelected));
+
+            System.out.println("status : " + status);
+            if (status == -1) {
+                toastMsg.show("Erreur de Connexion !", 2000);
+            } else {
+                Notifications notification = Notifications.create()
+                        .title("Vous avez supprimer le client !")
+                        .graphic(new ImageView(new Image("/com/houarizegai/gestioncommercial/resources/images/icons/valid.png")))
+                        .hideAfter(Duration.millis(2000))
+                        .position(Pos.BOTTOM_RIGHT);
+                notification.darkStyle();
+                notification.show();
+                loadClientTableData();
+            }
+            dialog.close();
+        });
+
+        JFXButton btnNo = new JFXButton("Non");
+        btnOk.setPrefSize(120, 40);
+        btnNo.setPrefSize(120, 40);
+        btnOk.getStyleClass().addAll("btn", "btn-delete");
+        btnNo.getStyleClass().addAll("btn", "btn-add");
+
+        content.setActions(btnOk, btnNo);
+        StackPane stackpane = new StackPane();
+
+        dialog.getStylesheets().add("/com/houarizegai/gestioncommercial/resources/css/client.css");
+        btnNo.setOnAction(e -> {
+            dialog.close();
+        });
+        dialog.show();
     }
 
     private JFXDialog getSpecialDialog(Region content) { // This function create dialog

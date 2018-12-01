@@ -24,34 +24,35 @@ public class ClientDao {
 
             while (rs.next()) {
                 Client client = new ClientBuilder()
-                        .setNumClient(rs.getInt(0))
-                        .setSociete(rs.getString(1))
-                        .setCivilite(rs.getString(2))
-                        .setNomClient(rs.getString(3))
-                        .setPrenom(rs.getString(4))
-                        .setAdresse(rs.getString(5))
-                        .setCodePostal(rs.getString(6))
-                        .setVille(rs.getString(7))
-                        .setPays(rs.getString(8))
-                        .setTelephone(rs.getString(9))
-                        .setMobile(rs.getString(10))
-                        .setFax(rs.getString(11))
-                        .setEmail(rs.getString(12))
-                        .setType(rs.getInt(13))
-                        .setLivreMemeAdresse(rs.getBoolean(14))
-                        .setFactureMemeAdresse(rs.getBoolean(15))
-                        .setExemptTva(rs.getBoolean(16))
-                        .setSaisiPar(rs.getString(17))
-                        .setSaisiLe(rs.getDate(18))
-                        .setAuteurModif(rs.getString(19))
-                        .setDateModif(rs.getDate(20))
-                        .setObservations(rs.getString(21))
+                        .setNumClient(rs.getInt(1))
+                        .setSociete(rs.getString(2))
+                        .setCivilite(rs.getString(3))
+                        .setNomClient(rs.getString(4))
+                        .setPrenom(rs.getString(5))
+                        .setAdresse(rs.getString(6))
+                        .setCodePostal(rs.getString(7))
+                        .setVille(rs.getString(8))
+                        .setPays(rs.getString(9))
+                        .setTelephone(rs.getString(10))
+                        .setMobile(rs.getString(11))
+                        .setFax(rs.getString(12))
+                        .setEmail(rs.getString(13))
+                        .setType(rs.getInt(14))
+                        .setLivreMemeAdresse(rs.getBoolean(15))
+                        .setFactureMemeAdresse(rs.getBoolean(16))
+                        .setExemptTva(rs.getBoolean(17))
+                        .setSaisiPar(rs.getString(18))
+                        .setSaisiLe(rs.getDate(19))
+                        .setAuteurModif(rs.getString(20))
+                        .setDateModif(rs.getDate(21))
+                        .setObservations(rs.getString(22))
                         .build();
 
                 clients.add(client);
             }
 
         } catch (SQLException se) {
+            System.out.println("Get All Client Error SQL");
             se.printStackTrace();
             return null;
         }
@@ -110,6 +111,7 @@ public class ClientDao {
 
             // fill all column
         } catch (SQLException se) {
+            System.out.println("Set Client Error SQL");
             se.printStackTrace();
         }
         return false;
@@ -122,6 +124,7 @@ public class ClientDao {
             prest.setInt(1, numClient);
             return prest.executeUpdate();
         } catch (SQLException se) {
+            System.out.println("Delete Client Error SQL");
             se.printStackTrace();
             return -1;
         }
@@ -161,6 +164,7 @@ public class ClientDao {
             return prest.executeUpdate();
 
         } catch (SQLException se) {
+            System.out.println("Add Client Error SQL");
             se.printStackTrace();
             return 0;
         }

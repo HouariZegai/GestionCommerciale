@@ -17,6 +17,7 @@ import org.controlsfx.control.Notifications;
 import java.net.URL;
 import java.sql.Date;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ResourceBundle;
 
@@ -46,6 +47,32 @@ public class AddClientController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         toastMsg = new JFXSnackbar(root);
+
+        // Just for testing
+        fieldSociete.setText("TiaretSoft");
+        fieldCivilite.setText("ttt");
+        fieldNom.setText("Houari");
+        fieldPrenom.setText("ZEGAI");
+        fieldTelephone.setText("0797603258");
+        fieldMobile.setText("0554844884");
+        fieldFax.setText("046000000");
+        fieldEmail.setText("houari@gmail.com");
+        fieldType.setText("11");
+        fieldAdresse.setText("Cité Tiaret");
+        fieldCodePostal.setText("14000");
+        fieldVille.setText("Tiaret");
+        fieldPays.setText("Algerie");
+        fieldSaisiPar.setText("Houhou");
+        fieldAuteurModif.setText("Houarii");
+
+        checkLivreMemeAdresse.setSelected(true);
+        checkFactureMemeAdresse.setSelected(true);
+        checkExemptTva.setSelected(true);
+
+        pickerSaisiLe.setValue(new Date(1111111199).toLocalDate());
+        pickerDateModif.setValue(new Date(1111111111).toLocalDate());
+
+        areaObservations.setText("hello world !");
     }
 
     @FXML
@@ -121,7 +148,7 @@ public class AddClientController implements Initializable {
 
         Client client = new ClientBuilder()
                 .setSociete(fieldSociete.getText().trim().toLowerCase())
-                .setNomClient(fieldNom.getText().trim().toLowerCase())
+                .setCivilite(fieldCivilite.getText().trim().toLowerCase())
                 .setNomClient(fieldNom.getText().trim().toLowerCase())
                 .setPrenom(fieldPrenom.getText().trim().toLowerCase())
                 .setTelephone(fieldTelephone.getText().trim().toLowerCase())
@@ -136,6 +163,7 @@ public class AddClientController implements Initializable {
                 .setLivreMemeAdresse(checkLivreMemeAdresse.isSelected())
                 .setFactureMemeAdresse(checkFactureMemeAdresse.isSelected())
                 .setExemptTva(checkExemptTva.isSelected())
+                .setSaisiPar(fieldSaisiPar.getText().trim().toLowerCase())
                 .setSaisiLe(Date.from(Instant.from(pickerSaisiLe.getValue().atStartOfDay(ZoneId.systemDefault()))))
                 .setAuteurModif(fieldAuteurModif.getText().trim().toLowerCase())
                 .setDateModif(Date.from(Instant.from(pickerDateModif.getValue().atStartOfDay(ZoneId.systemDefault()))))
