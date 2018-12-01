@@ -22,6 +22,7 @@ import javafx.util.Callback;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
 
 public class ClientController implements Initializable {
 
@@ -42,10 +43,49 @@ public class ClientController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        comboSearchBy.getItems().addAll("");
+        comboSearchBy.getItems().addAll("N° Client", "Societe", "Civilite", "Nom", "Prenom", "Adresse", "Ville", "Pays", "Email");
 
         initClientTable();
         loadClientTableData();
+        // Add Filter if i change the value of search field
+        fieldSearch.setOnKeyReleased(e -> filterSearchTable());
+        comboSearchBy.setOnAction(e -> filterSearchTable());
+    }
+
+    public void filterSearchTable() {
+        tableClient.setPredicate((TreeItem<TableClient> client) -> {
+            switch (comboSearchBy.getSelectionModel().getSelectedIndex()) {
+                case 0:
+                    return client.getValue().numClient.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                case 1:
+                    return client.getValue().societe.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                case 2:
+                    return client.getValue().civilite.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                case 3:
+                    return client.getValue().nomClient.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                case 4:
+                    return client.getValue().prenom.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                case 5:
+                    return client.getValue().adresse.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                case 6:
+                    return client.getValue().ville.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                case 7:
+                    return client.getValue().pays.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                case 8:
+                    return client.getValue().email.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                default:
+                    return client.getValue().numClient.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase())
+                            || client.getValue().societe.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase())
+                            || client.getValue().civilite.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase())
+                            || client.getValue().nomClient.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase())
+                            || client.getValue().prenom.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase())
+                            || client.getValue().adresse.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase())
+                            || client.getValue().ville.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase())
+                            || client.getValue().pays.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase())
+                            || client.getValue().email.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+            }
+
+        });
     }
 
     class TableClient extends RecursiveTreeObject<TableClient> {
@@ -153,7 +193,17 @@ public class ClientController implements Initializable {
     }
 
     @FXML
-    private void onAjouter() { // On Add Client
+    private void onAdd() { // On Add Client
+
+    }
+
+    @FXML
+    private void onEdit() {
+
+    }
+
+    @FXML
+    private void onDelete() {
 
     }
 
