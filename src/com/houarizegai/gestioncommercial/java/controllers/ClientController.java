@@ -11,14 +11,20 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -40,6 +46,9 @@ public class ClientController implements Initializable {
 
     private JFXTreeTableColumn<TableClient, String> colNumClient, colSociete, colCivilite, colNomClient, colPrenom,
             colAdresse, colVille, colPays, colEmail;
+
+    // Dialog showing in (add/update) table
+    public static JFXDialog dialogClientAdd, dialogClientEdit;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -194,7 +203,14 @@ public class ClientController implements Initializable {
 
     @FXML
     private void onAdd() { // On Add Client
-
+        VBox paneAddClient = null;
+        try {
+            paneAddClient = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/forms/AddClient.fxml"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        dialogClientAdd = getSpecialDialog(paneAddClient);
+        dialogClientAdd.show();
     }
 
     @FXML
@@ -205,6 +221,12 @@ public class ClientController implements Initializable {
     @FXML
     private void onDelete() {
 
+    }
+
+    private JFXDialog getSpecialDialog(Region content) { // This function create dialog
+        JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER);
+        dialog.setOnDialogClosed(e -> loadClientTableData()); // if i close dialog: reload data to table
+        return dialog;
     }
 
 }
