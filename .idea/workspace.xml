@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/ClientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/ClientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/ClientDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/ClientDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/forms/add-client.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/forms/add-client.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/AddClient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/AddClient.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -67,36 +69,36 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="10" />
+          <entry key="css" value="11" />
           <entry key="fxml" value="13" />
-          <entry key="java" value="17" />
+          <entry key="java" value="22" />
           <entry key="png" value="2" />
-          <entry key="sql" value="4" />
+          <entry key="sql" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="10" />
+          <entry key="CSS" value="11" />
           <entry key="Image" value="2" />
-          <entry key="JAVA" value="17" />
-          <entry key="SQL" value="4" />
+          <entry key="JAVA" value="22" />
+          <entry key="SQL" value="5" />
           <entry key="XML" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="1581" />
-          <entry key="fxml" value="53" />
-          <entry key="java" value="4716" />
+          <entry key="css" value="1583" />
+          <entry key="fxml" value="66" />
+          <entry key="java" value="6875" />
           <entry key="sql" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="1581" />
-          <entry key="JAVA" value="4716" />
+          <entry key="CSS" value="1583" />
+          <entry key="JAVA" value="6875" />
           <entry key="SQL" value="3" />
-          <entry key="XML" value="53" />
+          <entry key="XML" value="66" />
         </counts>
       </usages-collector>
     </session>
@@ -109,8 +111,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/ClientController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10">
-              <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
+            <state relative-caret-position="149">
+              <caret line="171" column="38" selection-start-line="171" selection-start-column="38" selection-end-line="171" selection-end-column="38" />
               <folding>
                 <element signature="method#initialize#0;class#ClientController#0" />
                 <element signature="method#filterSearchTable#0;class#ClientController#0" />
@@ -128,29 +130,30 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/AddClient.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
+        <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/forms/client/AddClientController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/client.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="38" selection-start-line="38" selection-end-line="42" selection-end-column="45" />
+            <state relative-caret-position="188">
+              <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1029#1030#0" expanded="true" />
+                <element signature="e#1077#1078#0" expanded="true" />
+                <element signature="e#1938#1939#0" expanded="true" />
+                <element signature="e#1994#1995#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/forms/add-client.css">
+        <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/ClientDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="29" column="22" lean-forward="true" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+            <state relative-caret-position="253">
+              <caret line="148" column="40" selection-start-line="148" selection-start-column="40" selection-end-line="148" selection-end-column="40" />
+              <folding>
+                <element signature="method#setClient#0;class#ClientDao#0" />
+                <element signature="method#deleteClient#0;class#ClientDao#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -158,8 +161,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Database/SQL queries.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="120" column="11" selection-start-line="120" selection-start-column="2" selection-end-line="120" selection-end-column="11" />
+            <state relative-caret-position="288">
+              <caret line="117" column="21" selection-start-line="117" selection-start-column="14" selection-end-line="117" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/client.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="436">
+              <caret line="42" column="15" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -169,9 +181,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -206,14 +218,15 @@
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/System.fxml" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/system.css" />
         <option value="$PROJECT_DIR$/Database/SQL queries.sql" />
-        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/ClientDao.java" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/Launcher.java" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/client.css" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/client/AddClient.fxml" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/Client.fxml" />
-        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/AddClient.fxml" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/ClientController.java" />
+        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/AddClient.fxml" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/forms/add-client.css" />
+        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/forms/client/AddClientController.java" />
+        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/ClientDao.java" />
       </list>
     </option>
   </component>
@@ -281,16 +294,8 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GestionCommercial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GestionCommercial" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="database" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GestionCommercial" type="b2602c69:ProjectViewProjectNode" />
@@ -313,8 +318,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
-              <item name="forms" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="GestionCommercial" type="b2602c69:ProjectViewProjectNode" />
@@ -350,7 +354,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543684691753" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543695756943" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="D:/Learn/Projects/JavaProjects/Javafx/JavaFX Examples/Dashboard" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -523,12 +527,12 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1543572270804" duration="254000" />
-      <workItem from="1543675086868" duration="7630000" />
+      <workItem from="1543675086868" duration="14140000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30474000" />
+    <option name="totallyTimeSpent" value="36984000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -588,13 +592,6 @@
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml" />
     <entry file="file://$PROJECT_DIR$/src/sample/Controller.java" />
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/dao/ClientDao.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/models/designpatterns/builder/ClientBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="127" column="13" lean-forward="true" selection-start-line="127" selection-start-column="13" selection-end-line="127" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/models/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -656,28 +653,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/login.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="26" column="33" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Database/Schema of Database.png">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/ClientDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
-          <folding>
-            <element signature="method#getAllClients#0;class#ClientDao#0" />
-            <element signature="method#setClient#0;class#ClientDao#0" />
-            <element signature="method#deleteClient#0;class#ClientDao#0" />
-            <element signature="method#addclient#0;class#ClientDao#0" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/Login.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -706,10 +683,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/AddClient.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="98" selection-start-line="14" selection-start-column="98" selection-end-line="14" selection-end-column="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="37">
+          <caret line="41" selection-start-line="41" selection-end-line="53" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/forms/add-client.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="51" column="23" lean-forward="true" selection-start-line="51" selection-start-column="23" selection-end-line="51" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/client.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="42" column="15" selection-start-line="42" selection-start-column="15" selection-end-line="42" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/models/designpatterns/builder/ClientBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="120" column="25" selection-start-line="120" selection-start-column="25" selection-end-line="120" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Database/SQL queries.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="117" column="21" selection-start-line="117" selection-start-column="14" selection-end-line="117" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/sql/PreparedStatement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="103" column="54" lean-forward="true" selection-start-line="103" selection-start-column="54" selection-end-line="103" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/ClientController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="98" lean-forward="true" selection-start-line="98" selection-end-line="98" />
+        <state relative-caret-position="149">
+          <caret line="171" column="38" selection-start-line="171" selection-start-column="38" selection-end-line="171" selection-end-column="38" />
           <folding>
             <element signature="method#initialize#0;class#ClientController#0" />
             <element signature="method#filterSearchTable#0;class#ClientController#0" />
@@ -725,32 +752,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Database/SQL queries.sql">
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/forms/client/AddClientController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="353">
-          <caret line="120" column="11" selection-start-line="120" selection-start-column="2" selection-end-line="120" selection-end-column="11" />
+        <state relative-caret-position="188">
+          <caret line="83" column="9" lean-forward="true" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1029#1030#0" expanded="true" />
+            <element signature="e#1077#1078#0" expanded="true" />
+            <element signature="e#1938#1939#0" expanded="true" />
+            <element signature="e#1994#1995#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/client.css">
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/ClientDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="38" selection-start-line="38" selection-end-line="42" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/AddClient.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/forms/add-client.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="29" column="22" lean-forward="true" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+        <state relative-caret-position="253">
+          <caret line="148" column="40" selection-start-line="148" selection-start-column="40" selection-end-line="148" selection-end-column="40" />
+          <folding>
+            <element signature="method#setClient#0;class#ClientDao#0" />
+            <element signature="method#deleteClient#0;class#ClientDao#0" />
+          </folding>
         </state>
       </provider>
     </entry>

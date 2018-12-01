@@ -205,7 +205,7 @@ public class ClientController implements Initializable {
     private void onAdd() { // On Add Client
         VBox paneAddClient = null;
         try {
-            paneAddClient = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/forms/AddClient.fxml"));
+            paneAddClient = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/forms/client/AddClient.fxml"));
         } catch (IOException ex) {
             ex.printStackTrace();
         }

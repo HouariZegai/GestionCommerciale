@@ -129,37 +129,40 @@ public class ClientDao {
 
     public int addclient(Client client) {
 
-        String sql = "INSERT INTO Client VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO Client (`Societe`, `Civilite`, `NomClient`, `Prenom`, `Adresse`, `CodePostal`, `Ville`, `Pays`, `Telephone`, `Mobile`, `Fax`, `Email`, `Type`, `LivreMemeAdresse`, `FactureMemeAdresse`, `ExemptTva`, `SaisiPar`, `SaisiLe`, `AuteurModif`, `DateModif`, `Observations`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
         try {
+            if(DBConnection.con == null)
+                return -1;
+
             PreparedStatement prest = DBConnection.con.prepareStatement(sql);
             prest.setString(1, client.getSociete());
-            prest.setString(1, client.getSociete());
-            prest.setString(2, client.getNomClient());
-            prest.setString(3, client.getPrenom());
-            prest.setString(4, client.getAdresse());
-            prest.setString(5, client.getCodePostal());
-            prest.setString(6, client.getVille());
-            prest.setString(7, client.getPays());
-            prest.setString(8, client.getTelephone());
-            prest.setString(9, client.getMobile());
-            prest.setString(10, client.getFax());
-            prest.setString(11, client.getEmail());
-            prest.setInt(12, client.getType());
-            prest.setBoolean(13, client.isLivreMemeAdresse());
-            prest.setBoolean(14, client.isFactureMemeAdresse());
-            prest.setBoolean(15, client.isExemptTva());
-            prest.setString(16, client.getSaisiPar());
-            prest.setDate(17, UsefulMethods.getSQLDate(client.getSaisiLe()));
-            prest.setString(18, client.getAuteurModif());
-            prest.setDate(19, UsefulMethods.getSQLDate(client.getDateModif()));
-            prest.setString(20, client.getObservations());
+            prest.setString(2, client.getCivilite());
+            prest.setString(3, client.getNomClient());
+            prest.setString(4, client.getPrenom());
+            prest.setString(5, client.getAdresse());
+            prest.setString(6, client.getCodePostal());
+            prest.setString(7, client.getVille());
+            prest.setString(8, client.getPays());
+            prest.setString(9, client.getTelephone());
+            prest.setString(10, client.getMobile());
+            prest.setString(11, client.getFax());
+            prest.setString(12, client.getEmail());
+            prest.setInt(13, client.getType());
+            prest.setBoolean(14, client.isLivreMemeAdresse());
+            prest.setBoolean(15, client.isFactureMemeAdresse());
+            prest.setBoolean(16, client.isExemptTva());
+            prest.setString(17, client.getSaisiPar());
+            prest.setDate(18, UsefulMethods.getSQLDate(client.getSaisiLe()));
+            prest.setString(19, client.getAuteurModif());
+            prest.setDate(20, UsefulMethods.getSQLDate(client.getDateModif()));
+            prest.setString(21, client.getObservations());
 
             return prest.executeUpdate();
 
         } catch (SQLException se) {
             se.printStackTrace();
-            return -1;
+            return 0;
         }
     }
 }
