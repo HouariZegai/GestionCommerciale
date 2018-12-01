@@ -60,9 +60,10 @@ public class ClientDao {
         return clients;
     }
 
-    public boolean setClient(int numClient, Client client) { // Edit Client
+    public int setClient(int numClient, Client client) { // Edit Client
         StringBuilder sql = new StringBuilder("UPDATE Client SET");
-        sql.append(" societe = ?");
+        sql.append(" Societe = ?");
+        sql.append(", Civilite = ?");
         sql.append(", nomClient = ?");
         sql.append(", prenom = ?");
         sql.append(", adresse = ?");
@@ -85,36 +86,40 @@ public class ClientDao {
 
         sql.append(" WHERE numClient = ?;");
         try {
+            if(DBConnection.con == null) {
+                return -1; // connection failed !
+            }
             PreparedStatement prest = DBConnection.con.prepareStatement(sql.toString());
             prest.setString(1, client.getSociete());
-            prest.setString(1, client.getSociete());
-            prest.setString(2, client.getNomClient());
-            prest.setString(3, client.getPrenom());
-            prest.setString(4, client.getAdresse());
-            prest.setString(5, client.getCodePostal());
-            prest.setString(6, client.getVille());
-            prest.setString(7, client.getPays());
-            prest.setString(8, client.getTelephone());
-            prest.setString(9, client.getMobile());
-            prest.setString(10, client.getFax());
-            prest.setString(11, client.getEmail());
-            prest.setInt(12, client.getType());
-            prest.setBoolean(13, client.isLivreMemeAdresse());
-            prest.setBoolean(14, client.isFactureMemeAdresse());
-            prest.setBoolean(15, client.isExemptTva());
-            prest.setString(16, client.getSaisiPar());
-            prest.setDate(17, UsefulMethods.getSQLDate(client.getSaisiLe()));
-            prest.setString(18, client.getAuteurModif());
-            prest.setDate(19, UsefulMethods.getSQLDate(client.getDateModif()));
-            prest.setString(20, client.getObservations());
-            prest.setInt(21, numClient);
+            prest.setString(2, client.getCivilite());
+            prest.setString(3, client.getNomClient());
+            prest.setString(4, client.getPrenom());
+            prest.setString(5, client.getAdresse());
+            prest.setString(6, client.getCodePostal());
+            prest.setString(7, client.getVille());
+            prest.setString(8, client.getPays());
+            prest.setString(9, client.getTelephone());
+            prest.setString(10, client.getMobile());
+            prest.setString(11, client.getFax());
+            prest.setString(12, client.getEmail());
+            prest.setInt(13, client.getType());
+            prest.setBoolean(14, client.isLivreMemeAdresse());
+            prest.setBoolean(15, client.isFactureMemeAdresse());
+            prest.setBoolean(16, client.isExemptTva());
+            prest.setString(17, client.getSaisiPar());
+            prest.setDate(18, UsefulMethods.getSQLDate(client.getSaisiLe()));
+            prest.setString(19, client.getAuteurModif());
+            prest.setDate(20, UsefulMethods.getSQLDate(client.getDateModif()));
+            prest.setString(21, client.getObservations());
+            prest.setInt(22, numClient);
 
-            // fill all column
+            return prest.executeUpdate();
+
         } catch (SQLException se) {
             System.out.println("Set Client Error SQL");
             se.printStackTrace();
+            return 0;
         }
-        return false;
     }
 
     public int deleteClient(int numClient) { // Delete Client

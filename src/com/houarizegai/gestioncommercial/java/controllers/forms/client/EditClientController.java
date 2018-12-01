@@ -17,11 +17,10 @@ import org.controlsfx.control.Notifications;
 import java.net.URL;
 import java.sql.Date;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ResourceBundle;
 
-public class AddClientController implements Initializable {
+public class EditClientController implements Initializable {
 
     @FXML // Parent of all client (root node)
     private VBox root;
@@ -43,40 +42,17 @@ public class AddClientController implements Initializable {
 
     // For show error msg (like: Toast in android)
     private JFXSnackbar toastMsg;
+    // client infos
+    public static Client clientInfo;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         toastMsg = new JFXSnackbar(root);
-
-        // Just for testing
-        fieldSociete.setText("TiaretSoft");
-        fieldCivilite.setText("ttt");
-        fieldNom.setText("Houari");
-        fieldPrenom.setText("ZEGAI");
-        fieldTelephone.setText("0797603258");
-        fieldMobile.setText("0554844884");
-        fieldFax.setText("046000000");
-        fieldEmail.setText("houari@gmail.com");
-        fieldType.setText("11");
-        fieldAdresse.setText("Cité Tiaret");
-        fieldCodePostal.setText("14000");
-        fieldVille.setText("Tiaret");
-        fieldPays.setText("Algerie");
-        fieldSaisiPar.setText("Houhou");
-        fieldAuteurModif.setText("Houarii");
-
-        checkLivreMemeAdresse.setSelected(true);
-        checkFactureMemeAdresse.setSelected(true);
-        checkExemptTva.setSelected(true);
-
-        pickerSaisiLe.setValue(new Date(1111111199).toLocalDate());
-        pickerDateModif.setValue(new Date(1111111111).toLocalDate());
-
-        areaObservations.setText("hello world !");
+        onReset();
     }
 
     @FXML
-    private void onAdd() { // Add new Client
+    private void onEdit() { // Add new Client
         if(fieldSociete.getText() == null || !fieldSociete.getText().trim().toLowerCase().matches("[a-z0-9]{4,}")) {
             toastMsg.show("Le champ Societe ne pas bien formé !", 2000);
             return;
@@ -90,7 +66,7 @@ public class AddClientController implements Initializable {
             return;
         }
         if(fieldPrenom.getText() == null || !fieldPrenom.getText().trim().toLowerCase().matches("[a-z]{3,}")) {
-            toastMsg.show("Le champ Prenom ne pas bien formé !", 2000);
+            toastMsg.show("Le champ Nom ne pas bien formé !", 2000);
             return;
         }
         if(fieldTelephone.getText() == null || !fieldTelephone.getText().trim().matches("[0-9]{8,}")) {
@@ -170,60 +146,60 @@ public class AddClientController implements Initializable {
                 .setObservations(areaObservations.getText().trim())
                 .build();
 
-        int status = new ClientDao().addclient(client);
+        int status = new ClientDao().setClient(clientInfo.getNumClient(), client);
 
         switch (status) {
             case -1:
                 toastMsg.show("Erreur de connexion !", 1500);
                 break;
             case 0:
-                toastMsg.show("Erreur dans l'ajoute de client !", 1500);
+                toastMsg.show("Erreur dans la modification de client !", 1500);
                 break;
             default : {
                 Notifications.create()
-                        .title("Vous avez ajouter un client !")
+                        .title("Vous avez modifier un client !")
                         .graphic(new ImageView(new Image("/com/houarizegai/gestioncommercial/resources/images/icons/valid.png")))
                         .hideAfter(Duration.millis(2000))
                         .position(Pos.BOTTOM_RIGHT)
                         .darkStyle()
                         .show();
 
-                ClientController.dialogClientAdd.close();
+                ClientController.dialogClientEdit.close();
                 break;
             }
         }
     }
 
     @FXML
-    private void onClear() { // Clear everything in interface
-        fieldSociete.setText(null);
-        fieldCivilite.setText(null);
-        fieldNom.setText(null);
-        fieldPrenom.setText(null);
-        fieldTelephone.setText(null);
-        fieldMobile.setText(null);
-        fieldFax.setText(null);
-        fieldEmail.setText(null);
-        fieldType.setText(null);
-        fieldAdresse.setText(null);
-        fieldCodePostal.setText(null);
-        fieldVille.setText(null);
-        fieldPays.setText(null);
-        fieldSaisiPar.setText(null);
-        fieldAuteurModif.setText(null);
+    private void onReset() { // Clear everything in interface
+        fieldSociete.setText(clientInfo.getSociete());
+        fieldCivilite.setText(clientInfo.getCivilite());
+        fieldNom.setText(clientInfo.getNomClient());
+        fieldPrenom.setText(clientInfo.getPrenom());
+        fieldTelephone.setText(clientInfo.getTelephone());
+        fieldMobile.setText(clientInfo.getMobile());
+        fieldFax.setText(clientInfo.getFax());
+        fieldEmail.setText(clientInfo.getEmail());
+        fieldType.setText(String.valueOf(clientInfo.getType()));
+        fieldAdresse.setText(clientInfo.getAdresse());
+        fieldCodePostal.setText(clientInfo.getCodePostal());
+        fieldVille.setText(clientInfo.getVille());
+        fieldPays.setText(clientInfo.getPays());
+        fieldSaisiPar.setText(clientInfo.getSaisiPar());
+        fieldAuteurModif.setText(clientInfo.getAuteurModif());
 
-        checkLivreMemeAdresse.setSelected(false);
-        checkFactureMemeAdresse.setSelected(false);
-        checkExemptTva.setSelected(false);
+        checkLivreMemeAdresse.setSelected(clientInfo.isLivreMemeAdresse());
+        checkFactureMemeAdresse.setSelected(clientInfo.isFactureMemeAdresse());
+        checkExemptTva.setSelected(clientInfo.isExemptTva());
 
         pickerSaisiLe.setValue(null);
         pickerDateModif.setValue(null);
 
-        areaObservations.setText(null);
+        areaObservations.setText(clientInfo.getObservations());
     }
 
     @FXML
     private void onClose() {
-        ClientController.dialogClientAdd.close();
+        ClientController.dialogClientEdit.close();
     }
 }

@@ -1,7 +1,9 @@
 package com.houarizegai.gestioncommercial.java.controllers;
 
+import com.houarizegai.gestioncommercial.java.controllers.forms.client.EditClientController;
 import com.houarizegai.gestioncommercial.java.database.dao.ClientDao;
 import com.houarizegai.gestioncommercial.java.database.models.Client;
+import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ClientBuilder;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import com.sun.org.apache.bcel.internal.generic.TABLESWITCH;
@@ -57,6 +59,8 @@ public class ClientController implements Initializable {
     public static JFXDialog dialogClientAdd, dialogClientEdit;
 
     private JFXSnackbar toastMsg;
+    // data of table
+    private List<Client> clients;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -182,7 +186,7 @@ public class ClientController implements Initializable {
 
         ObservableList<TableClient> listClients = FXCollections.observableArrayList();
 
-        List<Client> clients = new ClientDao().getClients(); // Get Client from database
+        this.clients = new ClientDao().getClients(); // Get Client from database
         if(clients != null) {
             for(Client client : clients) {
                 TableClient clientT = new TableClient(client.getNumClient(),
@@ -224,7 +228,26 @@ public class ClientController implements Initializable {
 
     @FXML
     private void onEdit() {
+        String numClientSelected = colNumClient.getCellData(tableClient.getSelectionModel().getSelectedIndex());
+        if (numClientSelected == null) {
+            toastMsg.show("Svp, selectionné le client qui vous voulez Modifier !", 2000);
+            return;
+        }
+        for(Client client : clients) {
+            if(client.getNumClient() == Integer.parseInt(numClientSelected)) {
+                EditClientController.clientInfo = client;
+                break;
+            }
+        }
 
+        VBox paneEditClient = null;
+        try {
+            paneEditClient = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/forms/client/EditClient.fxml"));
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        dialogClientEdit = getSpecialDialog(paneEditClient);
+        dialogClientEdit.show();
     }
 
     @FXML
@@ -270,7 +293,8 @@ public class ClientController implements Initializable {
         btnOk.setPrefSize(120, 40);
         btnNo.setPrefSize(120, 40);
         btnOk.getStyleClass().addAll("btn", "btn-delete");
-        btnNo.getStyleClass().addAll("btn", "btn-add");
+        btnNo.getStyleClass().addAll("btn");
+        btnNo.setStyle("-fx-background-color: #DDD;-fx-text-fill: #333");
 
         content.setActions(btnOk, btnNo);
         StackPane stackpane = new StackPane();
