@@ -21,7 +21,7 @@
       </StackPane>
       <StackPane VBox.vgrow="ALWAYS">
          <children>
-            <StackPane fx:id="holderPane" prefHeight="150.0" prefWidth="200.0" />
+            <StackPane fx:id="holderPane" />
             <JFXDrawer fx:id="drawerMenu" defaultDrawerSize="300.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" StackPane.alignment="TOP_LEFT" />
          </children>
       </StackPane>

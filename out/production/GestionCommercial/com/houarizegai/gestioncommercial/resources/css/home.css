@@ -1,0 +1,31 @@
+* {
+    -fx-font-family: tahoma, arial, "Comic Sans MS"
+}
+
+.title {
+    -fx-font-size: 32px;
+    -fx-text-fill: linear-gradient(from 0 0 to 100px 100px, #00aacf, cyan)
+}
+
+/* Start card */
+
+.cards {
+    -fx-pref-width: 180px;
+    -fx-pref-height: 200px;
+    -fx-padding: 10px;
+    -fx-background-color: #FFF;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 6, 0, 0, 0);
+    -fx-background-radius: 10
+}
+.cards:hover{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 10, 0, 0, 0);
+    -fx-cursor: hand
+}
+
+.cards-title {
+    -fx-font-size: 22px;
+    -fx-text-fill: #333;
+    -fx-text-fill: linear-gradient(from 0 0 to 100px 100px, #2196f3, #333)
+}
+
+/* End card */

@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -34,19 +35,21 @@ public class SystemController implements Initializable {
     private VBox menuDrawerPane;
     // CLient GUI (FXML)
     private StackPane clientView;
+    private AnchorPane homeView;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
             clientView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Client.fxml"));
+            homeView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Home.fxml"));
         } catch(IOException ioe) {
            ioe.printStackTrace();
         }
 
         initMenu();
 
-        // Launch Client view
-        setNode(clientView);
+        // Launch Home view
+        setNode(homeView);
     }
 
 
