@@ -14,7 +14,7 @@ public class Launcher extends Application {
     public void start(Stage stage) {
         Parent root = null;
         try { // load the FXML file
-            root = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/System.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Login.fxml"));
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }

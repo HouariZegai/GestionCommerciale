@@ -4,11 +4,11 @@
 
 .lbl-desc {
     -fx-font-size: 12px;
-    -fx-text-fill: linear-gradient(from 0 0 to 100px 100px, #00aacf, #2196f3);
+    -fx-text-fill: #888;
 }
 
 .field {
-    -fx-font-size: 18px;
+    -fx-font-size: 20px;
     -fx-prompt-text-fill: #888;
     -jfx-unfocus-color: #2196f3;
     -jfx-focus-color: #2196f3
@@ -42,7 +42,7 @@
 /* Start JFXSnackBar (toast msg) */
 
 .jfx-snackbar-content {
-    -fx-background-color: #00aacf;
+    -fx-background-color: #ff5559;
     -fx-pref-width: 460
 }
 .jfx-snackbar-toast {

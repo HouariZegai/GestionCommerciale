@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -33,6 +34,12 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         toastMsg = new JFXSnackbar(root);
+
+        root.setOnKeyPressed(e -> { // Execute login action if i click Enter button from Keyboard
+            if(e.getCode().equals(KeyCode.ENTER)) {
+                onLogin();
+            }
+        });
     }
 
     @FXML
