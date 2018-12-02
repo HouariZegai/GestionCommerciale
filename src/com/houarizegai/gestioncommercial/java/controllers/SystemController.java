@@ -1,5 +1,6 @@
 package com.houarizegai.gestioncommercial.java.controllers;
 
+import com.houarizegai.gestioncommercial.java.Launcher;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
@@ -97,6 +98,7 @@ public class SystemController implements Initializable {
                         try {
                             Parent loginView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Login.fxml"));
                             ((Stage) holderPane.getScene().getWindow()).setScene(new Scene(loginView));
+                            Launcher.centerOnScreen(); // make stage in the center
                         } catch (IOException ioe) {
                             ioe.printStackTrace();
                         }

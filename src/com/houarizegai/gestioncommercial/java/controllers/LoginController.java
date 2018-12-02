@@ -1,5 +1,6 @@
 package com.houarizegai.gestioncommercial.java.controllers;
 
+import com.houarizegai.gestioncommercial.java.Launcher;
 import com.houarizegai.gestioncommercial.java.database.LoginDao;
 import com.houarizegai.gestioncommercial.java.database.models.Login;
 import com.jfoenix.controls.JFXButton;
@@ -72,6 +73,7 @@ public class LoginController implements Initializable {
                 }
                 Stage stage = ((Stage) fieldUser.getScene().getWindow());
                 stage.setScene(new Scene(systemView));
+                Launcher.centerOnScreen(); // make stage in the center
                 break;
         }
 

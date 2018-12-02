@@ -2,14 +2,17 @@ package com.houarizegai.gestioncommercial.java;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class Launcher extends Application {
+    public static Stage stage;
     @Override
     public void start(Stage stage) {
         Parent root = null;
@@ -23,7 +26,14 @@ public class Launcher extends Application {
         // Adding icon of App
         stage.getIcons().add(new Image("/com/houarizegai/gestioncommercial/resources/images/gc-logo-48px.png"));
         stage.setTitle("Gestion Commercial"); // Change the title of app
+        Launcher.stage = stage;
         stage.show(); // make stage visible
+    }
+
+    public static void centerOnScreen() {
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        Launcher.stage.setX((primScreenBounds.getWidth() - stage.getWidth()) / 2);
+        Launcher.stage.setY((primScreenBounds.getHeight() - stage.getHeight()) / 2);
     }
 
     public static void main(String[] args) {
