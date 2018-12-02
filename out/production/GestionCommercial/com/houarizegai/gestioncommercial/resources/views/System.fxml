@@ -3,14 +3,20 @@
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox prefHeight="670.0" prefWidth="1300.0" stylesheets="@../css/system.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.houarizegai.gestioncommercial.java.controllers.SystemController">
    <children>
-      <StackPane prefHeight="50.0" style="-fx-background-color: #FEFEFE;">
+      <StackPane prefHeight="50.0" styleClass="nav-bar">
          <children>
             <JFXHamburger fx:id="hamburgerMenu" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="CENTER_LEFT" />
+            <Label fx:id="lblDate" styleClass="lbl-date" text="HH:mm:ss    dd/MM/yyyy" StackPane.alignment="CENTER_RIGHT">
+               <StackPane.margin>
+                  <Insets right="20.0" />
+               </StackPane.margin>
+            </Label>
          </children>
          <VBox.margin>
             <Insets />

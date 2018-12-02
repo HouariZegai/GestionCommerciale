@@ -4,13 +4,17 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
+import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -20,9 +24,15 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class SystemController implements Initializable {
+    @FXML // This label show date and time (dynamic clock)
+    private Label lblDate;
+
     @FXML
     private JFXHamburger hamburgerMenu;
 
@@ -47,11 +57,11 @@ public class SystemController implements Initializable {
         }
 
         initMenu();
+        initClock();
 
         // Launch Home view
         setNode(homeView);
     }
-
 
     private void initMenu() { // initalize menu (show / hide)
         try {
@@ -86,6 +96,19 @@ public class SystemController implements Initializable {
                 }
             }
         }
+    }
+
+    private void initClock() {
+        // initialize Clock Showing in home
+        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss    dd/MM/yyyy");
+            Date date = new Date();
+            lblDate.setText(dateFormat.format(date));
+        }),
+                new KeyFrame(Duration.seconds(1))
+        );
+        clock.setCycleCount(Animation.INDEFINITE);
+        clock.play();
     }
 
     private void onMenuDrawer() {
