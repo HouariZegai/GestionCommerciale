@@ -12,14 +12,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -45,7 +43,7 @@ public class SystemController implements Initializable {
     private VBox menuDrawerPane;
     // CLient GUI (FXML)
     private StackPane clientView;
-    private AnchorPane homeView;
+    private VBox homeView;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -109,16 +107,6 @@ public class SystemController implements Initializable {
         );
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
-    }
-
-    private void onMenuDrawer() {
-        if(drawerMenu.isShown()) {
-            drawerMenu.close();
-        }
-        else {
-            drawerMenu.setSidePane(menuDrawerPane);
-            drawerMenu.open();
-        }
     }
 
     private void setNode(Node node) {

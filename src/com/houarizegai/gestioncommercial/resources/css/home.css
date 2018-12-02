@@ -2,9 +2,16 @@
     -fx-font-family: tahoma, arial, "Comic Sans MS"
 }
 
-.title {
-    -fx-font-size: 32px;
-    -fx-text-fill: linear-gradient(from 0 0 to 100px 100px, #00aacf, cyan)
+.slider-title {
+    -fx-font-size: 35px;
+    -fx-text-fill: #FFF;
+    -fx-effect: dropshadow(two-pass-box, rgba(0, 0, 0, 0.4), 2, 2, 2, 3);
+}
+
+.slider-desc {
+    -fx-font-size: 25px;
+    -fx-text-fill: #FFF;
+    -fx-effect: dropshadow(two-pass-box, rgba(0, 0, 0, 0.5), 2, 2, 2, 3);
 }
 
 /* Start card */
@@ -26,6 +33,12 @@
     -fx-font-size: 22px;
     -fx-text-fill: #333;
     -fx-text-fill: linear-gradient(from 0 0 to 100px 100px, #2196f3, #333)
+}
+
+.cards-desc {
+    -fx-text-alignment: center;
+    -fx-font-size: 14px;
+    -fx-fill: #555
 }
 
 /* End card */

@@ -3,7 +3,7 @@
 }
 
 .nav-bar {
-    -fx-background-color: #EFEFEF;
+    -fx-background-color: #FFF;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 6, 0, 0, 0);
 }
 
