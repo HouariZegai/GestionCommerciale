@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/controllers/SystemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/controllers/SystemController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/resources/views/System.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/resources/views/System.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/SystemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/SystemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/system.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/system.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/images/home/client.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/Home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/System.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/System.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,7 +86,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="css" value="24" />
-          <entry key="fxml" value="32" />
+          <entry key="fxml" value="33" />
           <entry key="java" value="48" />
           <entry key="png" value="2" />
           <entry key="sql" value="7" />
@@ -98,21 +98,21 @@
           <entry key="Image" value="2" />
           <entry key="JAVA" value="48" />
           <entry key="SQL" value="7" />
-          <entry key="XML" value="32" />
+          <entry key="XML" value="33" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="css" value="2332" />
           <entry key="fxml" value="95" />
-          <entry key="java" value="9959" />
+          <entry key="java" value="10003" />
           <entry key="sql" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="2332" />
-          <entry key="JAVA" value="9959" />
+          <entry key="JAVA" value="10003" />
           <entry key="SQL" value="3" />
           <entry key="XML" value="95" />
         </counts>
@@ -136,13 +136,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/SystemController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="109" column="5" selection-start-line="109" selection-start-column="5" selection-end-line="109" selection-end-column="5" />
+            <state relative-caret-position="127">
+              <caret line="76" column="35" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#initMenu#0;class#SystemController#0" />
-                <element signature="e#1929#2236#0" />
-                <element signature="e#2521#2588#0" />
                 <element signature="method#initClock#0;class#SystemController#0" />
                 <element signature="e#3373#3567#0" />
                 <element signature="method#setNode#0;class#SystemController#0" />
@@ -324,7 +321,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543757565733" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543759212640" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="D:/Learn/Projects/JavaProjects/Javafx/JavaFX Examples/Dashboard" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -502,12 +499,12 @@
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1543572270804" duration="254000" />
       <workItem from="1543675086868" duration="24566000" />
-      <workItem from="1543734402880" duration="14954000" />
+      <workItem from="1543734402880" duration="16573000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62364000" />
+    <option name="totallyTimeSpent" value="63983000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -522,7 +519,7 @@
       <window_info id="Image Layers" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3295082" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3295082" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -706,14 +703,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/Menu.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/ClientController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -819,15 +808,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/Menu.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/SystemController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="109" column="5" selection-start-line="109" selection-start-column="5" selection-end-line="109" selection-end-column="5" />
+        <state relative-caret-position="127">
+          <caret line="76" column="35" selection-start-line="76" selection-start-column="35" selection-end-line="76" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#initMenu#0;class#SystemController#0" />
-            <element signature="e#1929#2236#0" />
-            <element signature="e#2521#2588#0" />
             <element signature="method#initClock#0;class#SystemController#0" />
             <element signature="e#3373#3567#0" />
             <element signature="method#setNode#0;class#SystemController#0" />

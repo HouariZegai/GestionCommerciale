@@ -13,8 +13,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -77,7 +75,9 @@ public class SystemController implements Initializable {
 
             if(drawerMenu.isShown()) {
                 drawerMenu.close();
+                drawerMenu.setStyle("-fx-pref-width: 0px");
             } else {
+                drawerMenu.setStyle("-fx-pref-width: 300px");
                 drawerMenu.open();
             }
         });
@@ -85,10 +85,7 @@ public class SystemController implements Initializable {
         for(Node node : menuDrawerPane.getChildren()) {
             if(node.getAccessibleText() != null) {
                 if(node.getAccessibleText().equalsIgnoreCase("btnHome")) {
-                    ((JFXButton) node).setOnAction(e ->  {
-                        //setNode(null)
-                        System.out.println("Show Home View");
-                    });
+                    ((JFXButton) node).setOnAction(e -> setNode(homeView));
                 } else if(node.getAccessibleText().equalsIgnoreCase("btnClient")) {
                     ((JFXButton) node).setOnAction(e -> setNode(clientView));
                 }
