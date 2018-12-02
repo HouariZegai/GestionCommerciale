@@ -4,7 +4,7 @@
 
 .lbl-desc {
     -fx-font-size: 12px;
-    -fx-text-fill: linear-gradient(from 0 0 to 100px 100px, #00aacf, #2196f3);
+    -fx-text-fill: #888;
 }
 
 .field {
