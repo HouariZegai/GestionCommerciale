@@ -7,10 +7,15 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.NodeOrientation;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -51,8 +56,15 @@ public class LoginController implements Initializable {
             case 0 :
                 toastMsg.show("Nom Utilisateur et/ou le mot de passe faux !", 2000);
                 break;
-            case 1 :
-                toastMsg.show("Login success !", 2000);
+            case 1 : // Login to the system (show system gui)
+                Parent systemView = null;
+                try {
+                    systemView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/System.fxml"));
+                } catch (IOException ioe) {
+                    ioe.printStackTrace();
+                }
+                Stage stage = ((Stage) fieldUser.getScene().getWindow());
+                stage.setScene(new Scene(systemView));
                 break;
         }
 

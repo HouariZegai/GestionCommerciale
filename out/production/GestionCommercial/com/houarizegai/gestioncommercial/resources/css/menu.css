@@ -1,0 +1,12 @@
+* {
+    -fx-font-family: tahoma arial;
+    -fx-font-size: 18px
+}
+
+.btn {
+    -jfx-button-type: RAISED;
+    -fx-pref-height: 50px;
+    -fx-background-color: #EEE;
+}
+
+.btn:hover {-fx-cursor: hand}

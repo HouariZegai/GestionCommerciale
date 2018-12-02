@@ -20,8 +20,8 @@
                <children>
                   <JFXTextField fx:id="fieldSociete" promptText="Societe" styleClass="field" />
                   <JFXTextField fx:id="fieldCivilite" promptText="Civilite" styleClass="field" />
-                  <JFXTextField fx:id="fieldNom" promptText="Nom" styleClass="field" />
-                  <JFXTextField fx:id="fieldPrenom" promptText="Prenom" styleClass="field" />
+                  <JFXTextField fx:id="fieldNom" promptText="Nom *" styleClass="field" />
+                  <JFXTextField fx:id="fieldPrenom" promptText="Prenom *" styleClass="field" />
                   <JFXTextField fx:id="fieldTelephone" promptText="Telephone" styleClass="field" />
                   <JFXTextField fx:id="fieldMobile" promptText="Mobile" styleClass="field" />
                   <JFXTextField fx:id="fieldFax" promptText="Fax" styleClass="field" />

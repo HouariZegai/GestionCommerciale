@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox prefHeight="670.0" prefWidth="1300.0" stylesheets="@../css/system.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.houarizegai.gestioncommercial.resources.views.System">
+<VBox prefHeight="670.0" prefWidth="1300.0" stylesheets="@../css/system.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.houarizegai.gestioncommercial.java.controllers.SystemController">
    <children>
       <StackPane prefHeight="50.0" style="-fx-background-color: #FEFEFE;">
          <children>
-            <JFXHamburger maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="CENTER_LEFT" />
+            <JFXHamburger fx:id="hamburgerMenu" maxHeight="-Infinity" maxWidth="-Infinity" StackPane.alignment="CENTER_LEFT" />
          </children>
          <VBox.margin>
             <Insets />
@@ -20,8 +19,11 @@
             <Insets left="10.0" />
          </padding>
       </StackPane>
-      <AnchorPane>
-
-</AnchorPane>
+      <StackPane VBox.vgrow="ALWAYS">
+         <children>
+            <StackPane fx:id="holderPane" prefHeight="150.0" prefWidth="200.0" />
+            <JFXDrawer fx:id="drawerMenu" defaultDrawerSize="300.0" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" StackPane.alignment="TOP_LEFT" />
+         </children>
+      </StackPane>
    </children>
 </VBox>
