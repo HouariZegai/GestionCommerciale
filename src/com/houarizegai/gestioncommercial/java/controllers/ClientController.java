@@ -3,32 +3,24 @@ package com.houarizegai.gestioncommercial.java.controllers;
 import com.houarizegai.gestioncommercial.java.controllers.forms.client.EditClientController;
 import com.houarizegai.gestioncommercial.java.database.dao.ClientDao;
 import com.houarizegai.gestioncommercial.java.database.models.Client;
-import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ClientBuilder;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import com.sun.org.apache.bcel.internal.generic.TABLESWITCH;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableCell;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.util.Callback;
 import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
@@ -36,7 +28,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
 
 public class ClientController implements Initializable {
 
@@ -299,7 +290,7 @@ public class ClientController implements Initializable {
         content.setActions(btnOk, btnNo);
         StackPane stackpane = new StackPane();
 
-        dialog.getStylesheets().add("/com/houarizegai/gestioncommercial/resources/css/client.css");
+        dialog.getStylesheets().add("/com/houarizegai/gestioncommercial/resources/css/crud-view.css");
         btnNo.setOnAction(e -> {
             dialog.close();
         });
