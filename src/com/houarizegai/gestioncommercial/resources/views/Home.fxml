@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="620.0" prefWidth="1300.0" stylesheets="@../css/home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1"
-fx:controller="com.houarizegai.gestioncommercial.java.controllers.HomeController">
+<VBox prefHeight="620.0" prefWidth="1300.0" stylesheets="@../css/home.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.houarizegai.gestioncommercial.java.controllers.HomeController">
    <children>
       <StackPane>
          <children>
@@ -47,10 +46,10 @@ fx:controller="com.houarizegai.gestioncommercial.java.controllers.HomeController
                <children>
                   <ImageView fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/home/cards/client.png" />
+                        <Image url="@../images/home/cards/fourniseur.png" />
                      </image>
                   </ImageView>
-                  <Label styleClass="cards-title" text="Client" />
+                  <Label styleClass="cards-title" text="Fourniseur" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="This is just description of client" wrappingWidth="150.953125" />
                </children>
             </VBox>

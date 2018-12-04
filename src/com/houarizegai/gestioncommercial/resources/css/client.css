@@ -42,6 +42,8 @@
 
 .btn-delete { -fx-background-color: #ff5559;}
 
+.btn-detail { -fx-background-color: #2196f3;}
+
 /* Start JFXSnackBar (toast msg) */
 
 .jfx-snackbar-content {
