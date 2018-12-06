@@ -52,7 +52,7 @@ public class ClientDao {
             }
 
         } catch (SQLException se) {
-            System.out.println("Get All Client Error SQL");
+            System.out.println("Get All ClientRegex Error SQL");
             se.printStackTrace();
             return null;
         }
@@ -60,8 +60,8 @@ public class ClientDao {
         return clients;
     }
 
-    public int setClient(int numClient, Client client) { // Edit Client
-        StringBuilder sql = new StringBuilder("UPDATE Client SET");
+    public int setClient(int numClient, Client client) { // Edit ClientRegex
+        StringBuilder sql = new StringBuilder("UPDATE ClientRegex SET");
         sql.append(" Societe = ?");
         sql.append(", Civilite = ?");
         sql.append(", nomClient = ?");
@@ -116,20 +116,20 @@ public class ClientDao {
             return prest.executeUpdate();
 
         } catch (SQLException se) {
-            System.out.println("Set Client Error SQL");
+            System.out.println("Set ClientRegex Error SQL");
             se.printStackTrace();
             return 0;
         }
     }
 
-    public int deleteClient(int numClient) { // Delete Client
+    public int deleteClient(int numClient) { // Delete ClientRegex
         String sql = "DELETE FROM Client WHERE numClient = ?;";
         try {
             PreparedStatement prest = DBConnection.con.prepareStatement(sql);
             prest.setInt(1, numClient);
             return prest.executeUpdate();
         } catch (SQLException se) {
-            System.out.println("Delete Client Error SQL");
+            System.out.println("Delete ClientRegex Error SQL");
             se.printStackTrace();
             return -1;
         }
@@ -169,7 +169,7 @@ public class ClientDao {
             return prest.executeUpdate();
 
         } catch (SQLException se) {
-            System.out.println("Add Client Error SQL");
+            System.out.println("Add ClientRegex Error SQL");
             se.printStackTrace();
             return 0;
         }

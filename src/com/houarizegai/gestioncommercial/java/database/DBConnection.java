@@ -13,6 +13,7 @@ public class DBConnection {
     private static String PASSWORD = "";
 
     public static Connection con;
+    public static String user; // Username of user entered in system
 
     static {
         try {

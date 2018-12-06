@@ -25,7 +25,7 @@ public class EditClientController implements Initializable {
     @FXML // Parent of all client (root node)
     private VBox root;
 
-    /* Client infos */
+    /* ClientRegex infos */
     @FXML
     private JFXTextField fieldSociete, fieldCivilite, fieldNom, fieldPrenom, fieldTelephone, fieldMobile, fieldFax,
             fieldEmail, fieldType, fieldAdresse, fieldCodePostal, fieldVille, fieldPays, fieldSaisiPar,
@@ -52,7 +52,7 @@ public class EditClientController implements Initializable {
     }
 
     @FXML
-    private void onEdit() { // Add new Client
+    private void onEdit() { // Add new ClientRegex
         if(fieldSociete.getText() == null || !fieldSociete.getText().trim().toLowerCase().matches("[a-z0-9]{4,}")) {
             toastMsg.show("Le champ Societe ne pas bien formé !", 2000);
             return;

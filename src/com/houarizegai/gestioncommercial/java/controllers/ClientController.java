@@ -55,7 +55,7 @@ public class ClientController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        comboSearchBy.getItems().addAll("N° Client", "Societe", "Civilite", "Nom", "Prenom", "Adresse", "Ville", "Pays", "Email");
+        comboSearchBy.getItems().addAll("N° ClientRegex", "Societe", "Civilite", "Nom", "Prenom", "Adresse", "Ville", "Pays", "Email");
         toastMsg = new JFXSnackbar(root);
 
         initClientTable();
@@ -177,7 +177,7 @@ public class ClientController implements Initializable {
 
         ObservableList<TableClient> listClients = FXCollections.observableArrayList();
 
-        this.clients = new ClientDao().getClients(); // Get Client from database
+        this.clients = new ClientDao().getClients(); // Get ClientRegex from database
         if(clients != null) {
             for(Client client : clients) {
                 TableClient clientT = new TableClient(client.getNumClient(),
@@ -206,7 +206,7 @@ public class ClientController implements Initializable {
     }
 
     @FXML
-    private void onAdd() { // On Add Client
+    private void onAdd() { // On Add ClientRegex
         VBox paneAddClient = null;
         try {
             paneAddClient = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/forms/client/AddClient.fxml"));
@@ -251,7 +251,7 @@ public class ClientController implements Initializable {
 
         JFXDialogLayout content = new JFXDialogLayout();
         Text headerText = new Text("Confirmation");
-        Text contentText = new Text("Tu a sur pour supprimer cette Client ?");
+        Text contentText = new Text("Tu a sur pour supprimer cette ClientRegex ?");
         headerText.setStyle("-fx-font-size: 19px");
         contentText.setStyle("-fx-font-size: 18px");
 

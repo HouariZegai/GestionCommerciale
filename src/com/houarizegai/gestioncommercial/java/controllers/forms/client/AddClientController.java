@@ -1,9 +1,11 @@
 package com.houarizegai.gestioncommercial.java.controllers.forms.client;
 
 import com.houarizegai.gestioncommercial.java.controllers.ClientController;
+import com.houarizegai.gestioncommercial.java.database.DBConnection;
 import com.houarizegai.gestioncommercial.java.database.dao.ClientDao;
 import com.houarizegai.gestioncommercial.java.database.models.Client;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ClientBuilder;
+import com.houarizegai.gestioncommercial.java.utils.regex.ClientRegex;
 import com.jfoenix.controls.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,17 +28,13 @@ public class AddClientController implements Initializable {
     @FXML // Parent of all client (root node)
     private VBox root;
 
-    /* Client infos */
+    /* ClientRegex infos */
     @FXML
     private JFXTextField fieldSociete, fieldCivilite, fieldNom, fieldPrenom, fieldTelephone, fieldMobile, fieldFax,
-            fieldEmail, fieldType, fieldAdresse, fieldCodePostal, fieldVille, fieldPays, fieldSaisiPar,
-            fieldAuteurModif;
+            fieldEmail, fieldType, fieldAdresse, fieldCodePostal, fieldVille, fieldPays;
 
     @FXML
-    private JFXCheckBox checkLivreMemeAdresse, checkFactureMemeAdresse, checkExemptTva;
-
-    @FXML
-    private JFXDatePicker pickerSaisiLe, pickerDateModif;
+    private JFXToggleButton tglBtnLivreMemeAdresse, tglBtnFactureMemeAdresse, tglBtnExemptTva;
 
     @FXML
     private JFXTextArea areaObservations;
@@ -47,79 +45,39 @@ public class AddClientController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         toastMsg = new JFXSnackbar(root);
+        initFieldListener();
+    }
+
+    private void initFieldListener() {
+        fieldSociete.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldSociete, newValue, ClientRegex.SOCIETE));
+        fieldCivilite.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldCivilite, newValue, ClientRegex.CIVILITE));
+        fieldNom.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldNom, newValue, ClientRegex.NOM));
+        fieldPrenom.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldPrenom, newValue, ClientRegex.PRENOM));
+        fieldTelephone.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldTelephone, newValue, ClientRegex.TELEPHONE));
+        fieldMobile.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldMobile, newValue, ClientRegex.MOBILE));
+        fieldFax.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldFax, newValue, ClientRegex.FAX));
+        fieldEmail.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldEmail, newValue, ClientRegex.EMAIL));
+        fieldType.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldType, newValue, ClientRegex.TYPE));
+        fieldAdresse.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldAdresse, newValue, ClientRegex.ADRESSE));
+        fieldCodePostal.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldCodePostal, newValue, ClientRegex.CODE_POSTAL));
+        fieldVille.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldVille, newValue, ClientRegex.VILLE));
+        fieldPays.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldPays, newValue, ClientRegex.PAYS));
+    }
+
+    private void setValidFont(JFXTextField field, String newValue, String regex) { // Change the font if not valid or reset color
+        if(!newValue.isEmpty() && !newValue.trim().toLowerCase().matches(regex)) {
+            field.setStyle("-jfx-focus-color: #800; -fx-text-fill: #800;");
+        } else {
+            field.setStyle("-jfx-focus-color: #0f9d58; -fx-text-fill: #000;");
+        }
     }
 
     @FXML
-    private void onAdd() { // Add new Client
-        if(fieldSociete.getText() == null || !fieldSociete.getText().trim().toLowerCase().matches("[a-z0-9]{4,}")) {
-            toastMsg.show("Le champ Societe ne pas bien formé !", 2000);
-            return;
-        }
-        if(fieldCivilite.getText() == null || !fieldCivilite.getText().trim().toLowerCase().matches("[a-z0-9]{1,5}")) {
-            toastMsg.show("Le champ Civilite ne pas bien formé !", 2000);
-            return;
-        }
-        if(fieldNom.getText() == null || !fieldNom.getText().trim().toLowerCase().matches("[a-z]{3,}")) {
-            toastMsg.show("Le champ Nom ne pas bien formé !", 2000);
-            return;
-        }
-        if(fieldPrenom.getText() == null || !fieldPrenom.getText().trim().toLowerCase().matches("[a-z]{3,}")) {
-            toastMsg.show("Le champ Prenom ne pas bien formé !", 2000);
-            return;
-        }
-        if(fieldTelephone.getText() == null || !fieldTelephone.getText().trim().matches("[0-9]{8,}")) {
-            toastMsg.show("Le champ Telephone ne pas bien formé !", 2000);
-            return;
-        }
-        if(fieldMobile.getText() == null || !fieldMobile.getText().trim().matches("[0-9]{8,}")) {
-            toastMsg.show("Le champ Mobile ne pas bien formé !", 2000);
-            return;
-        }
-        if(fieldFax.getText() == null || !fieldFax.getText().trim().matches("[0-9]{8,}")) {
-            toastMsg.show("Le champ Fax ne pas bien formé !", 2000);
-            return;
-        }
-        if(fieldEmail.getText() == null || !fieldEmail.getText().trim().matches("[a-zA-Z_][\\w]*[-]{0,4}[\\w]+@[a-zA-Z0-9]+.[a-zA-Z]{2,6}")) {
-            toastMsg.show("Le champ Email ne pas bien formé !", 2000);
-            return;
-        }
-        if(fieldType.getText() != null && !fieldType.getText().trim().matches("[0-9]{0,2}")) {
-            toastMsg.show("Le champ Type ne pas bien formé !", 2000);
-            return;
-        }
-        if(fieldAdresse.getText() == null || fieldAdresse.getText().trim().length() < 3) {
-            toastMsg.show("Le champ Adresse ne pas bien formé !", 2000);
-            return;
-        }
-        if(fieldCodePostal.getText() == null || !fieldCodePostal.getText().trim().matches("[0-9]{5}")) {
-            toastMsg.show("Le champ Code Postal ne pas bien formé !", 2000);
-            return;
-        }
-        if(fieldVille.getText() == null || !fieldVille.getText().trim().toLowerCase().matches("[a-z]{3,}")) {
-            toastMsg.show("Le champ Ville ne pas bien formé !", 2000);
-            return;
-        }
-        if(fieldPays.getText() == null || !fieldPays.getText().trim().toLowerCase().matches("[a-z]{3,}")) {
-            toastMsg.show("Le champ Pays ne pas bien formé !", 2000);
-            return;
-        }
-        if(fieldSaisiPar.getText() == null || !fieldSaisiPar.getText().trim().toLowerCase().matches("[a-z]{3,}")) {
-            toastMsg.show("Le champ Saisi Par ne pas bien formé !", 2000);
-            return;
-        }
-        if(pickerSaisiLe.getValue() == null) {
-            toastMsg.show("Le champ Saisi Le ne pas bien formé !", 2000);
-            return;
-        }
-        if(fieldAuteurModif.getText() == null || !fieldAuteurModif.getText().trim().toLowerCase().matches("[a-z]{3,}")) {
-            toastMsg.show("Le champ Auteur Modif Par ne pas bien formé !", 2000);
-            return;
-        }
-        if(pickerDateModif.getValue() == null) {
-            toastMsg.show("Le champ Date Modif ne pas bien formé !", 2000);
-            return;
-        }
+    private void onAdd() { // Add new ClientRegex
 
+        // validate
+
+        // Using builder design pattern to make client object
         Client client = new ClientBuilder()
                 .setSociete(fieldSociete.getText().trim().toLowerCase())
                 .setCivilite(fieldCivilite.getText().trim().toLowerCase())
@@ -129,18 +87,18 @@ public class AddClientController implements Initializable {
                 .setMobile(fieldMobile.getText().trim())
                 .setFax(fieldFax.getText().trim())
                 .setEmail(fieldEmail.getText().trim().toLowerCase())
-                .setType(Integer.parseInt(fieldType.getText().trim()))
+                .setType((fieldType.getText().trim().isEmpty()) ? 0 : Integer.parseInt(fieldType.getText().trim()))
                 .setAdresse(fieldAdresse.getText().trim())
                 .setCodePostal(fieldCodePostal.getText())
                 .setVille(fieldVille.getText().trim().toLowerCase())
                 .setPays(fieldPays.getText().trim().toLowerCase())
-                .setLivreMemeAdresse(checkLivreMemeAdresse.isSelected())
-                .setFactureMemeAdresse(checkFactureMemeAdresse.isSelected())
-                .setExemptTva(checkExemptTva.isSelected())
-                .setSaisiPar(fieldSaisiPar.getText().trim().toLowerCase())
-                .setSaisiLe(Date.from(Instant.from(pickerSaisiLe.getValue().atStartOfDay(ZoneId.systemDefault()))))
-                .setAuteurModif(fieldAuteurModif.getText().trim().toLowerCase())
-                .setDateModif(Date.from(Instant.from(pickerDateModif.getValue().atStartOfDay(ZoneId.systemDefault()))))
+                .setLivreMemeAdresse(tglBtnLivreMemeAdresse.isSelected())
+                .setFactureMemeAdresse(tglBtnFactureMemeAdresse.isSelected())
+                .setExemptTva(tglBtnExemptTva.isSelected())
+                .setSaisiPar(DBConnection.user)
+                .setSaisiLe(new java.util.Date())
+                .setAuteurModif(DBConnection.user)
+                .setDateModif(new java.util.Date())
                 .setObservations(areaObservations.getText().trim())
                 .build();
 
@@ -162,7 +120,7 @@ public class AddClientController implements Initializable {
                         .darkStyle()
                         .show();
 
-                ClientController.dialogClientAdd.close();
+                onClear();
                 break;
             }
         }
@@ -183,15 +141,10 @@ public class AddClientController implements Initializable {
         fieldCodePostal.setText(null);
         fieldVille.setText(null);
         fieldPays.setText(null);
-        fieldSaisiPar.setText(null);
-        fieldAuteurModif.setText(null);
 
-        checkLivreMemeAdresse.setSelected(false);
-        checkFactureMemeAdresse.setSelected(false);
-        checkExemptTva.setSelected(false);
-
-        pickerSaisiLe.setValue(null);
-        pickerDateModif.setValue(null);
+        tglBtnLivreMemeAdresse.setSelected(false);
+        tglBtnFactureMemeAdresse.setSelected(false);
+        tglBtnExemptTva.setSelected(false);
 
         areaObservations.setText(null);
     }

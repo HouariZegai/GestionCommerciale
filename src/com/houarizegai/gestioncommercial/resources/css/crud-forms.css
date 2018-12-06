@@ -17,10 +17,11 @@
     -fx-prompt-text-fill: #777;
 }
 
-.check {
-    -fx-font-size: 16px;
-    -fx-text-fill: #555;
-    -fx-cursor: hand;
+.tgl-btn { /* JFXToggleButton */
+    -fx-font-size: 14px;
+    -fx-text-fill: #444;
+    -fx-padding: -12px 0 -12px -5px;
+    -fx-cursor: hand
 }
 
 .picker {
