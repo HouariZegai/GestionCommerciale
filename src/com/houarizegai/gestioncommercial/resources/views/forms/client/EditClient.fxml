@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXCheckBox?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="root" prefHeight="600.0" prefWidth="1200.0" spacing="20.0" style="-fx-background-color: #FFF;" stylesheets="@../../../css/crud-forms.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.houarizegai.gestioncommercial.java.controllers.forms.client.EditClientController">
+<VBox fx:id="root" prefHeight="600.0" prefWidth="920.0" spacing="20.0" style="-fx-background-color: #FFF;" stylesheets="@../../../css/crud-forms.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.houarizegai.gestioncommercial.java.controllers.forms.client.EditClientController">
    <children>
       <Label styleClass="title" text="Modifier Client" />
       <HBox alignment="TOP_CENTER" spacing="40.0">
@@ -37,37 +36,19 @@
                   <JFXTextField fx:id="fieldPays" promptText="Pays" styleClass="field" />
                </children>
             </VBox>
-            <VBox prefWidth="220.0" spacing="30.0">
+            <VBox prefWidth="300.0" spacing="30.0">
                <children>
-                  <JFXCheckBox fx:id="checkLivreMemeAdresse" styleClass="check" text="Livre Meme Adresse" />
-                  <JFXCheckBox fx:id="checkFactureMemeAdresse" styleClass="check" text="Facture Meme Adresse" />
-                  <JFXCheckBox fx:id="checkExemptTva" styleClass="check" text="Exempt Tva" />
-                  <JFXTextField fx:id="fieldSaisiPar" promptText="Saisi Par" styleClass="field" />
-                  <JFXDatePicker fx:id="pickerSaisiLe" maxWidth="1.7976931348623157E308" promptText="Saisi Le">
-                     <styleClass>
-                        <String fx:value="picker" />
-                        <String fx:value="field" />
-                     </styleClass>
-                  </JFXDatePicker>
-                  <JFXTextField fx:id="fieldAuteurModif" promptText="Auteur Modif" styleClass="field" />
-                  <JFXDatePicker fx:id="pickerDateModif" maxWidth="1.7976931348623157E308" promptText="Date Modif">
-                     <styleClass>
-                        <String fx:value="picker" />
-                        <String fx:value="field" />
-                     </styleClass>
-                  </JFXDatePicker>
-               </children>
-            </VBox>
-            <VBox prefWidth="370.0">
-               <children>
-                  <JFXTextArea fx:id="areaObservations" promptText="Observations" styleClass="field" />
+                  <JFXToggleButton fx:id="tglBtnLivreMemeAdresse" styleClass="tgl-btn" text="Livre Meme Adresse" />
+                  <JFXToggleButton fx:id="tglBtnFactureMemeAdresse" styleClass="tgl-btn" text="Facture Meme Adresse" />
+                  <JFXToggleButton fx:id="tglBtnExemptTva" styleClass="tgl-btn" text="Exempt Tva" />
+                  <JFXTextArea fx:id="areaObservations" promptText="Observations" styleClass="field" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
          </children>
       </HBox>
       <HBox alignment="CENTER" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
-            <JFXButton onAction="#onEdit" text="Modifier">
+            <JFXButton onAction="#onEdit" text="Enregistrer">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="btn-add" />
