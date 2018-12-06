@@ -1,6 +1,7 @@
 package com.houarizegai.gestioncommercial.java.controllers.forms.client;
 
 import com.houarizegai.gestioncommercial.java.controllers.ClientController;
+import com.houarizegai.gestioncommercial.java.database.DBConnection;
 import com.houarizegai.gestioncommercial.java.database.dao.ClientDao;
 import com.houarizegai.gestioncommercial.java.database.models.Client;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ClientBuilder;
@@ -25,17 +26,13 @@ public class EditClientController implements Initializable {
     @FXML // Parent of all client (root node)
     private VBox root;
 
-    /* ClientRegex infos */
+    /* Client infos */
     @FXML
     private JFXTextField fieldSociete, fieldCivilite, fieldNom, fieldPrenom, fieldTelephone, fieldMobile, fieldFax,
-            fieldEmail, fieldType, fieldAdresse, fieldCodePostal, fieldVille, fieldPays, fieldSaisiPar,
-            fieldAuteurModif;
+            fieldEmail, fieldType, fieldAdresse, fieldCodePostal, fieldVille, fieldPays;
 
     @FXML
-    private JFXCheckBox checkLivreMemeAdresse, checkFactureMemeAdresse, checkExemptTva;
-
-    @FXML
-    private JFXDatePicker pickerSaisiLe, pickerDateModif;
+    private JFXToggleButton tglBtnLivreMemeAdresse, tglBtnFactureMemeAdresse, tglBtnExemptTva;
 
     @FXML
     private JFXTextArea areaObservations;
@@ -105,22 +102,6 @@ public class EditClientController implements Initializable {
             toastMsg.show("Le champ Pays ne pas bien formé !", 2000);
             return;
         }
-        if(fieldSaisiPar.getText() == null || !fieldSaisiPar.getText().trim().toLowerCase().matches("[a-z]{3,}")) {
-            toastMsg.show("Le champ Saisi Par ne pas bien formé !", 2000);
-            return;
-        }
-        if(pickerSaisiLe.getValue() == null) {
-            toastMsg.show("Le champ Saisi Le ne pas bien formé !", 2000);
-            return;
-        }
-        if(fieldAuteurModif.getText() == null || !fieldAuteurModif.getText().trim().toLowerCase().matches("[a-z]{3,}")) {
-            toastMsg.show("Le champ Auteur Modif Par ne pas bien formé !", 2000);
-            return;
-        }
-        if(pickerDateModif.getValue() == null) {
-            toastMsg.show("Le champ Date Modif ne pas bien formé !", 2000);
-            return;
-        }
 
         Client client = new ClientBuilder()
                 .setSociete(fieldSociete.getText().trim().toLowerCase())
@@ -136,13 +117,11 @@ public class EditClientController implements Initializable {
                 .setCodePostal(fieldCodePostal.getText())
                 .setVille(fieldVille.getText().trim().toLowerCase())
                 .setPays(fieldPays.getText().trim().toLowerCase())
-                .setLivreMemeAdresse(checkLivreMemeAdresse.isSelected())
-                .setFactureMemeAdresse(checkFactureMemeAdresse.isSelected())
-                .setExemptTva(checkExemptTva.isSelected())
-                .setSaisiPar(fieldSaisiPar.getText().trim().toLowerCase())
-                .setSaisiLe(Date.from(Instant.from(pickerSaisiLe.getValue().atStartOfDay(ZoneId.systemDefault()))))
-                .setAuteurModif(fieldAuteurModif.getText().trim().toLowerCase())
-                .setDateModif(Date.from(Instant.from(pickerDateModif.getValue().atStartOfDay(ZoneId.systemDefault()))))
+                .setLivreMemeAdresse(tglBtnLivreMemeAdresse.isSelected())
+                .setFactureMemeAdresse(tglBtnFactureMemeAdresse.isSelected())
+                .setExemptTva(tglBtnExemptTva.isSelected())
+                .setAuteurModif(DBConnection.user)
+                .setDateModif(new java.util.Date())
                 .setObservations(areaObservations.getText().trim())
                 .build();
 
@@ -157,7 +136,7 @@ public class EditClientController implements Initializable {
                 break;
             default : {
                 Notifications.create()
-                        .title("Vous avez modifier un client !")
+                        .title("Vous avez modifier le client !")
                         .graphic(new ImageView(new Image("/com/houarizegai/gestioncommercial/resources/images/icons/valid.png")))
                         .hideAfter(Duration.millis(2000))
                         .position(Pos.BOTTOM_RIGHT)
@@ -185,15 +164,9 @@ public class EditClientController implements Initializable {
         fieldCodePostal.setText(clientInfo.getCodePostal());
         fieldVille.setText(clientInfo.getVille());
         fieldPays.setText(clientInfo.getPays());
-        fieldSaisiPar.setText(clientInfo.getSaisiPar());
-        fieldAuteurModif.setText(clientInfo.getAuteurModif());
-
-        checkLivreMemeAdresse.setSelected(clientInfo.isLivreMemeAdresse());
-        checkFactureMemeAdresse.setSelected(clientInfo.isFactureMemeAdresse());
-        checkExemptTva.setSelected(clientInfo.isExemptTva());
-
-        pickerSaisiLe.setValue(null);
-        pickerDateModif.setValue(null);
+        tglBtnLivreMemeAdresse.setSelected(clientInfo.isLivreMemeAdresse());
+        tglBtnFactureMemeAdresse.setSelected(clientInfo.isFactureMemeAdresse());
+        tglBtnExemptTva.setSelected(clientInfo.isExemptTva());
 
         areaObservations.setText(clientInfo.getObservations());
     }
