@@ -76,6 +76,14 @@ public class AddClientController implements Initializable {
     private void onAdd() { // Add new ClientRegex
 
         // validate
+        if(fieldSociete.getStyle().contains("-jfx-focus-color: #800; -fx-text-fill: #800;")) {
+            toastMsg.show("Le champ Societe n'est pas bien form&", 2000);
+            return;
+        }
+        if(fieldCivilite.getStyle().contains("-jfx-focus-color: #800; -fx-text-fill: #800;")) {
+            toastMsg.show("Le champ Civilite n'est pas bien form&", 2000);
+            return;
+        }
 
         // Using builder design pattern to make client object
         Client client = new ClientBuilder()
