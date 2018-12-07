@@ -2,7 +2,6 @@ package com.houarizegai.gestioncommercial.java.controllers;
 
 import com.houarizegai.gestioncommercial.java.controllers.forms.client.DeleteClientController;
 import com.houarizegai.gestioncommercial.java.controllers.forms.client.EditClientController;
-import com.houarizegai.gestioncommercial.java.database.DBConnection;
 import com.houarizegai.gestioncommercial.java.database.dao.ClientDao;
 import com.houarizegai.gestioncommercial.java.database.models.Client;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ClientBuilder;
@@ -15,18 +14,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
-import javafx.util.Duration;
-import org.controlsfx.control.Notifications;
 
 import java.io.IOException;
 import java.net.URL;
@@ -181,7 +174,7 @@ public class ClientController implements Initializable {
 
         ObservableList<TableClient> listClients = FXCollections.observableArrayList();
 
-        this.clients = new ClientDao().getClients(); // Get ClientRegex from database
+        this.clients = ClientDao.getClients(); // Get ClientRegex from database
         if (clients != null) {
             for (Client client : clients) {
                 TableClient clientT = new TableClient(client.getNumClient(),

@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ClientDao {
 
-    public List<Client> getClients() { // Get all client from database
+    public static List<Client> getClients() { // Get all client from database
         String sql = "SELECT * FROM Client;";
 
         List<Client> clients = new LinkedList<>();
@@ -60,7 +60,7 @@ public class ClientDao {
         return clients;
     }
 
-    public int setClient(Client client) { // Edit ClientRegex
+    public static int setClient(Client client) { // Edit ClientRegex
         StringBuilder sql = new StringBuilder("UPDATE Client SET");
         sql.append(" Societe = ?");
         sql.append(", Civilite = ?");
@@ -122,7 +122,7 @@ public class ClientDao {
         }
     }
 
-    public int deleteClient(int numClient) { // Delete ClientRegex
+    public static int deleteClient(int numClient) { // Delete ClientRegex
         String sql = "DELETE FROM Client WHERE numClient = ?;";
         try {
             PreparedStatement prest = DBConnection.con.prepareStatement(sql);
@@ -135,7 +135,7 @@ public class ClientDao {
         }
     }
 
-    public int addclient(Client client) {
+    public static int addclient(Client client) {
 
         String sql = "INSERT INTO Client (`Societe`, `Civilite`, `NomClient`, `Prenom`, `Adresse`, `CodePostal`, `Ville`, `Pays`, `Telephone`, `Mobile`, `Fax`, `Email`, `Type`, `LivreMemeAdresse`, `FactureMemeAdresse`, `ExemptTva`, `SaisiPar`, `SaisiLe`, `AuteurModif`, `DateModif`, `Observations`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 

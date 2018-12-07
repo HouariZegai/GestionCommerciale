@@ -18,9 +18,6 @@ import javafx.util.Duration;
 import org.controlsfx.control.Notifications;
 
 import java.net.URL;
-import java.sql.Date;
-import java.time.Instant;
-import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 public class EditClientController implements Initializable {
@@ -138,7 +135,7 @@ public class EditClientController implements Initializable {
                 .setObservations(areaObservations.getText())
                 .build();
 
-        int status = new ClientDao().setClient(client);
+        int status = ClientDao.setClient(client);
 
         switch (status) {
             case -1:

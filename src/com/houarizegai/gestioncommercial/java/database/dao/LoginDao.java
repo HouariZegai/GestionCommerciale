@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class LoginDao {
 
-    public int checkLogin(Login login) { // This method check if the user exists in database
+    public static int checkLogin(Login login) { // This method check if the user exists in database
         String sql = "SELECT `NomUtilisateur` FROM Login WHERE NomUtilisateur = ? AND MotDePasse = ?;";
         try {
             PreparedStatement prest = DBConnection.con.prepareStatement(sql);

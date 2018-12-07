@@ -3,7 +3,6 @@ package com.houarizegai.gestioncommercial.java.controllers.forms.client;
 import com.houarizegai.gestioncommercial.java.controllers.ClientController;
 import com.houarizegai.gestioncommercial.java.database.dao.ClientDao;
 import com.houarizegai.gestioncommercial.java.database.models.Client;
-import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -54,7 +53,7 @@ public class DeleteClientController implements Initializable {
 
     @FXML
     private void onDelete() {
-        int status = new ClientDao().deleteClient(client.getNumClient());
+        int status = ClientDao.deleteClient(client.getNumClient());
 
         if (status == -1) {
             System.out.println("Connection error (cannot delete client)!");

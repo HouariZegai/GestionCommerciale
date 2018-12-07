@@ -54,7 +54,7 @@ public class LoginController implements Initializable {
 
         Login login = new Login(fieldUser.getText().trim().toLowerCase(), fieldPass.getText());
 
-        int status = new LoginDao().checkLogin(login);
+        int status = LoginDao.checkLogin(login);
         switch (status) {
             case -1 :
                 toastMsg.show("Connection failed !", 2000);
