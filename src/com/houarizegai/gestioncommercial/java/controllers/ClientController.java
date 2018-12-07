@@ -17,6 +17,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -207,14 +208,19 @@ public class ClientController implements Initializable {
 
     @FXML
     private void onAdd() { // On Add ClientRegex
-        VBox paneAddClient = null;
         try {
-            paneAddClient = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/forms/client/AddClient.fxml"));
+            VBox paneAddClient = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/forms/client/AddClient.fxml"));
+            dialogClientAdd = getSpecialDialog(paneAddClient);
+            dialogClientAdd.show();
+
+            JFXTextField fieldSociete = (JFXTextField) ((HBox) ((VBox) ((HBox) paneAddClient.getChildren().get(1)).getChildren().get(0)).getChildren().get(0)).getChildren().get(0);
+
+            // Focus to the first field when i show the dialog
+            dialogClientAdd.setOnDialogOpened(e-> fieldSociete.requestFocus());
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        dialogClientAdd = getSpecialDialog(paneAddClient);
-        dialogClientAdd.show();
     }
 
     @FXML
@@ -231,14 +237,13 @@ public class ClientController implements Initializable {
             }
         }
 
-        VBox paneEditClient = null;
         try {
-            paneEditClient = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/forms/client/EditClient.fxml"));
+            VBox paneEditClient = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/forms/client/EditClient.fxml"));
+            dialogClientEdit = getSpecialDialog(paneEditClient);
+            dialogClientEdit.show();
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        dialogClientEdit = getSpecialDialog(paneEditClient);
-        dialogClientEdit.show();
     }
 
     @FXML

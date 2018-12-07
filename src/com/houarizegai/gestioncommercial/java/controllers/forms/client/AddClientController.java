@@ -8,6 +8,7 @@ import com.houarizegai.gestioncommercial.java.database.models.designpatterns.bui
 import com.houarizegai.gestioncommercial.java.utils.regex.ClientRegex;
 import com.jfoenix.controls.*;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -50,6 +51,13 @@ public class AddClientController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         toastMsg = new JFXSnackbar(root);
         initFieldListener();
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                fieldSociete.requestFocus();
+            }
+        });
     }
 
     private void initFieldListener() {
@@ -93,66 +101,20 @@ public class AddClientController implements Initializable {
 
         // validate
         if(fieldNom.getText().isEmpty()) {
-            System.out.println("nom is empty");
             fieldNom.setStyle("-jfx-un-focus-color: #E00; -jfx-focus-color: #D00;");
             iconNom.setVisible(true);
         }
         if(fieldPrenom.getText().isEmpty()) {
-            System.out.println("prenom is empty");
             fieldPrenom.setStyle("-jfx-un-focus-color: #E00; -jfx-focus-color: #D00;");
             iconPrenom.setVisible(true);
         }
 
-        if(iconSociete.isVisible()) {
-            toastMsg.show("Svp Il ya des champs n'est pas bien form&", 2000);
-            return;
-        }
-        if(iconCivilite.isVisible()) {
-            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
-            return;
-        }
-        if(iconNom.isVisible()) {
-            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
-            return;
-        }
-        if(iconPrenom.isVisible()) {
-            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
-            return;
-        }
-        if(iconTelephone.isVisible()) {
-            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
-            return;
-        }
-        if(iconMobile.isVisible()) {
-            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
-            return;
-        }
-        if(iconFax.isVisible()) {
-            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
-            return;
-        }
-        if(iconEmail.isVisible()) {
-            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
-            return;
-        }
-        if(iconType.isVisible()) {
-            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
-            return;
-        }
-        if(iconAdresse.isVisible()) {
-            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
-            return;
-        }
-        if(iconCodePostal.isVisible()) {
-            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
-            return;
-        }
-        if(iconVille.isVisible()) {
-            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
-            return;
-        }
-        if(iconPays.isVisible()) {
-            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
+        if(iconSociete.isVisible() || iconCivilite.isVisible() || iconNom.isVisible() || iconPrenom.isVisible()
+                || iconTelephone.isVisible() || iconMobile.isVisible() || iconFax.isVisible() || iconEmail.isVisible()
+                || iconType.isVisible() || iconAdresse.isVisible() || iconCodePostal.isVisible() || iconVille.isVisible()
+                || iconPays.isVisible()) {
+
+            toastMsg.show("Svp, il ya des champs n'est pas bien formé", 2000);
             return;
         }
 
