@@ -17,10 +17,10 @@ public class ClientRegex { // This class contains constant of regex validate for
     public final static String PAYS;
 
     static {
-        NOM = "[a-z]{3,}";
-        PRENOM = "[a-z]{3,}";
-        SOCIETE = "[a-z0-9]{4,}";
-        CIVILITE = "[a-z0-9]{1,5}";
+        NOM = "[a-zA-Z]{3,}";
+        PRENOM = "[a-zA-Z]{3,}";
+        SOCIETE = "[a-zA-Z0-9]{3,}";
+        CIVILITE = "[a-zA-Z0-9]{1,5}";
         TELEPHONE = "[0-9]{8,}";
         MOBILE = "[0-9]{8,}";
         FAX = "[0-9]{8,}";
@@ -28,8 +28,8 @@ public class ClientRegex { // This class contains constant of regex validate for
         TYPE = "[0-9]{0,2}";
         ADRESSE = ".{3,}";
         CODE_POSTAL = "[0-9]{5}";
-        VILLE = "[a-z]{3,}";
-        PAYS = "[a-z]{3,}";
+        VILLE = "[a-zA-Z]{3,}";
+        PAYS = "[a-zA-Z]{3,}";
     }
 
 }

@@ -7,6 +7,7 @@ import com.houarizegai.gestioncommercial.java.database.models.Client;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ClientBuilder;
 import com.houarizegai.gestioncommercial.java.utils.regex.ClientRegex;
 import com.jfoenix.controls.*;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -32,6 +33,9 @@ public class AddClientController implements Initializable {
     @FXML
     private JFXTextField fieldSociete, fieldCivilite, fieldNom, fieldPrenom, fieldTelephone, fieldMobile, fieldFax,
             fieldEmail, fieldType, fieldAdresse, fieldCodePostal, fieldVille, fieldPays;
+    @FXML // Error icons
+    private FontAwesomeIconView iconSociete, iconCivilite, iconNom, iconPrenom, iconTelephone, iconMobile, iconFax,
+            iconEmail, iconType, iconAdresse, iconCodePostal, iconVille, iconPays;
 
     @FXML
     private JFXToggleButton tglBtnLivreMemeAdresse, tglBtnFactureMemeAdresse, tglBtnExemptTva;
@@ -49,26 +53,38 @@ public class AddClientController implements Initializable {
     }
 
     private void initFieldListener() {
-        fieldSociete.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldSociete, newValue, ClientRegex.SOCIETE));
-        fieldCivilite.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldCivilite, newValue, ClientRegex.CIVILITE));
-        fieldNom.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldNom, newValue, ClientRegex.NOM));
-        fieldPrenom.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldPrenom, newValue, ClientRegex.PRENOM));
-        fieldTelephone.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldTelephone, newValue, ClientRegex.TELEPHONE));
-        fieldMobile.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldMobile, newValue, ClientRegex.MOBILE));
-        fieldFax.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldFax, newValue, ClientRegex.FAX));
-        fieldEmail.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldEmail, newValue, ClientRegex.EMAIL));
-        fieldType.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldType, newValue, ClientRegex.TYPE));
-        fieldAdresse.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldAdresse, newValue, ClientRegex.ADRESSE));
-        fieldCodePostal.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldCodePostal, newValue, ClientRegex.CODE_POSTAL));
-        fieldVille.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldVille, newValue, ClientRegex.VILLE));
-        fieldPays.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldPays, newValue, ClientRegex.PAYS));
+        fieldSociete.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldSociete, iconSociete, newValue, ClientRegex.SOCIETE));
+        fieldCivilite.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldCivilite, iconCivilite, newValue, ClientRegex.CIVILITE));
+        fieldNom.textProperty().addListener((observable, oldValue, newValue) -> setValidFontNomPrenom(fieldNom, iconNom, newValue, ClientRegex.NOM));
+        fieldPrenom.textProperty().addListener((observable, oldValue, newValue) -> setValidFontNomPrenom(fieldPrenom, iconPrenom, newValue, ClientRegex.PRENOM));
+        fieldTelephone.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldTelephone, iconTelephone, newValue, ClientRegex.TELEPHONE));
+        fieldMobile.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldMobile, iconMobile, newValue, ClientRegex.MOBILE));
+        fieldFax.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldFax, iconFax, newValue, ClientRegex.FAX));
+        fieldEmail.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldEmail, iconEmail, newValue, ClientRegex.EMAIL));
+        fieldType.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldType, iconType, newValue, ClientRegex.TYPE));
+        fieldAdresse.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldAdresse, iconAdresse, newValue, ClientRegex.ADRESSE));
+        fieldCodePostal.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldCodePostal, iconCodePostal, newValue, ClientRegex.CODE_POSTAL));
+        fieldVille.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldVille, iconVille, newValue, ClientRegex.VILLE));
+        fieldPays.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldPays, iconPays, newValue, ClientRegex.PAYS));
     }
 
-    private void setValidFont(JFXTextField field, String newValue, String regex) { // Change the font if not valid or reset color
-        if(!newValue.isEmpty() && !newValue.trim().toLowerCase().matches(regex)) {
-            field.setStyle("-jfx-focus-color: #800; -fx-text-fill: #800;");
+    private void setValidFont(JFXTextField field, FontAwesomeIconView errorIcon, String newValue, String regex) { // Change the font if not valid or reset color
+        if(newValue != null && !newValue.trim().matches(regex)) {
+            field.setStyle("-jfx-un-focus-color: #E00; -jfx-focus-color: #D00;");
+            errorIcon.setVisible(true);
         } else {
-            field.setStyle("-jfx-focus-color: #0f9d58; -fx-text-fill: #000;");
+            field.setStyle("-jfx-un-focus-color: #777; -jfx-focus-color: #0f9d58;");
+            errorIcon.setVisible(false);
+        }
+    }
+
+    private void setValidFontNomPrenom(JFXTextField field, FontAwesomeIconView errorIcon, String newValue, String regex) {
+        if(newValue == null || !newValue.trim().matches(regex)) {
+            field.setStyle("-jfx-un-focus-color: #E00; -jfx-focus-color: #D00;");
+            errorIcon.setVisible(true);
+        } else {
+            field.setStyle("-jfx-un-focus-color: #777; -jfx-focus-color: #0f9d58;");
+            errorIcon.setVisible(false);
         }
     }
 
@@ -76,30 +92,85 @@ public class AddClientController implements Initializable {
     private void onAdd() { // Add new ClientRegex
 
         // validate
-        if(fieldSociete.getStyle().contains("-jfx-focus-color: #800; -fx-text-fill: #800;")) {
-            toastMsg.show("Le champ Societe n'est pas bien form&", 2000);
+        if(fieldNom.getText().isEmpty()) {
+            System.out.println("nom is empty");
+            fieldNom.setStyle("-jfx-un-focus-color: #E00; -jfx-focus-color: #D00;");
+            iconNom.setVisible(true);
+        }
+        if(fieldPrenom.getText().isEmpty()) {
+            System.out.println("prenom is empty");
+            fieldPrenom.setStyle("-jfx-un-focus-color: #E00; -jfx-focus-color: #D00;");
+            iconPrenom.setVisible(true);
+        }
+
+        if(iconSociete.isVisible()) {
+            toastMsg.show("Svp Il ya des champs n'est pas bien form&", 2000);
             return;
         }
-        if(fieldCivilite.getStyle().contains("-jfx-focus-color: #800; -fx-text-fill: #800;")) {
-            toastMsg.show("Le champ Civilite n'est pas bien form&", 2000);
+        if(iconCivilite.isVisible()) {
+            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
+            return;
+        }
+        if(iconNom.isVisible()) {
+            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
+            return;
+        }
+        if(iconPrenom.isVisible()) {
+            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
+            return;
+        }
+        if(iconTelephone.isVisible()) {
+            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
+            return;
+        }
+        if(iconMobile.isVisible()) {
+            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
+            return;
+        }
+        if(iconFax.isVisible()) {
+            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
+            return;
+        }
+        if(iconEmail.isVisible()) {
+            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
+            return;
+        }
+        if(iconType.isVisible()) {
+            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
+            return;
+        }
+        if(iconAdresse.isVisible()) {
+            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
+            return;
+        }
+        if(iconCodePostal.isVisible()) {
+            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
+            return;
+        }
+        if(iconVille.isVisible()) {
+            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
+            return;
+        }
+        if(iconPays.isVisible()) {
+            toastMsg.show("Svpn Il ya des champs n'est pas bien form&", 2000);
             return;
         }
 
         // Using builder design pattern to make client object
         Client client = new ClientBuilder()
-                .setSociete(fieldSociete.getText().trim().toLowerCase())
-                .setCivilite(fieldCivilite.getText().trim().toLowerCase())
-                .setNomClient(fieldNom.getText().trim().toLowerCase())
-                .setPrenom(fieldPrenom.getText().trim().toLowerCase())
-                .setTelephone(fieldTelephone.getText().trim().toLowerCase())
+                .setSociete(fieldSociete.getText().trim())
+                .setCivilite(fieldCivilite.getText().trim())
+                .setNomClient(fieldNom.getText().trim())
+                .setPrenom(fieldPrenom.getText().trim())
+                .setTelephone(fieldTelephone.getText().trim())
                 .setMobile(fieldMobile.getText().trim())
                 .setFax(fieldFax.getText().trim())
-                .setEmail(fieldEmail.getText().trim().toLowerCase())
-                .setType((fieldType.getText().trim().isEmpty()) ? 0 : Integer.parseInt(fieldType.getText().trim()))
+                .setEmail(fieldEmail.getText().trim())
+                .setType((fieldType.getText().trim().isEmpty()) ? 0 : Integer.parseInt(fieldType.getText()))
                 .setAdresse(fieldAdresse.getText().trim())
                 .setCodePostal(fieldCodePostal.getText())
-                .setVille(fieldVille.getText().trim().toLowerCase())
-                .setPays(fieldPays.getText().trim().toLowerCase())
+                .setVille(fieldVille.getText().trim())
+                .setPays(fieldPays.getText().trim())
                 .setLivreMemeAdresse(tglBtnLivreMemeAdresse.isSelected())
                 .setFactureMemeAdresse(tglBtnFactureMemeAdresse.isSelected())
                 .setExemptTva(tglBtnExemptTva.isSelected())
@@ -107,7 +178,7 @@ public class AddClientController implements Initializable {
                 .setSaisiLe(new java.util.Date())
                 .setAuteurModif(DBConnection.user)
                 .setDateModif(new java.util.Date())
-                .setObservations(areaObservations.getText().trim())
+                .setObservations(areaObservations.getText())
                 .build();
 
         int status = new ClientDao().addclient(client);
@@ -155,6 +226,12 @@ public class AddClientController implements Initializable {
         tglBtnExemptTva.setSelected(false);
 
         areaObservations.setText(null);
+
+        fieldNom.setStyle("-jfx-un-focus-color: #777; -jfx-focus-color: #0f9d58;");
+        fieldPrenom.setStyle("-jfx-un-focus-color: #777; -jfx-focus-color: #0f9d58;");
+
+        iconNom.setVisible(false);
+        iconPrenom.setVisible(false);
     }
 
     @FXML
