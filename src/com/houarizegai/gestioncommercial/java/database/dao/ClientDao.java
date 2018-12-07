@@ -60,8 +60,8 @@ public class ClientDao {
         return clients;
     }
 
-    public int setClient(int numClient, Client client) { // Edit ClientRegex
-        StringBuilder sql = new StringBuilder("UPDATE ClientRegex SET");
+    public int setClient(Client client) { // Edit ClientRegex
+        StringBuilder sql = new StringBuilder("UPDATE Client SET");
         sql.append(" Societe = ?");
         sql.append(", Civilite = ?");
         sql.append(", nomClient = ?");
@@ -111,12 +111,12 @@ public class ClientDao {
             prest.setString(19, client.getAuteurModif());
             prest.setDate(20, UsefulMethods.getSQLDate(client.getDateModif()));
             prest.setString(21, client.getObservations());
-            prest.setInt(22, numClient);
+            prest.setInt(22, client.getNumClient());
 
             return prest.executeUpdate();
 
         } catch (SQLException se) {
-            System.out.println("Set ClientRegex Error SQL");
+            System.out.println("Set Client Error SQL");
             se.printStackTrace();
             return 0;
         }
@@ -129,7 +129,7 @@ public class ClientDao {
             prest.setInt(1, numClient);
             return prest.executeUpdate();
         } catch (SQLException se) {
-            System.out.println("Delete ClientRegex Error SQL");
+            System.out.println("Delete Client Error SQL");
             se.printStackTrace();
             return -1;
         }
@@ -169,7 +169,7 @@ public class ClientDao {
             return prest.executeUpdate();
 
         } catch (SQLException se) {
-            System.out.println("Add ClientRegex Error SQL");
+            System.out.println("Add Client Error SQL");
             se.printStackTrace();
             return 0;
         }
