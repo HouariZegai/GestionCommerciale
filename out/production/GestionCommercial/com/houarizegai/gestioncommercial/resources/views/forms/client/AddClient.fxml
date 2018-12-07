@@ -20,14 +20,7 @@
                <children>
                   <HBox alignment="CENTER_LEFT" spacing="5.0">
                      <children>
-                        <JFXTextField fx:id="fieldSociete" promptText="Societe" styleClass="field" HBox.hgrow="ALWAYS" />
-                        <FontAwesomeIconView fx:id="iconSociete" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" spacing="5.0">
-                     <children>
-                        <JFXTextField fx:id="fieldCivilite" promptText="Civilite" styleClass="field" HBox.hgrow="ALWAYS" />
-                        <FontAwesomeIconView fx:id="iconCivilite" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
+                        <JFXTextField fx:id="fieldNumClient" editable="false" prefWidth="227.0" promptText="Numero" styleClass="field" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="5.0">
@@ -44,6 +37,34 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="5.0">
                      <children>
+                        <JFXTextField fx:id="fieldSociete" promptText="Societe" styleClass="field" HBox.hgrow="ALWAYS" />
+                        <FontAwesomeIconView fx:id="iconSociete" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
+                     <children>
+                        <JFXTextField fx:id="fieldCivilite" promptText="Civilite" styleClass="field" HBox.hgrow="ALWAYS" />
+                        <FontAwesomeIconView fx:id="iconCivilite" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
+                     <children>
+                        <JFXTextField fx:id="fieldEmail" promptText="Email" styleClass="field" HBox.hgrow="ALWAYS" />
+                        <FontAwesomeIconView fx:id="iconEmail" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
+                     <children>
+                        <JFXTextField fx:id="fieldType" promptText="Type" styleClass="field" HBox.hgrow="ALWAYS" />
+                        <FontAwesomeIconView fx:id="iconType" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefWidth="250.0" spacing="30.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
+                     <children>
                         <JFXTextField fx:id="fieldTelephone" promptText="Telephone" styleClass="field" HBox.hgrow="ALWAYS" />
                         <FontAwesomeIconView fx:id="iconTelephone" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
                      </children>
@@ -58,22 +79,6 @@
                      <children>
                         <JFXTextField fx:id="fieldFax" promptText="Fax" styleClass="field" HBox.hgrow="ALWAYS" />
                         <FontAwesomeIconView fx:id="iconFax" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <VBox prefWidth="250.0" spacing="30.0">
-               <children>
-                  <HBox alignment="CENTER_LEFT" spacing="5.0">
-                     <children>
-                        <JFXTextField fx:id="fieldEmail" promptText="Email" styleClass="field" HBox.hgrow="ALWAYS" />
-                        <FontAwesomeIconView fx:id="iconEmail" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" spacing="5.0">
-                     <children>
-                        <JFXTextField fx:id="fieldType" promptText="Type" styleClass="field" HBox.hgrow="ALWAYS" />
-                        <FontAwesomeIconView fx:id="iconType" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="5.0">
@@ -117,19 +122,19 @@
             <JFXButton onAction="#onAdd" text="Enregistrer">
                <styleClass>
                   <String fx:value="btn" />
-                  <String fx:value="btn-add" />
+                  <String fx:value="btn-green" />
                </styleClass>
             </JFXButton>
-            <JFXButton onAction="#onClear" text="Claire">
+            <JFXButton onAction="#onClear" text="Vider">
                <styleClass>
                   <String fx:value="btn" />
-                  <String fx:value="btn-clear" />
+                  <String fx:value="btn-blue" />
                </styleClass>
             </JFXButton>
             <JFXButton onAction="#onClose" text="Fermer">
                <styleClass>
                   <String fx:value="btn" />
-                  <String fx:value="btn-close" />
+                  <String fx:value="btn-red" />
                </styleClass>
             </JFXButton>
          </children>

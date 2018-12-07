@@ -32,7 +32,7 @@ public class AddClientController implements Initializable {
 
     /* ClientRegex infos */
     @FXML
-    private JFXTextField fieldSociete, fieldCivilite, fieldNom, fieldPrenom, fieldTelephone, fieldMobile, fieldFax,
+    private JFXTextField fieldNumClient, fieldSociete, fieldCivilite, fieldNom, fieldPrenom, fieldTelephone, fieldMobile, fieldFax,
             fieldEmail, fieldType, fieldAdresse, fieldCodePostal, fieldVille, fieldPays;
     @FXML // Error icons
     private FontAwesomeIconView iconSociete, iconCivilite, iconNom, iconPrenom, iconTelephone, iconMobile, iconFax,
@@ -58,6 +58,10 @@ public class AddClientController implements Initializable {
                 fieldSociete.requestFocus();
             }
         });
+
+        // Initialize Numero client (get autoincrement from db)
+        int currentAutoIncrement = ClientDao.getCurrentAutoIncrement();
+        fieldNumClient.setText(String.valueOf(currentAutoIncrement));
     }
 
     private void initFieldListener() {

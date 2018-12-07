@@ -122,19 +122,19 @@
             <JFXButton onAction="#onSave" text="Enregistrer">
                <styleClass>
                   <String fx:value="btn" />
-                  <String fx:value="btn-add" />
+                  <String fx:value="btn-green" />
                </styleClass>
             </JFXButton>
             <JFXButton onAction="#onReset" text="Reset">
                <styleClass>
                   <String fx:value="btn" />
-                  <String fx:value="btn-clear" />
+                  <String fx:value="btn-blue" />
                </styleClass>
             </JFXButton>
             <JFXButton onAction="#onClose" text="Fermer">
                <styleClass>
                   <String fx:value="btn" />
-                  <String fx:value="btn-close" />
+                  <String fx:value="btn-red" />
                </styleClass>
             </JFXButton>
          </children>

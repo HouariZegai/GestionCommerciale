@@ -174,4 +174,19 @@ public class ClientDao {
             return 0;
         }
     }
+
+    public static int getCurrentAutoIncrement() {
+        String sql = "SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Client';";
+        try {
+            Statement st = DBConnection.con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next()) {
+                return rs.getInt("AUTO_INCREMENT");
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+
+        return 0;
+    }
 }

@@ -182,8 +182,8 @@ public class ClientController implements Initializable {
         ObservableList<TableClient> listClients = FXCollections.observableArrayList();
 
         this.clients = new ClientDao().getClients(); // Get ClientRegex from database
-        if(clients != null) {
-            for(Client client : clients) {
+        if (clients != null) {
+            for (Client client : clients) {
                 TableClient clientT = new TableClient(client.getNumClient(),
                         client.getSociete(),
                         client.getCivilite(),
@@ -216,10 +216,10 @@ public class ClientController implements Initializable {
             dialogClientAdd = getSpecialDialog(paneAddClient);
             dialogClientAdd.show();
 
-            JFXTextField fieldSociete = (JFXTextField) ((HBox) ((VBox) ((HBox) paneAddClient.getChildren().get(1)).getChildren().get(0)).getChildren().get(0)).getChildren().get(0);
+            JFXTextField fieldSociete = (JFXTextField) ((HBox) ((VBox) ((HBox) paneAddClient.getChildren().get(1)).getChildren().get(0)).getChildren().get(1)).getChildren().get(0);
 
             // Focus to the first field when i show the dialog
-            dialogClientAdd.setOnDialogOpened(e-> fieldSociete.requestFocus());
+            dialogClientAdd.setOnDialogOpened(e -> fieldSociete.requestFocus());
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -233,8 +233,8 @@ public class ClientController implements Initializable {
             toastMsg.show("Svp, selectionné le client qui vous voulez Modifier !", 2000);
             return;
         }
-        for(Client client : clients) {
-            if(client.getNumClient() == Integer.parseInt(numClientSelected)) {
+        for (Client client : clients) {
+            if (client.getNumClient() == Integer.parseInt(numClientSelected)) {
                 EditClientController.clientInfo = client;
                 break;
             }
@@ -244,6 +244,11 @@ public class ClientController implements Initializable {
             VBox paneEditClient = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/forms/client/EditClient.fxml"));
             dialogClientEdit = getSpecialDialog(paneEditClient);
             dialogClientEdit.show();
+
+            JFXTextField fieldSociete = (JFXTextField) ((HBox) ((VBox) ((HBox) paneEditClient.getChildren().get(1)).getChildren().get(0)).getChildren().get(1)).getChildren().get(0);
+
+            // Focus to the first field when i show the dialog
+            dialogClientEdit.setOnDialogOpened(e -> fieldSociete.requestFocus());
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -258,8 +263,8 @@ public class ClientController implements Initializable {
             return;
         }
 
-        for(Client c : clients) {
-            if(c.getNumClient() == Integer.parseInt(numClientSelected)) {
+        for (Client c : clients) {
+            if (c.getNumClient() == Integer.parseInt(numClientSelected)) {
                 DeleteClientController.client = new ClientBuilder()
                         .setNumClient(c.getNumClient())
                         .setSociete(c.getSociete())
