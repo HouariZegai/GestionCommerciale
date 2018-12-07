@@ -70,7 +70,7 @@ public class EditClientController implements Initializable {
     }
 
     private void setValidFont(JFXTextField field, FontAwesomeIconView errorIcon, String newValue, String regex) { // Change the font if not valid or reset color
-        if(newValue != null && !newValue.trim().matches(regex)) {
+        if(newValue != null && !newValue.isEmpty() && !newValue.trim().matches(regex)) {
             field.setStyle("-jfx-un-focus-color: #E00; -jfx-focus-color: #D00;");
             errorIcon.setVisible(true);
         } else {
@@ -112,19 +112,19 @@ public class EditClientController implements Initializable {
         // Using builder design pattern to make client object
         Client client = new ClientBuilder()
                 .setNumClient(Integer.parseInt(fieldNumClient.getText()))
-                .setSociete(fieldSociete.getText().trim())
-                .setCivilite(fieldCivilite.getText().trim())
-                .setNomClient(fieldNom.getText().trim())
-                .setPrenom(fieldPrenom.getText().trim())
-                .setTelephone(fieldTelephone.getText().trim())
-                .setMobile(fieldMobile.getText().trim())
-                .setFax(fieldFax.getText().trim())
-                .setEmail(fieldEmail.getText().trim())
-                .setType((fieldType.getText().trim().isEmpty()) ? 0 : Integer.parseInt(fieldType.getText()))
-                .setAdresse(fieldAdresse.getText().trim())
+                .setSociete(fieldSociete.getText())
+                .setCivilite(fieldCivilite.getText())
+                .setNomClient(fieldNom.getText())
+                .setPrenom(fieldPrenom.getText())
+                .setTelephone(fieldTelephone.getText())
+                .setMobile(fieldMobile.getText())
+                .setFax(fieldFax.getText())
+                .setEmail(fieldEmail.getText())
+                .setType((fieldType.getText() == null || fieldType.getText().trim().isEmpty()) ? 0 : Integer.parseInt(fieldType.getText()))
+                .setAdresse(fieldAdresse.getText())
                 .setCodePostal(fieldCodePostal.getText())
-                .setVille(fieldVille.getText().trim())
-                .setPays(fieldPays.getText().trim())
+                .setVille(fieldVille.getText())
+                .setPays(fieldPays.getText())
                 .setLivreMemeAdresse(tglBtnLivreMemeAdresse.isSelected())
                 .setFactureMemeAdresse(tglBtnFactureMemeAdresse.isSelected())
                 .setExemptTva(tglBtnExemptTva.isSelected())

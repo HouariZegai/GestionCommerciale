@@ -52,7 +52,9 @@ public class ClientController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        comboSearchBy.getItems().addAll("N° ClientRegex", "Societe", "Civilite", "Nom", "Prenom", "Adresse", "Ville", "Pays", "Email");
+        comboSearchBy.getItems().addAll("Tout", "N° Client", "Societe", "Civilite", "Nom", "Prenom", "Adresse", "Ville", "Pays", "Email");
+        comboSearchBy.getSelectionModel().select(0);
+
         toastMsg = new JFXSnackbar(root);
 
         initClientTable();
@@ -64,35 +66,47 @@ public class ClientController implements Initializable {
 
     public void filterSearchTable() {
         tableClient.setPredicate((TreeItem<TableClient> client) -> {
+            String numClient = client.getValue().numClient.getValue();
+            String societe = (client.getValue().societe.getValue() == null) ? "" : client.getValue().societe.getValue().toLowerCase();
+            String civilite = (client.getValue().civilite.getValue() == null) ? "" : client.getValue().civilite.getValue().toLowerCase();
+            String nomClient = (client.getValue().nomClient.getValue() == null) ? "" : client.getValue().nomClient.getValue().toLowerCase();
+            String prenom = (client.getValue().prenom.getValue() == null) ? "" : client.getValue().prenom.getValue().toLowerCase();
+            String adresse = (client.getValue().adresse.getValue() == null) ? "" : client.getValue().adresse.getValue().toLowerCase();
+            String ville = (client.getValue().ville.getValue() == null) ? "" : client.getValue().ville.getValue().toLowerCase();
+            String pays = (client.getValue().pays.getValue() == null) ? "" : client.getValue().pays.getValue().toLowerCase();
+            String email = (client.getValue().email.getValue() == null) ? "" : client.getValue().email.getValue().toLowerCase();
+
+
             switch (comboSearchBy.getSelectionModel().getSelectedIndex()) {
                 case 0:
-                    return client.getValue().numClient.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                    return numClient.contains(fieldSearch.getText().toLowerCase())
+                            || societe.contains(fieldSearch.getText().toLowerCase())
+                            || civilite.contains(fieldSearch.getText().toLowerCase())
+                            || nomClient.contains(fieldSearch.getText().toLowerCase())
+                            || prenom.contains(fieldSearch.getText().toLowerCase())
+                            || adresse.contains(fieldSearch.getText().toLowerCase())
+                            || ville.contains(fieldSearch.getText().toLowerCase())
+                            || pays.contains(fieldSearch.getText().toLowerCase())
+                            || email.contains(fieldSearch.getText().toLowerCase());
                 case 1:
-                    return client.getValue().societe.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                    return numClient.contains(fieldSearch.getText().toLowerCase());
                 case 2:
-                    return client.getValue().civilite.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                    return societe.contains(fieldSearch.getText().toLowerCase());
                 case 3:
-                    return client.getValue().nomClient.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                    return civilite.contains(fieldSearch.getText().toLowerCase());
                 case 4:
-                    return client.getValue().prenom.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                    return nomClient.contains(fieldSearch.getText().toLowerCase());
                 case 5:
-                    return client.getValue().adresse.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                    return prenom.contains(fieldSearch.getText().toLowerCase());
                 case 6:
-                    return client.getValue().ville.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                    return adresse.contains(fieldSearch.getText().toLowerCase());
                 case 7:
-                    return client.getValue().pays.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                    return ville.contains(fieldSearch.getText().toLowerCase());
                 case 8:
-                    return client.getValue().email.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
-                default:
-                    return client.getValue().numClient.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase())
-                            || client.getValue().societe.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase())
-                            || client.getValue().civilite.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase())
-                            || client.getValue().nomClient.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase())
-                            || client.getValue().prenom.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase())
-                            || client.getValue().adresse.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase())
-                            || client.getValue().ville.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase())
-                            || client.getValue().pays.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase())
-                            || client.getValue().email.getValue().toLowerCase().contains(fieldSearch.getText().toLowerCase());
+                    return pays.contains(fieldSearch.getText().toLowerCase());
+                case 9:
+                    return email.contains(fieldSearch.getText().toLowerCase());
+                default: return true;
             }
 
         });
