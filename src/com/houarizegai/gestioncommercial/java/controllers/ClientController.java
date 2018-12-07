@@ -256,7 +256,7 @@ public class ClientController implements Initializable {
 
         JFXDialogLayout content = new JFXDialogLayout();
         Text headerText = new Text("Confirmation");
-        Text contentText = new Text("Tu a sur pour supprimer cette ClientRegex ?");
+        Text contentText = new Text("Tu a sur pour supprimer cette Client ?");
         headerText.setStyle("-fx-font-size: 19px");
         contentText.setStyle("-fx-font-size: 18px");
 
@@ -293,7 +293,6 @@ public class ClientController implements Initializable {
         btnNo.setStyle("-fx-background-color: #DDD;-fx-text-fill: #333");
 
         content.setActions(btnOk, btnNo);
-        StackPane stackpane = new StackPane();
 
         dialog.getStylesheets().add("/com/houarizegai/gestioncommercial/resources/css/crud-view.css");
         btnNo.setOnAction(e -> {
