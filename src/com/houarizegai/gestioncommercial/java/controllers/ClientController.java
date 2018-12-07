@@ -1,8 +1,11 @@
 package com.houarizegai.gestioncommercial.java.controllers;
 
+import com.houarizegai.gestioncommercial.java.controllers.forms.client.DeleteClientController;
 import com.houarizegai.gestioncommercial.java.controllers.forms.client.EditClientController;
+import com.houarizegai.gestioncommercial.java.database.DBConnection;
 import com.houarizegai.gestioncommercial.java.database.dao.ClientDao;
 import com.houarizegai.gestioncommercial.java.database.models.Client;
+import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ClientBuilder;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleStringProperty;
@@ -48,7 +51,7 @@ public class ClientController implements Initializable {
             colAdresse, colVille, colPays, colEmail;
 
     // Dialog showing in (add/update) table
-    public static JFXDialog dialogClientAdd, dialogClientEdit;
+    public static JFXDialog dialogClientAdd, dialogClientEdit, dialogClientDelete;
 
     private JFXSnackbar toastMsg;
     // data of table
@@ -248,57 +251,47 @@ public class ClientController implements Initializable {
 
     @FXML
     private void onDelete() {
+        // get selected client from table
         String numClientSelected = colNumClient.getCellData(tableClient.getSelectionModel().getSelectedIndex());
         if (numClientSelected == null) {
             toastMsg.show("Svp, selectionné le client qui vous voulez supprimer !", 2000);
             return;
         }
 
-        JFXDialogLayout content = new JFXDialogLayout();
-        Text headerText = new Text("Confirmation");
-        Text contentText = new Text("Tu a sur pour supprimer cette Client ?");
-        headerText.setStyle("-fx-font-size: 19px");
-        contentText.setStyle("-fx-font-size: 18px");
-
-        content.setHeading(headerText);
-        content.setBody(contentText);
-
-        JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER);
-
-        JFXButton btnOk = new JFXButton("Oui");
-        btnOk.setOnAction(e -> {
-            int status = new ClientDao().deleteClient(Integer.parseInt(numClientSelected));
-
-            System.out.println("status : " + status);
-            if (status == -1) {
-                toastMsg.show("Erreur de Connexion !", 2000);
-            } else {
-                Notifications notification = Notifications.create()
-                        .title("Vous avez supprimer le client !")
-                        .graphic(new ImageView(new Image("/com/houarizegai/gestioncommercial/resources/images/icons/valid.png")))
-                        .hideAfter(Duration.millis(2000))
-                        .position(Pos.BOTTOM_RIGHT);
-                notification.darkStyle();
-                notification.show();
-                loadClientTableData();
+        for(Client c : clients) {
+            if(c.getNumClient() == Integer.parseInt(numClientSelected)) {
+                DeleteClientController.client = new ClientBuilder()
+                        .setNumClient(c.getNumClient())
+                        .setSociete(c.getSociete())
+                        .setCivilite(c.getCivilite())
+                        .setNomClient(c.getNomClient())
+                        .setPrenom(c.getPrenom())
+                        .setTelephone(c.getTelephone())
+                        .setMobile(c.getMobile())
+                        .setFax(c.getFax())
+                        .setEmail(c.getEmail())
+                        .setType(c.getType())
+                        .setAdresse(c.getAdresse())
+                        .setCodePostal(c.getCodePostal())
+                        .setVille(c.getVille())
+                        .setPays(c.getPays())
+                        .setLivreMemeAdresse(c.isLivreMemeAdresse())
+                        .setFactureMemeAdresse(c.isFactureMemeAdresse())
+                        .setExemptTva(c.isExemptTva())
+                        .setObservations(c.getObservations())
+                        .build();
+                break;
             }
-            dialog.close();
-        });
+        }
 
-        JFXButton btnNo = new JFXButton("Non");
-        btnOk.setPrefSize(120, 40);
-        btnNo.setPrefSize(120, 40);
-        btnOk.getStyleClass().addAll("btn", "btn-delete");
-        btnNo.getStyleClass().addAll("btn");
-        btnNo.setStyle("-fx-background-color: #DDD;-fx-text-fill: #333");
-
-        content.setActions(btnOk, btnNo);
-
-        dialog.getStylesheets().add("/com/houarizegai/gestioncommercial/resources/css/crud-view.css");
-        btnNo.setOnAction(e -> {
-            dialog.close();
-        });
-        dialog.show();
+        // Show confirm dialog
+        try {
+            VBox paneDeleteClient = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/forms/client/DeleteClient.fxml"));
+            dialogClientDelete = getSpecialDialog(paneDeleteClient);
+            dialogClientDelete.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private JFXDialog getSpecialDialog(Region content) { // This function create dialog

@@ -9,6 +9,11 @@
     -fx-text-fill: linear-gradient(from 0 0 to 100px 100px, #0f9d58, #5a5a5a)
 }
 
+.title-delete {
+    -fx-font-size: 26px;
+    -fx-text-fill: linear-gradient(from 0 0 to 100px 100px, #D00, #5a5a5a)
+}
+
 .icon-error { /* Triangle Font Awesome */
     -fx-fill: #D00;
 }
@@ -42,15 +47,30 @@
     -fx-background-radius: 5;
 }
 
-.btn-add { -fx-background-color: #03b372;}
+.btn-green { -fx-background-color: #03b372;}
 
-.btn-clear { -fx-background-color: #1170f3;}
+.btn-blue { -fx-background-color: #1170f3;}
 
-.btn-close { -fx-background-color: #ff5559;}
+.btn-red { -fx-background-color: #ff5559;}
+
+.btn-gray { -fx-text-fill: #333; -fx-background-color: #CCC;}
 
 .btn:hover {
     -fx-cursor: hand
 }
+
+/* Start delete */
+
+.delete-content-title {
+    -fx-font-size: 16px;
+    -fx-text-fill: linear-gradient(from 0 0 to 100px 100px, #830, #5a5a5a)
+
+}
+.delete-content-txt {
+    -fx-font-size: 14px
+}
+
+/* End delete */
 
 /* Start JFXSnackBar (toast msg) */
 

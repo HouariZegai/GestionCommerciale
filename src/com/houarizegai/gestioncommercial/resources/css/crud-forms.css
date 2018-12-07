@@ -14,10 +14,6 @@
     -fx-text-fill: linear-gradient(from 0 0 to 100px 100px, #D00, #5a5a5a)
 }
 
-.title2-delete {
-    -fx-font-size: 16px;
-}
-
 .icon-error { /* Triangle Font Awesome */
     -fx-fill: #D00;
 }
