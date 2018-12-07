@@ -1,16 +1,14 @@
 package com.houarizegai.gestioncommercial.java.controllers;
 
 import com.houarizegai.gestioncommercial.java.Launcher;
-import com.houarizegai.gestioncommercial.java.database.LoginDao;
+import com.houarizegai.gestioncommercial.java.database.dao.LoginDao;
 import com.houarizegai.gestioncommercial.java.database.models.Login;
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.NodeOrientation;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;

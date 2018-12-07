@@ -1,5 +1,6 @@
-package com.houarizegai.gestioncommercial.java.database;
+package com.houarizegai.gestioncommercial.java.database.dao;
 
+import com.houarizegai.gestioncommercial.java.database.DBConnection;
 import com.houarizegai.gestioncommercial.java.database.models.Login;
 
 import java.sql.PreparedStatement;
@@ -9,7 +10,7 @@ import java.sql.SQLException;
 public class LoginDao {
 
     public int checkLogin(Login login) { // This method check if the user exists in database
-        String sql = "SELECT * FROM Login WHERE NomUtilisateur = ? AND MotDePasse = ?;";
+        String sql = "SELECT `NomUtilisateur` FROM Login WHERE NomUtilisateur = ? AND MotDePasse = ?;";
         try {
             PreparedStatement prest = DBConnection.con.prepareStatement(sql);
             prest.setString(1, login.getNomUtilisateur());
@@ -17,6 +18,7 @@ public class LoginDao {
 
             ResultSet rs = prest.executeQuery();
             if (rs.next()) {
+                DBConnection.user = rs.getString("NomUtilisateur"); // save the current user
                return 1; // user found
             }
 
