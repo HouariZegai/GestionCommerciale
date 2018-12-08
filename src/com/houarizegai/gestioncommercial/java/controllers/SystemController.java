@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -54,17 +55,19 @@ public class SystemController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            clientView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Client.fxml"));
             homeView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Home.fxml"));
+            clientView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Client.fxml"));
         } catch(IOException ioe) {
            ioe.printStackTrace();
         }
 
         initMenu();
         initClock();
+        initActionHomeBoxes();
 
         // Launch Home view
         setNode(homeView);
+
     }
 
     private void initMenu() { // initalize menu (show / hide)
@@ -140,6 +143,11 @@ public class SystemController implements Initializable {
         );
         clock.setCycleCount(Animation.INDEFINITE);
         clock.play();
+    }
+
+    private void initActionHomeBoxes() { // Add action to boxes
+        VBox boxClient = ((VBox) ((HBox) homeView.getChildren().get(1)).getChildren().get(0));
+        boxClient.setOnMouseClicked(e -> setNode(clientView));
     }
 
     private void setNode(Node node) {
