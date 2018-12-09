@@ -49,7 +49,7 @@ public class SystemController implements Initializable {
     private VBox menuDrawerPane;
 
     // CLient GUI (FXML)
-    private StackPane clientView;
+    private StackPane clientView, fournisseurView;
     private VBox homeView;
 
     @Override
@@ -57,6 +57,7 @@ public class SystemController implements Initializable {
         try {
             homeView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Home.fxml"));
             clientView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Client.fxml"));
+            fournisseurView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Fournisseur.fxml"));
         } catch(IOException ioe) {
            ioe.printStackTrace();
         }
@@ -78,7 +79,7 @@ public class SystemController implements Initializable {
             ioe.printStackTrace();
         }
         burgerTask = new HamburgerSlideCloseTransition(hamburgerMenu);
-        burgerTask.setRate(-1);
+        //burgerTask.setRate(-1);
         hamburgerMenu.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
             showHideMenu();
         });
@@ -94,6 +95,11 @@ public class SystemController implements Initializable {
                 } else if(node.getAccessibleText().equalsIgnoreCase("btnClient")) {
                     ((JFXButton) node).setOnAction(e -> {
                         setNode(clientView);
+                        showHideMenu();
+                    });
+                } else if(node.getAccessibleText().equalsIgnoreCase("btnFournisseur")) {
+                    ((JFXButton) node).setOnAction(e -> {
+                        setNode(fournisseurView);
                         showHideMenu();
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("onLogout")) {
@@ -147,7 +153,9 @@ public class SystemController implements Initializable {
 
     private void initActionHomeBoxes() { // Add action to boxes
         VBox boxClient = ((VBox) ((HBox) homeView.getChildren().get(1)).getChildren().get(0));
+        VBox boxFournisseur = ((VBox) ((HBox) homeView.getChildren().get(1)).getChildren().get(1));
         boxClient.setOnMouseClicked(e -> setNode(clientView));
+        boxFournisseur.setOnMouseClicked(e -> setNode(fournisseurView));
     }
 
     private void setNode(Node node) {
