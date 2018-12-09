@@ -28,10 +28,12 @@ public class AddClientController implements Initializable {
 
     /* ClientRegex infos */
     @FXML
-    private JFXTextField fieldNumClient, fieldSociete, fieldCivilite, fieldNom, fieldPrenom, fieldTelephone, fieldMobile, fieldFax,
+    private JFXTextField fieldNumClient, fieldSociete, fieldNom, fieldPrenom, fieldTelephone, fieldMobile, fieldFax,
             fieldEmail, fieldType, fieldAdresse, fieldCodePostal, fieldVille, fieldPays;
+    @FXML
+    private JFXComboBox<String> comboCivilite;
     @FXML // Error icons
-    private FontAwesomeIconView iconSociete, iconCivilite, iconNom, iconPrenom, iconTelephone, iconMobile, iconFax,
+    private FontAwesomeIconView iconSociete, iconNom, iconPrenom, iconTelephone, iconMobile, iconFax,
             iconEmail, iconType, iconAdresse, iconCodePostal, iconVille, iconPays;
 
     @FXML
@@ -45,15 +47,11 @@ public class AddClientController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Initialize combo Civilite
+        comboCivilite.getItems().addAll("Mr", "Mme", "Melle");
+
         toastMsg = new JFXSnackbar(root);
         initFieldListener();
-
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                fieldSociete.requestFocus();
-            }
-        });
 
         // Initialize Numero client (get autoincrement from db)
         int currentAutoIncrement = ClientDao.getCurrentAutoIncrement();
@@ -62,7 +60,6 @@ public class AddClientController implements Initializable {
 
     private void initFieldListener() {
         fieldSociete.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldSociete, iconSociete, newValue, ClientRegex.SOCIETE));
-        fieldCivilite.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldCivilite, iconCivilite, newValue, ClientRegex.CIVILITE));
         fieldNom.textProperty().addListener((observable, oldValue, newValue) -> setValidFontNomPrenom(fieldNom, iconNom, newValue, ClientRegex.NOM));
         fieldPrenom.textProperty().addListener((observable, oldValue, newValue) -> setValidFontNomPrenom(fieldPrenom, iconPrenom, newValue, ClientRegex.PRENOM));
         fieldTelephone.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldTelephone, iconTelephone, newValue, ClientRegex.TELEPHONE));
@@ -109,7 +106,7 @@ public class AddClientController implements Initializable {
             iconPrenom.setVisible(true);
         }
 
-        if(iconSociete.isVisible() || iconCivilite.isVisible() || iconNom.isVisible() || iconPrenom.isVisible()
+        if(iconSociete.isVisible() || iconNom.isVisible() || iconPrenom.isVisible()
                 || iconTelephone.isVisible() || iconMobile.isVisible() || iconFax.isVisible() || iconEmail.isVisible()
                 || iconType.isVisible() || iconAdresse.isVisible() || iconCodePostal.isVisible() || iconVille.isVisible()
                 || iconPays.isVisible()) {
@@ -121,7 +118,7 @@ public class AddClientController implements Initializable {
         // Using builder design pattern to make client object
         Client client = new ClientBuilder()
                 .setSociete(fieldSociete.getText())
-                .setCivilite(fieldCivilite.getText())
+                .setCivilite(comboCivilite.getSelectionModel().getSelectedItem())
                 .setNomClient(fieldNom.getText().trim())
                 .setPrenom(fieldPrenom.getText().trim())
                 .setTelephone(fieldTelephone.getText())
@@ -170,7 +167,7 @@ public class AddClientController implements Initializable {
     @FXML
     private void onClear() { // Clear everything in interface
         fieldSociete.setText(null);
-        fieldCivilite.setText(null);
+        comboCivilite.getSelectionModel().clearSelection();
         fieldNom.setText(null);
         fieldPrenom.setText(null);
         fieldTelephone.setText(null);

@@ -5,7 +5,6 @@ public class ClientRegex { // This class contains constant of regex validate for
     public final static String NOM;
     public final static String PRENOM;
     public final static String SOCIETE;
-    public final static String CIVILITE;
     public final static String TELEPHONE;
     public final static String MOBILE;
     public final static String FAX;
@@ -20,7 +19,6 @@ public class ClientRegex { // This class contains constant of regex validate for
         NOM = "[a-zA-Z]{3,}";
         PRENOM = "[a-zA-Z]{3,}";
         SOCIETE = "[a-zA-Z0-9]{3,}";
-        CIVILITE = "[a-zA-Z0-9]{1,5}";
         TELEPHONE = "[0-9]{8,}";
         MOBILE = "[0-9]{8,}";
         FAX = "[0-9]{8,}";

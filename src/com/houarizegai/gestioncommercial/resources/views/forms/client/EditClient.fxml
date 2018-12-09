@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXToggleButton?>
@@ -43,8 +44,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="5.0">
                      <children>
-                        <JFXTextField fx:id="fieldCivilite" promptText="Civilite" styleClass="field" HBox.hgrow="ALWAYS" />
-                        <FontAwesomeIconView fx:id="iconCivilite" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
+                        <JFXComboBox fx:id="comboCivilite" prefWidth="227.0" promptText="Civilite" styleClass="field" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="5.0">

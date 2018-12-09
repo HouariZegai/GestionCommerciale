@@ -110,7 +110,7 @@ public class ClientController implements Initializable {
             }
 
         });
-    }
+    }   
 
     class TableClient extends RecursiveTreeObject<TableClient> {
         StringProperty numClient;
