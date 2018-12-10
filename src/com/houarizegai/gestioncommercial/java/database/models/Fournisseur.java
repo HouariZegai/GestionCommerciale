@@ -148,4 +148,24 @@ public class Fournisseur {
     public void setObservations(String observations) {
         this.observations = observations;
     }
+
+    @Override
+    public String toString() {
+        return "Fournisseur{" +
+                "numFournisseur=" + numFournisseur +
+                ", societe='" + societe + '\'' +
+                ", civilite='" + civilite + '\'' +
+                ", nom='" + nom + '\'' +
+                ", prenom='" + prenom + '\'' +
+                ", adresse='" + adresse + '\'' +
+                ", codePostal='" + codePostal + '\'' +
+                ", ville='" + ville + '\'' +
+                ", pays='" + pays + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", mobile='" + mobile + '\'' +
+                ", fax='" + fax + '\'' +
+                ", email='" + email + '\'' +
+                ", observations='" + observations + '\'' +
+                '}';
+    }
 }
