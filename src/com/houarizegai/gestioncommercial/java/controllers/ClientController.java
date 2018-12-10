@@ -110,7 +110,7 @@ public class ClientController implements Initializable {
             }
 
         });
-    }   
+    }
 
     class TableClient extends RecursiveTreeObject<TableClient> {
         StringProperty numClient;
@@ -204,9 +204,6 @@ public class ClientController implements Initializable {
                 listClients.add(clientT);
             }
         }
-
-        // This line below just for testing
-        //listClients.add(new TableClient(1, "TiaretSoft", "Civavo", "ZEGAI", "Houari", "Cité sidi khaled N 94 Tiaret", "Tiaret", "Algerie", "HouariZegai14@gmail.com"));
 
         final TreeItem<TableClient> treeItem = new RecursiveTreeItem<>(listClients, RecursiveTreeObject::getChildren);
         try {

@@ -1,20 +1,26 @@
 package com.houarizegai.gestioncommercial.java.controllers;
 
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTreeTableColumn;
-import com.jfoenix.controls.JFXTreeTableView;
+import com.houarizegai.gestioncommercial.java.database.dao.FournisseurDao;
+import com.houarizegai.gestioncommercial.java.database.models.Fournisseur;
+import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
-import javafx.util.Callback;
+import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class FournisseurController implements Initializable {
@@ -32,10 +38,13 @@ public class FournisseurController implements Initializable {
     // Columns of table fournisseur
     private JFXTreeTableColumn<TableFournisseur, String>  colNumFournisseur, colSociete, colCivilite, colNom, colPrenom,
             colAdresse, colCodePostal, colVille, colPays, colTelephone, colMobile, colFax, colEmail, colObservations;
-    
+    // Dialog showing in (add/update) table
+    public static JFXDialog dialogFournisseurAdd, dialogFournisseurEdit, dialogFournisseurDelete;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initTableFournisseur();
+        loadFournisseurTable();
     }
 
     /* Start Table */
@@ -55,6 +64,10 @@ public class FournisseurController implements Initializable {
         StringProperty fax;
         StringProperty email;
         StringProperty observations;
+
+        public TableFournisseur() {
+
+        }
 
         public TableFournisseur(int numFounisseur, String societe, String civilite, String nom, String prenom,
                                 String adresse, String codePostal, String ville, String pays, String telephone, String mobile,
@@ -97,7 +110,7 @@ public class FournisseurController implements Initializable {
         colPrenom = new JFXTreeTableColumn<>("Prenom");
         colPrenom .setPrefWidth(120);
         colPrenom .setCellValueFactory((TreeTableColumn.CellDataFeatures<TableFournisseur, String> param) -> param.getValue().getValue().prenom);
-        
+
         colAdresse = new JFXTreeTableColumn<>("Adresse");
         colAdresse .setPrefWidth(150);
         colAdresse .setCellValueFactory((TreeTableColumn.CellDataFeatures<TableFournisseur, String> param) -> param.getValue().getValue().adresse);
@@ -136,12 +149,47 @@ public class FournisseurController implements Initializable {
 
         tableFournisseur.getColumns().addAll(colNumFournisseur, colSociete, colCivilite, colNom, colPrenom, colAdresse, colCodePostal, colVille, colPays, colTelephone, colMobile, colFax, colEmail, colObservations);
     }
-    
+
+    private void loadFournisseurTable() {
+        List<Fournisseur> fournisseurs = FournisseurDao.getFournisseur();
+
+        ObservableList<TableFournisseur> listFournisseurs = FXCollections.observableArrayList();
+        if(fournisseurs != null) {
+            for(Fournisseur f : fournisseurs) {
+                TableFournisseur fournisseurT = new TableFournisseur(f.getNumFournisseur(), f.getSociete(), f.getCivilite(), f.getNom(),
+                        f.getPrenom(), f.getAdresse(), f.getCodePostal(), f.getVille(), f.getPays(), f.getTelephone(),
+                        f.getMobile(), f.getFax(), f.getEmail(), f.getObservations());
+
+                listFournisseurs.add(fournisseurT);
+            }
+        }
+
+        final TreeItem<TableFournisseur> treeItem = new RecursiveTreeItem<>(listFournisseurs, RecursiveTreeObject::getChildren);
+
+        try {
+            tableFournisseur.setRoot(treeItem);
+        } catch (Exception ex) {
+            System.out.println("Error catched !");
+        }
+    }
+
     /* End Table */
 
     @FXML
     private void onAdd() {
+        try {
+            VBox paneAddFournisseur = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/forms/fournisseur/AddFournisseur.fxml"));
+            dialogFournisseurAdd = getSpecialDialog(paneAddFournisseur);
+            dialogFournisseurAdd.show();
 
+            JFXTextField fieldSociete = (JFXTextField) ((HBox) ((VBox) ((HBox) paneAddFournisseur.getChildren().get(1)).getChildren().get(0)).getChildren().get(1)).getChildren().get(0);
+
+            // Focus to the first field when i show the dialog
+            dialogFournisseurAdd.setOnDialogOpened(e -> fieldSociete.requestFocus());
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @FXML
@@ -153,5 +201,11 @@ public class FournisseurController implements Initializable {
     @FXML
     private void onEdit() {
 
+    }
+
+    private JFXDialog getSpecialDialog(Region content) { // This function create dialog
+        JFXDialog dialog = new JFXDialog(root, content, JFXDialog.DialogTransition.CENTER);
+        dialog.setOnDialogClosed(e -> loadFournisseurTable()); // if i close dialog: reload data to table
+        return dialog;
     }
 }
