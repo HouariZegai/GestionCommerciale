@@ -55,7 +55,7 @@ public class FournisseurDao {
     }
 
     public static int setFournisseur(Fournisseur fournisseur) { // Edit ClientRegex
-        StringBuilder sql = new StringBuilder("UPDATE Fournisseur SET Societe = ?, Civilite = ?, nomFournisseur = ?, prenom = ?");
+        StringBuilder sql = new StringBuilder("UPDATE Fournisseur SET Societe = ?, Civilite = ?, Nom = ?, prenom = ?");
         sql.append(", adresse = ?, codePostal = ?, ville = ?, Pays = ?, telephone = ?, mobile = ?, fax = ?");
         sql.append(", email = ?, observations = ? WHERE numFournisseur = ?;");
 

@@ -1,8 +1,6 @@
 package com.houarizegai.gestioncommercial.java.controllers.forms.fournisseur;
 
 import com.houarizegai.gestioncommercial.java.controllers.FournisseurController;
-import com.houarizegai.gestioncommercial.java.controllers.FournisseurController;
-import com.houarizegai.gestioncommercial.java.database.DBConnection;
 import com.houarizegai.gestioncommercial.java.database.dao.FournisseurDao;
 import com.houarizegai.gestioncommercial.java.database.models.Fournisseur;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.FournisseurBuilder;
@@ -21,14 +19,14 @@ import org.controlsfx.control.Notifications;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class AddFournisseurController implements Initializable {
+public class EditFournisseurController implements Initializable {
 
     @FXML // Parent of all fournisseur (root node)
     private VBox root;
 
-    /* FournisseurRegex infos */
+    /* Fournisseur infos */
     @FXML
-    private JFXTextField fieldNumero, fieldSociete, fieldNom, fieldPrenom, fieldTelephone, fieldMobile, fieldFax,
+    private JFXTextField fieldNumFournisseur, fieldSociete, fieldNom, fieldPrenom, fieldTelephone, fieldMobile, fieldFax,
             fieldEmail, fieldAdresse, fieldCodePostal, fieldVille, fieldPays;
     @FXML
     private JFXComboBox<String> comboCivilite;
@@ -41,6 +39,8 @@ public class AddFournisseurController implements Initializable {
 
     // For show error msg (like: Toast in android)
     private JFXSnackbar toastMsg;
+    // fournisseur infos
+    public static Fournisseur fournisseurInfo;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -48,11 +48,10 @@ public class AddFournisseurController implements Initializable {
         comboCivilite.getItems().addAll("Mr", "Mme", "Melle");
 
         toastMsg = new JFXSnackbar(root);
-        initFieldListener();
 
-        // Initialize Numero Fournisseur (get auto increment from db)
-        int currentAutoIncrement = FournisseurDao.getCurrentAutoIncrement();
-        fieldNumero.setText(String.valueOf(currentAutoIncrement));
+        fieldNumFournisseur.setText(String.valueOf(fournisseurInfo.getNumFournisseur()));
+        onReset();
+        initFieldListener();
     }
 
     private void initFieldListener() {
@@ -90,13 +89,12 @@ public class AddFournisseurController implements Initializable {
     }
 
     @FXML
-    private void onAdd() { // Add new fournisseur
-        // Validate
-        if(fieldNom.getText() == null || fieldNom.getText().trim().isEmpty()) {
+    private void onSave() { // Add new FournisseurRegex
+        if(fieldNom.getText().isEmpty()) {
             fieldNom.setStyle("-jfx-un-focus-color: #E00; -jfx-focus-color: #D00;");
             iconNom.setVisible(true);
         }
-        if(fieldPrenom.getText() == null || fieldPrenom.getText().trim().isEmpty()) {
+        if(fieldPrenom.getText().isEmpty()) {
             fieldPrenom.setStyle("-jfx-un-focus-color: #E00; -jfx-focus-color: #D00;");
             iconPrenom.setVisible(true);
         }
@@ -110,12 +108,13 @@ public class AddFournisseurController implements Initializable {
             return;
         }
 
-        // Using builder design pattern to make Fournisseur object
-        Fournisseur Fournisseur = new FournisseurBuilder()
+        // Using builder design pattern to make fournisseur object
+        Fournisseur fournisseur = new FournisseurBuilder()
+                .setNumFournisseur(Integer.parseInt(fieldNumFournisseur.getText()))
                 .setSociete(fieldSociete.getText())
                 .setCivilite(comboCivilite.getSelectionModel().getSelectedItem())
-                .setNom(fieldNom.getText().trim())
-                .setPrenom(fieldPrenom.getText().trim())
+                .setNom(fieldNom.getText())
+                .setPrenom(fieldPrenom.getText())
                 .setTelephone(fieldTelephone.getText())
                 .setMobile(fieldMobile.getText())
                 .setFax(fieldFax.getText())
@@ -127,59 +126,50 @@ public class AddFournisseurController implements Initializable {
                 .setObservations(areaObservations.getText())
                 .build();
 
-        int status = FournisseurDao.addFournisseur(Fournisseur);
+        int status = FournisseurDao.setFournisseur(fournisseur);
 
         switch (status) {
             case -1:
                 toastMsg.show("Erreur de connexion !", 1500);
                 break;
             case 0:
-                toastMsg.show("Erreur dans l'ajoute de fournisseur !", 1500);
+                toastMsg.show("Erreur dans la modification de fournisseur !", 1500);
                 break;
             default : {
                 Notifications.create()
-                        .title("Vous avez ajouter un fournisseur !")
+                        .title("Vous avez modifier le fournisseur !")
                         .graphic(new ImageView(new Image("/com/houarizegai/gestioncommercial/resources/images/icons/valid.png")))
                         .hideAfter(Duration.millis(2000))
                         .position(Pos.BOTTOM_RIGHT)
                         .darkStyle()
                         .show();
 
-                onClear();
+                FournisseurController.dialogFournisseurEdit.close();
                 break;
             }
         }
     }
 
     @FXML
-    private void onClear() { // Clear everything in interface
-        // Initialize Numero Fournisseur (get auto increment from db)
-        int currentAutoIncrement = FournisseurDao.getCurrentAutoIncrement();
-        fieldNumero.setText(String.valueOf(currentAutoIncrement));
+    private void onReset() { // Clear everything in interface
+        fieldSociete.setText(fournisseurInfo.getSociete());
+        comboCivilite.getSelectionModel().select(fournisseurInfo.getCivilite());
+        fieldNom.setText(fournisseurInfo.getNom());
+        fieldPrenom.setText(fournisseurInfo.getPrenom());
+        fieldTelephone.setText(fournisseurInfo.getTelephone());
+        fieldMobile.setText(fournisseurInfo.getMobile());
+        fieldFax.setText(fournisseurInfo.getFax());
+        fieldEmail.setText(fournisseurInfo.getEmail());
+        fieldAdresse.setText(fournisseurInfo.getAdresse());
+        fieldCodePostal.setText(fournisseurInfo.getCodePostal());
+        fieldVille.setText(fournisseurInfo.getVille());
+        fieldPays.setText(fournisseurInfo.getPays());
 
-        fieldSociete.setText(null);
-        comboCivilite.getSelectionModel().clearSelection();
-        fieldNom.setText(null);
-        fieldPrenom.setText(null);
-        fieldTelephone.setText(null);
-        fieldMobile.setText(null);
-        fieldFax.setText(null);
-        fieldEmail.setText(null);
-        fieldAdresse.setText(null);
-        fieldCodePostal.setText(null);
-        fieldVille.setText(null);
-        fieldPays.setText(null);
-        areaObservations.setText(null);
-
-        fieldNom.setStyle("-jfx-un-focus-color: #777; -jfx-focus-color: #0f9d58;");
-        fieldPrenom.setStyle("-jfx-un-focus-color: #777; -jfx-focus-color: #0f9d58;");
-
-        iconNom.setVisible(false);
-        iconPrenom.setVisible(false);
+        areaObservations.setText(fournisseurInfo.getObservations());
     }
 
     @FXML
     private void onClose() {
-        FournisseurController.dialogFournisseurAdd.close();
+        FournisseurController.dialogFournisseurEdit.close();
     }
 }

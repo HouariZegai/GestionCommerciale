@@ -11,16 +11,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="root" prefHeight="600.0" prefWidth="950.0" spacing="20.0" style="-fx-background-color: #FFF;" stylesheets="@../../../css/crud-forms.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.houarizegai.gestioncommercial.java.controllers.forms.fournisseur.AddFournisseurController">
+<VBox fx:id="root" prefHeight="600.0" prefWidth="950.0" spacing="20.0" style="-fx-background-color: #FFF;" stylesheets="@../../../css/crud-forms.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.houarizegai.gestioncommercial.java.controllers.forms.fournisseur.EditFournisseurController">
    <children>
-      <Label styleClass="title" text="Ajouter Fournisseur" />
+      <Label styleClass="title" text="Modifier Fournisseur" />
       <HBox alignment="TOP_CENTER" spacing="30.0">
          <children>
             <VBox maxWidth="-Infinity" prefWidth="250.0" spacing="30.0">
                <children>
                   <HBox alignment="CENTER_LEFT" spacing="5.0">
                      <children>
-                        <JFXTextField fx:id="fieldNumero" editable="false" prefWidth="227.0" promptText="Numero" styleClass="field" />
+                        <JFXTextField fx:id="fieldNumFournisseur" editable="false" prefWidth="227.0" promptText="Numero" styleClass="field" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="5.0">
@@ -69,14 +69,14 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="5.0">
                      <children>
-                        <JFXTextField fx:id="fieldMobile" promptText="Mobile" styleClass="field" HBox.hgrow="ALWAYS" />
-                        <FontAwesomeIconView fx:id="iconMobile" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
+                        <JFXTextField fx:id="fieldFax" promptText="Fax" styleClass="field" HBox.hgrow="ALWAYS" />
+                        <FontAwesomeIconView fx:id="iconFax" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="5.0">
                      <children>
-                        <JFXTextField fx:id="fieldFax" promptText="Fax" styleClass="field" HBox.hgrow="ALWAYS" />
-                        <FontAwesomeIconView fx:id="iconFax" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
+                        <JFXTextField fx:id="fieldMobile" promptText="Mobile" styleClass="field" HBox.hgrow="ALWAYS" />
+                        <FontAwesomeIconView fx:id="iconMobile" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="5.0">
@@ -107,20 +107,20 @@
             </VBox>
             <VBox prefWidth="300.0" spacing="30.0">
                <children>
-                  <JFXTextArea fx:id="areaObservations" prefHeight="231.0" promptText="Observations" styleClass="field" />
+                  <JFXTextArea fx:id="areaObservations" maxHeight="-Infinity" prefHeight="231.0" promptText="Observations" styleClass="field" />
                </children>
             </VBox>
          </children>
       </HBox>
       <HBox alignment="CENTER" spacing="10.0" VBox.vgrow="ALWAYS">
          <children>
-            <JFXButton onAction="#onAdd" text="Enregistrer">
+            <JFXButton onAction="#onSave" text="Enregistrer">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="btn-green" />
                </styleClass>
             </JFXButton>
-            <JFXButton onAction="#onClear" text="Vider">
+            <JFXButton onAction="#onReset" text="Reset">
                <styleClass>
                   <String fx:value="btn" />
                   <String fx:value="btn-blue" />

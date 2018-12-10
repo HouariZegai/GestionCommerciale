@@ -54,7 +54,6 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="5.0">
                      <children>
-                        <JFXTextField fx:id="fieldType" promptText="Type" styleClass="field" HBox.hgrow="ALWAYS" />
                         <FontAwesomeIconView fx:id="iconType" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
                      </children>
                   </HBox>
