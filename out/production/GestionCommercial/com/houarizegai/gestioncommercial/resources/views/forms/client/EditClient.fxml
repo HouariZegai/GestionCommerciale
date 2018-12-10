@@ -26,6 +26,17 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="5.0">
                      <children>
+                        <JFXTextField fx:id="fieldSociete" promptText="Societe" styleClass="field" HBox.hgrow="ALWAYS" />
+                        <FontAwesomeIconView fx:id="iconSociete" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
+                     <children>
+                        <JFXComboBox fx:id="comboCivilite" prefWidth="227.0" promptText="Civilite" styleClass="field" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
+                     <children>
                         <JFXTextField fx:id="fieldNom" promptText="Nom *" styleClass="field" HBox.hgrow="ALWAYS" />
                         <FontAwesomeIconView fx:id="iconNom" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
                      </children>
@@ -34,17 +45,6 @@
                      <children>
                         <JFXTextField fx:id="fieldPrenom" promptText="Prenom *" styleClass="field" HBox.hgrow="ALWAYS" />
                         <FontAwesomeIconView fx:id="iconPrenom" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" spacing="5.0">
-                     <children>
-                        <JFXTextField fx:id="fieldSociete" promptText="Societe" styleClass="field" HBox.hgrow="ALWAYS" />
-                        <FontAwesomeIconView fx:id="iconSociete" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
-                     </children>
-                  </HBox>
-                  <HBox alignment="CENTER_LEFT" spacing="5.0">
-                     <children>
-                        <JFXComboBox fx:id="comboCivilite" prefWidth="227.0" promptText="Civilite" styleClass="field" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER_LEFT" spacing="5.0">
@@ -112,7 +112,7 @@
                   <JFXToggleButton fx:id="tglBtnLivreMemeAdresse" styleClass="tgl-btn" text="Livre Meme Adresse" />
                   <JFXToggleButton fx:id="tglBtnFactureMemeAdresse" styleClass="tgl-btn" text="Facture Meme Adresse" />
                   <JFXToggleButton fx:id="tglBtnExemptTva" styleClass="tgl-btn" text="Exempt Tva" />
-                  <JFXTextArea fx:id="areaObservations" maxHeight="-Infinity" prefHeight="231.0" promptText="Observations" styleClass="field" />
+                  <JFXTextArea fx:id="areaObservations" minHeight="-Infinity" prefHeight="231.0" promptText="Observations" styleClass="field" />
                </children>
             </VBox>
          </children>

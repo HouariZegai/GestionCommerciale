@@ -21,7 +21,7 @@
                <children>
                   <JFXTextField fx:id="fieldSearch" labelFloat="true" promptText="Recherche" styleClass="field" />
                   <JFXComboBox fx:id="comboSearchBy" labelFloat="true" promptText="Recherche Par" styleClass="combo" />
-                  <JFXButton buttonType="RAISED" onAction="#onAdd" text="Ajouter">
+                  <JFXButton buttonType="RAISED" onAction="#onAdd" text="Nouveau">
                      <styleClass>
                         <String fx:value="btn" />
                         <String fx:value="btn-add" />

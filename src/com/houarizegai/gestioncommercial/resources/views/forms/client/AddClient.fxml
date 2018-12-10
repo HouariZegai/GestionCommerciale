@@ -14,7 +14,7 @@
 
 <VBox fx:id="root" prefHeight="600.0" prefWidth="950.0" spacing="20.0" style="-fx-background-color: #FFF;" stylesheets="@../../../css/crud-forms.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.houarizegai.gestioncommercial.java.controllers.forms.client.AddClientController">
    <children>
-      <Label styleClass="title" text="Ajouter Client" />
+      <Label styleClass="title" text="Nouveau Client" />
       <HBox alignment="TOP_CENTER" spacing="30.0">
          <children>
             <VBox maxWidth="-Infinity" prefWidth="250.0" spacing="30.0">
@@ -107,7 +107,7 @@
                   </HBox>
                </children>
             </VBox>
-            <VBox prefWidth="300.0" spacing="30.0">
+            <VBox minHeight="-Infinity" prefWidth="300.0" spacing="30.0">
                <children>
                   <JFXToggleButton fx:id="tglBtnLivreMemeAdresse" styleClass="tgl-btn" text="Livre Meme Adresse" />
                   <JFXToggleButton fx:id="tglBtnFactureMemeAdresse" styleClass="tgl-btn" text="Facture Meme Adresse" />
