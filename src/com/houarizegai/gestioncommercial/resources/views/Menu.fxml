@@ -8,7 +8,7 @@
       <JFXButton accessibleText="btnHome" maxWidth="1.7976931348623157E308" styleClass="btn" text="Accueil" />
       <JFXButton accessibleText="btnClient" maxWidth="1.7976931348623157E308" styleClass="btn" text="Client" />
       <JFXButton accessibleText="btnFournisseur" maxWidth="1.7976931348623157E308" styleClass="btn" text="Fournisseur" />
-      <JFXButton maxWidth="1.7976931348623157E308" styleClass="btn" text="Famille" />
+      <JFXButton accessibleText="btnProduit" maxWidth="1.7976931348623157E308" styleClass="btn" text="Produit" />
       <JFXButton accessibleText="onLogout" maxWidth="1.7976931348623157E308" styleClass="btn" text="Déconnexion" />
       <JFXButton accessibleText="onExit" maxWidth="1.7976931348623157E308" styleClass="btn" text="Sortie" />
    </children>
