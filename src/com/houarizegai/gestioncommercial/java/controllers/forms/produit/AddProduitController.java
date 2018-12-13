@@ -1,5 +1,6 @@
 package com.houarizegai.gestioncommercial.java.controllers.forms.produit;
 
+import com.houarizegai.gestioncommercial.java.Launcher;
 import com.houarizegai.gestioncommercial.java.controllers.ProduitController;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
@@ -11,7 +12,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -48,7 +54,16 @@ public class AddProduitController implements Initializable {
 
     @FXML
     void onChooseImage() { // for choose image from pc
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select Image File");
 
+        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Image File", "*.png", "*.jpg", "*.jpeg");
+        fileChooser.getExtensionFilters().add(extensionFilter);
+        File file = fileChooser.showOpenDialog(Launcher.stage);
+
+        if(file != null) {
+            imageProduit.setImage(new Image(file.toURI().toString()));
+        }
     }
 
     @FXML
