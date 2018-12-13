@@ -100,7 +100,7 @@ CREATE TABLE TVA (
 );
 
 
--- Structure of table ClientRegex
+-- Structure of table Client
 CREATE TABLE Client (
 	NumClient INT(8) AUTO_INCREMENT PRIMARY KEY,
 	Societe VARCHAR(40),
