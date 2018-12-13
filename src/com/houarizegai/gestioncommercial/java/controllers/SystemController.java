@@ -10,6 +10,7 @@ import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -48,8 +49,8 @@ public class SystemController implements Initializable {
     // content of drawer (view)
     private VBox menuDrawerPane;
 
-    // CLient GUI (FXML)
-    private StackPane clientView, fournisseurView;
+    // [Client, Fournisseur, Produit] GUI (FXML)
+    private StackPane clientView, fournisseurView, produitView;
     private VBox homeView;
 
     @Override
@@ -58,8 +59,9 @@ public class SystemController implements Initializable {
             homeView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Home.fxml"));
             clientView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Client.fxml"));
             fournisseurView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Fournisseur.fxml"));
+            produitView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Produit.fxml"));
         } catch(IOException ioe) {
-           ioe.printStackTrace();
+            ioe.printStackTrace();
         }
 
         initMenu();
@@ -79,7 +81,7 @@ public class SystemController implements Initializable {
             ioe.printStackTrace();
         }
         burgerTask = new HamburgerSlideCloseTransition(hamburgerMenu);
-        //burgerTask.setRate(-1);
+        burgerTask.setRate(burgerTask.getRate() * -1);
         hamburgerMenu.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
             showHideMenu();
         });
@@ -100,6 +102,11 @@ public class SystemController implements Initializable {
                 } else if(node.getAccessibleText().equalsIgnoreCase("btnFournisseur")) {
                     ((JFXButton) node).setOnAction(e -> {
                         setNode(fournisseurView);
+                        showHideMenu();
+                    });
+                } else if(node.getAccessibleText().equalsIgnoreCase("btnProduit")) {
+                    ((JFXButton) node).setOnAction(e -> {
+                        setNode(produitView);
                         showHideMenu();
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("onLogout")) {
@@ -152,10 +159,17 @@ public class SystemController implements Initializable {
     }
 
     private void initActionHomeBoxes() { // Add action to boxes
-        VBox boxClient = ((VBox) ((HBox) homeView.getChildren().get(1)).getChildren().get(0));
-        VBox boxFournisseur = ((VBox) ((HBox) homeView.getChildren().get(1)).getChildren().get(1));
+        // Load views
+
+        ObservableList<Node> boxItems = ((HBox) ((HBox) homeView.getChildren().get(1))).getChildren();
+
+        VBox boxClient = (VBox) boxItems.get(0);
+        VBox boxFournisseur = (VBox) boxItems.get(1);
+        VBox boxProduit = (VBox) boxItems.get(2);
+
         boxClient.setOnMouseClicked(e -> setNode(clientView));
         boxFournisseur.setOnMouseClicked(e -> setNode(fournisseurView));
+        boxProduit.setOnMouseClicked(e -> setNode(produitView));
     }
 
     private void setNode(Node node) {
