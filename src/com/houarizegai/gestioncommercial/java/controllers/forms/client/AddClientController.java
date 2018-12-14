@@ -61,8 +61,8 @@ public class AddClientController implements Initializable {
 
     private void initFieldListener() {
         fieldSociete.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldSociete, iconSociete, newValue, ClientRegex.SOCIETE));
-        fieldNom.textProperty().addListener((observable, oldValue, newValue) -> setValidFontNomPrenom(fieldNom, iconNom, newValue, ClientRegex.NOM));
-        fieldPrenom.textProperty().addListener((observable, oldValue, newValue) -> setValidFontNomPrenom(fieldPrenom, iconPrenom, newValue, ClientRegex.PRENOM));
+        fieldNom.textProperty().addListener((observable, oldValue, newValue) -> setValidFontRequired(fieldNom, iconNom, newValue, ClientRegex.NOM));
+        fieldPrenom.textProperty().addListener((observable, oldValue, newValue) -> setValidFontRequired(fieldPrenom, iconPrenom, newValue, ClientRegex.PRENOM));
         fieldTelephone.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldTelephone, iconTelephone, newValue, ClientRegex.TELEPHONE));
         fieldMobile.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldMobile, iconMobile, newValue, ClientRegex.MOBILE));
         fieldFax.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldFax, iconFax, newValue, ClientRegex.FAX));
@@ -84,7 +84,7 @@ public class AddClientController implements Initializable {
         }
     }
 
-    private void setValidFontNomPrenom(JFXTextField field, FontAwesomeIconView errorIcon, String newValue, String regex) {
+    private void setValidFontRequired(JFXTextField field, FontAwesomeIconView errorIcon, String newValue, String regex) {
         if(newValue == null || !newValue.trim().matches(regex)) {
             field.setStyle("-jfx-un-focus-color: #E00; -jfx-focus-color: #D00;");
             errorIcon.setVisible(true);
