@@ -197,7 +197,19 @@ public class ProduitController implements Initializable {
 
     @FXML
     private void onAdd() {
+        try {
+            VBox paneAddProduit = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/forms/produit/AddProduit.fxml"));
+            dialogProduitAdd = getSpecialDialog(paneAddProduit);
+            dialogProduitAdd.show();
 
+            JFXTextField fieldReference = (JFXTextField) ((HBox) ((VBox) ((HBox) paneAddProduit.getChildren().get(1)).getChildren().get(0)).getChildren().get(0)).getChildren().get(0);
+
+            // Focus to the first field when i show the dialog
+            dialogProduitAdd.setOnDialogOpened(e -> fieldReference.requestFocus());
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @FXML
