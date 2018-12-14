@@ -1,5 +1,7 @@
 package com.houarizegai.gestioncommercial.java.database.models;
 
+import javafx.scene.image.Image;
+
 import java.sql.Blob;
 import java.util.Date;
 
@@ -13,7 +15,7 @@ public class Produit {
     private int qteReappro;
     private int qteMini;
     private double tauxTva;
-    private Blob photo;
+    private Image photo;
     private int numFournisseur;
     private boolean plusAuCatalogue;
     private String saisiPar;
@@ -21,7 +23,7 @@ public class Produit {
     private String codeFamille;
     private String codePort;
 
-    public Produit(String reference, String genCode, String codeBarre, String libProd, String description, double prixHt, int qteReappro, int qteMini, double tauxTva, Blob photo, int numFournisseur, boolean plusAuCatalogue, String saisiPar, Date saisiLe, String codeFamille, String codePort) {
+    public Produit(String reference, String genCode, String codeBarre, String libProd, String description, double prixHt, int qteReappro, int qteMini, double tauxTva, Image photo, int numFournisseur, boolean plusAuCatalogue, String saisiPar, Date saisiLe, String codeFamille, String codePort) {
         this.reference = reference;
         this.genCode = genCode;
         this.codeBarre = codeBarre;
@@ -115,11 +117,11 @@ public class Produit {
         this.tauxTva = tauxTva;
     }
 
-    public Blob getPhoto() {
+    public Image getPhoto() {
         return photo;
     }
 
-    public void setPhoto(Blob photo) {
+    public void setPhoto(Image photo) {
         this.photo = photo;
     }
 

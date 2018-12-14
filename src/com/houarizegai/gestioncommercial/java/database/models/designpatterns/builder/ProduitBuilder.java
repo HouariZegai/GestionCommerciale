@@ -1,6 +1,7 @@
 package com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder;
 
 import com.houarizegai.gestioncommercial.java.database.models.Produit;
+import javafx.scene.image.Image;
 
 import java.sql.Blob;
 import java.util.Date;
@@ -15,7 +16,7 @@ public class ProduitBuilder {
     private int qteReappro;
     private int qteMini;
     private double tauxTva;
-    private Blob photo;
+    private Image photo;
     private int numFournisseur;
     private boolean plusAuCatalogue;
     private String saisiPar;
@@ -68,7 +69,7 @@ public class ProduitBuilder {
         return this;
     }
 
-    public ProduitBuilder setPhoto(Blob photo) {
+    public ProduitBuilder setPhoto(Image photo) {
         this.photo = photo;
         return this;
     }
