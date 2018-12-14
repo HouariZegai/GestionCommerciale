@@ -4,6 +4,7 @@ import com.houarizegai.gestioncommercial.java.controllers.FournisseurController;
 import com.houarizegai.gestioncommercial.java.controllers.FournisseurController;
 import com.houarizegai.gestioncommercial.java.database.DBConnection;
 import com.houarizegai.gestioncommercial.java.database.dao.FournisseurDao;
+import com.houarizegai.gestioncommercial.java.database.dao.MainDao;
 import com.houarizegai.gestioncommercial.java.database.models.Fournisseur;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.FournisseurBuilder;
 import com.houarizegai.gestioncommercial.java.utils.regex.ClientRegex;
@@ -51,7 +52,7 @@ public class AddFournisseurController implements Initializable {
         initFieldListener();
 
         // Initialize Numero Fournisseur (get auto increment from db)
-        int currentAutoIncrement = FournisseurDao.getCurrentAutoIncrement();
+        int currentAutoIncrement = MainDao.getCurrentAutoIncrement("Fournisseur");
         fieldNumero.setText(String.valueOf(currentAutoIncrement));
     }
 
@@ -146,6 +147,9 @@ public class AddFournisseurController implements Initializable {
                         .show();
 
                 onClear();
+                // Initialize Numero Fournisseur (get auto increment from db)
+                int currentAutoIncrement = MainDao.getCurrentAutoIncrement("Fournisseur");
+                fieldNumero.setText(String.valueOf(currentAutoIncrement));
                 break;
             }
         }
@@ -153,10 +157,6 @@ public class AddFournisseurController implements Initializable {
 
     @FXML
     private void onClear() { // Clear everything in interface
-        // Initialize Numero Fournisseur (get auto increment from db)
-        int currentAutoIncrement = FournisseurDao.getCurrentAutoIncrement();
-        fieldNumero.setText(String.valueOf(currentAutoIncrement));
-
         fieldSociete.setText(null);
         comboCivilite.getSelectionModel().clearSelection();
         fieldNom.setText(null);

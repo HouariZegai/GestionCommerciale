@@ -3,6 +3,7 @@ package com.houarizegai.gestioncommercial.java.controllers.forms.client;
 import com.houarizegai.gestioncommercial.java.controllers.ClientController;
 import com.houarizegai.gestioncommercial.java.database.DBConnection;
 import com.houarizegai.gestioncommercial.java.database.dao.ClientDao;
+import com.houarizegai.gestioncommercial.java.database.dao.MainDao;
 import com.houarizegai.gestioncommercial.java.database.models.Client;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ClientBuilder;
 import com.houarizegai.gestioncommercial.java.utils.regex.ClientRegex;
@@ -54,7 +55,7 @@ public class AddClientController implements Initializable {
         initFieldListener();
 
         // Initialize Numero client (get autoincrement from db)
-        int currentAutoIncrement = ClientDao.getCurrentAutoIncrement();
+        int currentAutoIncrement = MainDao.getCurrentAutoIncrement("Client");
         fieldNumClient.setText(String.valueOf(currentAutoIncrement));
     }
 
@@ -159,6 +160,9 @@ public class AddClientController implements Initializable {
                         .show();
 
                 onClear();
+                // Initialize Numero Client (get auto increment from db)
+                int currentAutoIncrement = MainDao.getCurrentAutoIncrement("Client");
+                fieldNumClient.setText(String.valueOf(currentAutoIncrement));
                 break;
             }
         }

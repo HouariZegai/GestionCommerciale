@@ -52,7 +52,7 @@ public class ClientDao {
             }
 
         } catch (SQLException se) {
-            System.out.println("Get All ClientRegex Error SQL");
+            System.out.println("Get All Client Error SQL");
             se.printStackTrace();
             return null;
         }
@@ -60,7 +60,7 @@ public class ClientDao {
         return clients;
     }
 
-    public static int setClient(Client client) { // Edit ClientRegex
+    public static int setClient(Client client) { // Edit Client
         StringBuilder sql = new StringBuilder("UPDATE Client SET");
         sql.append(" Societe = ?");
         sql.append(", Civilite = ?");
@@ -122,7 +122,7 @@ public class ClientDao {
         }
     }
 
-    public static int deleteClient(int numClient) { // Delete ClientRegex
+    public static int deleteClient(int numClient) { // Delete Client
         String sql = "DELETE FROM Client WHERE numClient = ?;";
         try {
             PreparedStatement prest = DBConnection.con.prepareStatement(sql);
@@ -173,20 +173,5 @@ public class ClientDao {
             se.printStackTrace();
             return 0;
         }
-    }
-
-    public static int getCurrentAutoIncrement() {
-        String sql = "SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Client';";
-        try {
-            Statement st = DBConnection.con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            if(rs.next()) {
-                return rs.getInt("AUTO_INCREMENT");
-            }
-        } catch (SQLException se) {
-            se.printStackTrace();
-        }
-
-        return 0;
     }
 }

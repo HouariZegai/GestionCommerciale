@@ -12,7 +12,6 @@ import java.util.List;
 
 public class TVADao {
     public static List<Double> getTauxTva() { // This function get all taux tva from table TVA in database
-        //TauxTva
         String sql = "SELECT * FROM TVA;";
 
         List<Double> tauxTva = new LinkedList<>();
@@ -25,7 +24,7 @@ public class TVADao {
             }
 
         } catch (SQLException se) {
-            System.out.println("Get All taux TVA Error SQL");
+            System.out.println("Get All Taux TVA Error SQL");
             se.printStackTrace();
             return null;
         }

@@ -54,7 +54,7 @@ public class FournisseurDao {
         return fournisseurs;
     }
 
-    public static int setFournisseur(Fournisseur fournisseur) { // Edit ClientRegex
+    public static int setFournisseur(Fournisseur fournisseur) { // Edit Client
         StringBuilder sql = new StringBuilder("UPDATE Fournisseur SET Societe = ?, Civilite = ?, Nom = ?, prenom = ?");
         sql.append(", adresse = ?, codePostal = ?, ville = ?, Pays = ?, telephone = ?, mobile = ?, fax = ?");
         sql.append(", email = ?, observations = ? WHERE numFournisseur = ?;");
@@ -88,7 +88,7 @@ public class FournisseurDao {
         }
     }
 
-    public static int deleteFournisseur(int numFournisseur) { // Delete ClientRegex
+    public static int deleteFournisseur(int numFournisseur) { // Delete Fournisseur
         String sql = "DELETE FROM Fournisseur WHERE numFournisseur = ?;";
         try {
             PreparedStatement prest = DBConnection.con.prepareStatement(sql);
@@ -131,20 +131,5 @@ public class FournisseurDao {
             se.printStackTrace();
             return 0;
         }
-    }
-
-    public static int getCurrentAutoIncrement() {
-        String sql = "SELECT `AUTO_INCREMENT` FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Fournisseur';";
-        try {
-            Statement st = DBConnection.con.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            if(rs.next()) {
-                return rs.getInt("AUTO_INCREMENT");
-            }
-        } catch (SQLException se) {
-            se.printStackTrace();
-        }
-
-        return 0;
     }
 }
