@@ -2,6 +2,7 @@ package com.houarizegai.gestioncommercial.java.controllers.forms.produit;
 
 import com.houarizegai.gestioncommercial.java.Launcher;
 import com.houarizegai.gestioncommercial.java.controllers.ProduitController;
+import com.houarizegai.gestioncommercial.java.database.dao.TVADao;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -19,6 +20,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AddProduitController implements Initializable {
@@ -49,7 +51,10 @@ public class AddProduitController implements Initializable {
     }
 
     private void initCombos() {
-
+        List<Double> tauxTva = TVADao.getTauxTva(); // get Tauc TVA from database
+        if(!tauxTva.isEmpty())
+            for(double taux : tauxTva)
+            comboTauxTva.getItems().add(String.valueOf(taux));
     }
 
     @FXML
