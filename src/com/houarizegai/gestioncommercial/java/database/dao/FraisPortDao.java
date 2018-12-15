@@ -52,6 +52,22 @@ public class FraisPortDao {
         return null;
     }
 
+    public static String getLibFraisPort(String codePort) { // get Libelle via Code
+        String sql = "SELECT LibFraisPort FROM FraisPort WHERE CodePort = '" + codePort + "';";
+        if(DBConnection.con == null)
+            return null; // connection failed
+        try {
+
+            Statement st = DBConnection.con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next())
+                return rs.getString("LibFraisPort");
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return null;
+    }
+
     public static int setFraisPort(FraisPort fraisPort) { // Edit Frais Port
         StringBuilder sql = new StringBuilder("UPDATE `FraisPort` SET `LibFraisPort` = ?, `Montant` = ? WHERE `CodePort` = ?;");
 

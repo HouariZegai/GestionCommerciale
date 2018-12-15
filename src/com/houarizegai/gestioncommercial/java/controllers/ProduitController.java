@@ -1,7 +1,9 @@
 package com.houarizegai.gestioncommercial.java.controllers;
 
 import com.houarizegai.gestioncommercial.java.controllers.forms.client.DeleteClientController;
+import com.houarizegai.gestioncommercial.java.controllers.forms.client.EditClientController;
 import com.houarizegai.gestioncommercial.java.controllers.forms.produit.DeleteProduitController;
+import com.houarizegai.gestioncommercial.java.controllers.forms.produit.EditProduitController;
 import com.houarizegai.gestioncommercial.java.database.dao.ProduitDao;
 import com.houarizegai.gestioncommercial.java.database.models.Produit;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ClientBuilder;
@@ -216,7 +218,30 @@ public class ProduitController implements Initializable {
 
     @FXML
     private void onEdit() {
+        String referenceSelected = colReference.getCellData(tableProduit.getSelectionModel().getSelectedIndex());
+        if (referenceSelected == null) {
+            toastMsg.show("Svp, selectionné le Produit qui vous voulez Modifier !", 2000);
+            return;
+        }
+        for (Produit produit : produits) {
+            if (produit.getReference().equalsIgnoreCase(referenceSelected)) {
+                EditProduitController.produitInfo= produit;
+                break;
+            }
+        }
 
+        try {
+            VBox paneEditProduit = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/forms/produit/EditProduit.fxml"));
+            dialogProduitEdit = getSpecialDialog(paneEditProduit);
+            dialogProduitEdit.show();
+
+            JFXTextField fieldGenCode = (JFXTextField) ((HBox) ((VBox) ((HBox) paneEditProduit.getChildren().get(1)).getChildren().get(0)).getChildren().get(1)).getChildren().get(0);
+
+            // Focus to the first field when i show the dialog
+            dialogProduitEdit.setOnDialogOpened(e -> fieldGenCode.requestFocus());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @FXML

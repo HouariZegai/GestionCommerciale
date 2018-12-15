@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 public class DeleteProduitController implements Initializable {
 
     @FXML
-    private Label lblReference, lblCodeBarre, lblGenCode, lblTauxTva, lblPrixHT, lblQteReappro, lblQteMin, lblSaisiLe,
+    private Label lblReference, lblCodeBarre, lblGenCode, lblLibProd, lblTauxTva, lblPrixHT, lblQteReappro, lblQteMin, lblSaisiLe,
             lblFournisseur, lblPlusAuCatalogue, lblSaisiPar, lblCodeFamille, lblCodePort;
 
     @FXML
@@ -42,6 +42,7 @@ public class DeleteProduitController implements Initializable {
         lblReference.setText(produit.getReference());
         lblGenCode.setText(produit.getGenCode());
         lblCodeBarre.setText(produit.getCodeBarre());
+        lblLibProd.setText(produit.getLibProd());
         txtDesc.setText(produit.getDescription());
         lblPrixHT.setText(String.valueOf(produit.getPrixHt()));
         lblQteReappro.setText(String.valueOf(produit.getQteReappro()));

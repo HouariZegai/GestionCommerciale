@@ -43,6 +43,25 @@ public class FamilleDao {
             Statement st = DBConnection.con.createStatement();
             ResultSet rs = st.executeQuery(sql);
             if(rs.next())
+                return rs.getString("Code Famille");
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static String getLibelle(String codeFamille) { // Get libelle via Code famille
+        String sql = "SELECT Libelle FROM Famille WHERE CodeFamille = '" + codeFamille + "';";
+
+        if(DBConnection.con == null)
+            return null; // connection failed
+
+        try {
+
+            Statement st = DBConnection.con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next())
                 return rs.getString("CodeFamille");
         } catch (SQLException se) {
             se.printStackTrace();

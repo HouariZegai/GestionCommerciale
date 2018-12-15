@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="root" spacing="30.0" style="-fx-background-color: #FFF;" stylesheets="@../../../css/crud-forms.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.houarizegai.gestioncommercial.java.controllers.forms.produit.EditProduitController">
+   <children>
+      <Label styleClass="title" text="Modifier Produit" />
+      <HBox alignment="TOP_CENTER" spacing="30.0">
+         <children>
+            <VBox maxWidth="-Infinity" prefWidth="250.0" spacing="30.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
+                     <children>
+                        <JFXTextField fx:id="fieldReference" editable="false" promptText="Reference *" styleClass="field" HBox.hgrow="ALWAYS" />
+                        <FontAwesomeIconView fx:id="iconReference" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
+                     <children>
+                        <JFXTextField fx:id="fieldGenCode" promptText="Gen Code" styleClass="field" HBox.hgrow="ALWAYS" />
+                        <FontAwesomeIconView fx:id="iconGenCode" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
+                     <children>
+                        <JFXTextField fx:id="fieldCodeBarre" promptText="Code Barre" styleClass="field" HBox.hgrow="ALWAYS" />
+                        <FontAwesomeIconView fx:id="iconCodeBarre" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
+                     <children>
+                        <JFXTextField fx:id="fieldLibProd" promptText="Nom du produit" styleClass="field" HBox.hgrow="ALWAYS" />
+                        <FontAwesomeIconView fx:id="iconLibProd" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
+                     </children>
+                  </HBox>
+                  <JFXTextArea fx:id="areaDesc" maxWidth="-Infinity" prefHeight="152.0" prefWidth="227.0" promptText="Description" styleClass="field" />
+               </children>
+            </VBox>
+            <VBox prefWidth="250.0" spacing="30.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
+                     <children>
+                        <JFXTextField fx:id="fieldPrixHT" promptText="Prix HT" styleClass="field" HBox.hgrow="ALWAYS" />
+                        <FontAwesomeIconView fx:id="iconPrixHT" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
+                     <children>
+                        <JFXTextField fx:id="fieldQteReappro" promptText="Qte Reappro" styleClass="field" HBox.hgrow="ALWAYS" />
+                        <FontAwesomeIconView fx:id="iconQteReappro" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" spacing="5.0">
+                     <children>
+                        <JFXTextField fx:id="fieldQteMin" promptText="Qte Min" styleClass="field" HBox.hgrow="ALWAYS" />
+                        <FontAwesomeIconView fx:id="iconQteMin" glyphName="EXCLAMATION_TRIANGLE" size="18" styleClass="icon-error" visible="false" />
+                     </children>
+                  </HBox>
+                  <JFXComboBox fx:id="comboTauxTva" prefWidth="227.0" promptText="Taux TVA" styleClass="field" />
+                  <JFXComboBox fx:id="comboFamille" prefWidth="227.0" promptText="Famille" styleClass="field" />
+                  <JFXComboBox fx:id="comboPort" prefWidth="227.0" promptText="Port" styleClass="field" />
+                  <JFXComboBox fx:id="comboFournisseur" prefWidth="227.0" promptText="Fournisseur" styleClass="field" />
+               </children>
+            </VBox>
+            <VBox spacing="30.0">
+               <children>
+                  <JFXToggleButton fx:id="tglPlusAuCatalogue" styleClass="tgl-btn" text="Plus Au Catalogue ?" />
+                  <VBox alignment="CENTER" maxWidth="-Infinity" prefWidth="227.0" spacing="1.0">
+                     <children>
+                        <StackPane style="-fx-background-color: #F5F5F5;">
+                           <children>
+                              <ImageView fx:id="imageProduit" fitHeight="300.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../images/icons/add_product.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </StackPane>
+                        <JFXButton onAction="#onChooseImage" prefWidth="263.0" style="-fx-pref-width: 225px;" text="Choose Image">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="btn-green" />
+                           </styleClass>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" spacing="10.0" VBox.vgrow="ALWAYS">
+         <children>
+            <JFXButton onAction="#onSave" text="Enregistrer">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-green" />
+               </styleClass>
+            </JFXButton>
+            <JFXButton onAction="#onReset" text="Reset">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-blue" />
+               </styleClass>
+            </JFXButton>
+            <JFXButton onAction="#onClose" text="Fermer">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-red" />
+               </styleClass>
+            </JFXButton>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="25.0" left="40.0" right="40.0" top="25.0" />
+   </padding>
+</VBox>
