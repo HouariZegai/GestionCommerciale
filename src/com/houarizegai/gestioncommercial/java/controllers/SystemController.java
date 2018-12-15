@@ -18,6 +18,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -63,6 +64,11 @@ public class SystemController implements Initializable {
         } catch(IOException ioe) {
             ioe.printStackTrace();
         }
+
+        // Initialize the image (to fill parent)
+        ImageView imgSlider = (ImageView) ((StackPane) homeView.getChildren().get(0)).getChildren().get(0);
+        imgSlider.fitWidthProperty().bind(holderPane.widthProperty());
+        imgSlider.fitHeightProperty().bind(holderPane.heightProperty());
 
         initMenu();
         initClock();
