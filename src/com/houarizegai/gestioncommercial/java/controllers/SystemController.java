@@ -140,7 +140,7 @@ public class SystemController implements Initializable {
             drawerMenu.close();
             drawerMenu.setStyle("-fx-pref-width: 0px");
         } else {
-            drawerMenu.setStyle("-fx-pref-width: 300px");
+            drawerMenu.setStyle("-fx-pref-width: 270px");
             drawerMenu.open();
         }
     }
