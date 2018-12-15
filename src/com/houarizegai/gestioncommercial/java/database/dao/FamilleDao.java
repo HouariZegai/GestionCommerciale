@@ -1,7 +1,6 @@
 package com.houarizegai.gestioncommercial.java.database.dao;
 
 import com.houarizegai.gestioncommercial.java.database.DBConnection;
-import com.houarizegai.gestioncommercial.java.utils.UsefulMethods;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,6 +30,25 @@ public class FamilleDao {
         }
 
         return familles;
+    }
+
+    public static String getCodeFamille(String libelle) { // Get Code famille via libelle of famille
+        String sql = "SELECT CodeFamille FROM Famille WHERE Libelle = '" + libelle + "';";
+
+        if(DBConnection.con == null)
+            return null; // connection failed
+
+        try {
+
+            Statement st = DBConnection.con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if(rs.next())
+                return rs.getString("CodeFamille");
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+
+        return null;
     }
 
     public static int setFamille(String[] famille) { // Edit Libelle of Famille

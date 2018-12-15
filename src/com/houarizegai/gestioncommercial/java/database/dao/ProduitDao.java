@@ -5,6 +5,7 @@ import com.houarizegai.gestioncommercial.java.database.models.Produit;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ProduitBuilder;
 import com.houarizegai.gestioncommercial.java.utils.UsefulMethods;
 
+import javax.jws.soap.SOAPBinding;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -34,7 +35,7 @@ public class ProduitDao {
                 .setQteReappro(rs.getInt("QteReappro"))
                 .setQteMini(rs.getInt("QteMini"))
                 .setTauxTva(rs.getDouble("TauxTva"))
-                .setPhoto(rs.getBlob("Photo"))
+                .setPhoto(UsefulMethods.blobToImage(rs.getBlob("Photo")))
                 .setNumFournisseur(rs.getInt("NumFournisseur"))
                 .setPlusAuCatalogue(rs.getBoolean("plusAuCatalogue"))
                 .setSaisiPar(rs.getString("SaisiPar"))
@@ -71,7 +72,7 @@ public class ProduitDao {
             prest.setInt(6, produit.getQteReappro());
             prest.setInt(7, produit.getQteMini());
             prest.setDouble(8, produit.getTauxTva());
-            prest.setBlob(9, produit.getPhoto());
+            prest.setBlob(9, UsefulMethods.imageToBlob(produit.getPhoto()));
             prest.setInt(10, produit.getNumFournisseur());
             prest.setBoolean(11, produit.isPlusAuCatalogue());
             prest.setString(12, produit.getSaisiPar());
@@ -120,7 +121,7 @@ public class ProduitDao {
             prest.setInt(7, produit.getQteReappro());
             prest.setInt(8, produit.getQteMini());
             prest.setDouble(9, produit.getTauxTva());
-            prest.setBlob(10, produit.getPhoto());
+            prest.setBlob(10, UsefulMethods.imageToBlob(produit.getPhoto()));
             prest.setInt(11, produit.getNumFournisseur());
             prest.setBoolean(12, produit.isPlusAuCatalogue());
             prest.setString(13, produit.getSaisiPar());

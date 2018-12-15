@@ -46,8 +46,7 @@ public class DeleteProduitController implements Initializable {
         lblPrixHT.setText(String.valueOf(produit.getPrixHt()));
         lblQteReappro.setText(String.valueOf(produit.getQteReappro()));
         lblQteMin.setText(String.valueOf(produit.getQteMini()));
-        lblTauxTva.setText(String.valueOf(produit.getTauxTva()));
-
+        lblTauxTva.setText(String.valueOf(produit.getTauxTva()) + " %");
         lblFournisseur.setText(String.valueOf(produit.getNumFournisseur()));
         lblPlusAuCatalogue.setText(produit.isPlusAuCatalogue() ? "Oui" : "Non");
         lblSaisiPar.setText(produit.getSaisiPar());

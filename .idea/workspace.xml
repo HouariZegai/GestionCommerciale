@@ -5,14 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/Launcher.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/Launcher.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/controllers/SystemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/controllers/SystemController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/controllers/forms/client/AddClientController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/controllers/forms/client/AddClientController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/controllers/forms/fournisseur/AddFournisseurController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/controllers/forms/fournisseur/AddFournisseurController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/database/dao/ClientDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/database/dao/ClientDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/database/dao/FournisseurDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/database/dao/FournisseurDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/utils/UsefulMethods.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/utils/UsefulMethods.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/utils/regex/ClientRegex.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/java/utils/regex/ClientRegex.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/resources/css/crud-forms.css" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/resources/css/crud-forms.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/resources/views/Home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/resources/views/Home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/resources/views/Menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GestionCommercial/com/houarizegai/gestioncommercial/resources/views/Menu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/Launcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/Launcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/Client.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/Client.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/Fournisseur.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/Fournisseur.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/AddClient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/AddClient.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/DeleteClient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/DeleteClient.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/EditClient.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/EditClient.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/fournisseur/AddFournisseur.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/fournisseur/AddFournisseur.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/fournisseur/DeleteFournisseur.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/fournisseur/DeleteFournisseur.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/forms/produit/AddProduitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/forms/produit/AddProduitController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/FamilleDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/FamilleDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/FraisPortDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/FraisPortDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/ProduitDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/ProduitDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/utils/UsefulMethods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/utils/UsefulMethods.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/produit/AddProduit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/produit/AddProduit.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -140,37 +151,88 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="-362942841">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.47" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="fxml" value="2" />
+          <entry key="java" value="12" />
+          <entry key="sql" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="12" />
+          <entry key="SQL" value="1" />
+          <entry key="XML" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="fxml" value="1" />
+          <entry key="java" value="70" />
+          <entry key="sql" value="1" />
+          <entry key="txt" value="44" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="70" />
+          <entry key="PLAIN_TEXT" value="44" />
+          <entry key="SQL" value="1" />
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FavoritesManager">
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/FournisseurController.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/forms/produit/AddProduitController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="166" column="40" selection-start-line="166" selection-start-column="40" selection-end-line="166" selection-end-column="40" />
+            <state relative-caret-position="130">
+              <caret line="144" column="57" selection-start-line="144" selection-start-column="57" selection-end-line="144" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/FraisPortDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
               <folding>
-                <element signature="method#initialize#0;class#FournisseurController#0" />
-                <element signature="class#TableFournisseur#0;class#FournisseurController#0" />
-                <element signature="method#TableFournisseur#0;class#TableFournisseur#0;class#FournisseurController#0" />
-                <element signature="method#TableFournisseur#1;class#TableFournisseur#0;class#FournisseurController#0" />
-                <element signature="method#loadFournisseurTable#0;class#FournisseurController#0" />
-                <element signature="method#filterSearchTable#0;class#FournisseurController#0" />
-                <element signature="method#onAdd#0;class#FournisseurController#0" />
-                <element signature="method#onDelete#0;class#FournisseurController#0" />
-                <element signature="method#getSpecialDialog#0;class#FournisseurController#0" />
+                <element signature="method#getFraisPorts#0;class#FraisPortDao#0" />
+                <element signature="method#setFraisPort#0;class#FraisPortDao#0" />
+                <element signature="method#deleteFraisPort#0;class#FraisPortDao#0" />
+                <element signature="method#addFraisPort#0;class#FraisPortDao#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/Launcher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="19" column="78" lean-forward="true" selection-start-line="19" selection-start-column="78" selection-end-line="19" selection-end-column="78" />
+            <state relative-caret-position="252">
+              <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Database/SQL queries.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="292" column="16" selection-start-line="292" selection-start-column="16" selection-end-line="292" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -216,6 +278,7 @@
       <find>nomFournisseur</find>
       <find>FournisseurRegex</find>
       <find>client</find>
+      <find>Produit</find>
     </findStrings>
     <replaceStrings>
       <replace>client</replace>
@@ -252,12 +315,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/models/builder/ClientBuilder.java" />
-        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/models/Client.java" />
-        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/Login.fxml" />
-        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/models/Login.java" />
-        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/LoginDao.java" />
-        <option value="$PROJECT_DIR$/Database/SQL queries.sql" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/client/AddClient.fxml" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/forms/add-client.css" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/package-info.java" />
@@ -273,7 +330,6 @@
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/client.css" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/crud-view.css" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/DBConnection.java" />
-        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/utils/UsefulMethods.java" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/utils/regex/Client.java" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/utils/regex/Regex.java" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/EditClient.fxml" />
@@ -287,7 +343,6 @@
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/SystemController.java" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/forms/client/AddClientController.java" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/forms/client/EditClientController.java" />
-        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/utils/regex/ClientRegex.java" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/models/designpatterns/builder/FournisseurBuilder.java" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/models/Fournisseur.java" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/ClientController.java" />
@@ -302,7 +357,15 @@
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/Fournisseur.fxml" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/AddClient.fxml" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/fournisseur/AddFournisseur.fxml" />
+        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/utils/UsefulMethods.java" />
+        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/utils/regex/ClientRegex.java" />
         <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/Launcher.java" />
+        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/ProduitDao.java" />
+        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/produit/AddProduit.fxml" />
+        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/FamilleDao.java" />
+        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/FraisPortDao.java" />
+        <option value="$PROJECT_DIR$/Database/SQL queries.sql" />
+        <option value="$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/forms/produit/AddProduitController.java" />
       </list>
     </option>
   </component>
@@ -321,7 +384,7 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
-    <option name="width" value="855" />
+    <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -335,84 +398,76 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="GestionCommercial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GestionCommercial" type="462c0819:PsiDirectoryNode" />
+              <item name="gestioncommercial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="GestionCommercial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GestionCommercial" type="462c0819:PsiDirectoryNode" />
+              <item name="gestioncommercial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
               <item name="Database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="GestionCommercial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GestionCommercial" type="462c0819:PsiDirectoryNode" />
+              <item name="gestioncommercial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="GestionCommercial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GestionCommercial" type="462c0819:PsiDirectoryNode" />
+              <item name="gestioncommercial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="GestionCommercial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GestionCommercial" type="462c0819:PsiDirectoryNode" />
+              <item name="gestioncommercial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="GestionCommercial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GestionCommercial" type="462c0819:PsiDirectoryNode" />
+              <item name="gestioncommercial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="GestionCommercial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GestionCommercial" type="462c0819:PsiDirectoryNode" />
+              <item name="gestioncommercial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GestionCommercial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GestionCommercial" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GestionCommercial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GestionCommercial" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
               <item name="forms" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="GestionCommercial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GestionCommercial" type="462c0819:PsiDirectoryNode" />
+              <item name="gestioncommercial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="forms" type="462c0819:PsiDirectoryNode" />
+              <item name="produit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="gestioncommercial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="gestioncommercial" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="forms" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -425,7 +480,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544440501348" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544884910205" />
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="D:/Learn/Projects/JavaProjects/Javafx/JavaFX Examples/Dashboard" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -437,21 +492,21 @@
     <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\houar\Desktop\GestionCommercial\src\com\houarizegai\gestioncommercial\resources\css" />
-      <recent name="C:\Users\houar\Desktop\GestionCommercial\src\com\houarizegai\gestioncommercial\resources\views\client" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\houar\Desktop\gestioncommercial\src\com\houarizegai\gestioncommercial\resources\images\icons" />
+      <recent name="C:\Users\houar\Desktop\gestioncommercial\src\com\houarizegai\gestioncommercial\java\utils\regex" />
+      <recent name="C:\Users\houar\Desktop\GestionCommercial\src\com\houarizegai\gestioncommercial\resources\views\forms\fournisseur" />
+      <recent name="C:\Users\houar\Desktop\GestionCommercial\src\com\houarizegai\gestioncommercial\resources\views\forms\client" />
+      <recent name="C:\Users\houar\Desktop\GestionCommercial\src\com\houarizegai\gestioncommercial\resources\views" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.houarizegai.gestioncommercial.java.controllers.forms.fournisseur" />
       <recent name="com.houarizegai.gestioncommercial.java.database.dao" />
       <recent name="com.houarizegai.gestioncommercial.java.controllers.forms.client" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\houar\Desktop\GestionCommercial\src\com\houarizegai\gestioncommercial\resources\views\forms\fournisseur" />
-      <recent name="C:\Users\houar\Desktop\GestionCommercial\src\com\houarizegai\gestioncommercial\resources\views\forms\client" />
-      <recent name="C:\Users\houar\Desktop\GestionCommercial\src\com\houarizegai\gestioncommercial\resources\views" />
-      <recent name="C:\Users\houar\Desktop\GestionCommercial\src\com\houarizegai\gestioncommercial\java" />
-      <recent name="C:\Users\houar\Desktop\GestionCommercial\src\com\houarizegai\gestioncommercial\java\database\dao" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\houar\Desktop\GestionCommercial\src\com\houarizegai\gestioncommercial\resources\css" />
+      <recent name="C:\Users\houar\Desktop\GestionCommercial\src\com\houarizegai\gestioncommercial\resources\views\client" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -621,16 +676,33 @@
       <workItem from="1544373127724" duration="2896000" />
       <workItem from="1544391009646" duration="4988000" />
       <workItem from="1544423049435" duration="8843000" />
+      <workItem from="1544882286615" duration="2245000" />
     </task>
+    <task id="LOCAL-00001" summary="Adding regex for Produit">
+      <created>1544883194945</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1544883194945</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Edit regex for Client">
+      <created>1544883338975</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1544883338975</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="148100000" />
+    <option name="totallyTimeSpent" value="150345000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19894099" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.17246597" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" weight="0.32980332" />
       <window_info id="Designer" order="3" />
@@ -639,7 +711,7 @@
       <window_info id="Image Layers" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.37213114" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.27868852" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -674,59 +746,15 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <MESSAGE value="Adding regex for Produit" />
+    <MESSAGE value="Edit regex for Client" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edit regex for Client" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/dao/ClientDao.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/models/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="15" column="35" selection-start-line="15" selection-start-column="35" selection-end-line="15" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/models/designpatterns/builder/ClientBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="120" column="25" selection-start-line="120" selection-start-column="25" selection-end-line="120" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_181/src.zip!/java/sql/PreparedStatement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="103" column="54" lean-forward="true" selection-start-line="103" selection-start-column="54" selection-end-line="103" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/Menu.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/menu.java" />
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/System.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/Login.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="11" column="339" lean-forward="true" selection-start-line="11" selection-start-column="339" selection-end-line="11" selection-end-column="339" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/system.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/home.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -760,12 +788,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/utils/regex/Regex.java" />
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/EditClient.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="6" column="36" lean-forward="true" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/css/crud-view.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -782,12 +810,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/DeleteClient.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="242" selection-start-line="13" selection-start-column="242" selection-end-line="13" selection-end-column="242" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/LoginDao.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -825,20 +853,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/Home.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-31">
           <caret line="17" column="15" selection-start-line="17" selection-start-column="15" selection-end-line="17" selection-end-column="15" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/Menu.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/SystemController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -855,20 +883,6 @@
             <element signature="method#initActionHomeBoxes#0;class#SystemController#0" />
             <element signature="method#setNode#0;class#SystemController#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/utils/regex/ClientRegex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/utils/UsefulMethods.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -945,32 +959,17 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/fournisseur/DeleteFournisseur.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-414">
           <caret line="19" column="33" lean-forward="true" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/forms/fournisseur/DeleteFournisseurController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
           <caret line="66" column="36" lean-forward="true" selection-start-line="66" selection-start-column="36" selection-end-line="66" selection-end-column="36" />
-          <folding>
-            <element signature="method#initialize#0;class#DeleteFournisseurController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/models/Fournisseur.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="152" column="15" selection-start-line="152" selection-start-column="15" selection-end-line="152" selection-end-column="15" />
-          <folding>
-            <element signature="e#487#516#0" />
-            <element signature="e#522#1220#0" />
-            <element signature="e#3298#4075#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1001,13 +1000,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Database/SQL queries.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="61" column="14" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/forms/fournisseur/AddFournisseurController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="206">
@@ -1026,12 +1018,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/fournisseur/EditFournisseur.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="22" column="64" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="64" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/FournisseurDao.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1052,36 +1044,36 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/Client.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="22" column="62" selection-start-line="22" selection-start-column="62" selection-end-line="22" selection-end-column="62" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/Fournisseur.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="38">
           <caret line="23" column="80" selection-start-line="23" selection-start-column="80" selection-end-line="23" selection-end-column="80" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/client/AddClient.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="16" column="45" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/fournisseur/AddFournisseur.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="301">
           <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/forms/fournisseur/EditFournisseurController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1092,7 +1084,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/FournisseurController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
+        <state relative-caret-position="1638">
           <caret line="166" column="40" selection-start-line="166" selection-start-column="40" selection-end-line="166" selection-end-column="40" />
           <folding>
             <element signature="method#initialize#0;class#FournisseurController#0" />
@@ -1108,10 +1100,135 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/utils/regex/ProduitRegex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/models/Produit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/models/Fournisseur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+          <folding>
+            <element signature="e#487#516#0" />
+            <element signature="e#522#1220#0" />
+            <element signature="e#3298#4075#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/produit/DeleteProduit.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="954">
+          <caret line="53" column="53" selection-start-line="53" selection-start-column="53" selection-end-line="53" selection-end-column="53" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/ProduitDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="105" column="50" selection-start-line="105" selection-start-column="50" selection-end-line="105" selection-end-column="50" />
+          <folding>
+            <element signature="method#getProduits#0;class#ProduitDao#0" />
+            <element signature="e#0#21#0" />
+            <element signature="method#setProduit#0;class#ProduitDao#0" />
+            <element signature="method#deleteProduit#0;class#ProduitDao#0" />
+            <element signature="e#0#41#0" />
+            <element signature="method#addProduit#0;class#ProduitDao#0" />
+            <element signature="e#0#282#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/ProduitController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="209" column="26" lean-forward="true" selection-start-line="209" selection-start-column="26" selection-end-line="209" selection-end-column="26" />
+          <folding>
+            <element signature="method#initialize#0;class#ProduitController#0" />
+            <element signature="method#filterSearchTable#0;class#ProduitController#0" />
+            <element signature="e#2638#5206#0" />
+            <element signature="class#TableProduit#0;class#ProduitController#0" />
+            <element signature="method#TableProduit#0;class#TableProduit#0;class#ProduitController#0" />
+            <element signature="method#initProduitTable#0;class#ProduitController#0" />
+            <element signature="method#loadProduitTableData#0;class#ProduitController#0" />
+            <element signature="method#onEdit#0;class#ProduitController#0" />
+            <element signature="method#onDelete#0;class#ProduitController#0" />
+            <element signature="method#getSpecialDialog#0;class#ProduitController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/utils/UsefulMethods.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/resources/views/forms/produit/AddProduit.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="77">
+          <caret line="61" column="59" selection-start-line="61" selection-start-column="59" selection-end-line="61" selection-end-column="59" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/FamilleDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-630">
+          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/database/dao/FraisPortDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="38" column="31" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="31" />
+          <folding>
+            <element signature="method#getFraisPorts#0;class#FraisPortDao#0" />
+            <element signature="method#setFraisPort#0;class#FraisPortDao#0" />
+            <element signature="method#deleteFraisPort#0;class#FraisPortDao#0" />
+            <element signature="method#addFraisPort#0;class#FraisPortDao#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/utils/regex/ClientRegex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="19" column="8" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/Launcher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="19" column="78" lean-forward="true" selection-start-line="19" selection-start-column="78" selection-end-line="19" selection-end-column="78" />
+        <state relative-caret-position="252">
+          <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Database/SQL queries.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="292" column="16" selection-start-line="292" selection-start-column="16" selection-end-line="292" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/houarizegai/gestioncommercial/java/controllers/forms/produit/AddProduitController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="144" column="57" selection-start-line="144" selection-start-column="57" selection-end-line="144" selection-end-column="57" />
         </state>
       </provider>
     </entry>

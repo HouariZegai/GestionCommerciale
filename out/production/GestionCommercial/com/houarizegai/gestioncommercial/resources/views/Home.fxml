@@ -60,7 +60,7 @@
                         <Image url="@../images/home/cards/client.png" />
                      </image>
                   </ImageView>
-                  <Label styleClass="cards-title" text="Client" />
+                  <Label styleClass="cards-title" text="Produit" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="This is just description of client" wrappingWidth="150.953125" />
                </children>
             </VBox>
