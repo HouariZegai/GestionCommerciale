@@ -1,7 +1,10 @@
 package com.houarizegai.gestioncommercial.java.controllers;
 
+import com.houarizegai.gestioncommercial.java.controllers.forms.client.DeleteClientController;
+import com.houarizegai.gestioncommercial.java.controllers.forms.produit.DeleteProduitController;
 import com.houarizegai.gestioncommercial.java.database.dao.ProduitDao;
 import com.houarizegai.gestioncommercial.java.database.models.Produit;
+import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ClientBuilder;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ProduitBuilder;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -219,7 +222,28 @@ public class ProduitController implements Initializable {
 
     @FXML
     private void onDelete() {
+        // get selected produit from table
+        String referenceSelected = colReference.getCellData(tableProduit.getSelectionModel().getSelectedIndex());
+        if (referenceSelected == null) {
+            toastMsg.show("Svp, selectionné le Produit qui vous voulez supprimer !", 2000);
+            return;
+        }
 
+        for (Produit p : produits) {
+            if (p.getReference().equalsIgnoreCase(referenceSelected)) {
+                DeleteProduitController.produit = p;
+                break;
+            }
+        }
+
+        // Show confirm dialog
+        try {
+            VBox paneDeleteProduit = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/forms/produit/DeleteProduit.fxml"));
+            dialogProduitDelete = getSpecialDialog(paneDeleteProduit);
+            dialogProduitDelete.show();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     private JFXDialog getSpecialDialog(Region content) { // This function create dialog
