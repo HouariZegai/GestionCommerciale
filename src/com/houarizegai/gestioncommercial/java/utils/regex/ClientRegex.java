@@ -17,12 +17,12 @@ public class ClientRegex { // This class contains constant of regex validate for
 
     static {
         NOM = "[a-zA-Z]{3,}";
-        PRENOM = "[a-zA-Z]{3,}";
-        SOCIETE = "[a-zA-Z0-9]{3,}";
-        TELEPHONE = "[0-9]{8,}";
-        MOBILE = "[0-9]{8,}";
+        PRENOM = "[a-zA-Z ]{3,}";
+        SOCIETE = "[a-zA-Z0-9 -]{3,}";
+        TELEPHONE = "[+]?[0-9]{8,}";
+        MOBILE = "[+]?[0-9]{8,}";
         FAX = "[0-9]{8,}";
-        EMAIL = "[a-zA-Z_][\\w]*[-]{0,4}[\\w]+@[a-zA-Z0-9]+.[a-zA-Z]{2,6}";
+        EMAIL = "[a-zA-Z_][\\w]*[-]{0,4}[\\w]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,6}";
         TYPE = "[0-9]{0,2}";
         ADRESSE = ".{3,}";
         CODE_POSTAL = "[0-9]{5}";
