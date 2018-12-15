@@ -44,7 +44,6 @@ public class ProduitController implements Initializable {
 
     private JFXTreeTableColumn<TableProduit, String> colReference, colGenCode, colCodeBarre, colLibProd, colPrixHt, colQteReappro, colQteMin, colTauxTva;
 
-
     // Dialog showing in (add/update) table
     public static JFXDialog dialogProduitAdd, dialogProduitEdit, dialogProduitDelete;
 
