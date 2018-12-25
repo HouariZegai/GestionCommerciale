@@ -38,7 +38,7 @@
                         <Image url="@../images/icons/client.png" />
                      </image>
                   </ImageView>
-                  <Label styleClass="cards-title" text="Client" />
+                  <Label styleClass="cards-title" text="Clients" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="Tu peut ajouter, modifier ou/et supprimer" wrappingWidth="158.953125" />
                </children>
             </VBox>
@@ -49,8 +49,8 @@
                         <Image url="@../images/home/cards/fourniseur.png" />
                      </image>
                   </ImageView>
-                  <Label styleClass="cards-title" text="Fourniseur" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="This is just description of client" wrappingWidth="150.953125" />
+                  <Label styleClass="cards-title" text="Fourniseurs" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="Gestion des fournisseurs" wrappingWidth="150.953125" />
                </children>
             </VBox>
             <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="cards">
@@ -60,7 +60,7 @@
                         <Image url="@../images/icons/produit.png" />
                      </image>
                   </ImageView>
-                  <Label styleClass="cards-title" text="Produit" />
+                  <Label styleClass="cards-title" text="Produits" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="This is just description of client" wrappingWidth="150.953125" />
                </children>
             </VBox>
