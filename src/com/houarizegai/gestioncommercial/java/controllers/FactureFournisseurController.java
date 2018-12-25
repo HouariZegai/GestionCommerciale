@@ -1,6 +1,7 @@
 package com.houarizegai.gestioncommercial.java.controllers;
 
 import com.houarizegai.gestioncommercial.java.database.dao.ProduitDao;
+import com.houarizegai.gestioncommercial.java.database.dao.ReglementDao;
 import com.houarizegai.gestioncommercial.java.database.dao.TVADao;
 import com.houarizegai.gestioncommercial.java.database.models.Fournisseur;
 import com.houarizegai.gestioncommercial.java.database.models.Produit;
@@ -77,9 +78,15 @@ public class FactureFournisseurController implements Initializable {
 
     /* End Product Form infos */
 
-    // Payment Mode Number
+    /* Start Mode Payment */
+
     @FXML
     private JFXTextField fieldNumModePayement;
+
+    @FXML
+    private JFXComboBox<String> comboModeReg;
+
+    /* Start Mode Payment */
 
     // Total Montant Infos
     @FXML
@@ -91,6 +98,9 @@ public class FactureFournisseurController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         toastMsg = new JFXSnackbar(root);
+
+        // init combo Payment Mode
+        comboModeReg.getItems().addAll(ReglementDao.getModeReglements());
 
         // init Date of facture
         pickerDate.setValue(LocalDate.now());
