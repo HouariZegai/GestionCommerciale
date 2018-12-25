@@ -99,12 +99,6 @@
                               <String fx:value="btn-delete" />
                            </styleClass>
                         </JFXButton>
-                        <JFXButton onAction="#onPrint" text="Imprimer">
-                           <styleClass>
-                              <String fx:value="btn" />
-                              <String fx:value="btn-print" />
-                           </styleClass>
-                        </JFXButton>
                         <HBox spacing="10.0">
                            <children>
                               <JFXTextField fx:id="fieldQte" labelFloat="true" prefWidth="80.0" promptText="Quantité" style="-fx-font-size: 19;" styleClass="field" />
@@ -116,6 +110,12 @@
                               </JFXButton>
                            </children>
                         </HBox>
+                        <JFXButton onAction="#onPrint" text="Imprimer">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="btn-print" />
+                           </styleClass>
+                        </JFXButton>
                      </children>
                   </VBox>
                </children>
@@ -151,12 +151,12 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <JFXTextField fx:id="fieldTotalHT" editable="false" styleClass="field" GridPane.columnIndex="1" />
-                              <JFXTextField fx:id="fieldTotalTVA" editable="false" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <JFXTextField fx:id="fieldTotalHT" editable="false" styleClass="field" text="0.0" GridPane.columnIndex="1" />
+                              <JFXTextField fx:id="fieldTotalTVA" editable="false" styleClass="field" text="0.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Label styleClass="lbl" text="Total HT :" />
                               <Label styleClass="lbl" text="Total TVA :" GridPane.rowIndex="1" />
                               <Label styleClass="lbl" text="Total TTC :" GridPane.rowIndex="2" />
-                              <JFXTextField fx:id="fieldTotalTTC" editable="false" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <JFXTextField fx:id="fieldTotalTTC" editable="false" styleClass="field" text="0.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
                      </children>

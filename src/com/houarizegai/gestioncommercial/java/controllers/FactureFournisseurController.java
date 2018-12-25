@@ -85,8 +85,12 @@ public class FactureFournisseurController implements Initializable {
     @FXML
     private JFXTextField fieldTotalHT, fieldTotalTVA, fieldTotalTTC;
 
+    // Error message showing in time limited (like toast in android)
+    private JFXSnackbar toastMsg;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        toastMsg = new JFXSnackbar(root);
 
         // init Date of facture
         pickerDate.setValue(LocalDate.now());
@@ -126,6 +130,49 @@ public class FactureFournisseurController implements Initializable {
             this.pu = new SimpleStringProperty(String.valueOf(pu));
             this.mht = new SimpleStringProperty(String.valueOf(mht));
             this.tva = new SimpleStringProperty(String.valueOf(tva));
+            this.mttc = new SimpleStringProperty(String.valueOf(mttc));
+        }
+
+        public int getQte() {
+            return Integer.parseInt(qte.getValue());
+        }
+
+        public void setQte(int qte) {
+            this.qte = new SimpleStringProperty(String.valueOf(qte));
+
+            this.setMht(this.getPu() * this.getQte());
+            this.setMttc(this.getMht() * this.getTva() / 100 + this.getMht());
+        }
+
+        public double getPu() {
+            return Double.parseDouble(pu.getValue());
+        }
+
+        public void setPu(double pu) {
+            this.pu = new SimpleStringProperty(String.valueOf(pu));
+        }
+
+        public double getTva() {
+            return Double.parseDouble(tva.getValue());
+        }
+
+        public void setTva(double tva) {
+            this.tva = new SimpleStringProperty(String.valueOf(tva));
+        }
+
+        public double getMht() {
+            return Double.parseDouble(this.mht.getValue());
+        }
+
+        public void setMht(double mht) {
+            this.mht = new SimpleStringProperty(String.valueOf(mht));
+        }
+
+        public double getMttc() {
+            return Double.parseDouble(this.mttc.getValue());
+        }
+
+        public void setMttc(double mttc) {
             this.mttc = new SimpleStringProperty(String.valueOf(mttc));
         }
     }
@@ -225,8 +272,10 @@ public class FactureFournisseurController implements Initializable {
 
     @FXML
     private void onDelete() { // delete product
-        if(tableProduit.getSelectionModel().getSelectedItem() == null)
+        if(tableProduit.getSelectionModel().getSelectedItem() == null) {
+            toastMsg.show("Svp, selectionnée le produit qui vous voulez supprimer !", 2000);
             return;
+        }
 
         //tableProduit.getRoot().getChildren().remove(tableProduit.getSelectionModel().getSelectedIndex());
         listProduits.remove(tableProduit.getSelectionModel().getSelectedIndex());
@@ -237,22 +286,23 @@ public class FactureFournisseurController implements Initializable {
         } catch (Exception ex) {
             System.out.println("Error catched !");
         }
-
+        countTotal();
     }
 
     @FXML
     private void onEdit() { // Edit Qte of product
         if(fieldQte.getText() == null || !fieldQte.getText().trim().matches("[0-9]{1,3}")) {
+            toastMsg.show("Svp, taper le quantité dans ce form: nombre entre 0 et 999", 2000);
             return;
         }
-        if(tableProduit.getSelectionModel().getSelectedItem() == null)
+        if(tableProduit.getSelectionModel().getSelectedItem() == null) {
+            toastMsg.show("Svp, selectionnée le produit qui vous voulez modifier !", 2000);
             return;
-
-        System.out.println("passed !");
+        }
 
         int index = tableProduit.getSelectionModel().getSelectedIndex();
         TableProduit produit = listProduits.get(index);
-        produit.qte = new SimpleStringProperty(fieldQte.getText().trim());
+        produit.setQte(Integer.parseInt(fieldQte.getText().trim()));
 
         listProduits.set(index, produit);
         final TreeItem<TableProduit> treeItem = new RecursiveTreeItem<>(listProduits, RecursiveTreeObject::getChildren);
@@ -262,6 +312,7 @@ public class FactureFournisseurController implements Initializable {
             System.out.println("Error catched !");
         }
 
+        countTotal();
         fieldQte.setText(null);
     }
 
@@ -271,6 +322,22 @@ public class FactureFournisseurController implements Initializable {
     }
 
     /* End Product operations */
+
+    /* Start */
+    private void countTotal() {
+        double totalHT = 0,
+                totalTVA = 0,
+                totalTTC = 0;
+        for(TableProduit produit : listProduits) {
+            totalHT += produit.getMht();
+            totalTVA += produit.getMht() * produit.getTva() / 100;
+            totalTTC += produit.getMttc();
+        }
+
+        fieldTotalHT.setText(String.valueOf(totalHT));
+        fieldTotalTVA.setText(String.valueOf(totalTVA));
+        fieldTotalTTC.setText(String.valueOf(totalTTC));
+    }
 
     /* Start Change Fournisseur (Bascule between fournissuer) */
 
