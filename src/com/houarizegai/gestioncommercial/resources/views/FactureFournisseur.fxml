@@ -84,7 +84,7 @@
             </StackPane>
             <HBox spacing="10.0" VBox.vgrow="ALWAYS">
                <children>
-                  <JFXTreeTableView prefHeight="220.0" HBox.hgrow="ALWAYS" />
+                  <JFXTreeTableView fx:id="tableProduit" prefHeight="220.0" HBox.hgrow="ALWAYS" />
                   <VBox spacing="10.0">
                      <children>
                         <JFXButton onAction="#onAdd" text="Nouveau">
