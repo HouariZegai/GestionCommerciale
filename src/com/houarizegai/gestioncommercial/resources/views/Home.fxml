@@ -79,11 +79,11 @@
                <children>
                   <ImageView fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/preloader.gif" />
+                        <Image url="@../images/icons/valid.png" />
                      </image>
                   </ImageView>
-                  <Label styleClass="cards-title" text="Unknown" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="This is just description of client" wrappingWidth="150.953125" />
+                  <Label styleClass="cards-title" text="Facture" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="Ajouter une Facture de fournisseur" wrappingWidth="150.953125" />
                </children>
             </VBox>
          </children>

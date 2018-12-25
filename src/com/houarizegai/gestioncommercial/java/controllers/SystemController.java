@@ -51,7 +51,7 @@ public class SystemController implements Initializable {
     private VBox menuDrawerPane;
 
     // [Client, Fournisseur, Produit] GUI (FXML)
-    private StackPane clientView, fournisseurView, produitView;
+    private StackPane clientView, fournisseurView, produitView, factureView;
     private VBox homeView;
 
     @Override
@@ -61,6 +61,7 @@ public class SystemController implements Initializable {
             clientView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Client.fxml"));
             fournisseurView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Fournisseur.fxml"));
             produitView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Produit.fxml"));
+            factureView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/FactureFournisseur.fxml"));
         } catch(IOException ioe) {
             ioe.printStackTrace();
         }
@@ -113,6 +114,11 @@ public class SystemController implements Initializable {
                 } else if(node.getAccessibleText().equalsIgnoreCase("btnProduit")) {
                     ((JFXButton) node).setOnAction(e -> {
                         setNode(produitView);
+                        showHideMenu();
+                    });
+                } else if(node.getAccessibleText().equalsIgnoreCase("btnFacture")) {
+                    ((JFXButton) node).setOnAction(e -> {
+                        setNode(factureView);
                         showHideMenu();
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("onLogout")) {
@@ -172,10 +178,12 @@ public class SystemController implements Initializable {
         VBox boxClient = (VBox) boxItems.get(0);
         VBox boxFournisseur = (VBox) boxItems.get(1);
         VBox boxProduit = (VBox) boxItems.get(2);
+        VBox boxFacture = (VBox) boxItems.get(4);
 
         boxClient.setOnMouseClicked(e -> setNode(clientView));
         boxFournisseur.setOnMouseClicked(e -> setNode(fournisseurView));
         boxProduit.setOnMouseClicked(e -> setNode(produitView));
+        boxFacture.setOnMouseClicked(e -> setNode(factureView));
     }
 
     private void setNode(Node node) {

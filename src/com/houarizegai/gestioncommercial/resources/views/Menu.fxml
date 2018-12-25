@@ -14,7 +14,7 @@
          </graphic></JFXButton>
       <JFXButton accessibleText="btnClient" alignment="BASELINE_LEFT" graphicTextGap="20.0" maxWidth="1.7976931348623157E308" styleClass="btn" text="Client">
          <graphic>
-            <Icons525View glyphName="USER" size="26" />
+            <Icons525View glyphName="USER" size="26" styleClass="icon" />
          </graphic></JFXButton>
       <JFXButton accessibleText="btnFournisseur" alignment="BASELINE_LEFT" graphicTextGap="20.0" maxWidth="1.7976931348623157E308" styleClass="btn" text="Fournisseur">
          <graphic>
@@ -24,6 +24,11 @@
          <graphic>
             <MaterialDesignIconView glyphName="VIEW_QUILT" size="29" styleClass="icon" />
          </graphic></JFXButton>
+      <JFXButton accessibleText="btnFacture" alignment="BASELINE_LEFT" graphicTextGap="20.0" maxWidth="1.7976931348623157E308" styleClass="btn" text="Facture">
+         <graphic>
+            <MaterialDesignIconView size="29" styleClass="icon" />
+         </graphic>
+      </JFXButton>
       <JFXButton accessibleText="onLogout" alignment="BASELINE_LEFT" graphicTextGap="20.0" maxWidth="1.7976931348623157E308" styleClass="btn" text="Déconnexion">
          <graphic>
             <Icons525View glyphName="SIGN_OUT" size="25" styleClass="icon" />
