@@ -5,7 +5,6 @@
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import de.jensd.fx.glyphs.icons525.Icons525View?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
@@ -17,8 +16,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.houarizegai.gestioncommercial.java.controllers.FactureFournisseurController">
    <children>
       <VBox prefHeight="620.0" prefWidth="1300.0" spacing="10.0" style="-fx-background-color: #FFF;">
          <children>
@@ -124,13 +122,13 @@
                         <StackPane>
                            <children>
                               <Label styleClass="sub-title" text="Mode Payement" StackPane.alignment="CENTER_LEFT" />
-                              <Icons525View glyphName="BUCKET" onMouseClicked="#onChooseModePayement" size="25" styleClass="icon" text="" StackPane.alignment="CENTER_RIGHT" />
+                              <FontAwesomeIconView glyphName="EDIT" onMouseClicked="#onChoosePaymentMode" size="25" styleClass="icon" StackPane.alignment="CENTER_RIGHT" />
                            </children>
                         </StackPane>
                         <HBox alignment="CENTER_LEFT" spacing="5.0">
                            <children>
                               <Label styleClass="lbl" text="N° :" />
-                              <JFXTextField styleClass="field" />
+                              <JFXTextField fx:id="fieldNumModePayement" styleClass="field" />
                            </children>
                         </HBox>
                      </children>
@@ -181,7 +179,7 @@
                               <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_RIGHT" size="26" />
                            </graphic>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" graphicTextGap="0.0" styleClass="btn-icon" text=" ">
+                        <JFXButton buttonType="RAISED" graphicTextGap="0.0" onAction="#onMoveToEnd" styleClass="btn-icon" text=" ">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_DOUBLE_RIGHT" size="26" />
                            </graphic>
