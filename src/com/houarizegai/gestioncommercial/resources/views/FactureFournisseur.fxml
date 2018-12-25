@@ -84,19 +84,13 @@
             </StackPane>
             <HBox spacing="10.0" VBox.vgrow="ALWAYS">
                <children>
-                  <JFXTreeTableView fx:id="tableProduit" prefHeight="220.0" HBox.hgrow="ALWAYS" />
-                  <VBox spacing="10.0">
+                  <JFXTreeTableView fx:id="tableProduit" maxHeight="-Infinity" prefHeight="220.0" prefWidth="650.0" />
+                  <VBox alignment="TOP_RIGHT" spacing="10.0">
                      <children>
                         <JFXButton onAction="#onAdd" text="Nouveau">
                            <styleClass>
                               <String fx:value="btn" />
                               <String fx:value="btn-add" />
-                           </styleClass>
-                        </JFXButton>
-                        <JFXButton onAction="#onEdit" text="Modifier">
-                           <styleClass>
-                              <String fx:value="btn" />
-                              <String fx:value="btn-edit" />
                            </styleClass>
                         </JFXButton>
                         <JFXButton onAction="#onDelete" text="Supprimer">
@@ -111,6 +105,17 @@
                               <String fx:value="btn-print" />
                            </styleClass>
                         </JFXButton>
+                        <HBox spacing="10.0">
+                           <children>
+                              <JFXTextField fx:id="fieldQte" labelFloat="true" prefWidth="80.0" promptText="Quantité" style="-fx-font-size: 19;" styleClass="field" />
+                              <JFXButton onAction="#onEdit" text="Modifier">
+                                 <styleClass>
+                                    <String fx:value="btn" />
+                                    <String fx:value="btn-detail" />
+                                 </styleClass>
+                              </JFXButton>
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
                </children>
