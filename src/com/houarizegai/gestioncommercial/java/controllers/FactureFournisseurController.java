@@ -60,7 +60,7 @@ public class FactureFournisseurController implements Initializable {
     private JFXTreeTableColumn<TableProduit, String> colRef, colDesignation, colQte, colPU, colMHT, colTVA, colMTTC;
 
     // Data of Table
-    private ObservableList<TableProduit> listProduits;
+    public static ObservableList<TableProduit> listProduits;
 
     /* End Product Table */
 
@@ -110,14 +110,14 @@ public class FactureFournisseurController implements Initializable {
 
     /* Start Table Produit */
 
-    class TableProduit extends RecursiveTreeObject<TableProduit> {
-        StringProperty ref;
-        StringProperty designation;
-        StringProperty qte;
-        StringProperty pu;
-        StringProperty mht;
-        StringProperty tva;
-        StringProperty mttc;
+    public class TableProduit extends RecursiveTreeObject<TableProduit> {
+        public StringProperty ref;
+        public StringProperty designation;
+        public StringProperty qte;
+        public StringProperty pu;
+        public StringProperty mht;
+        public StringProperty tva;
+        public StringProperty mttc;
 
         public TableProduit(String ref, String designation, int qte, double pu, double mht, double tva, double mttc) {
             this.ref = new SimpleStringProperty(ref);
@@ -228,7 +228,16 @@ public class FactureFournisseurController implements Initializable {
         if(tableProduit.getSelectionModel().getSelectedItem() == null)
             return;
 
-        tableProduit.getRoot().getChildren().remove(tableProduit.getSelectionModel().getSelectedIndex());
+        //tableProduit.getRoot().getChildren().remove(tableProduit.getSelectionModel().getSelectedIndex());
+        listProduits.remove(tableProduit.getSelectionModel().getSelectedIndex());
+
+        final TreeItem<TableProduit> treeItem = new RecursiveTreeItem<>(listProduits, RecursiveTreeObject::getChildren);
+        try {
+            tableProduit.setRoot(treeItem);
+        } catch (Exception ex) {
+            System.out.println("Error catched !");
+        }
+
     }
 
     @FXML

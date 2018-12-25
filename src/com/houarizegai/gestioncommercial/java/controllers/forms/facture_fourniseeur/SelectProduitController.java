@@ -41,6 +41,8 @@ public class SelectProduitController implements Initializable {
     private JFXSnackbar toastMsg;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        FactureFournisseurController.selectedProduit = null;
+
         // Init Toast Message
         toastMsg = new JFXSnackbar(root);
 
@@ -103,7 +105,15 @@ public class SelectProduitController implements Initializable {
 
         ObservableList<TableProduit> listProduits = FXCollections.observableArrayList();
         if(produits != null) {
+            //boolean isAleadyAdded;
+            foreachProduct:
             for(Produit f : produits) {
+                for(int i = 0; i < FactureFournisseurController.listProduits.size(); i++) {
+                    String ref = FactureFournisseurController.listProduits.get(i).ref.getValue();
+                    if(ref.equalsIgnoreCase(f.getReference())) {
+                        continue foreachProduct;
+                    }
+                }
                 listProduits.add(new TableProduit(f.getReference(), f.getLibProd(), f.getPrixHt(), f.getTauxTva()));
             }
         }
