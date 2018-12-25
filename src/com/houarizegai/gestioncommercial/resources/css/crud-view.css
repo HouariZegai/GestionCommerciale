@@ -9,6 +9,11 @@
     -fx-text-fill: linear-gradient(from 0 0 to 100px 100px, #00aacf, cyan)
 }
 
+.sub-title {
+    -fx-font-size: 19px;
+    -fx-text-fill: linear-gradient(from 0 0 to 100px 100px, #00aacf, cyan)
+}
+
 .field {
     -fx-pref-height: 38px;
     -fx-font-size: 17px;
@@ -23,6 +28,8 @@
     -jfx-focus-color: #2196f3;
     -fx-cursor: hand;
 }
+
+/* Start Buttons */
 
 .btn {
     -fx-pref-width: 110px;
@@ -45,6 +52,19 @@
 .btn-delete { -fx-background-color: #ff5559;}
 
 .btn-detail { -fx-background-color: #2196f3;}
+
+.btn-print { -fx-background-color: #f3bf12;}
+
+/* End Buttons */
+
+/* Start Icon */
+
+.icon {
+    -fx-cursor: hand;
+    -fx-fill: #666
+}
+
+/* End Icon */
 
 /* Start JFXSnackBar (toast msg) */
 

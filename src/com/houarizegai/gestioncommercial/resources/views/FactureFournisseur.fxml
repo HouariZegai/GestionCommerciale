@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.icons525.Icons525View?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="620.0" prefWidth="1300.0" spacing="10.0" style="-fx-background-color: #FFF;">
+         <children>
+            <HBox alignment="CENTER">
+               <children>
+                  <Label styleClass="title" text="Facture REC" />
+               </children>
+            </HBox>
+            <StackPane>
+               <children>
+                  <VBox maxWidth="-Infinity" spacing="10.0" styleClass="cards" StackPane.alignment="TOP_LEFT">
+                     <children>
+                        <StackPane>
+                           <children>
+                              <Label styleClass="sub-title" text="Fournisseur" StackPane.alignment="CENTER_LEFT" />
+                              <FontAwesomeIconView glyphName="EDIT" onMouseClicked="#onChooseFournisseur" size="25" styleClass="icon" StackPane.alignment="CENTER_RIGHT" />
+                           </children>
+                        </StackPane>
+                        <GridPane hgap="10.0" vgap="10.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="180.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <JFXTextField fx:id="fieldNumFournisseur" editable="false" styleClass="field" GridPane.columnIndex="1" />
+                              <JFXTextField fx:id="fieldNomFournisseur" editable="false" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <JFXTextField fx:id="fieldPrenomFournisseur" editable="false" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <Label styleClass="lbl" text="Numero :" />
+                              <Label styleClass="lbl" text="Nom :" GridPane.rowIndex="1" />
+                              <Label styleClass="lbl" text="Prenom :" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  <VBox maxWidth="-Infinity" spacing="10.0" styleClass="cards" StackPane.alignment="TOP_RIGHT">
+                     <children>
+                        <Label styleClass="sub-title" text="Facture Information" />
+                        <GridPane hgap="10.0" vgap="10.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="180.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <JFXTextField fx:id="fieldNumFacture" editable="false" styleClass="field" GridPane.columnIndex="1" />
+                              <JFXTextField fx:id="fieldNumFactureFournisseur" editable="false" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label styleClass="lbl" text="N° facture :" />
+                              <Label styleClass="lbl" text="N° Facture Fournisseur :" GridPane.rowIndex="1" />
+                              <Label styleClass="lbl" text="Date :" GridPane.rowIndex="2" />
+                              <JFXDatePicker fx:id="pickerDate" editable="false" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+               </children>
+            </StackPane>
+            <HBox spacing="10.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <JFXTreeTableView prefHeight="220.0" HBox.hgrow="ALWAYS" />
+                  <VBox spacing="10.0">
+                     <children>
+                        <JFXButton onAction="#onAdd" text="Nouveau">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="btn-add" />
+                           </styleClass>
+                        </JFXButton>
+                        <JFXButton onAction="#onEdit" text="Modifier">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="btn-edit" />
+                           </styleClass>
+                        </JFXButton>
+                        <JFXButton onAction="#onDelete" text="Supprimer">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="btn-delete" />
+                           </styleClass>
+                        </JFXButton>
+                        <JFXButton onAction="#onPrint" text="Imprimer">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="btn-print" />
+                           </styleClass>
+                        </JFXButton>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <StackPane>
+               <children>
+                  <VBox maxWidth="-Infinity" spacing="10.0" styleClass="cards" StackPane.alignment="TOP_LEFT">
+                     <children>
+                        <StackPane>
+                           <children>
+                              <Label styleClass="sub-title" text="Mode Payement" StackPane.alignment="CENTER_LEFT" />
+                              <Icons525View glyphName="BUCKET" onMouseClicked="#onChooseModePayement" size="25" styleClass="icon" text="" StackPane.alignment="CENTER_RIGHT" />
+                           </children>
+                        </StackPane>
+                        <HBox alignment="CENTER_LEFT" spacing="5.0">
+                           <children>
+                              <Label styleClass="lbl" text="N° :" />
+                              <JFXTextField styleClass="field" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox maxWidth="-Infinity" spacing="10.0" styleClass="cards" StackPane.alignment="TOP_RIGHT">
+                     <children>
+                        <GridPane hgap="10.0" vgap="10.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="180.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="BOTTOM" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <JFXTextField fx:id="fieldTotalHT" editable="false" styleClass="field" GridPane.columnIndex="1" />
+                              <JFXTextField fx:id="fieldTotalTVA" editable="false" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label styleClass="lbl" text="Total HT :" />
+                              <Label styleClass="lbl" text="Total TVA :" GridPane.rowIndex="1" />
+                              <Label styleClass="lbl" text="Total TTC :" GridPane.rowIndex="2" />
+                              <JFXTextField fx:id="fieldTotalTTC" editable="false" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </VBox>
+                  <HBox maxHeight="-Infinity" maxWidth="-Infinity" spacing="15.0" StackPane.alignment="BOTTOM_CENTER">
+                     <children>
+                        <JFXButton buttonType="RAISED" graphicTextGap="0.0" onAction="#onMoveToFirst" styleClass="btn-icon" text=" ">
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_DOUBLE_LEFT" size="26" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton buttonType="RAISED" graphicTextGap="0.0" onAction="#onMoveToPrevious" styleClass="btn-icon" text=" ">
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_LEFT" size="26" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton buttonType="RAISED" onAction="#onSave" text="Enregistrer">
+                           <styleClass>
+                              <String fx:value="btn" />
+                              <String fx:value="btn-add" />
+                           </styleClass>
+                        </JFXButton>
+                        <JFXButton buttonType="RAISED" graphicTextGap="0.0" onAction="#onMoveToNext" styleClass="btn-icon" text=" ">
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_RIGHT" size="26" />
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton buttonType="RAISED" graphicTextGap="0.0" styleClass="btn-icon" text=" ">
+                           <graphic>
+                              <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_DOUBLE_RIGHT" size="26" />
+                           </graphic>
+                        </JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+            </StackPane>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@../css/crud-view.css" />
+      <URL value="@../css/facture.css" />
+   </stylesheets>
+</StackPane>
