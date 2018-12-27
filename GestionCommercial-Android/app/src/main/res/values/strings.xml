@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Gestion Commercial</string>
+    <string name="title_activity_signup">Gestion Commercial</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+    <string-array  name="civilite_array">
+        <item>Mr</item>
+        <item>Mme</item>
+        <item>Mlle</item>
+    </string-array>
+</resources>
