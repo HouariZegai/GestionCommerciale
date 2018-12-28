@@ -21,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -60,8 +61,8 @@ public class SystemController implements Initializable {
     private StackPane clientView, fournisseurView, produitView, factureView;
     private VBox homeView;
 
-    // For show Settings Dialog
-    public static JFXDialog dialogSettings;
+    // For show Settings/About Dialog
+    public static JFXDialog dialogSettings, dialogAbout;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -87,6 +88,13 @@ public class SystemController implements Initializable {
         // Launch Home view
         setNode(homeView);
 
+        // Init Dialog About
+        try {
+            AnchorPane aboutView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/About.fxml"));
+            dialogAbout = new JFXDialog(root, aboutView, JFXDialog.DialogTransition.TOP);
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
     }
 
     private void initMenu() { // initalize menu (show / hide)
@@ -216,5 +224,10 @@ public class SystemController implements Initializable {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
+    }
+
+    @FXML
+    private void onShowAbout() {
+        dialogAbout.show();
     }
 }

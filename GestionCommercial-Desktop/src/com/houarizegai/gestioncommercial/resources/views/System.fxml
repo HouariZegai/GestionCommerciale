@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import de.jensd.fx.glyphs.icons525.Icons525View?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -24,7 +25,8 @@
                   </Label>
                   <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" spacing="15.0" StackPane.alignment="CENTER_RIGHT">
                      <children>
-                        <Icons525View glyphName="WP_COG_O" onMouseClicked="#onShowSettings" size="30" styleClass="icon-nav" />
+                        <Icons525View glyphName="WP_COG_O" onMouseClicked="#onShowSettings" size="29" styleClass="icon-nav" />
+                        <MaterialDesignIconView glyphName="INFORMATION_OUTLINE" onMouseClicked="#onShowAbout" size="35" styleClass="icon-nav" />
                      </children>
                      <StackPane.margin>
                         <Insets right="20.0" />
