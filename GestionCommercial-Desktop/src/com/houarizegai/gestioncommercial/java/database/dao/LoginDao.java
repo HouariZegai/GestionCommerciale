@@ -28,4 +28,52 @@ public class LoginDao {
             return -1; // error
         }
     }
+
+    public static int setUsername(String newUsername, String password) {
+        if(newUsername.equalsIgnoreCase(DBConnection.user)) { // Check if it's the current username
+            return -3;
+        }
+
+        if(DBConnection.con == null)
+            return -1;
+        try {
+            String sql = "SELECT * FROM `Login` WHERE NomUtilisateur=?;";
+            PreparedStatement ps = DBConnection.con.prepareStatement(sql);
+            ps.setString(1, newUsername);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return -2; // Username already exists
+            }
+
+            sql = "UPDATE `Login` SET `NomUtilisateur`=? WHERE `NomUtilisateur`=? AND `MotDePasse`=?;";
+            PreparedStatement prest = DBConnection.con.prepareStatement(sql);
+            prest.setString(1, newUsername);
+            prest.setString(2, DBConnection.user);
+            prest.setString(3, password);
+            return prest.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Error set Username : " + e.getErrorCode());
+            e.printStackTrace();
+            return -1;
+        } // SELECT `NomUtilisateur` FROM Login WHERE NomUtilisateur = ? AND MotDePasse = ?;
+    }
+
+    public static int setPassword(String oldPassword, String newPassword) {
+        if(DBConnection.con == null)
+            return -1;
+        try {
+            String sql = "UPDATE `Login` SET `MotDePasse`=? WHERE `NomUtilisateur`=? AND `MotDePasse`=?;";
+            PreparedStatement prest = DBConnection.con.prepareStatement(sql);
+            prest.setString(1, newPassword);
+            prest.setString(2, DBConnection.user);
+            prest.setString(3, oldPassword);
+            return prest.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Error set Password : " + e.getMessage());
+            e.printStackTrace();
+            return -1;
+        }
+    }
 }
