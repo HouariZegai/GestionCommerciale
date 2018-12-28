@@ -2,10 +2,6 @@
     -fx-font-family: "Segoe UI", Arial, sans-serif
 }
 
-.root {
-    -fx-background-color: #E9EBEE
-}
-
 .box-select {
     -fx-background-color: #FFF
 }

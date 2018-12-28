@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 
-<VBox spacing="20.0" stylesheets="@../css/settings.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.houarizegai.gestioncommercial.java.controllers.SettingsController">
+<VBox spacing="20.0" style="-fx-background-color: #F0F0F0;" stylesheets="@../css/settings.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.houarizegai.gestioncommercial.java.controllers.SettingsController">
    <children>
       <StackPane>
          <children>
@@ -165,11 +165,11 @@
                      </children>
                   </StackPane>
                   <Line endX="600.0" stroke="#dddddd" />
-                  <HBox alignment="CENTER_LEFT" prefHeight="89.0" prefWidth="601.0">
+                  <HBox alignment="CENTER" prefHeight="89.0" prefWidth="601.0">
                      <children>
                         <JFXButton onAction="#btnSave" prefHeight="40.0" prefWidth="142.0" styleClass="btn" text="Enregistrer">
                            <HBox.margin>
-                              <Insets left="200.0" />
+                              <Insets />
                            </HBox.margin>
                         </JFXButton>
                      </children>
@@ -180,6 +180,6 @@
       </HBox>
    </children>
    <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+      <Insets bottom="30.0" left="25.0" right="25.0" top="10.0" />
    </padding>
 </VBox>

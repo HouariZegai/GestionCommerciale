@@ -2,6 +2,7 @@ package com.houarizegai.gestioncommercial.java.controllers;
 
 import com.houarizegai.gestioncommercial.java.Launcher;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
@@ -34,6 +35,11 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 public class SystemController implements Initializable {
+
+    // Root node (parent of all nodes)
+    @FXML
+    private StackPane root;
+
     @FXML // This label show date and time (dynamic clock)
     private Label lblDate;
 
@@ -53,6 +59,9 @@ public class SystemController implements Initializable {
     // [Client, Fournisseur, Produit] GUI (FXML)
     private StackPane clientView, fournisseurView, produitView, factureView;
     private VBox homeView;
+
+    // For show Settings Dialog
+    public static JFXDialog dialogSettings;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -196,5 +205,16 @@ public class SystemController implements Initializable {
         ft.setCycleCount(1);
         ft.setAutoReverse(false);
         ft.play();
+    }
+
+    @FXML
+    private void onShowSettings() {
+        try {
+            VBox settingsView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Settings.fxml"));
+            dialogSettings = new JFXDialog(root, settingsView, JFXDialog.DialogTransition.BOTTOM);
+            dialogSettings.show();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
     }
 }
