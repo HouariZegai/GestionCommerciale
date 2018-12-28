@@ -88,7 +88,7 @@ public class SystemController implements Initializable {
             ioe.printStackTrace();
         }
         burgerTask = new HamburgerSlideCloseTransition(hamburgerMenu);
-        burgerTask.setRate(burgerTask.getRate() * -1);
+        //burgerTask.setRate(burgerTask.getRate() * -1);
         hamburgerMenu.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
             showHideMenu();
         });

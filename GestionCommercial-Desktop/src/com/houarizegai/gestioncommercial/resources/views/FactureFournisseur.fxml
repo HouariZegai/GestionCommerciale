@@ -19,7 +19,7 @@
 
 <StackPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.houarizegai.gestioncommercial.java.controllers.FactureFournisseurController">
    <children>
-      <VBox prefHeight="620.0" prefWidth="1300.0" spacing="10.0" style="-fx-background-color: #FFF;">
+      <VBox prefHeight="620.0" prefWidth="1300.0" spacing="10.0">
          <children>
             <HBox alignment="CENTER">
                <children>
@@ -200,7 +200,7 @@
             </StackPane>
          </children>
          <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" />
          </padding>
       </VBox>
    </children>
