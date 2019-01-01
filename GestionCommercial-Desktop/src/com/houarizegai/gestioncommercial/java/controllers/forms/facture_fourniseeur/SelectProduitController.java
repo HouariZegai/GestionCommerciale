@@ -36,7 +36,7 @@ public class SelectProduitController implements Initializable {
     // Columns of table fournisseur
     private JFXTreeTableColumn<TableProduit, String>  colRef, colLibProd, colPrixHt, colTauxTva;
 
-    List<Produit> produits;
+    private List<Produit> produits;
 
     private JFXSnackbar toastMsg;
     @Override
@@ -71,7 +71,7 @@ public class SelectProduitController implements Initializable {
 
         }
 
-        public TableProduit(String ref, String libProd, double prixHt, double tauxTva) {
+        TableProduit(String ref, String libProd, double prixHt, double tauxTva) {
             this.ref = new SimpleStringProperty(ref);
             this.libProd = new SimpleStringProperty(libProd);
             this.prixHt = new SimpleStringProperty(String.valueOf(prixHt));
@@ -127,7 +127,7 @@ public class SelectProduitController implements Initializable {
         }
     }
 
-    public void filterSearchTable() {
+    private void filterSearchTable() {
         tableProduit.setPredicate((TreeItem<TableProduit> fournisseur) -> {
             String reference = fournisseur.getValue().ref.getValue();
             String libProd = (fournisseur.getValue().libProd.getValue() == null) ? "" : fournisseur.getValue().libProd.getValue().toLowerCase();

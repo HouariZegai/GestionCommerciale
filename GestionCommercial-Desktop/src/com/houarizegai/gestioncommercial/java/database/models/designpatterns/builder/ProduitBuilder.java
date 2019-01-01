@@ -3,7 +3,6 @@ package com.houarizegai.gestioncommercial.java.database.models.designpatterns.bu
 import com.houarizegai.gestioncommercial.java.database.models.Produit;
 import javafx.scene.image.Image;
 
-import java.sql.Blob;
 import java.util.Date;
 
 public class ProduitBuilder {

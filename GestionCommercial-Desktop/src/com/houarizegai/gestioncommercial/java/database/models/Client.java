@@ -124,7 +124,7 @@ public class Client {
     }
 
     public void setPays(String pays) {
-        pays = pays;
+        this.pays = pays;
     }
 
     public String getTelephone() {

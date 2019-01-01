@@ -64,7 +64,7 @@ public class ClientController implements Initializable {
         comboSearchBy.setOnAction(e -> filterSearchTable());
     }
 
-    public void filterSearchTable() {
+    private void filterSearchTable() {
         tableClient.setPredicate((TreeItem<TableClient> client) -> {
             String numClient = client.getValue().numClient.getValue();
             String societe = (client.getValue().societe.getValue() == null) ? "" : client.getValue().societe.getValue().toLowerCase();
@@ -127,7 +127,7 @@ public class ClientController implements Initializable {
 
         }
 
-        public TableClient(int numClient, String societe, String civilite, String nomClient, String prenom,
+        TableClient(int numClient, String societe, String civilite, String nomClient, String prenom,
                            String adresse, String ville, String pays, String email) {
             this.numClient = new SimpleStringProperty(String.valueOf(numClient));
             this.societe = new SimpleStringProperty(societe);

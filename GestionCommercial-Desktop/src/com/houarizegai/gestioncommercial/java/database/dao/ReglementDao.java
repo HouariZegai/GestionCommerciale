@@ -1,7 +1,6 @@
 package com.houarizegai.gestioncommercial.java.database.dao;
 
 import com.houarizegai.gestioncommercial.java.database.DBConnection;
-import com.houarizegai.gestioncommercial.java.database.models.Cedex;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

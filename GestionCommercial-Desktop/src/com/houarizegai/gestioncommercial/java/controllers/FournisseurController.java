@@ -195,7 +195,7 @@ public class FournisseurController implements Initializable {
         }
     }
 
-    public void filterSearchTable() {
+    private void filterSearchTable() {
         tableFournisseur.setPredicate((TreeItem<TableFournisseur> fournisseur) -> {
             String numFournisseur = fournisseur.getValue().numFournisseur.getValue();
             String societe = (fournisseur.getValue().societe.getValue() == null) ? "" : fournisseur.getValue().societe.getValue().toLowerCase();

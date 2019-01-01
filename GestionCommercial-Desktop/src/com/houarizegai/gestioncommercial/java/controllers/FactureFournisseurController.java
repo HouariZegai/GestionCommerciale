@@ -1,8 +1,6 @@
 package com.houarizegai.gestioncommercial.java.controllers;
 
-import com.houarizegai.gestioncommercial.java.database.dao.ProduitDao;
 import com.houarizegai.gestioncommercial.java.database.dao.ReglementDao;
-import com.houarizegai.gestioncommercial.java.database.dao.TVADao;
 import com.houarizegai.gestioncommercial.java.database.models.Fournisseur;
 import com.houarizegai.gestioncommercial.java.database.models.Produit;
 import com.jfoenix.controls.*;
@@ -16,13 +14,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class FactureFournisseurController implements Initializable {
@@ -100,7 +98,7 @@ public class FactureFournisseurController implements Initializable {
         toastMsg = new JFXSnackbar(root);
 
         // init combo Payment Mode
-        comboModeReg.getItems().addAll(ReglementDao.getModeReglements());
+        comboModeReg.getItems().addAll(Objects.requireNonNull(ReglementDao.getModeReglements()));
 
         // init Date of facture
         pickerDate.setValue(LocalDate.now());
@@ -117,9 +115,8 @@ public class FactureFournisseurController implements Initializable {
         initDataOfProduitTable();
 
         // on Change Select
-        tableProduit.setOnMouseClicked((e -> {
-            fieldQte.setText(colQte.getCellData(tableProduit.getSelectionModel().getSelectedIndex()));
-        }));
+        tableProduit.setOnMouseClicked((e ->
+                fieldQte.setText(colQte.getCellData(tableProduit.getSelectionModel().getSelectedIndex()))));
     }
 
     /* Start Table Produit */

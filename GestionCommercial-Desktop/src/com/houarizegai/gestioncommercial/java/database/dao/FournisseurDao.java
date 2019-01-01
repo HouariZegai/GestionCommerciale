@@ -1,11 +1,8 @@
 package com.houarizegai.gestioncommercial.java.database.dao;
 
 import com.houarizegai.gestioncommercial.java.database.DBConnection;
-import com.houarizegai.gestioncommercial.java.database.models.Client;
 import com.houarizegai.gestioncommercial.java.database.models.Fournisseur;
-import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ClientBuilder;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.FournisseurBuilder;
-import com.houarizegai.gestioncommercial.java.utils.UsefulMethods;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

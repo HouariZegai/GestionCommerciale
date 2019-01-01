@@ -2,8 +2,6 @@ package com.houarizegai.gestioncommercial.java.database.models.designpatterns.bu
 
 import com.houarizegai.gestioncommercial.java.database.models.Fournisseur;
 
-import javax.xml.soap.SOAPConnection;
-
 public class FournisseurBuilder {
     private int numFournisseur;
     private String societe;

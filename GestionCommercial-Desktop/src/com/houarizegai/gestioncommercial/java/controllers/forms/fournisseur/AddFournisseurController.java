@@ -1,8 +1,6 @@
 package com.houarizegai.gestioncommercial.java.controllers.forms.fournisseur;
 
 import com.houarizegai.gestioncommercial.java.controllers.FournisseurController;
-import com.houarizegai.gestioncommercial.java.controllers.FournisseurController;
-import com.houarizegai.gestioncommercial.java.database.DBConnection;
 import com.houarizegai.gestioncommercial.java.database.dao.FournisseurDao;
 import com.houarizegai.gestioncommercial.java.database.dao.MainDao;
 import com.houarizegai.gestioncommercial.java.database.models.Fournisseur;

@@ -5,12 +5,10 @@ import com.houarizegai.gestioncommercial.java.database.models.Produit;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ProduitBuilder;
 import com.houarizegai.gestioncommercial.java.utils.UsefulMethods;
 
-import javax.jws.soap.SOAPBinding;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 

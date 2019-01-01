@@ -33,11 +33,6 @@
     -fx-cursor: hand
 }
 
-.picker {
-    -fx-cursor: hand;
-
-}
-
 .btn {
     -jfx-button-type: RAISED;
     -fx-font-size: 18px;

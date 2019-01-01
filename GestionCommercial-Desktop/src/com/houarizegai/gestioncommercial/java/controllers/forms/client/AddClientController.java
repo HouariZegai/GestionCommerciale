@@ -9,7 +9,6 @@ import com.houarizegai.gestioncommercial.java.database.models.designpatterns.bui
 import com.houarizegai.gestioncommercial.java.utils.regex.ClientRegex;
 import com.jfoenix.controls.*;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;

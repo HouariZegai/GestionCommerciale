@@ -1,13 +1,9 @@
 package com.houarizegai.gestioncommercial.java.controllers;
 
-import com.houarizegai.gestioncommercial.java.controllers.forms.client.DeleteClientController;
-import com.houarizegai.gestioncommercial.java.controllers.forms.client.EditClientController;
 import com.houarizegai.gestioncommercial.java.controllers.forms.produit.DeleteProduitController;
 import com.houarizegai.gestioncommercial.java.controllers.forms.produit.EditProduitController;
 import com.houarizegai.gestioncommercial.java.database.dao.ProduitDao;
 import com.houarizegai.gestioncommercial.java.database.models.Produit;
-import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ClientBuilder;
-import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ProduitBuilder;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleStringProperty;
@@ -26,7 +22,6 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -69,7 +64,7 @@ public class ProduitController implements Initializable {
         comboSearchBy.setOnAction(e -> filterSearchTable());
     }
 
-    public void filterSearchTable() {
+    private void filterSearchTable() {
         tableProduit.setPredicate((TreeItem<TableProduit> Produit) -> {
             String reference = Produit.getValue().reference.getValue();
             String genCode = (Produit.getValue().genCode.getValue() == null) ? "" : Produit.getValue().genCode.getValue().toLowerCase();

@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
@@ -70,7 +71,7 @@ public class LoginController implements Initializable {
                     ioe.printStackTrace();
                 }
                 Stage stage = ((Stage) fieldUser.getScene().getWindow());
-                stage.setScene(new Scene(systemView));
+                stage.setScene(new Scene(Objects.requireNonNull(systemView)));
                 Launcher.centerOnScreen(); // make stage in the center
                 break;
         }

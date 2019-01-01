@@ -99,7 +99,6 @@ CREATE TABLE TVA (
 	TauxTva DOUBLE PRIMARY KEY
 );
 
-
 -- Structure of table Client
 CREATE TABLE Client (
 	NumClient INT(8) AUTO_INCREMENT PRIMARY KEY,
@@ -142,6 +141,18 @@ CREATE TABLE Avoir (
 	Observations TEXT
 );
 
+-- Structure of table Ligne Avoir
+CREATE TABLE LigneAvoir (
+	IDLigneAvoir INT(8) PRIMARY KEY,
+	NumAvoir INT(8),
+	Reference VARCHAR(255),
+	LibProd VARCHAR(255),
+	Quantite INT(4),
+	Prix DOUBLE,
+	TauxTva DOUBLE,
+	IDLigneFac INT(8)
+);
+
 -- Structure of table Action Réalisee
 CREATE TABLE ActionRealisee (
 	IDActionRealise INT(8) AUTO_INCREMENT PRIMARY KEY,
@@ -182,6 +193,19 @@ CREATE table Devis (
 	Observations TEXT
 );
 
+-- Structure of table Ligne Devis
+CREATE TABLE LigneDevis (
+	IDLigneDevis INT(4) PRIMARY KEY,
+	Reference VARCHAR(20),
+	LibProd VARCHAR(40),
+	Quantite INT(4),
+	Remise DOUBLE,
+	TauxTva DOUBLE,
+	IDDevis INT(8),
+	PrixVente DOUBLE DEFAULT 0,
+	OrdreAffichage INT(2)
+);
+
 -- Structure of table Adresse Facturation
 CREATE TABLE Adr_Facturation (
 	IDAdresseFacturation INT(8) AUTO_INCREMENT PRIMARY KEY,
@@ -217,6 +241,21 @@ CREATE TABLE Facture (
 	Observations TEXT,
 	NumCommande INT(8)
 );
+
+-- Structure of table Ligne Facture
+CREATE TABLE LigneFac (
+	IDLigneFac INT(8) AUTO_INCREMENT PRIMARY KEY,
+	NumFacture INT(8),
+	Reference VARCHAR(20),
+	LibProd VARCHAR(40),
+	Quantite INT(4),
+	PrixVente DOUBLE,
+	Remise DOUBLE,
+	TauxTva DOUBLE,
+	IDLigneCde INT(8),
+	OrdreAffichage INT(2) DEFAULT 0
+);
+
 -- Structure of table Commande
 CREATE TABLE Commande (
 	NumCommande INT(8) AUTO_INCREMENT PRIMARY KEY,
@@ -253,28 +292,6 @@ CREATE TABLE LigneCde (
 	OptimCleCompOrdreNumCo DOUBLE
 );
 
-
--- Structure of table Ligne Avoir
-CREATE TABLE LigneAvoir (
-	IDLigneAvoir INT(8) PRIMARY KEY,
-	NumAvoir INT(8),
-	Reference VARCHAR(255),
-	LibProd VARCHAR(255),
-	Quantite INT(4),
-	Prix DOUBLE,
-	TauxTva DOUBLE,
-	IDLigneFac INT(8)
-);
-
--- Structure of table Stock
-CREATE TABLE Stock (
-	Reference VARCHAR(20) PRIMARY KEY,
-	QteEnStock INT(4),
-	QteStockVirtuel INT(4),
-	AuteurModif VARCHAR(40),
-	DateModif DATE
-);
-
 -- Structure of table Mode Livraison
 CREATE TABLE ModeLivraison (
 	IDModeLivraison INT(8) AUTO_INCREMENT PRIMARY KEY,
@@ -301,18 +318,13 @@ CREATE TABLE Produit (
 	CodePort VARCHAR(20)
 );
 
--- Structure of table Ligne Facture
-CREATE TABLE LigneFac (
-	IDLigneFac INT(8) AUTO_INCREMENT PRIMARY KEY,
-	NumFacture INT(8),
-	Reference VARCHAR(20),
-	LibProd VARCHAR(40),
-	Quantite INT(4),
-	PrixVente DOUBLE,
-	Remise DOUBLE,
-	TauxTva DOUBLE,
-	IDLigneCde INT(8),
-	OrdreAffichage INT(2) DEFAULT 0
+-- Structure of table Stock
+CREATE TABLE Stock (
+	Reference VARCHAR(20) PRIMARY KEY,
+	QteEnStock INT(4),
+	QteStockVirtuel INT(4),
+	AuteurModif VARCHAR(40),
+	DateModif DATE
 );
 
 -- Structure of table Sortie Stock
@@ -338,19 +350,6 @@ CREATE TABLE EntreeStock (
 	SaisiPar VARCHAR(40),
 	SaisiLe DATE,
 	Observations TEXT
-);
-
--- Structure of table Ligne Devis
-CREATE TABLE LigneDevis (
-	IDLigneDevis INT(4) PRIMARY KEY,
-	Reference VARCHAR(20),
-	LibProd VARCHAR(40),
-	Quantite INT(4),
-	Remise DOUBLE,
-	TauxTva DOUBLE,
-	IDDevis INT(8),
-	PrixVente DOUBLE DEFAULT 0,
-	OrdreAffichage INT(2)
 );
 
 -- -----------------------------------------------

@@ -4,13 +4,10 @@ import com.houarizegai.gestioncommercial.java.Launcher;
 import com.houarizegai.gestioncommercial.java.controllers.ProduitController;
 import com.houarizegai.gestioncommercial.java.database.DBConnection;
 import com.houarizegai.gestioncommercial.java.database.dao.*;
-import com.houarizegai.gestioncommercial.java.database.models.Client;
 import com.houarizegai.gestioncommercial.java.database.models.Fournisseur;
 import com.houarizegai.gestioncommercial.java.database.models.FraisPort;
 import com.houarizegai.gestioncommercial.java.database.models.Produit;
-import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ClientBuilder;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ProduitBuilder;
-import com.houarizegai.gestioncommercial.java.utils.regex.ClientRegex;
 import com.houarizegai.gestioncommercial.java.utils.regex.ProduitRegex;
 import com.jfoenix.controls.*;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
@@ -26,9 +23,8 @@ import org.controlsfx.control.Notifications;
 
 import java.io.*;
 import java.net.URL;
-import java.sql.Blob;
 import java.util.Date;
-import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AddProduitController implements Initializable {
@@ -62,16 +58,16 @@ public class AddProduitController implements Initializable {
     }
 
     private void initCombos() {
-        for(double taux : TVADao.getTauxTva()) // get Taux TVA from db
+        for(double taux : Objects.requireNonNull(TVADao.getTauxTva())) // get Taux TVA from db
             comboTauxTva.getItems().add(String.valueOf(taux));
 
-        for(FraisPort port : FraisPortDao.getFraisPorts()) // get Frais port from db
+        for(FraisPort port : Objects.requireNonNull(FraisPortDao.getFraisPorts())) // get Frais port from db
             comboPort.getItems().add(port.getLibFraisPort());
 
-        for(String[] f : FamilleDao.getFamilles()) // get Familles from db
+        for(String[] f : Objects.requireNonNull(FamilleDao.getFamilles())) // get Familles from db
             comboFamille.getItems().add(String.valueOf(f[1]));
 
-        for(Fournisseur f : FournisseurDao.getFournisseur())
+        for(Fournisseur f : Objects.requireNonNull(FournisseurDao.getFournisseur()))
             comboFournisseur.getItems().add(f.getNumFournisseur() + " " + f.getNom() + " " + f.getPrenom());
     }
 

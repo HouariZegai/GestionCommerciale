@@ -1,12 +1,7 @@
 package com.houarizegai.gestioncommercial.java.controllers.forms.produit;
 
-import com.houarizegai.gestioncommercial.java.controllers.ClientController;
 import com.houarizegai.gestioncommercial.java.controllers.ProduitController;
-import com.houarizegai.gestioncommercial.java.database.dao.ClientDao;
-import com.houarizegai.gestioncommercial.java.database.dao.FournisseurDao;
 import com.houarizegai.gestioncommercial.java.database.dao.ProduitDao;
-import com.houarizegai.gestioncommercial.java.database.models.Client;
-import com.houarizegai.gestioncommercial.java.database.models.Fournisseur;
 import com.houarizegai.gestioncommercial.java.database.models.Produit;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

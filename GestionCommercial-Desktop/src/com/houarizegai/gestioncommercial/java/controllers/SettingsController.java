@@ -203,7 +203,7 @@ public class SettingsController implements Initializable {
         }
 
         // Change Username
-        int status = new LoginDao().setUsername(newUsernameUserPart.getText(), currentPasswordUserPart.getText());
+        int status = LoginDao.setUsername(newUsernameUserPart.getText(), currentPasswordUserPart.getText());
 
         switch (status) {
             case -3:
@@ -244,7 +244,7 @@ public class SettingsController implements Initializable {
         }
 
         // Change Username
-        int status = new LoginDao().setPassword(currentPasswordPassPart.getText(), newPasswordPassPart.getText());
+        int status = LoginDao.setPassword(currentPasswordPassPart.getText(), newPasswordPassPart.getText());
 
         switch (status) {
             case -1:

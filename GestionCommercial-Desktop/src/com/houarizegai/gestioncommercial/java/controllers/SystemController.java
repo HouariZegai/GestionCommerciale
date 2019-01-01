@@ -47,7 +47,7 @@ public class SystemController implements Initializable {
     @FXML // icon show/hide menu
     private JFXHamburger hamburgerMenu;
     // For make animation to hamburgerMenu
-    HamburgerSlideCloseTransition burgerTask;
+    private HamburgerSlideCloseTransition burgerTask;
 
     @FXML
     private StackPane holderPane;
@@ -106,9 +106,7 @@ public class SystemController implements Initializable {
         }
         burgerTask = new HamburgerSlideCloseTransition(hamburgerMenu);
         //burgerTask.setRate(burgerTask.getRate() * -1);
-        hamburgerMenu.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> {
-            showHideMenu();
-        });
+        hamburgerMenu.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> showHideMenu());
 
         // Add action to Menu Item
         for(Node node : menuDrawerPane.getChildren()) {

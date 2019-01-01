@@ -14,10 +14,6 @@
     -jfx-focus-color: #2196f3
 }
 
-.checkbox {
-    -fx-font-size: 20px
-}
-
 .checkbox:hover {
     -fx-cursor: hand
 }

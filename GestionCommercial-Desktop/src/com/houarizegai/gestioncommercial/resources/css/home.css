@@ -31,7 +31,6 @@
 
 .cards-title {
     -fx-font-size: 22px;
-    -fx-text-fill: #333;
     -fx-text-fill: linear-gradient(from 0 0 to 100px 100px, #2196f3, #333)
 }
 

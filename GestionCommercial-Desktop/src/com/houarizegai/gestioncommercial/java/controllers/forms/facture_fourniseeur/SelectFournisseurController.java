@@ -1,7 +1,6 @@
 package com.houarizegai.gestioncommercial.java.controllers.forms.facture_fourniseeur;
 
 import com.houarizegai.gestioncommercial.java.controllers.FactureFournisseurController;
-import com.houarizegai.gestioncommercial.java.controllers.forms.fournisseur.EditFournisseurController;
 import com.houarizegai.gestioncommercial.java.database.dao.FournisseurDao;
 import com.houarizegai.gestioncommercial.java.database.models.Fournisseur;
 import com.jfoenix.controls.*;
@@ -37,7 +36,7 @@ public class SelectFournisseurController implements Initializable {
     // Columns of table fournisseur
     private JFXTreeTableColumn<TableFournisseur, String>  colNumFournisseur, colNom, colPrenom, colTelephone;
 
-    List<Fournisseur> fournisseurs;
+    private List<Fournisseur> fournisseurs;
 
     private JFXSnackbar toastMsg;
     @Override
@@ -70,7 +69,7 @@ public class SelectFournisseurController implements Initializable {
 
         }
 
-        public TableFournisseur(int numFournisseur, String nom, String prenom, String telephone) {
+        TableFournisseur(int numFournisseur, String nom, String prenom, String telephone) {
             this.numFournisseur = new SimpleStringProperty(String.valueOf(numFournisseur));
             this.nom = new SimpleStringProperty(nom);
             this.prenom = new SimpleStringProperty(prenom);
@@ -117,7 +116,7 @@ public class SelectFournisseurController implements Initializable {
         }
     }
 
-    public void filterSearchTable() {
+    private void filterSearchTable() {
         tableFournisseur.setPredicate((TreeItem<TableFournisseur> fournisseur) -> {
             String numFournisseur = fournisseur.getValue().numFournisseur.getValue();
             String nom = (fournisseur.getValue().nom.getValue() == null) ? "" : fournisseur.getValue().nom.getValue().toLowerCase();

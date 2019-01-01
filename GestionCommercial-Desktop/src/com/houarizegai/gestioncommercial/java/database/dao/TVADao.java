@@ -1,8 +1,6 @@
 package com.houarizegai.gestioncommercial.java.database.dao;
 
 import com.houarizegai.gestioncommercial.java.database.DBConnection;
-import com.houarizegai.gestioncommercial.java.database.models.Client;
-import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ClientBuilder;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

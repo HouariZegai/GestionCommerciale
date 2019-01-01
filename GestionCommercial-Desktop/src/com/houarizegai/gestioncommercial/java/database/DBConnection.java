@@ -6,11 +6,11 @@ import java.sql.SQLException;
 
 public class DBConnection {
     /* DB Information */
-    private static String HOST = "127.0.0.1";
-    private static int PORT = 3306;
-    private static String DB_NAME = "gestioncommercialdb";
-    private static String USERNAME = "root";
-    private static String PASSWORD = "";
+    private static final String HOST = "127.0.0.1";
+    private static final int PORT = 3306;
+    private static final String DB_NAME = "gestioncommercialdb";
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "";
 
     public static Connection con;
     public static String user; // Username of user entered in system
@@ -28,10 +28,6 @@ public class DBConnection {
         } catch(SQLException se) {
             se.printStackTrace();
         }
-
-    }
-
-    public static void main(String[] args) {
 
     }
 
