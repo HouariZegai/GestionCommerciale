@@ -13,116 +13,185 @@
 
         <EditText
             android:id="@+id/et_societe"
-            style="@style/InputStyle"
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
             android:hint="Societe" />
 
         <Spinner
             android:id="@+id/spinner_civilite"
-            style="@style/InputStyle"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
             android:layout_height="50dp"
-            android:autofillHints="Civilite"
             android:entries="@array/civilite_array" />
 
         <EditText
             android:id="@+id/et_nom"
-            style="@style/InputStyle"
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
             android:hint="Nom *"
             android:inputType="textCapCharacters" />
 
         <EditText
             android:id="@+id/et_prenom"
-            style="@style/InputStyle"
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
             android:hint="Prenom *"
             android:inputType="textCapWords" />
 
         <EditText
             android:id="@+id/et_adr"
-            style="@style/InputStyle"
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
             android:hint="Adresse" />
 
         <EditText
             android:id="@+id/et_code_postal"
-            style="@style/InputStyle"
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
             android:hint="Code Postal"
             android:inputType="number" />
 
         <EditText
             android:id="@+id/et_ville"
-            style="@style/InputStyle"
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
             android:hint="Ville" />
 
         <EditText
             android:id="@+id/et_pays"
-            style="@style/InputStyle"
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
             android:hint="Pays" />
 
         <EditText
             android:id="@+id/et_telephone"
-            style="@style/InputStyle"
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
             android:hint="Telephone"
             android:inputType="phone" />
 
         <EditText
             android:id="@+id/et_mobile"
-            style="@style/InputStyle"
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
             android:hint="Mobile"
             android:inputType="phone" />
 
         <EditText
             android:id="@+id/et_fax"
-            style="@style/InputStyle"
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
             android:hint="Fax"
             android:inputType="phone" />
 
         <EditText
             android:id="@+id/et_email"
-            style="@style/InputStyle"
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
             android:hint="Email"
             android:inputType="textEmailAddress" />
 
         <EditText
             android:id="@+id/et_type"
-            style="@style/InputStyle"
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
             android:hint="Type"
             android:inputType="number"
             android:maxEms="2" />
 
         <CheckBox
             android:id="@+id/check_livre_meme_adr"
-            style="@style/InputStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent" 
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
             android:text="Livre Meme Adresse ?" />
 
         <CheckBox
             android:id="@+id/check_facture_meme_adr"
-            style="@style/InputStyle"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Facture Meme Adresse ?" />
 
         <CheckBox
             android:id="@+id/check_exempt_tva"
-            style="@style/InputStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent" 
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
             android:text="Exempt TVA ?" />
 
         <EditText
             android:id="@+id/et_obs"
-            style="@style/InputStyle"
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
             android:hint="Observations"
             android:maxLines="9" />
 
         <Button
-            style="@style/Btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
+            android:textColor="@color/white"
             android:background="@color/colorPrimary"
             android:text="Enregistrer"
             android:onClick="onSave"/>
 
         <Button
-            style="@style/Btn"
-            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="tahoma"
+            android:textSize="24sp"
+            android:textColor="@color/white"
             android:text="Vider"
             android:onClick="onClear"/>
     </LinearLayout>

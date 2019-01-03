@@ -1,33 +1,41 @@
 package com.houarizegai.gestioncommercial;
 
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.*;
 
-import android.widget.Toast;
-import com.houarizegai.gestioncommercial.models.Client;
-import com.houarizegai.gestioncommercial.models.ClientBuilder;
+import com.android.volley.*;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SubscribeClientActivity extends AppCompatActivity {
 
-    /* field */
     private EditText editSociete, editNom, editPrenom, editAdresse, editCodePostal, editVille, editPays, editTelephone,
             editMobile, editFax, editEmail, editType, editObs;
     private Spinner spinnerCivilite;
     private CheckBox checkLivreMemeAdr, checkFactureMemeAdr, checkExemptTva;
-    /* */
+
+    AlertDialog.Builder dialogBuilder;
+
+    private final String REGISTER_CLIENT_URL = "http://192.168.133.2/register_client.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subscribe_client);
-        initView();
+        initViews();
     }
 
-    private void initView() {
+    private void initViews() {
         editSociete = findViewById(R.id.et_societe);
         spinnerCivilite = findViewById(R.id.spinner_civilite);
         editNom = findViewById(R.id.et_nom);
@@ -47,20 +55,95 @@ public class SubscribeClientActivity extends AppCompatActivity {
         checkExemptTva = findViewById(R.id.check_exempt_tva);
 
         editObs = findViewById(R.id.et_obs);
+
+        dialogBuilder = new AlertDialog.Builder(SubscribeClientActivity.this);
     }
 
     public void onSave(View view) {
-        if(editNom.getText() == null || editNom.getText().toString().trim().isEmpty()) {
-            Toast.makeText(this, "Nom erreur !", Toast.LENGTH_LONG).show();
+        if (editNom.getText() == null || editNom.getText().toString().trim().isEmpty()) {
+            dialogBuilder.setTitle("Erreur Taper information");
+            dialogBuilder.setMessage("Nom erreur !");
+            displayAlert("input_error_nom");
             return;
         }
-        if(editPrenom.getText() == null || editPrenom.getText().toString().trim().isEmpty()) {
-            Toast.makeText(this, "Prenom erreur !", Toast.LENGTH_LONG).show();
+        if (editPrenom.getText() == null || editPrenom.getText().toString().trim().isEmpty()) {
+            dialogBuilder.setTitle("Erreur Taper information");
+            dialogBuilder.setMessage("Prenom erreur !");
+            displayAlert("input_error_prenom");
             return;
         }
+
+        // Send data to web service
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_CLIENT_URL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONArray jsonArray = new JSONArray(response);
+                            JSONObject jsonObject = jsonArray.getJSONObject(0);
+                            String code = jsonObject.getString("code");
+                            String msg = jsonObject.getString("message");
+                            dialogBuilder.setTitle("Server Response");
+                            dialogBuilder.setMessage(msg);
+                            displayAlert(code);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("societe", editSociete.getText().toString());
+                params.put("civilite", spinnerCivilite.getSelectedItem().toString());
+                params.put("nom", editNom.getText().toString());
+                params.put("prenom", editPrenom.getText().toString());
+                params.put("adresse", editAdresse.getText().toString());
+                params.put("code_postal", editCodePostal.getText().toString());
+                params.put("ville", editVille.getText().toString());
+                params.put("pays", editPays.getText().toString());
+                params.put("telephone", editTelephone.getText().toString());
+                params.put("mobile", editMobile.getText().toString());
+                params.put("fax", editFax.getText().toString());
+                params.put("email", editEmail.getText().toString());
+                params.put("type", editType.getText().toString());
+                params.put("livre_meme_adresse", String.valueOf(checkLivreMemeAdr.isSelected()));
+                params.put("facture_meme_adresse", String.valueOf(checkFactureMemeAdr.isSelected()));
+                params.put("exempt_tva", String.valueOf(checkExemptTva.isSelected()));
+                params.put("observations", editObs.getText().toString());
+
+                return params;
+            }
+        };
+        MySignleton.getmInstance(SubscribeClientActivity.this).addToRequestQueue(stringRequest);
 
     }
 
     public void onClear(View view) {
+    }
+
+    private void displayAlert(final String code) {
+        dialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(code.equals("input_error_nom")) {
+                    editNom.setText("");
+                } else if(code.equals("input_error_prenom")) {
+                    editPrenom.setText("");
+                } else if(code.equals("reg_success")) {
+                    finish();
+                } else if(code.equals("reg_failed")) {
+                    onClear(null);
+                }
+            }
+        });
+        AlertDialog alertDialog = dialogBuilder.create();
+        alertDialog.show();
     }
 }
