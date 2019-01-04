@@ -2,14 +2,22 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SubscribeClientActivity">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="15dp">
+        android:padding="15dp"
+        tools:context=".SubscribeClientActivity">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nouveau Client"
+                android:textSize="27sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"/>
 
         <EditText
             android:id="@+id/et_societe"
@@ -17,16 +25,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:hint="Societe" />
 
         <Spinner
             android:id="@+id/spinner_civilite"
             android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
-            android:layout_height="50dp"
+            android:spinnerMode="dialog"
             android:entries="@array/civilite_array" />
 
         <EditText
@@ -35,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:hint="Nom *"
             android:inputType="textCapCharacters" />
 
@@ -45,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:hint="Prenom *"
             android:inputType="textCapWords" />
 
@@ -55,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:hint="Adresse" />
 
         <EditText
@@ -64,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:hint="Code Postal"
             android:inputType="number" />
 
@@ -74,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:hint="Ville" />
 
         <EditText
@@ -83,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:hint="Pays" />
 
         <EditText
@@ -92,7 +100,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:hint="Telephone"
             android:inputType="phone" />
 
@@ -102,7 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:hint="Mobile"
             android:inputType="phone" />
 
@@ -112,7 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:hint="Fax"
             android:inputType="phone" />
 
@@ -122,7 +130,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:hint="Email"
             android:inputType="textEmailAddress" />
 
@@ -132,7 +140,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:hint="Type"
             android:inputType="number"
             android:maxEms="2" />
@@ -143,14 +151,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:text="Livre Meme Adresse ?" />
 
         <CheckBox
             android:id="@+id/check_facture_meme_adr"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Facture Meme Adresse ?" />
@@ -161,7 +169,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:text="Exempt TVA ?" />
 
         <EditText
@@ -170,7 +178,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:hint="Observations"
             android:maxLines="9" />
 
@@ -179,10 +187,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textColor="@color/white"
             android:background="@color/colorPrimary"
             android:text="Enregistrer"
+            android:inputType="text"
             android:onClick="onSave"/>
 
         <Button
@@ -190,9 +199,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="tahoma"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textColor="@color/white"
+            android:background="#ff5559"
             android:text="Vider"
+            android:inputType="text"
             android:onClick="onClear"/>
     </LinearLayout>
 </ScrollView>

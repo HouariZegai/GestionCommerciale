@@ -9,7 +9,6 @@ import android.widget.*;
 
 import com.android.volley.*;
 import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -26,7 +25,8 @@ public class SubscribeClientActivity extends AppCompatActivity {
 
     AlertDialog.Builder dialogBuilder;
 
-    private final String REGISTER_CLIENT_URL = "http://192.168.133.2/register_client.php";
+    private final String IP_SERVER = "192.168.1.2";
+    private final String REGISTER_CLIENT_URL = "http://" + IP_SERVER + "/GestionCommerial-PHPServer/register_client.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +87,7 @@ public class SubscribeClientActivity extends AppCompatActivity {
                             dialogBuilder.setMessage(msg);
                             displayAlert(code);
                         } catch (JSONException e) {
+                            Toast.makeText(SubscribeClientActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                             e.printStackTrace();
                         }
                     }
@@ -94,7 +95,11 @@ public class SubscribeClientActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        String code = "reg_failed";
+                        String msg = "Error Response from server !";
+                        dialogBuilder.setTitle("Server Response");
+                        dialogBuilder.setMessage(msg);
+                        displayAlert(code);
                     }
                 }) {
             @Override
@@ -112,10 +117,10 @@ public class SubscribeClientActivity extends AppCompatActivity {
                 params.put("mobile", editMobile.getText().toString());
                 params.put("fax", editFax.getText().toString());
                 params.put("email", editEmail.getText().toString());
-                params.put("type", editType.getText().toString());
-                params.put("livre_meme_adresse", String.valueOf(checkLivreMemeAdr.isSelected()));
-                params.put("facture_meme_adresse", String.valueOf(checkFactureMemeAdr.isSelected()));
-                params.put("exempt_tva", String.valueOf(checkExemptTva.isSelected()));
+                params.put("type", editType.getText().toString().isEmpty() ? "0" : editType.getText().toString());
+                params.put("livre_meme_adresse", String.valueOf(checkLivreMemeAdr.isChecked()));
+                params.put("facture_meme_adresse", String.valueOf(checkFactureMemeAdr.isChecked()));
+                params.put("exempt_tva", String.valueOf(checkExemptTva.isChecked()));
                 params.put("observations", editObs.getText().toString());
 
                 return params;
@@ -126,19 +131,38 @@ public class SubscribeClientActivity extends AppCompatActivity {
     }
 
     public void onClear(View view) {
+        editSociete.setText(null);
+        editNom.setText(null);
+        editPrenom.setText(null);
+        editAdresse.setText(null);
+        editCodePostal.setText(null);
+        editVille.setText(null);
+        editPays.setText(null);
+        editTelephone.setText(null);
+        editMobile.setText(null);
+        editFax.setText(null);
+        editEmail.setText(null);
+        editType.setText(null);
+        editObs.setText(null);
+        checkLivreMemeAdr.setChecked(false);
+        checkFactureMemeAdr.setChecked(false);
+        checkExemptTva.setChecked(false);
+
     }
 
     private void displayAlert(final String code) {
         dialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                if(code.equals("input_error_nom")) {
+                if (code.equals("input_error_nom")) {
                     editNom.setText("");
-                } else if(code.equals("input_error_prenom")) {
+                    editNom.setSelected(true);
+                } else if (code.equals("input_error_prenom")) {
                     editPrenom.setText("");
-                } else if(code.equals("reg_success")) {
-                    finish();
-                } else if(code.equals("reg_failed")) {
+                    editPrenom.setSelected(true);
+                } else if (code.equals("reg_success")) {
+                    onClear(null);
+                } else if (code.equals("reg_failed")) {
                     onClear(null);
                 }
             }
