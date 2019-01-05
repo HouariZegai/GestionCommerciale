@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
@@ -57,7 +58,7 @@
                         </GridPane>
                      </children>
                   </VBox>
-                  <VBox maxWidth="-Infinity" spacing="10.0" styleClass="cards" StackPane.alignment="TOP_RIGHT">
+                  <VBox maxWidth="-Infinity" spacing="10.0" styleClass="cards" StackPane.alignment="TOP_CENTER">
                      <children>
                         <Label styleClass="sub-title" text="Facture Information" />
                         <GridPane hgap="10.0" vgap="10.0">
@@ -76,6 +77,12 @@
                               <JFXDatePicker fx:id="pickerDate" editable="false" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
+                     </children>
+                  </VBox>
+                  <VBox maxWidth="-Infinity" spacing="10.0" styleClass="cards" StackPane.alignment="TOP_RIGHT">
+                     <children>
+                        <Label styleClass="sub-title" text="Observations" />
+                        <JFXTextArea fx:id="areaObservations" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="110.0" prefWidth="270.0" promptText="Taper votre observations .." style="-fx-pref-height: 110;" styleClass="field" />
                      </children>
                   </VBox>
                </children>

@@ -8,15 +8,16 @@ import java.util.List;
 
 public class FactureBuilder {
     private int numFacture;
-    private String dateFacture;
+    private Date dateFacture;
     private int numClient;
     private int idAdresseFacturation;
     private int idModeReglement;
-    private double totalHT, totalTVA, totalFraisPort, totalTTC;
+    private double totalHT, totalTVA, totalFraisPort, totalTTC, remise;
     private boolean acquittee;
     private String saisiPar;
     private Date saisiLe;
     private String observations;
+    private int numCommande;
 
     private List<LigneFacture> ligneFactures;
 
@@ -25,7 +26,7 @@ public class FactureBuilder {
         return this;
     }
 
-    public FactureBuilder setDateFacture(String dateFacture) {
+    public FactureBuilder setDateFacture(Date dateFacture) {
         this.dateFacture = dateFacture;
         return this;
     }
@@ -65,6 +66,11 @@ public class FactureBuilder {
         return this;
     }
 
+    public FactureBuilder setRemise(double remise) {
+        this.remise = remise;
+        return this;
+    }
+
     public FactureBuilder setAcquittee(boolean acquittee) {
         this.acquittee = acquittee;
         return this;
@@ -90,7 +96,12 @@ public class FactureBuilder {
         return this;
     }
 
+    public FactureBuilder setNumCommande(int numCommande) {
+        this.numCommande = numCommande;
+        return this;
+    }
+
     public Facture build() {
-        return new Facture(numFacture, dateFacture, numClient, idAdresseFacturation, idModeReglement, totalHT, totalTVA, totalFraisPort, totalTTC, acquittee, saisiPar, saisiLe, observations, ligneFactures);
+        return new Facture(numFacture, dateFacture, numClient, idAdresseFacturation, idModeReglement, totalHT, totalTVA, totalFraisPort, totalTTC, remise, acquittee, saisiPar, saisiLe, observations, numCommande, ligneFactures);
     }
 }

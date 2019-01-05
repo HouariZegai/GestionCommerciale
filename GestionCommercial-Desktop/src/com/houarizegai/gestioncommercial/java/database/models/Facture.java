@@ -5,22 +5,23 @@ import java.util.List;
 
 public class Facture {
     private int numFacture;
-    private String dateFacture;
+    private Date dateFacture;
     private int numClient;
     private int idAdresseFacturation;
     private int idModeReglement;
-    private double totalHT, totalTVA, totalFraisPort, totalTTC;
+    private double totalHT, totalTVA, totalFraisPort, totalTTC, remise;
     private boolean acquittee;
     private String saisiPar;
     private Date saisiLe;
     private String observations;
+    private int numCommande;
 
     private List<LigneFacture> ligneFactures;
 
     public Facture() {
     }
 
-    public Facture(int numFacture, String dateFacture, int numClient, int idAdresseFacturation, int idModeReglement, double totalHT, double totalTVA, double totalFraisPort, double totalTTC, boolean acquittee, String saisiPar, Date saisiLe, String observations, List<LigneFacture> ligneFactures) {
+    public Facture(int numFacture, Date dateFacture, int numClient, int idAdresseFacturation, int idModeReglement, double totalHT, double totalTVA, double totalFraisPort, double totalTTC, double remise, boolean acquittee, String saisiPar, Date saisiLe, String observations, int numCommande, List<LigneFacture> ligneFactures) {
         this.numFacture = numFacture;
         this.dateFacture = dateFacture;
         this.numClient = numClient;
@@ -30,10 +31,12 @@ public class Facture {
         this.totalTVA = totalTVA;
         this.totalFraisPort = totalFraisPort;
         this.totalTTC = totalTTC;
+        this.remise = remise;
         this.acquittee = acquittee;
         this.saisiPar = saisiPar;
         this.saisiLe = saisiLe;
         this.observations = observations;
+        this.numCommande = numCommande;
         this.ligneFactures = ligneFactures;
     }
 
@@ -45,11 +48,11 @@ public class Facture {
         this.numFacture = numFacture;
     }
 
-    public String getDateFacture() {
+    public Date getDateFacture() {
         return dateFacture;
     }
 
-    public void setDateFacture(String dateFacture) {
+    public void setDateFacture(Date dateFacture) {
         this.dateFacture = dateFacture;
     }
 
@@ -109,6 +112,14 @@ public class Facture {
         this.totalTTC = totalTTC;
     }
 
+    public double getRemise() {
+        return remise;
+    }
+
+    public void setRemise(double remise) {
+        this.remise = remise;
+    }
+
     public boolean isAcquittee() {
         return acquittee;
     }
@@ -141,6 +152,14 @@ public class Facture {
         this.observations = observations;
     }
 
+    public int getNumCommande() {
+        return numCommande;
+    }
+
+    public void setNumCommande(int numCommande) {
+        this.numCommande = numCommande;
+    }
+
     public List<LigneFacture> getLigneFactures() {
         return ligneFactures;
     }
@@ -153,7 +172,7 @@ public class Facture {
     public String toString() {
         return "Facture{" +
                 "numFacture=" + numFacture +
-                ", dateFacture='" + dateFacture + '\'' +
+                ", dateFacture=" + dateFacture +
                 ", numClient=" + numClient +
                 ", idAdresseFacturation=" + idAdresseFacturation +
                 ", idModeReglement=" + idModeReglement +
@@ -161,10 +180,12 @@ public class Facture {
                 ", totalTVA=" + totalTVA +
                 ", totalFraisPort=" + totalFraisPort +
                 ", totalTTC=" + totalTTC +
+                ", remise=" + remise +
                 ", acquittee=" + acquittee +
                 ", saisiPar='" + saisiPar + '\'' +
                 ", saisiLe=" + saisiLe +
                 ", observations='" + observations + '\'' +
+                ", numCommande=" + numCommande +
                 ", ligneFactures=" + ligneFactures +
                 '}';
     }
