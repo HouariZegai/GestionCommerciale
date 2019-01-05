@@ -71,7 +71,7 @@ public class SystemController implements Initializable {
             clientView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Client.fxml"));
             fournisseurView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Fournisseur.fxml"));
             produitView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Produit.fxml"));
-            factureView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/FactureFournisseur.fxml"));
+            factureView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Facture.fxml"));
         } catch(IOException ioe) {
             ioe.printStackTrace();
         }

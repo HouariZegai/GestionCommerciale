@@ -77,9 +77,9 @@
             </VBox>
             <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="cards">
                <children>
-                  <ImageView fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/icons/valid.png" />
+                        <Image url="@../images/home/cards/facture.png" />
                      </image>
                   </ImageView>
                   <Label styleClass="cards-title" text="Facture" />
