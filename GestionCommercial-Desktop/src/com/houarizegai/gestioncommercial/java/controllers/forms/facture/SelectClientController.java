@@ -119,8 +119,8 @@ public class SelectClientController implements Initializable {
     private void filterSearchTable() {
         tableClient.setPredicate((TreeItem<TableClient> client) -> {
             String numClient = client.getValue().numClient.getValue();
-            String nom = (client.getValue().nom.getValue() == null) ? "" : client.getValue().nom.getValue().toLowerCase();
-            String prenom = (client.getValue().prenom.getValue() == null) ? "" : client.getValue().prenom.getValue().toLowerCase();
+            String nom = client.getValue().nom.getValue().toLowerCase();
+            String prenom = client.getValue().prenom.getValue().toLowerCase();
             String telephone = (client.getValue().telephone.getValue() == null) ? "" : client.getValue().telephone.getValue().toLowerCase();
 
 
