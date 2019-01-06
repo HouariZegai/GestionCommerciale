@@ -101,4 +101,26 @@ public class StockDao {
             return 0;
         }
     }
+
+    public static int setStockQte(Stock stock) { // Edit Stock
+        StringBuilder sql = new StringBuilder("UPDATE `stock` SET QteEnStock = QteEnStock - ?,`AuteurModif`=?,`DateModif`=? WHERE `Reference`=?;");
+
+        try {
+            if(DBConnection.con == null) {
+                return -1; // connection failed !
+            }
+            PreparedStatement prest = DBConnection.con.prepareStatement(sql.toString());
+            prest.setInt(1, stock.getQteEnStock());
+            prest.setString(2, stock.getAuteurModif());
+            prest.setDate(3, UsefulMethods.getSQLDate(stock.getDateModif()));
+            prest.setString(4, stock.getReference());
+
+            return prest.executeUpdate();
+
+        } catch (SQLException se) {
+            System.out.println("Set Stock Error SQL");
+            se.printStackTrace();
+            return 0;
+        }
+    }
 }
