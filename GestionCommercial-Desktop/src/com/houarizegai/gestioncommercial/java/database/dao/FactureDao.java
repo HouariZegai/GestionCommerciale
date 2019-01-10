@@ -7,12 +7,59 @@ import com.houarizegai.gestioncommercial.java.database.models.designpatterns.bui
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.LigneFactureBuilder;
 import com.houarizegai.gestioncommercial.java.utils.UsefulMethods;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javax.xml.transform.Result;
+import java.sql.*;
+import java.util.LinkedList;
+import java.util.List;
 
 public class FactureDao {
+
+    public static List<Facture> getFactures() { // Get all facture with ligne facture from database
+        if (DBConnection.con == null) // Check connection
+            return null;
+
+        List<Facture> factureList = new LinkedList<>();
+
+        String sql = "SELECT * FROM Facture;";
+        try {
+            PreparedStatement prest = DBConnection.con.prepareStatement(sql);
+            ResultSet rsFac = prest.executeQuery();
+            String sqlLigneFac = "SELECT * FROM LigneFac WHERE NumFacture = ?;";
+            ResultSet rsLigneFac;
+            while (rsFac.next()) {
+                // get ligne facture
+                List<LigneFacture> ligneFactures = getLigneFactures(rsFac.getInt("NumFacture"));
+
+                Facture facture = new FactureBuilder()
+                        .setNumFacture(rsFac.getInt("NumFacture"))
+                        .setDateFacture(rsFac.getDate("DateFacture"))
+                        .setNumClient(rsFac.getInt("NumClient"))
+                        .setIdAdresseFacturation(rsFac.getInt("IDAdresseFacturation"))
+                        .setIdModeReglement(rsFac.getInt("IDModeReglement"))
+                        .setTotalHT(rsFac.getDouble("TotalHt"))
+                        .setTotalTVA(rsFac.getDouble("TotalTva"))
+                        .setTotalFraisPort(rsFac.getDouble("TotalFraisPort"))
+                        .setTotalTTC(rsFac.getDouble("TotalTtc"))
+                        .setRemise(rsFac.getDouble("Remise"))
+                        .setAcquittee(rsFac.getBoolean("Acquittee"))
+                        .setSaisiPar(rsFac.getString("SaisiPar"))
+                        .setSaisiLe(rsFac.getDate("SaisiLe"))
+                        .setObservations(rsFac.getString("Observations"))
+                        .setNumCommande(rsFac.getInt("NumCommande"))
+                        .setLigneFactures(ligneFactures)
+                        .build();
+
+                factureList.add(facture);
+            }
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+
+
+        return factureList;
+    }
+
     public static int addFacture(Facture facture) { // Add facture with Ligne facture
         if (DBConnection.con == null) // Connection failed !
             return -1;
@@ -74,5 +121,92 @@ public class FactureDao {
         }
 
         return status;
+    }
+
+    public static Facture getNextFacture(int currentNumFact) {
+        String sql = "SELECT* FROM Facture WHERE NumFacture = (SELECT MIN(NumFacture) FROM Facture WHERE NumFacture > " + currentNumFact + ");";
+
+        return getFactureFromQuery(sql);
+    }
+
+    public static Facture getPreviousFacture(int currentNumFact) {
+        String sql = "SELECT* FROM Facture WHERE NumFacture = (SELECT MAX(NumFacture) FROM Facture WHERE NumFacture < " + currentNumFact + ");";
+
+        return getFactureFromQuery(sql);
+    }
+
+    private static Facture getFactureFromQuery(String sql) {
+        if(DBConnection.con == null)
+            return null;
+        Facture facture = null;
+        try {
+            Statement st = DBConnection.con.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            if (rs.next()) {
+                int numFact = rs.getInt("NumFacture");
+                List<LigneFacture> ligneFactures = getLigneFactures(numFact);
+                facture = new FactureBuilder()
+                        .setNumFacture(numFact)
+                        .setDateFacture(rs.getDate("DateFacture"))
+                        .setNumClient(rs.getInt("NumClient"))
+                        .setIdAdresseFacturation(rs.getInt("IDAdresseFacturation"))
+                        .setIdModeReglement(rs.getInt("IDModeReglement"))
+                        .setTotalHT(rs.getDouble("TotalHt"))
+                        .setTotalTVA(rs.getDouble("TotalTva"))
+                        .setTotalFraisPort(rs.getDouble("TotalFraisPort"))
+                        .setTotalTTC(rs.getDouble("TotalTtc"))
+                        .setRemise(rs.getDouble("Remise"))
+                        .setAcquittee(rs.getBoolean("Acquittee"))
+                        .setSaisiPar(rs.getString("SaisiPar"))
+                        .setSaisiLe(rs.getDate("SaisiLe"))
+                        .setObservations(rs.getString("Observations"))
+                        .setNumCommande(rs.getInt("NumCommande"))
+                        .setLigneFactures(ligneFactures)
+                        .build();
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+
+        return facture;
+    }
+
+    public static List<LigneFacture> getLigneFactures(int numFacture) {
+        if (DBConnection.con == null)
+            return null;
+
+        List<LigneFacture> ligneFactures = null;
+        try {
+            String sql = "SELECT * FROM LigneFac WHERE NumFacture = ?;";
+            PreparedStatement ps = DBConnection.con.prepareStatement(sql);
+            ps.setInt(1, numFacture);
+            ResultSet rs = ps.executeQuery();
+
+            ligneFactures = new LinkedList<>();
+            while (rs.next()) {
+                LigneFacture ligneFacture = new LigneFactureBuilder()
+                        .setNumFacture(rs.getInt("NumFacture"))
+                        .setReference(rs.getString("Reference"))
+                        .setLibProd(rs.getString("LibProd"))
+                        .setQuantite(rs.getInt("Quantite"))
+                        .setPrixVente(rs.getDouble("PrixVente"))
+                        .setRemise(rs.getDouble("Remise"))
+                        .setTauxTva(rs.getInt("TauxTva"))
+                        .setIdLigneCde(rs.getInt("IdLigneCde"))
+                        .setOrdreAffichage(rs.getInt("OrdreAffichage"))
+                        .build();
+                ligneFactures.add(ligneFacture);
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+
+        return ligneFactures;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(getPreviousFacture(4));
+//        for(Facture facture : getFactures())
+//            System.out.println(facture);
     }
 }
