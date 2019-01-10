@@ -135,6 +135,18 @@ public class FactureDao {
         return getFactureFromQuery(sql);
     }
 
+    public static Facture getFirstFacture() {
+        String sql = "SELECT * FROM Facture LIMIT 1;";
+
+        return getFactureFromQuery(sql);
+    }
+
+    public static Facture getLastFacture() {
+        String sql = "SELECT * FROM Facture ORDER BY NumFacture DESC LIMIT 1;";
+
+        return getFactureFromQuery(sql);
+    }
+
     private static Facture getFactureFromQuery(String sql) {
         if(DBConnection.con == null)
             return null;
@@ -205,7 +217,7 @@ public class FactureDao {
     }
 
     public static void main(String[] args) {
-        System.out.println(getPreviousFacture(4));
+        System.out.println(getLastFacture());
 //        for(Facture facture : getFactures())
 //            System.out.println(facture);
     }
