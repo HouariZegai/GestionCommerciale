@@ -24,7 +24,7 @@
          <children>
             <HBox alignment="CENTER">
                <children>
-                  <Label styleClass="title" text="Facture REC" />
+                  <Label styleClass="title" text="Facture Client" />
                </children>
             </HBox>
             <StackPane>
@@ -173,12 +173,12 @@
                   </VBox>
                   <HBox maxHeight="-Infinity" maxWidth="-Infinity" spacing="15.0" StackPane.alignment="BOTTOM_CENTER">
                      <children>
-                        <JFXButton buttonType="RAISED" graphicTextGap="0.0" onAction="#onMoveToFirst" styleClass="btn-icon" text=" ">
+                        <JFXButton fx:id="btnMoveToFirst" buttonType="RAISED" graphicTextGap="0.0" styleClass="btn-icon" text=" ">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_DOUBLE_LEFT" size="26" />
                            </graphic>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" graphicTextGap="0.0" onAction="#onMoveToPrevious" styleClass="btn-icon" text=" ">
+                        <JFXButton fx:id="btnMoveToPrevious" buttonType="RAISED" graphicTextGap="0.0" styleClass="btn-icon" text=" ">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_LEFT" size="26" />
                            </graphic>
@@ -189,12 +189,12 @@
                               <String fx:value="btn-add" />
                            </styleClass>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" graphicTextGap="0.0" onAction="#onMoveToNext" styleClass="btn-icon" text=" ">
+                        <JFXButton fx:id="btnMoveToNext" buttonType="RAISED" disable="true" graphicTextGap="0.0" styleClass="btn-icon" text=" ">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_RIGHT" size="26" />
                            </graphic>
                         </JFXButton>
-                        <JFXButton buttonType="RAISED" graphicTextGap="0.0" onAction="#onMoveToEnd" styleClass="btn-icon" text=" ">
+                        <JFXButton fx:id="btnMoveToEnd" buttonType="RAISED" disable="true" graphicTextGap="0.0" styleClass="btn-icon" text=" ">
                            <graphic>
                               <FontAwesomeIconView fill="WHITE" glyphName="ANGLE_DOUBLE_RIGHT" size="26" />
                            </graphic>

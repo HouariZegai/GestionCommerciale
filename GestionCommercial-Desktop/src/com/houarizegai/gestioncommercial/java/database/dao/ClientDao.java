@@ -5,6 +5,7 @@ import com.houarizegai.gestioncommercial.java.database.models.Client;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ClientBuilder;
 import com.houarizegai.gestioncommercial.java.utils.UsefulMethods;
 
+import javax.xml.transform.Result;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,6 +14,48 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ClientDao {
+
+    public static Client getClient(int numClient) {
+        String sql = "SELECT * FROM Client WHERE NumClient=?;";
+        Client client = null;
+        try {
+            PreparedStatement prest = DBConnection.con.prepareStatement(sql);
+            prest.setInt(1, numClient);
+            ResultSet rs = prest.executeQuery();
+            if(rs.next()) {
+                client = new ClientBuilder()
+                        .setNumClient(rs.getInt(1))
+                        .setSociete(rs.getString(2))
+                        .setCivilite(rs.getString(3))
+                        .setNomClient(rs.getString(4))
+                        .setPrenom(rs.getString(5))
+                        .setAdresse(rs.getString(6))
+                        .setCodePostal(rs.getString(7))
+                        .setVille(rs.getString(8))
+                        .setPays(rs.getString(9))
+                        .setTelephone(rs.getString(10))
+                        .setMobile(rs.getString(11))
+                        .setFax(rs.getString(12))
+                        .setEmail(rs.getString(13))
+                        .setType(rs.getInt(14))
+                        .setLivreMemeAdresse(rs.getBoolean(15))
+                        .setFactureMemeAdresse(rs.getBoolean(16))
+                        .setExemptTva(rs.getBoolean(17))
+                        .setSaisiPar(rs.getString(18))
+                        .setSaisiLe(rs.getDate(19))
+                        .setAuteurModif(rs.getString(20))
+                        .setDateModif(rs.getDate(21))
+                        .setObservations(rs.getString(22))
+                        .build();
+            }
+
+        } catch (SQLException se) {
+            System.out.println("SQL Error in getClient");
+            se.printStackTrace();
+        }
+
+        return client;
+    }
 
     public static List<Client> getClients() { // Get all client from database
         String sql = "SELECT * FROM Client;";

@@ -1,15 +1,13 @@
 package com.houarizegai.gestioncommercial.java.controllers;
 
 import com.houarizegai.gestioncommercial.java.database.DBConnection;
-import com.houarizegai.gestioncommercial.java.database.dao.FactureDao;
-import com.houarizegai.gestioncommercial.java.database.dao.MainDao;
-import com.houarizegai.gestioncommercial.java.database.dao.ReglementDao;
-import com.houarizegai.gestioncommercial.java.database.dao.StockDao;
+import com.houarizegai.gestioncommercial.java.database.dao.*;
 import com.houarizegai.gestioncommercial.java.database.models.*;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.FactureBuilder;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.LigneFactureBuilder;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ReglementBuilder;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.StockBuilder;
+import com.houarizegai.gestioncommercial.java.utils.UsefulMethods;
 import com.houarizegai.gestioncommercial.java.utils.regex.ProduitRegex;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -24,12 +22,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 public class FactureController implements Initializable {
@@ -105,6 +105,10 @@ public class FactureController implements Initializable {
     @FXML
     private JFXTextField fieldTotalHT, fieldTotalTVA, fieldTotalTTC;
 
+    // Buttons
+    @FXML
+    private JFXButton btnMoveToFirst, btnMoveToPrevious, btnMoveToNext, btnMoveToEnd;
+
     // Error message showing in time limited (like toast in android)
     private JFXSnackbar toastMsg;
 
@@ -141,6 +145,40 @@ public class FactureController implements Initializable {
             fieldQte.setText(colQte.getCellData(tableProduit.getSelectionModel().getSelectedIndex()));
             fieldRemise.setText(colRemise.getCellData(tableProduit.getSelectionModel().getSelectedIndex()));
         }));
+
+        // Init action in Buttons
+        initActionButtons();
+    }
+
+    private void initActionButtons() {
+        btnMoveToFirst.setOnAction(e -> {
+            loadFactureToView(FactureDao.getFirstFacture());
+            btnMoveToFirst.setDisable(true);
+            btnMoveToEnd.setDisable(false);
+            btnMoveToPrevious.setDisable(true);
+            btnMoveToNext.setDisable(false);
+        });
+        btnMoveToEnd.setOnAction(e -> {
+            onReset();
+            btnMoveToFirst.setDisable(false);
+            btnMoveToEnd.setDisable(true);
+            btnMoveToPrevious.setDisable(false);
+            btnMoveToNext.setDisable(true);
+        });
+        btnMoveToPrevious.setOnAction(e -> {
+            loadFactureToView(FactureDao.getPreviousFacture(Integer.parseInt(fieldNumFacture.getText())));
+            btnMoveToEnd.setDisable(false);
+            btnMoveToNext.setDisable(false);
+        });
+        btnMoveToNext.setOnAction(e -> {
+            Facture facture = FactureDao.getNextFacture(Integer.parseInt(fieldNumFacture.getText()));
+            loadFactureToView(facture);
+            if(facture == null) { // Show new Facture
+                onReset();
+            }
+            btnMoveToFirst.setDisable(false);
+            btnMoveToPrevious.setDisable(false);
+        });
     }
 
     /* Start Table Produit */
@@ -385,7 +423,7 @@ public class FactureController implements Initializable {
 
     /* End Product operations */
 
-    /* Start */
+    // Count total price
     private void countTotal() {
         double totalHT = 0,
                 totalTVA = 0,
@@ -403,27 +441,62 @@ public class FactureController implements Initializable {
 
     /* Start Change Facture (Bascule between facture) */
 
-    @FXML
-    private void onMoveToFirst() {
+    private void loadFactureToView(Facture facture) {
+        if(facture == null)
+            return;
+
+        // Facture pricipale info
+        fieldNumFacture.setText(String.valueOf(facture.getNumFacture()));
+        pickerDate.setValue(UsefulMethods.getSQLDate(facture.getDateFacture()).toLocalDate());
+
+        // Client
+        Client client = ClientDao.getClient(facture.getNumClient());
+        fieldNumClient.setText(String.valueOf(client.getNumClient()));
+        fieldNomClient.setText(client.getNomClient());
+        fieldPrenomClient.setText(client.getPrenom());
+
+        areaObservations.setText(facture.getObservations());
+
+        // Mode Reglement
+        String libModeReglement = ReglementDao.getLibModeReglement(facture.getIdModeReglement());
+        comboModeReg.getSelectionModel().select(libModeReglement);
+
+        loadDataToProductTable(facture.getLigneFactures());
+
+        countTotal();
+        fieldQte.setText(null);
+        fieldRemise.setText(null);
 
     }
 
-    @FXML
-    private void onMoveToNext() {
+    private void loadDataToProductTable(List<LigneFacture> ligneFactures) { // Set data to table of ligne Facture
+        listProduits.clear();
 
+        for(LigneFacture ligneFacture : ligneFactures) {
+            TableProduit produit = new TableProduit(ligneFacture.getReference(),
+                    ligneFacture.getLibProd(),
+                    ligneFacture.getQuantite(),
+                    ligneFacture.getPrixVente(),
+                    ligneFacture.getRemise(),
+                    0.0,
+                    ligneFacture.getTauxTva(),
+                    0.0);
+            // Update mht & mttc
+            produit.setMht((produit.getPu() - (produit.getPu() / 100 * produit.getRemise())) * produit.getQte());
+            produit.setMttc(produit.getMht() * produit.getTva() / 100 + produit.getMht());
+
+            listProduits.add(produit);
+        }
+
+        final TreeItem<TableProduit> treeItem = new RecursiveTreeItem<>(listProduits, RecursiveTreeObject::getChildren);
+        try {
+            tableProduit.setRoot(treeItem);
+        } catch (Exception ex) {
+            System.out.println("Error catched !");
+        }
     }
 
-    @FXML
-    private void onMoveToEnd() {
-
-    }
-
-    @FXML
-    private void onMoveToPrevious() {
-
-    }
-
-    /* End Change Facture (Bascule between facture) */
+    /* End Change Facture (Bascule between factures) */
 
     @FXML
     private void onSave() {
@@ -502,6 +575,27 @@ public class FactureController implements Initializable {
         }
     }
 
+    private List<LigneFacture> getLigneFacturesFromTable() {
+        List<LigneFacture> ligneFactures = new LinkedList<>();
+
+        int numeroFact = Integer.parseInt(fieldNumFacture.getText());
+
+        for (TableProduit produit : listProduits) {
+            LigneFacture ligneFacture = new LigneFactureBuilder()
+                    .setNumFacture(numeroFact)
+                    .setReference(produit.getRef())
+                    .setLibProd(produit.getDesignation())
+                    .setQuantite(produit.getQte())
+                    .setPrixVente(produit.getPu())
+                    .setRemise(produit.getRemise())
+                    .setTauxTva(produit.getTva())
+                    .build();
+            ligneFactures.add(ligneFacture);
+        }
+
+        return ligneFactures;
+    }
+
     private void onReset() { // Clear screen
         // Get Auto increment facture number from db
         fieldNumFacture.setText(String.valueOf(MainDao.getCurrentAutoIncrement("Facture")));
@@ -532,28 +626,7 @@ public class FactureController implements Initializable {
         fieldTotalTTC.setText("0.0");
     }
 
-    private List<LigneFacture> getLigneFacturesFromTable() {
-        List<LigneFacture> ligneFactures = new LinkedList<>();
-
-        int numeroFact = Integer.parseInt(fieldNumFacture.getText());
-
-        for (TableProduit produit : listProduits) {
-            LigneFacture ligneFacture = new LigneFactureBuilder()
-                    .setNumFacture(numeroFact)
-                    .setReference(produit.getRef())
-                    .setLibProd(produit.getDesignation())
-                    .setQuantite(produit.getQte())
-                    .setPrixVente(produit.getPu())
-                    .setRemise(produit.getRemise())
-                    .setTauxTva(produit.getTva())
-                    .build();
-            ligneFactures.add(ligneFacture);
-        }
-
-        return ligneFactures;
-    }
-
-    private void updateStockAfterFactureAdded() {
+    private void updateStockAfterFactureAdded() { // Not yet used
         for (TableProduit produit : listProduits) {
             Stock stock = new StockBuilder()
                     .setReference(produit.getRef())
