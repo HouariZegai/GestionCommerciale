@@ -25,8 +25,8 @@ public class SubscribeClientActivity extends AppCompatActivity {
 
     AlertDialog.Builder dialogBuilder;
 
-    private final String IP_SERVER = "192.168.1.2";
-    private final String REGISTER_CLIENT_URL = "http://" + IP_SERVER + "/GestionCommercial-PHPServer/register_client.php";
+    private final String IP_SERVER = "192.168.43.9";
+    private final String REGISTER_CLIENT_URL = "http://" + IP_SERVER + "/GestionCommercial-Server/register_client.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
