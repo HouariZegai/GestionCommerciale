@@ -22,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -124,6 +125,7 @@ public class FactureController implements Initializable {
 
         // Get Mode reglement from db
         modeReglements = ReglementDao.getModeReglements();
+
         // init combo Mode reglement
         for (ModeReglement modeReglement : modeReglements)
             comboModeReg.getItems().addAll(modeReglement.getLibModeReglement());
@@ -142,9 +144,23 @@ public class FactureController implements Initializable {
 
         // on Change Select in product table
         tableProduit.setOnMouseClicked((e -> {
+            if (tableProduit.getSelectionModel().getSelectedItem() == null)
+                return;
+
             fieldQte.setText(colQte.getCellData(tableProduit.getSelectionModel().getSelectedIndex()));
             fieldRemise.setText(colRemise.getCellData(tableProduit.getSelectionModel().getSelectedIndex()));
+            fieldQte.requestFocus(); // UX: Make cursor in qte field when i select row in table
         }));
+
+        /* UX: when i click enter in (qte or remise) field execute Edit method */
+        fieldQte.setOnKeyReleased(e-> {
+            if(e.getCode().equals(KeyCode.ENTER))
+                onEdit();
+        });
+        fieldRemise.setOnKeyReleased(e-> {
+            if(e.getCode().equals(KeyCode.ENTER))
+                onEdit();
+        });
 
         // Init action in Buttons
         initActionButtons();
