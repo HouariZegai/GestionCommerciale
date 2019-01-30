@@ -72,7 +72,6 @@ public class SystemController implements Initializable {
             fournisseurView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Fournisseur.fxml"));
             produitView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Produit.fxml"));
             factureView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Facture.fxml"));
-            reglementView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Reglement.fxml"));
         } catch(IOException ioe) {
             ioe.printStackTrace();
         }
@@ -139,7 +138,12 @@ public class SystemController implements Initializable {
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("btnReglement")) {
                     ((JFXButton) node).setOnAction(e -> {
-                        setNode(reglementView);
+                        try {
+                            reglementView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Reglement.fxml"));
+                            setNode(reglementView);
+                        } catch (IOException ioe) {
+                            ioe.printStackTrace();
+                        }
                         showHideMenu();
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("onLogout")) {
@@ -206,7 +210,14 @@ public class SystemController implements Initializable {
         boxFournisseur.setOnMouseClicked(e -> setNode(fournisseurView));
         boxProduit.setOnMouseClicked(e -> setNode(produitView));
         boxFacture.setOnMouseClicked(e -> setNode(factureView));
-        boxReglement.setOnMouseClicked(e -> setNode(reglementView));
+        boxReglement.setOnMouseClicked(e -> {
+            try {
+                reglementView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Reglement.fxml"));
+                setNode(reglementView);
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        });
     }
 
     private void setNode(Node node) {

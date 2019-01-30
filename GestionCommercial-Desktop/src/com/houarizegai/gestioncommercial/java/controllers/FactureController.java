@@ -8,6 +8,7 @@ import com.houarizegai.gestioncommercial.java.database.models.designpatterns.bui
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ReglementBuilder;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.StockBuilder;
 import com.houarizegai.gestioncommercial.java.utils.UsefulMethods;
+import com.houarizegai.gestioncommercial.java.utils.regex.ClientRegex;
 import com.houarizegai.gestioncommercial.java.utils.regex.ProduitRegex;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -92,7 +93,7 @@ public class FactureController implements Initializable {
     /* Start Mode Reglement */
 
     @FXML
-    private JFXTextField fieldNumModePayement;
+    private JFXTextField fieldMontantModePay;
 
     @FXML
     private JFXComboBox<String> comboModeReg;
@@ -520,7 +521,7 @@ public class FactureController implements Initializable {
             toastMsg.show("Svp, selectionné le client", 2000);
             return;
         }
-        if(fieldNumModePayement.getText() != null && !fieldNumModePayement.getText().trim().matches("[0-9]{1,30}")) {
+        if(fieldMontantModePay.getText() != null && !fieldMontantModePay.getText().trim().matches(ProduitRegex.PRIX_HT)) {
             toastMsg.show("Svp, taper un nombre dans le numero de mode reglement !", 2000);
             return;
         }
@@ -566,7 +567,7 @@ public class FactureController implements Initializable {
                 //updateStockAfterFactureAdded();
 
                 // Save Reglement if exist
-                if(fieldNumModePayement.getText() != null && !fieldNumModePayement.getText().trim().isEmpty()) {
+                if(fieldMontantModePay.getText() != null && !fieldMontantModePay.getText().trim().isEmpty()) {
                     Reglement reglement = new ReglementBuilder()
                             .setDateReglement(java.sql.Date.valueOf(pickerDate.getValue()))
                             .setIdModeReglement(selectedIdModeReg)
@@ -574,6 +575,7 @@ public class FactureController implements Initializable {
                             .setSaisiPar(DBConnection.user)
                             .setSaisiLe(new Date())
                             .setObservations(areaObservations.getText())
+                            .setMontant(Double.valueOf(fieldMontantModePay.getText() == null ? "0.0" : fieldMontantModePay.getText()))
                             .build();
 
                     status = ReglementDao.addReglement(reglement);
@@ -623,7 +625,7 @@ public class FactureController implements Initializable {
         areaObservations.setText(null);
 
         comboModeReg.getSelectionModel().select(0);
-        fieldNumModePayement.setText(null);
+        fieldMontantModePay.setText(null);
 
         // Delete content of table
         listProduits.clear();

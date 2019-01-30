@@ -142,8 +142,8 @@
                            <children>
                               <Label styleClass="lbl" text="Mode Reglement :" />
                               <JFXComboBox fx:id="comboModeReg" maxWidth="1.7976931348623157E308" styleClass="field" GridPane.columnIndex="1" />
-                              <Label styleClass="lbl" text="N° :" GridPane.rowIndex="1" />
-                              <JFXTextField fx:id="fieldNumModePayement" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Label styleClass="lbl" text="Montant" GridPane.rowIndex="1" />
+                              <JFXTextField fx:id="fieldMontantModePay" styleClass="field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                            </children>
                         </GridPane>
                      </children>

@@ -29,7 +29,7 @@
             <MaterialDesignIconView size="29" styleClass="icon" />
          </graphic>
       </JFXButton>
-      <JFXButton accessibleText="btnReglement" alignment="BASELINE_LEFT" graphicTextGap="20.0" maxWidth="1.7976931348623157E308" styleClass="btn" text="Facture">
+      <JFXButton accessibleText="btnReglement" alignment="BASELINE_LEFT" graphicTextGap="20.0" maxWidth="1.7976931348623157E308" styleClass="btn" text="Reglement">
          <graphic>
             <MaterialDesignIconView glyphName="GROUP" size="29" styleClass="icon" />
          </graphic>
