@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox prefHeight="300.0" prefWidth="830.0" spacing="10.0" stylesheets="@../../../css/crud-forms.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.houarizegai.gestioncommercial.java.controllers.forms.reglement.DeleteReglementController">
+   <children>
+      <Label styleClass="title-delete" text="Confirmation" />
+      <HBox spacing="15.0">
+         <children>
+            <VBox spacing="5.0">
+               <children>
+                  <GridPane hgap="10.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="60.0" prefWidth="130.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label prefHeight="20.0" prefWidth="75.0" styleClass="delete-content-title" text="Id" />
+                        <Label fx:id="lblIdReg" styleClass="delete-content-txt" GridPane.columnIndex="1" />
+                        <Label styleClass="delete-content-title" text="Date" GridPane.rowIndex="1" />
+                        <Label fx:id="lblDate" styleClass="delete-content-txt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label styleClass="delete-content-title" text="N° Facture" GridPane.rowIndex="2" />
+                        <Label fx:id="lblNumFac" styleClass="delete-content-txt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+               </children>
+            </VBox>
+            <GridPane hgap="10.0" maxHeight="-Infinity" prefWidth="370.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="181.0" minWidth="90.0" prefWidth="130.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="141.0" minWidth="72.0" prefWidth="123.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label styleClass="delete-content-title" text="Mode Reglement" />
+                  <Label fx:id="lblModReg" styleClass="delete-content-txt" GridPane.columnIndex="1" />
+                  <Label styleClass="delete-content-title" text="Montant" GridPane.rowIndex="1" />
+                  <Label fx:id="lblMontant" styleClass="delete-content-txt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label styleClass="delete-content-title" text="Saisi Par" GridPane.rowIndex="2" />
+                  <Label fx:id="lblSaisiPar" styleClass="delete-content-txt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label styleClass="delete-content-title" text="Saisi Le" GridPane.rowIndex="3" />
+                  <Label fx:id="lblSaisiLe" styleClass="delete-content-txt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+               </children>
+            </GridPane>
+            <VBox spacing="5.0">
+               <children>
+                  <Label styleClass="delete-content-title" text="Observations :" />
+                  <Text fx:id="txtObs" fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="delete-content-txt" wrappingWidth="248.341796875" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <FlowPane alignment="BOTTOM_RIGHT" hgap="10.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label style="-fx-font-size: 17px;" text="Tu a sur pour supprimer cette Reglement ?" />
+            <JFXButton onAction="#onDelete" text="Supprimer">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-red" />
+               </styleClass>
+            </JFXButton>
+            <JFXButton onAction="#onCancel" text="Annuler">
+               <styleClass>
+                  <String fx:value="btn" />
+                  <String fx:value="btn-gray" />
+               </styleClass>
+            </JFXButton>
+         </children>
+      </FlowPane>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>
