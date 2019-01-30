@@ -58,7 +58,7 @@ public class SystemController implements Initializable {
     private VBox menuDrawerPane;
 
     // [Client, Fournisseur, Produit] GUI (FXML)
-    private StackPane clientView, fournisseurView, produitView, factureView;
+    private StackPane clientView, fournisseurView, produitView, factureView, reglementView;
     private VBox homeView;
 
     // For show Settings/About Dialog
@@ -72,6 +72,7 @@ public class SystemController implements Initializable {
             fournisseurView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Fournisseur.fxml"));
             produitView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Produit.fxml"));
             factureView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Facture.fxml"));
+            reglementView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/Reglement.fxml"));
         } catch(IOException ioe) {
             ioe.printStackTrace();
         }
@@ -194,11 +195,13 @@ public class SystemController implements Initializable {
         VBox boxFournisseur = (VBox) boxItems.get(1);
         VBox boxProduit = (VBox) boxItems.get(2);
         VBox boxFacture = (VBox) boxItems.get(4);
+        VBox boxReglement = (VBox) boxItems.get(5);
 
         boxClient.setOnMouseClicked(e -> setNode(clientView));
         boxFournisseur.setOnMouseClicked(e -> setNode(fournisseurView));
         boxProduit.setOnMouseClicked(e -> setNode(produitView));
         boxFacture.setOnMouseClicked(e -> setNode(factureView));
+        boxReglement.setOnMouseClicked(e -> setNode(reglementView));
     }
 
     private void setNode(Node node) {

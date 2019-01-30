@@ -11,10 +11,12 @@ public class Reglement {
     private Date saisiLe;
     private String observations;
 
+    private double montant;
+
     public Reglement() {
     }
 
-    public Reglement(int idReglement, Date dateReglement, int idModeReglement, int numFacture, String saisiPar, Date saisiLe, String observations) {
+    public Reglement(int idReglement, Date dateReglement, int idModeReglement, int numFacture, String saisiPar, Date saisiLe, String observations, double montant) {
         this.idReglement = idReglement;
         this.dateReglement = dateReglement;
         this.idModeReglement = idModeReglement;
@@ -22,6 +24,7 @@ public class Reglement {
         this.saisiPar = saisiPar;
         this.saisiLe = saisiLe;
         this.observations = observations;
+        this.montant = montant;
     }
 
     public int getIdReglement() {
@@ -80,6 +83,14 @@ public class Reglement {
         this.observations = observations;
     }
 
+    public double getMontant() {
+        return montant;
+    }
+
+    public void setMontant(double montant) {
+        this.montant = montant;
+    }
+
     @Override
     public String toString() {
         return "Reglement{" +
@@ -90,6 +101,7 @@ public class Reglement {
                 ", saisiPar='" + saisiPar + '\'' +
                 ", saisiLe=" + saisiLe +
                 ", observations='" + observations + '\'' +
+                ", montant=" + montant +
                 '}';
     }
 }

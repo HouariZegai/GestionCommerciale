@@ -12,6 +12,7 @@ public class ReglementBuilder {
     private String saisiPar;
     private Date saisiLe;
     private String observations;
+    private double montant;
 
     public ReglementBuilder setIdReglement(int idReglement) {
         this.idReglement = idReglement;
@@ -48,7 +49,12 @@ public class ReglementBuilder {
         return this;
     }
 
+    public ReglementBuilder setMontant(double montant) {
+        this.montant = montant;
+        return this;
+    }
+
     public Reglement build() {
-        return new Reglement(idReglement, dateReglement, idModeReglement, numFacture, saisiPar, saisiLe, observations);
+        return new Reglement(idReglement, dateReglement, idModeReglement, numFacture, saisiPar, saisiLe, observations, montant);
     }
 }

@@ -86,6 +86,17 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="Ajouter une Facture de fournisseur" wrappingWidth="150.953125" />
                </children>
             </VBox>
+            <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="cards">
+               <children>
+                  <ImageView fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/icons/valid.png" />
+                     </image>
+                  </ImageView>
+                  <Label styleClass="cards-title" text="Reglement" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="Ajouter une Reglement" wrappingWidth="150.953125" />
+               </children>
+            </VBox>
          </children>
       </HBox>
    </children>
