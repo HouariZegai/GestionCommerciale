@@ -29,6 +29,11 @@
             <MaterialDesignIconView size="29" styleClass="icon" />
          </graphic>
       </JFXButton>
+      <JFXButton accessibleText="btnReglement" alignment="BASELINE_LEFT" graphicTextGap="20.0" maxWidth="1.7976931348623157E308" styleClass="btn" text="Facture">
+         <graphic>
+            <MaterialDesignIconView glyphName="GROUP" size="29" styleClass="icon" />
+         </graphic>
+      </JFXButton>
       <JFXButton accessibleText="onLogout" alignment="BASELINE_LEFT" graphicTextGap="20.0" maxWidth="1.7976931348623157E308" styleClass="btn" text="Déconnexion">
          <graphic>
             <Icons525View glyphName="SIGN_OUT" size="25" styleClass="icon" />

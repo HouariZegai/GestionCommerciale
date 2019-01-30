@@ -137,6 +137,11 @@ public class SystemController implements Initializable {
                         setNode(factureView);
                         showHideMenu();
                     });
+                } else if(node.getAccessibleText().equalsIgnoreCase("btnReglement")) {
+                    ((JFXButton) node).setOnAction(e -> {
+                        setNode(reglementView);
+                        showHideMenu();
+                    });
                 } else if(node.getAccessibleText().equalsIgnoreCase("onLogout")) {
                     ((JFXButton) node).setOnAction(e -> { // switch to login form
                         try {
