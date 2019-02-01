@@ -44,7 +44,7 @@ public class AddReglementController implements Initializable {
     private JFXComboBox<String> comboModeReg;
 
     @FXML
-    private JFXTextField fieldMontant, fieldNumFac;
+    private JFXTextField fieldMontant, fieldNumClient;
 
     @FXML
     private FontAwesomeIconView iconMontant;
@@ -53,12 +53,16 @@ public class AddReglementController implements Initializable {
     private JFXTextArea areaObs;
 
     @FXML
-    private JFXTextField fieldSearchFacture;
+    private JFXTextField fieldSearchClient;
 
     @FXML
-    private JFXTreeTableView<TableFac> tableFac;
+    private JFXComboBox<String> comboSearchBy;
 
-    private JFXTreeTableColumn<TableFac, String> colNumFac, colDate, colNumClient, colTotalHt, colTotalTtc;
+    @FXML
+    private JFXTreeTableView<TableClient> tableClient;
+
+    // Columns of table client
+    private JFXTreeTableColumn<TableClient, String>  colNumClient, colNom, colPrenom, colTelephone;
 
     private JFXSnackbar toastMsg;
 
@@ -82,17 +86,26 @@ public class AddReglementController implements Initializable {
         pickerDateReg.setValue(UsefulMethods.getSQLDate(new Date()).toLocalDate());
         comboModeReg.getSelectionModel().selectFirst();
 
-        /* Table facture used to select N° Facture */
-        initTableFac();
-        loadDataToTableFac();
-        initFilterTableInSearch();
+        /* Table client used to select N° Client */
+        comboSearchBy.getItems().addAll("Tout", "N° Client", "Nom", "Prenom", "Telephone");
+        initClientTable();
+        loadClientTable();
+        filterClientTableOnSearch();
+
+        // Initialize combo Client (Search by)
+        comboSearchBy.getItems().addAll("Tout", "N° Client", "Nom", "Prenom", "Telephone");
+        comboSearchBy.getSelectionModel().selectFirst();
+
+        /* Add Filter if i change the value of search field */
+        fieldSearchClient.setOnKeyReleased(e -> filterClientTableOnSearch());
+        comboSearchBy.setOnAction(e -> filterClientTableOnSearch());
 
         // on Change Select in facture table
-        tableFac.setOnMouseClicked((e -> {
-            if (tableFac.getSelectionModel().getSelectedItem() == null)
+        tableClient.setOnMouseClicked((e -> {
+            if (tableClient.getSelectionModel().getSelectedItem() == null)
                 return;
 
-            fieldNumFac.setText(colNumFac.getCellData(tableFac.getSelectionModel().getSelectedIndex()));
+            fieldNumClient.setText(colNumClient.getCellData(tableClient.getSelectionModel().getSelectedIndex()));
         }));
     }
 
@@ -118,85 +131,89 @@ public class AddReglementController implements Initializable {
 
     /* Start Table */
 
-    class TableFac extends RecursiveTreeObject<TableFac> {
-        StringProperty numFac;
-        StringProperty date;
+    class TableClient extends RecursiveTreeObject<TableClient> {
         StringProperty numClient;
-        StringProperty totalHt;
-        StringProperty totalTtc;
+        StringProperty nom;
+        StringProperty prenom;
+        StringProperty telephone;
 
-        public TableFac() {
+        public TableClient() {
 
         }
 
-        public TableFac(int numFac, Date date, int numClient, double totalHt, double totalTtc) {
-            this.numFac = new SimpleStringProperty(String.valueOf(numFac));
-            this.date = new SimpleStringProperty(date.toString());
+        TableClient(int numClient, String nom, String prenom, String telephone) {
             this.numClient = new SimpleStringProperty(String.valueOf(numClient));
-            this.totalHt = new SimpleStringProperty(String.valueOf(totalHt));
-            this.totalTtc = new SimpleStringProperty(String.valueOf(totalTtc));
+            this.nom = new SimpleStringProperty(nom);
+            this.prenom = new SimpleStringProperty(prenom);
+            this.telephone = new SimpleStringProperty(telephone);
         }
     }
 
-    private void initTableFac() {
-        colNumFac = new JFXTreeTableColumn<>("N° Facture");
-        colNumFac.setPrefWidth(100);
-        colNumFac.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableFac, String> param) -> param.getValue().getValue().numFac);
-
-        colDate = new JFXTreeTableColumn<>("Date");
-        colDate.setPrefWidth(100);
-        colDate.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableFac, String> param) -> param.getValue().getValue().date);
-
-        colNumClient = new JFXTreeTableColumn<>("N° Client");
+    private void initClientTable() {
+        colNumClient = new JFXTreeTableColumn<>("N°");
         colNumClient.setPrefWidth(100);
-        colNumClient.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableFac, String> param) -> param.getValue().getValue().numClient);
+        colNumClient.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableClient, String> param) -> param.getValue().getValue().numClient);
 
-        colTotalHt = new JFXTreeTableColumn<>("Total HT");
-        colTotalHt.setPrefWidth(100);
-        colTotalHt.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableFac, String> param) -> param.getValue().getValue().totalHt);
+        colNom = new JFXTreeTableColumn<>("Nom");
+        colNom.setPrefWidth(100);
+        colNom.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableClient, String> param) -> param.getValue().getValue().nom);
 
-        colTotalTtc = new JFXTreeTableColumn<>("Total TTC");
-        colTotalTtc.setPrefWidth(100);
-        colTotalTtc.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableFac, String> param) -> param.getValue().getValue().totalTtc);
+        colPrenom = new JFXTreeTableColumn<>("Prenom");
+        colPrenom .setPrefWidth(140);
+        colPrenom .setCellValueFactory((TreeTableColumn.CellDataFeatures<TableClient, String> param) -> param.getValue().getValue().prenom);
 
+        colTelephone = new JFXTreeTableColumn<>("Telephone");
+        colTelephone.setPrefWidth(120);
+        colTelephone.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableClient, String> param) -> param.getValue().getValue().telephone);
 
-        tableFac.getColumns().addAll(colNumFac, colDate, colNumClient, colTotalHt, colTotalTtc);
-        tableFac.setShowRoot(false);
+        tableClient.getColumns().addAll(colNumClient, colNom, colPrenom, colTelephone);
+        tableClient.setShowRoot(false);
     }
 
-    private void loadDataToTableFac() {
-        List<Facture> factures = FactureDao.getFactures();
+    private void loadClientTable() {
+        List<Client> clients = ClientDao.getClients();
 
-        ObservableList<TableFac> listFactures = FXCollections.observableArrayList();
-        if (factures != null) {
-            for (Facture f : factures) {
-                listFactures.add(new TableFac(f.getNumFacture(), f.getDateFacture(), f.getNumClient(), f.getTotalHT(), f.getTotalTTC()));
+        ObservableList<TableClient> listClients = FXCollections.observableArrayList();
+        if(clients != null) {
+            for(Client f : clients) {
+                listClients.add(new TableClient(f.getNumClient(), f.getNomClient(), f.getPrenom(), f.getTelephone()));
             }
         }
 
-        final TreeItem<TableFac> treeItem = new RecursiveTreeItem<>(listFactures, RecursiveTreeObject::getChildren);
+        final TreeItem<TableClient> treeItem = new RecursiveTreeItem<>(listClients, RecursiveTreeObject::getChildren);
 
         try {
-            tableFac.setRoot(treeItem);
+            tableClient.setRoot(treeItem);
         } catch (Exception ex) {
             System.out.println("Error catched !");
         }
     }
 
-    private void initFilterTableInSearch() {
-        fieldSearchFacture.setOnKeyReleased(e -> {
-            tableFac.setPredicate((TreeItem<TableFac> facture) -> {
-                String numFac = facture.getValue().numFac.getValue().toLowerCase();
-                String date = (facture.getValue().date.getValue() == null) ? "" : facture.getValue().date.getValue().toLowerCase();
-                String totalHt = (facture.getValue().totalHt.getValue() == null) ? "" : facture.getValue().totalHt.getValue().toLowerCase();
-                String totalTtc = (facture.getValue().totalTtc.getValue() == null) ? "" : facture.getValue().totalTtc.getValue().toLowerCase();
+    private void filterClientTableOnSearch() {
+        tableClient.setPredicate((TreeItem<TableClient> client) -> {
+            String numClient = client.getValue().numClient.getValue();
+            String nom = client.getValue().nom.getValue().toLowerCase();
+            String prenom = client.getValue().prenom.getValue().toLowerCase();
+            String telephone = (client.getValue().telephone.getValue() == null) ? "" : client.getValue().telephone.getValue().toLowerCase();
 
-                return numFac.contains(fieldSearchFacture.getText().toLowerCase())
-                        || date.contains(fieldSearchFacture.getText().toLowerCase())
-                        || totalHt.contains(fieldSearchFacture.getText().toLowerCase())
-                        || totalTtc.contains(fieldSearchFacture.getText().toLowerCase());
+            String fieldSearch = fieldSearchClient.getText() == null ? "" : fieldSearchClient.getText().toLowerCase();
 
-            });
+            switch (comboSearchBy.getSelectionModel().getSelectedIndex()) {
+                case 1:
+                    return numClient.contains(fieldSearch);
+                case 2:
+                    return nom.contains(fieldSearch);
+                case 3:
+                    return prenom.contains(fieldSearch);
+                case 4:
+                    return telephone.contains(fieldSearch);
+                default:
+                    return numClient.contains(fieldSearch)
+                            || nom.contains(fieldSearch)
+                            || prenom.contains(fieldSearch)
+                            || telephone.contains(fieldSearch);
+            }
+
         });
     }
 
@@ -211,7 +228,7 @@ public class AddReglementController implements Initializable {
             return;
         }
 
-        if(fieldNumFac.getText().isEmpty()) {
+        if(fieldNumClient.getText().isEmpty()) {
             toastMsg.show("Svp, il ya des champs n'est pas bien formé", 2000);
             return;
         }
@@ -221,7 +238,7 @@ public class AddReglementController implements Initializable {
                 .setIdReglement(Integer.parseInt(fieldIdReg.getText()))
                 .setDateReglement(java.sql.Date.valueOf(pickerDateReg.getValue()))
                 .setIdModeReglement(ReglementDao.getIdModeReglement(comboModeReg.getSelectionModel().getSelectedItem()))
-                .setNumFacture(Integer.parseInt(fieldNumFac.getText()))
+                .setNumClient(Integer.parseInt(fieldNumClient.getText()))
                 .setSaisiPar(DBConnection.user)
                 .setSaisiLe(new Date())
                 .setObservations(areaObs.getText())
@@ -264,9 +281,9 @@ public class AddReglementController implements Initializable {
 
         areaObs.setText(null);
 
-        fieldNumFac.setText(null);
-        fieldSearchFacture.setText(null);
-        tableFac.getSelectionModel().clearSelection();
+        fieldNumClient.setText(null);
+        fieldSearchClient.setText(null);
+        tableClient.getSelectionModel().clearSelection();
     }
 
     @FXML

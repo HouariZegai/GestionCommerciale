@@ -8,7 +8,7 @@ public class ReglementBuilder {
     private int idReglement;
     private Date dateReglement;
     private int idModeReglement;
-    private int numFacture;
+    private int numClient;
     private String saisiPar;
     private Date saisiLe;
     private String observations;
@@ -29,8 +29,8 @@ public class ReglementBuilder {
         return this;
     }
 
-    public ReglementBuilder setNumFacture(int numFacture) {
-        this.numFacture = numFacture;
+    public ReglementBuilder setNumClient(int numClient) {
+        this.numClient = numClient;
         return this;
     }
 
@@ -55,6 +55,6 @@ public class ReglementBuilder {
     }
 
     public Reglement build() {
-        return new Reglement(idReglement, dateReglement, idModeReglement, numFacture, saisiPar, saisiLe, observations, montant);
+        return new Reglement(idReglement, dateReglement, idModeReglement, numClient, saisiPar, saisiLe, observations, montant);
     }
 }

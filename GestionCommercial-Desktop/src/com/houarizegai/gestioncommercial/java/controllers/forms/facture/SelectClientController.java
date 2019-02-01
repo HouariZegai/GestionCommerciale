@@ -46,7 +46,7 @@ public class SelectClientController implements Initializable {
 
         // Initialize combo Client (Search by)
         comboSearchBy.getItems().addAll("Tout", "N° Client", "Nom", "Prenom", "Telephone");
-        comboSearchBy.getSelectionModel().select(0);
+        comboSearchBy.getSelectionModel().selectFirst();
 
         initTableClient();
         loadClientTable();
@@ -81,6 +81,7 @@ public class SelectClientController implements Initializable {
         colNumClient = new JFXTreeTableColumn<>("N°");
         colNumClient.setPrefWidth(100);
         colNumClient.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableClient, String> param) -> param.getValue().getValue().numClient);
+
         colNom = new JFXTreeTableColumn<>("Nom");
         colNom.setPrefWidth(100);
         colNom.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableClient, String> param) -> param.getValue().getValue().nom);

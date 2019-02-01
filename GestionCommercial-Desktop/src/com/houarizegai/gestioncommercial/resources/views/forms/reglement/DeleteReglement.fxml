@@ -34,8 +34,8 @@
                         <Label fx:id="lblIdReg" styleClass="delete-content-txt" GridPane.columnIndex="1" />
                         <Label styleClass="delete-content-title" text="Date" GridPane.rowIndex="1" />
                         <Label fx:id="lblDate" styleClass="delete-content-txt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label styleClass="delete-content-title" text="N° Facture" GridPane.rowIndex="2" />
-                        <Label fx:id="lblNumFac" styleClass="delete-content-txt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label styleClass="delete-content-title" text="N° Client" GridPane.rowIndex="2" />
+                        <Label fx:id="lblNumClient" styleClass="delete-content-txt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                </children>

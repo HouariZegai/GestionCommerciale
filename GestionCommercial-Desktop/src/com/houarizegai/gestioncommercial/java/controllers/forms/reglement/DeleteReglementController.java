@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class DeleteReglementController implements Initializable {
 
     @FXML
-    private Label lblIdReg, lblDate, lblNumFac, lblModReg, lblMontant, lblSaisiPar, lblSaisiLe;
+    private Label lblIdReg, lblDate, lblNumClient, lblModReg, lblMontant, lblSaisiPar, lblSaisiLe;
 
     @FXML
     private Text txtObs;
@@ -32,7 +32,7 @@ public class DeleteReglementController implements Initializable {
         /* Initialize the view by information of reglement u want to delete it */
         lblIdReg.setText(String.valueOf(reglement.getIdReglement()));
         lblDate.setText(reglement.getDateReglement().toString());
-        lblNumFac.setText(String.valueOf(reglement.getNumFacture()));
+        lblNumClient.setText(String.valueOf(reglement.getNumClient()));
         lblModReg.setText(ReglementDao.getLibModeReglement(reglement.getIdModeReglement()));
         lblMontant.setText(String.valueOf(reglement.getMontant()));
         lblSaisiPar.setText(reglement.getSaisiPar() == null ? "Inconnu" : reglement.getSaisiPar());

@@ -6,7 +6,7 @@ public class Reglement {
     private int idReglement;
     private Date dateReglement;
     private int idModeReglement;
-    private int numFacture;
+    private int numClient;
     private String saisiPar;
     private Date saisiLe;
     private String observations;
@@ -16,11 +16,11 @@ public class Reglement {
     public Reglement() {
     }
 
-    public Reglement(int idReglement, Date dateReglement, int idModeReglement, int numFacture, String saisiPar, Date saisiLe, String observations, double montant) {
+    public Reglement(int idReglement, Date dateReglement, int idModeReglement, int numClient, String saisiPar, Date saisiLe, String observations, double montant) {
         this.idReglement = idReglement;
         this.dateReglement = dateReglement;
         this.idModeReglement = idModeReglement;
-        this.numFacture = numFacture;
+        this.numClient = numClient;
         this.saisiPar = saisiPar;
         this.saisiLe = saisiLe;
         this.observations = observations;
@@ -51,12 +51,12 @@ public class Reglement {
         this.idModeReglement = idModeReglement;
     }
 
-    public int getNumFacture() {
-        return numFacture;
+    public int getNumClient() {
+        return numClient;
     }
 
-    public void setNumFacture(int numFacture) {
-        this.numFacture = numFacture;
+    public void setNumClient(int numClient) {
+        this.numClient = numClient;
     }
 
     public String getSaisiPar() {
@@ -97,7 +97,7 @@ public class Reglement {
                 "idReglement=" + idReglement +
                 ", dateReglement=" + dateReglement +
                 ", idModeReglement=" + idModeReglement +
-                ", numFacture=" + numFacture +
+                ", numClient=" + numClient +
                 ", saisiPar='" + saisiPar + '\'' +
                 ", saisiLe=" + saisiLe +
                 ", observations='" + observations + '\'' +

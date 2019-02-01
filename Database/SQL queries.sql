@@ -1,3 +1,7 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+
 -- Delete Database Gestion Commercial if exists
 DROP DATABASE IF EXISTS GestionCommercialDB;
 
@@ -12,7 +16,7 @@ CREATE TABLE Parametre (
 	IDParametre INT(4) AUTO_INCREMENT PRIMARY KEY,
 	NomParametre VARCHAR(30),
 	Valuer TEXT
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Socièté
 CREATE TABLE Societe (
@@ -24,27 +28,27 @@ CREATE TABLE Societe (
 	Fax VARCHAR(20),
 	Email VARCHAR(40),
 	Logo BLOB
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Login
 CREATE TABLE Login (
 	IDLogin INT(8) AUTO_INCREMENT PRIMARY KEY,
 	NomUtilisateur VARCHAR(40),
 	MotDePasse VARCHAR(40)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Cedex
 CREATE TABLE Cedex (
 	IDCedex INT(8) AUTO_INCREMENT PRIMARY KEY,
 	CodePostal VARCHAR(5),
 	Ville VARCHAR(40)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Action Possible
 CREATE TABLE ActionPossible (
 	IDActionPossible INT(8) AUTO_INCREMENT PRIMARY KEY,
 	LibAction VARCHAR(40)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Fournisseur
 CREATE TABLE Fournisseur (
@@ -62,42 +66,43 @@ CREATE TABLE Fournisseur (
 	Fax VARCHAR(20),
 	Email VARCHAR(40),
 	Observations TEXT
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Mode Règlement
 CREATE TABLE ModeReglement (
 	IDModeReglement INT(8) AUTO_INCREMENT PRIMARY KEY,
 	LibModeReglement VARCHAR(40)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Règlement
 CREATE TABLE Reglement (
 	IDReglement INT(8) AUTO_INCREMENT PRIMARY KEY,
 	DateReglement DATE,
 	IDModeReglement INT(8),
-	NumFacture INT(8), 
+	NumClient INT(8), 
+	Montant DOUBLE,
 	SaisiPar VARCHAR(40),
 	SaisiLe DATE,
 	Observations TEXT
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Famille
 CREATE TABLE Famille (
 	CodeFamille VARCHAR(40) PRIMARY KEY,
 	Libelle VARCHAR(50)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Frais Port
 CREATE table FraisPort (
 	CodePort VARCHAR(20) PRIMARY KEY,
 	LibFraisPort VARCHAR(40),
 	Montant DOUBLE
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table TVA
 CREATE TABLE TVA (
 	TauxTva DOUBLE PRIMARY KEY
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Client
 CREATE TABLE Client (
@@ -123,7 +128,7 @@ CREATE TABLE Client (
 	AuteurModif VARCHAR(40),
 	DateModif DATE,
 	Observations TEXT
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Avoir
 CREATE TABLE Avoir (
@@ -139,7 +144,7 @@ CREATE TABLE Avoir (
 	SaisiPar VARCHAR(40),
 	SaisiLe DATE,
 	Observations TEXT
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Ligne Avoir
 CREATE TABLE LigneAvoir (
@@ -151,7 +156,7 @@ CREATE TABLE LigneAvoir (
 	Prix DOUBLE,
 	TauxTva DOUBLE,
 	IDLigneFac INT(8)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Action Réalisee
 CREATE TABLE ActionRealisee (
@@ -161,7 +166,7 @@ CREATE TABLE ActionRealisee (
 	Login VARCHAR(50) DEFAULT 0,
 	DateAction DATE,
 	CleOrdre VARCHAR(16)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Adresse Livraison
 CREATE TABLE Adr_Livraison (
@@ -178,7 +183,7 @@ CREATE TABLE Adr_Livraison (
 	Fax VARCHAR(20),
 	Email VARCHAR(40),
 	Observations TEXT
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Devis
 CREATE table Devis (
@@ -191,7 +196,7 @@ CREATE table Devis (
 	SaisiPar VARCHAR(40),
 	SaisiLe DATE,
 	Observations TEXT
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Ligne Devis
 CREATE TABLE LigneDevis (
@@ -204,7 +209,7 @@ CREATE TABLE LigneDevis (
 	IDDevis INT(8),
 	PrixVente DOUBLE DEFAULT 0,
 	OrdreAffichage INT(2)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Adresse Facturation
 CREATE TABLE Adr_Facturation (
@@ -221,7 +226,7 @@ CREATE TABLE Adr_Facturation (
 	Fax VARCHAR(20),
 	Email VARCHAR(40),
 	Observations TEXT
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Facture
 CREATE TABLE Facture (
@@ -240,7 +245,7 @@ CREATE TABLE Facture (
 	SaisiLe DATE,
 	Observations TEXT,
 	NumCommande INT(8)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Ligne Facture
 CREATE TABLE LigneFac (
@@ -254,7 +259,7 @@ CREATE TABLE LigneFac (
 	TauxTva DOUBLE,
 	IDLigneCde INT(8),
 	OrdreAffichage INT(2) DEFAULT 0
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Commande
 CREATE TABLE Commande (
@@ -273,7 +278,7 @@ CREATE TABLE Commande (
 	SaisiPar VARCHAR(40),
 	SaisiLe DATE,
 	Observations TEXT
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Ligne Commande
 CREATE TABLE LigneCde (
@@ -290,13 +295,13 @@ CREATE TABLE LigneCde (
 	OrdreAffichage INT(2),
 	CleNumCommandeOrdreAffi DOUBLE,
 	OptimCleCompOrdreNumCo DOUBLE
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Mode Livraison
 CREATE TABLE ModeLivraison (
 	IDModeLivraison INT(8) AUTO_INCREMENT PRIMARY KEY,
 	LibModeReglement VARCHAR(40)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Produit
 CREATE TABLE Produit (
@@ -316,7 +321,7 @@ CREATE TABLE Produit (
 	SaisiLe DATE,
 	CodeFamille VARCHAR(40),
 	CodePort VARCHAR(20)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Stock
 CREATE TABLE Stock (
@@ -325,7 +330,7 @@ CREATE TABLE Stock (
 	QteStockVirtuel INT(4),
 	AuteurModif VARCHAR(40),
 	DateModif DATE
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Sortie Stock
 CREATE TABLE SortieStock (
@@ -337,7 +342,7 @@ CREATE TABLE SortieStock (
 	SaisiPar VARCHAR(40),
 	SaisiLe DATE,
 	Observations TEXT
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structure of table Entrée Stock
 CREATE TABLE EntreeStock (
@@ -350,7 +355,7 @@ CREATE TABLE EntreeStock (
 	SaisiPar VARCHAR(40),
 	SaisiLe DATE,
 	Observations TEXT
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- -----------------------------------------------
 --
@@ -417,7 +422,9 @@ ALTER TABLE EntreeStock
 
 ALTER TABLE Reglement
 	ADD CONSTRAINT  fk_reg FOREIGN KEY (IDModeReglement) REFERENCES ModeReglement (IDModeReglement),
-	ADD CONSTRAINT  fk_reg2 FOREIGN KEY (NumFacture) REFERENCES Facture (NumFacture);
+	ADD CONSTRAINT  fk_reg2 FOREIGN KEY (NumClient) REFERENCES Client (NumClient);
 
 ALTER TABLE SortieStock
 	ADD CONSTRAINT fk_ss FOREIGN KEY (Reference) REFERENCES Produit (Reference);
+
+COMMIT;

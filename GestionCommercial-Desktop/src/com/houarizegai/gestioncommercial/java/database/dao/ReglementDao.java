@@ -79,6 +79,39 @@ public class ReglementDao {
         return modeReglements;
     }
 
+    public static List<Reglement> getReglementsByClient(int numClient) {
+        if (DBConnection.con == null)
+            return null;
+
+        String sql = "SELECT * FROM Reglement WHERE NumClient = ?;";
+        List<Reglement> reglements = new LinkedList<>();
+        try {
+            PreparedStatement prest = DBConnection.con.prepareStatement(sql);
+            prest.setInt(1, numClient);
+            ResultSet rs = prest.executeQuery();
+            while (rs.next()) {
+                Reglement reglement = new ReglementBuilder()
+                        .setIdReglement(rs.getInt("IDReglement"))
+                        .setDateReglement(rs.getDate("DateReglement"))
+                        .setIdModeReglement(rs.getInt("IDModeReglement"))
+                        .setNumClient(rs.getInt("NumClient"))
+                        .setSaisiPar(rs.getString("SaisiPar"))
+                        .setSaisiLe(rs.getDate("SaisiLe"))
+                        .setObservations(rs.getString("Observations"))
+                        .setMontant(rs.getDouble("Montant"))
+                        .build();
+
+                reglements.add(reglement);
+            }
+        } catch (SQLException se) {
+            System.out.println("SQL Error in getReglements");
+            se.printStackTrace();
+        }
+
+        return reglements;
+
+    }
+
     public static List<Reglement> getReglements() {
         if (DBConnection.con == null)
             return null;
@@ -93,7 +126,7 @@ public class ReglementDao {
                         .setIdReglement(rs.getInt("IDReglement"))
                         .setDateReglement(rs.getDate("DateReglement"))
                         .setIdModeReglement(rs.getInt("IDModeReglement"))
-                        .setNumFacture(rs.getInt("NumFacture"))
+                        .setNumClient(rs.getInt("NumClient"))
                         .setSaisiPar(rs.getString("SaisiPar"))
                         .setSaisiLe(rs.getDate("SaisiLe"))
                         .setObservations(rs.getString("Observations"))
@@ -115,13 +148,13 @@ public class ReglementDao {
         if (DBConnection.con == null)
             return -1;
 
-        String sql = "INSERT INTO `reglement`(`DateReglement`, `IDModeReglement`, `NumFacture`, `SaisiPar`, `SaisiLe`, `Observations`, `Montant`) VALUES (?, ?, ?, ?, ?, ?, ?);";
+        String sql = "INSERT INTO `reglement`(`DateReglement`, `IDModeReglement`, `NumClient`, `SaisiPar`, `SaisiLe`, `Observations`, `Montant`) VALUES (?, ?, ?, ?, ?, ?, ?);";
 
         try {
             PreparedStatement prest = DBConnection.con.prepareStatement(sql);
             prest.setDate(1, UsefulMethods.getSQLDate(reglement.getDateReglement()));
             prest.setInt(2, reglement.getIdModeReglement());
-            prest.setInt(3, reglement.getNumFacture());
+            prest.setInt(3, reglement.getNumClient());
             prest.setString(4, reglement.getSaisiPar());
             prest.setDate(5, UsefulMethods.getSQLDate(reglement.getSaisiLe()));
             prest.setString(6, reglement.getObservations());
@@ -140,14 +173,14 @@ public class ReglementDao {
         if (DBConnection.con == null)
             return -1;
 
-        String sql = "UPDATE `reglement` SET `DateReglement` = ?, `IDModeReglement` = ?, `NumFacture` = ?, " +
+        String sql = "UPDATE `reglement` SET `DateReglement` = ?, `IDModeReglement` = ?, `NumClient` = ?, " +
                 "`SaisiPar` = ?, `SaisiLe` = ?, `Observations` = ?, `Montant` = ? WHERE `IDReglement` = ?;";
 
         try {
             PreparedStatement prest = DBConnection.con.prepareStatement(sql);
             prest.setDate(1, UsefulMethods.getSQLDate(reglement.getDateReglement()));
             prest.setInt(2, reglement.getIdModeReglement());
-            prest.setInt(3, reglement.getNumFacture());
+            prest.setInt(3, reglement.getNumClient());
             prest.setString(4, reglement.getSaisiPar());
             prest.setDate(5, UsefulMethods.getSQLDate(reglement.getSaisiLe()));
             prest.setString(6, reglement.getObservations());

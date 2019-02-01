@@ -34,13 +34,18 @@
             <VBox prefWidth="250.0" spacing="30.0">
                <children>
                   <JFXTextArea fx:id="areaObs" maxWidth="-Infinity" prefHeight="152.0" prefWidth="227.0" promptText="Observations" styleClass="field" />
-                  <JFXTextField fx:id="fieldNumFac" editable="false" promptText="N° Facture" styleClass="field" />
+                  <JFXTextField fx:id="fieldNumClient" editable="false" promptText="N° Client" styleClass="field" />
                </children>
             </VBox>
             <VBox spacing="10.0">
                <children>
-                  <JFXTextField fx:id="fieldSearchFacture" promptText="Chercher Facture" styleClass="field" />
-                  <JFXTreeTableView fx:id="tableFac" prefHeight="300.0" prefWidth="500.0" />
+                  <HBox spacing="15.0">
+                     <children>
+                        <JFXTextField fx:id="fieldSearchClient" promptText="Chercher Client" styleClass="field" HBox.hgrow="ALWAYS" />
+                        <JFXComboBox fx:id="comboSearchBy" promptText="Recherche par" styleClass="field" />
+                     </children>
+                  </HBox>
+                  <JFXTreeTableView fx:id="tableClient" prefHeight="300.0" prefWidth="500.0" />
                </children>
             </VBox>
          </children>

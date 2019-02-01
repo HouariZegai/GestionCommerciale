@@ -571,7 +571,7 @@ public class FactureController implements Initializable {
                     Reglement reglement = new ReglementBuilder()
                             .setDateReglement(java.sql.Date.valueOf(pickerDate.getValue()))
                             .setIdModeReglement(selectedIdModeReg)
-                            .setNumFacture(Integer.parseInt(fieldNumFacture.getText()))
+                            .setNumClient(Integer.parseInt(fieldNumClient.getText()))
                             .setSaisiPar(DBConnection.user)
                             .setSaisiLe(new Date())
                             .setObservations(areaObservations.getText())

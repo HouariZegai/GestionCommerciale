@@ -38,7 +38,7 @@ public class ReglementController implements Initializable {
     @FXML
     private JFXTreeTableView<TableReglement> tableReg;
 
-    private JFXTreeTableColumn<TableReglement, String> colIdReg, colDateReg, colNumFac, colModeReg, colMontant, colObs;
+    private JFXTreeTableColumn<TableReglement, String> colIdReg, colDateReg, colnumClient, colModeReg, colMontant, colObs;
 
     // Dialog showing in (add/update) table
     public static JFXDialog dialogReglementAdd, dialogReglementEdit, dialogReglementDelete;
@@ -66,7 +66,7 @@ public class ReglementController implements Initializable {
         tableReg.setPredicate((TreeItem<TableReglement> Reglement) -> {
             String idReg = Reglement.getValue().idReg.getValue();
             String dateReg = (Reglement.getValue().dateReg.getValue() == null) ? "" : Reglement.getValue().dateReg.getValue().toLowerCase();
-            String numFac = (Reglement.getValue().numFac.getValue() == null) ? "" : Reglement.getValue().numFac.getValue().toLowerCase();
+            String numClient = (Reglement.getValue().numClient.getValue() == null) ? "" : Reglement.getValue().numClient.getValue().toLowerCase();
             String modeReg = (Reglement.getValue().modeReg.getValue() == null) ? "" : Reglement.getValue().modeReg.getValue().toLowerCase();
             String montant = (Reglement.getValue().montant.getValue() == null) ? "" : Reglement.getValue().montant.getValue().toLowerCase();
             String obs = (Reglement.getValue().obs.getValue() == null) ? "" : Reglement.getValue().obs.getValue().toLowerCase();
@@ -77,7 +77,7 @@ public class ReglementController implements Initializable {
                 case 2:
                     return dateReg.contains(fieldSearch.getText().toLowerCase());
                 case 3:
-                    return numFac.contains(fieldSearch.getText().toLowerCase());
+                    return numClient.contains(fieldSearch.getText().toLowerCase());
                 case 4:
                     return modeReg.contains(fieldSearch.getText().toLowerCase());
                 case 5:
@@ -87,7 +87,7 @@ public class ReglementController implements Initializable {
                 default:
                     return idReg.contains(fieldSearch.getText().toLowerCase())
                             || dateReg.contains(fieldSearch.getText().toLowerCase())
-                            || numFac.contains(fieldSearch.getText().toLowerCase())
+                            || numClient.contains(fieldSearch.getText().toLowerCase())
                             || modeReg.contains(fieldSearch.getText().toLowerCase())
                             || montant.contains(fieldSearch.getText().toLowerCase())
                             || obs.contains(fieldSearch.getText().toLowerCase());
@@ -99,17 +99,17 @@ public class ReglementController implements Initializable {
     class TableReglement extends RecursiveTreeObject<TableReglement> {
         StringProperty idReg;
         StringProperty dateReg;
-        StringProperty numFac;
+        StringProperty numClient;
         StringProperty modeReg;
         StringProperty montant;
         StringProperty obs;
 
         public TableReglement() {}
 
-        public TableReglement(int idReg, String dateReg, int numFac, String modeReg, double montant, String obs) {
+        public TableReglement(int idReg, String dateReg, int numClient, String modeReg, double montant, String obs) {
             this.idReg = new SimpleStringProperty(String.valueOf(idReg));
             this.dateReg = new SimpleStringProperty(dateReg);
-            this.numFac = new SimpleStringProperty(String.valueOf(numFac));
+            this.numClient = new SimpleStringProperty(String.valueOf(numClient));
             this.modeReg = new SimpleStringProperty(modeReg);
             this.montant = new SimpleStringProperty(String.valueOf(montant));
             this.obs = new SimpleStringProperty(obs);
@@ -125,9 +125,9 @@ public class ReglementController implements Initializable {
         colDateReg.setPrefWidth(150);
         colDateReg.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableReglement, String> param) -> param.getValue().getValue().dateReg);
 
-        colNumFac = new JFXTreeTableColumn<>("N° FACTURE");
-        colNumFac.setPrefWidth(150);
-        colNumFac.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableReglement, String> param) -> param.getValue().getValue().numFac);
+        colnumClient = new JFXTreeTableColumn<>("N° CLIENT");
+        colnumClient.setPrefWidth(150);
+        colnumClient.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableReglement, String> param) -> param.getValue().getValue().numClient);
 
         colModeReg = new JFXTreeTableColumn<>("MODE REGLEMENT");
         colModeReg.setPrefWidth(180);
@@ -142,7 +142,7 @@ public class ReglementController implements Initializable {
         colObs.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableReglement, String> param) -> param.getValue().getValue().obs);
 
         // Add columns to table
-        tableReg.getColumns().addAll(colIdReg, colDateReg, colNumFac, colModeReg, colMontant, colObs);
+        tableReg.getColumns().addAll(colIdReg, colDateReg, colnumClient, colModeReg, colMontant, colObs);
         tableReg.setShowRoot(false);
     }
 
@@ -156,7 +156,7 @@ public class ReglementController implements Initializable {
             for (Reglement reglement : reglements) {
                 TableReglement regT = new TableReglement(reglement.getIdReglement(),
                         reglement.getDateReglement().toString(),
-                        reglement.getNumFacture(),
+                        reglement.getNumClient(),
                         ReglementDao.getLibModeReglement(reglement.getIdModeReglement()),
                         reglement.getMontant(),
                         reglement.getObservations());
