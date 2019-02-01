@@ -31,29 +31,29 @@
       </StackPane>
       <HBox alignment="CENTER" spacing="15.0" VBox.vgrow="ALWAYS">
          <children>
-            <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="cards">
+            <VBox alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="cards">
                <children>
                   <ImageView fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/icons/client.png" />
+                        <Image url="@../images/home/cards/client.png" />
                      </image>
                   </ImageView>
                   <Label styleClass="cards-title" text="Clients" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="Tu peut ajouter, modifier ou/et supprimer" wrappingWidth="158.953125" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="Gestion des clients" wrappingWidth="158.953125" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="cards">
+            <VBox alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="cards">
                <children>
-                  <ImageView fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/icons/stock.png" />
+                        <Image url="@../images/home/cards/fiche.png" />
                      </image>
                   </ImageView>
                   <Label styleClass="cards-title" text="Fiche Client" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="Cette partie visualizer le fiche de client" wrappingWidth="150.953125" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="Voir debit et le credit de client choisir" wrappingWidth="150.953125" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="cards">
+            <VBox alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="cards">
                <children>
                   <ImageView fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -64,37 +64,37 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="Gestion des fournisseurs" wrappingWidth="150.953125" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="cards">
+            <VBox alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="cards">
                <children>
-                  <ImageView fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitWidth="110.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/icons/produit.png" />
+                        <Image url="@../images/home/cards/produit.png" />
                      </image>
                   </ImageView>
                   <Label styleClass="cards-title" text="Produits" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="This is just description of client" wrappingWidth="150.953125" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="Gestion des produits" wrappingWidth="150.953125" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="cards">
+            <VBox alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="cards">
                <children>
-                  <ImageView fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../images/home/cards/facture.png" />
                      </image>
                   </ImageView>
-                  <Label styleClass="cards-title" text="Facture" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="Ajouter une Facture de fournisseur" wrappingWidth="150.953125" />
+                  <Label styleClass="cards-title" text="Facture Client" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="Gestion Factures de client" wrappingWidth="150.953125" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="cards">
+            <VBox alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="cards">
                <children>
-                  <ImageView fitWidth="90.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/icons/valid.png" />
+                        <Image url="@../images/home/cards/reglement.png" />
                      </image>
                   </ImageView>
                   <Label styleClass="cards-title" text="Reglement" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="Ajouter une Reglement" wrappingWidth="150.953125" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="Gestion reglements de client" wrappingWidth="150.953125" />
                </children>
             </VBox>
          </children>

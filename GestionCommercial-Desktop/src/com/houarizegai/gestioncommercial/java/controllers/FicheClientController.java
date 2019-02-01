@@ -127,23 +127,30 @@ public class FicheClientController implements Initializable {
         }
 
         public double getSoldeDebit() {
-            if (soldeDebit == null)
+            if (soldeDebit == null || soldeDebit.get() == null)
                 return 0d;
             return Double.parseDouble(soldeDebit.get());
         }
 
         public void setSoldeDebit(double soldeDebit) {
-            this.soldeDebit = new SimpleStringProperty(String.valueOf(soldeDebit));
+            if(soldeDebit == 0d)
+                this.soldeDebit = new SimpleStringProperty(null);
+            else
+                this.soldeDebit = new SimpleStringProperty(String.valueOf(soldeDebit));
         }
 
-        public double getSoldeCredit() {
-            if (soldeCredit == null)
+       public double getSoldeCredit() {
+            if (soldeCredit == null || soldeCredit.get() == null)
                 return 0d;
             return Double.parseDouble(soldeCredit.get());
         }
 
         public void setSoldeCredit(double soldeCredit) {
-            this.soldeCredit = new SimpleStringProperty(String.valueOf(soldeCredit));
+            if(soldeCredit == 0d)
+                this.soldeCredit = new SimpleStringProperty(null);
+            else
+                this.soldeCredit = new SimpleStringProperty(String.valueOf(soldeCredit));
+
         }
 
         public String getPiece() {
@@ -158,7 +165,14 @@ public class FicheClientController implements Initializable {
 
         @Override
         public int compareTo(TableFicheClient o) {
-            return 0;
+            try {
+                Date date = (new SimpleDateFormat("yyyy-MM-dd")).parse(this.getDate());
+                Date date2 = (new SimpleDateFormat("yyyy-MM-dd")).parse(o.getDate());
+                return date.compareTo(date2);
+            } catch (Exception e) {
+                return 0;
+            }
+
         }
     }
 
@@ -217,6 +231,9 @@ public class FicheClientController implements Initializable {
                 listFicheClients.add(ficheClient);
             }
         }
+
+        // Sort list
+        Collections.sort(listFicheClients);
 
         if (listFicheClients != null && listFicheClients.size() > 0) {
             Collections.sort(listFicheClients); // Filter data of table by date
