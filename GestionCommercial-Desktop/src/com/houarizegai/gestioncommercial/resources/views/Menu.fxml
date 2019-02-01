@@ -16,6 +16,11 @@
          <graphic>
             <Icons525View glyphName="USER" size="26" styleClass="icon" />
          </graphic></JFXButton>
+      <JFXButton accessibleText="btnFicheClient" alignment="BASELINE_LEFT" graphicTextGap="20.0" maxWidth="1.7976931348623157E308" styleClass="btn" text="Fiche Client">
+         <graphic>
+            <Icons525View glyphName="USER" size="26" styleClass="icon" />
+         </graphic>
+      </JFXButton>
       <JFXButton accessibleText="btnFournisseur" alignment="BASELINE_LEFT" graphicTextGap="20.0" maxWidth="1.7976931348623157E308" styleClass="btn" text="Fournisseur">
          <graphic>
             <MaterialIconView glyphName="DIRECTIONS_BUS" size="28" styleClass="icon" />

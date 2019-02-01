@@ -58,7 +58,7 @@ public class SystemController implements Initializable {
     private VBox menuDrawerPane;
 
     // [Client, Fournisseur, Produit] GUI (FXML)
-    private StackPane clientView, fournisseurView, produitView, factureView, reglementView;
+    private StackPane clientView, ficheClientView, fournisseurView, produitView, factureView, reglementView;
     private VBox homeView;
 
     // For show Settings/About Dialog
@@ -114,27 +114,37 @@ public class SystemController implements Initializable {
                 if(node.getAccessibleText().equalsIgnoreCase("btnHome")) {
                     ((JFXButton) node).setOnAction(e -> {
                         setNode(homeView);
-                        showHideMenu();
+                        showHideMenu(); // Hide menu
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("btnClient")) {
                     ((JFXButton) node).setOnAction(e -> {
                         setNode(clientView);
-                        showHideMenu();
+                        showHideMenu(); // Hide menu
+                    });
+                } else if(node.getAccessibleText().equalsIgnoreCase("btnFicheClient")) {
+                    ((JFXButton) node).setOnAction(e -> {
+                        try {
+                            ficheClientView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/FicheClient.fxml"));
+                            setNode(ficheClientView);
+                        } catch (IOException ioe) {
+                            ioe.printStackTrace();
+                        }
+                        showHideMenu(); // Hide menu
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("btnFournisseur")) {
                     ((JFXButton) node).setOnAction(e -> {
                         setNode(fournisseurView);
-                        showHideMenu();
+                        showHideMenu(); // Hide menu
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("btnProduit")) {
                     ((JFXButton) node).setOnAction(e -> {
                         setNode(produitView);
-                        showHideMenu();
+                        showHideMenu(); // Hide menu
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("btnFacture")) {
                     ((JFXButton) node).setOnAction(e -> {
                         setNode(factureView);
-                        showHideMenu();
+                        showHideMenu(); // Hide menu
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("btnReglement")) {
                     ((JFXButton) node).setOnAction(e -> {
@@ -144,7 +154,7 @@ public class SystemController implements Initializable {
                         } catch (IOException ioe) {
                             ioe.printStackTrace();
                         }
-                        showHideMenu();
+                        showHideMenu(); // Hide menu
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("onLogout")) {
                     ((JFXButton) node).setOnAction(e -> { // switch to login form
@@ -201,12 +211,21 @@ public class SystemController implements Initializable {
         ObservableList<Node> boxItems = ((HBox) ((HBox) homeView.getChildren().get(1))).getChildren();
 
         VBox boxClient = (VBox) boxItems.get(0);
-        VBox boxFournisseur = (VBox) boxItems.get(1);
-        VBox boxProduit = (VBox) boxItems.get(2);
+        VBox boxFicheClient = (VBox) boxItems.get(1);
+        VBox boxFournisseur = (VBox) boxItems.get(2);
+        VBox boxProduit = (VBox) boxItems.get(3);
         VBox boxFacture = (VBox) boxItems.get(4);
         VBox boxReglement = (VBox) boxItems.get(5);
 
         boxClient.setOnMouseClicked(e -> setNode(clientView));
+        boxFicheClient.setOnMouseClicked(e -> {
+            try {
+                ficheClientView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommercial/resources/views/FicheClient.fxml"));
+                setNode(ficheClientView);
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+        });
         boxFournisseur.setOnMouseClicked(e -> setNode(fournisseurView));
         boxProduit.setOnMouseClicked(e -> setNode(produitView));
         boxFacture.setOnMouseClicked(e -> setNode(factureView));

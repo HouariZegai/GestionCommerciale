@@ -46,6 +46,17 @@
                <children>
                   <ImageView fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
+                        <Image url="@../images/icons/stock.png" />
+                     </image>
+                  </ImageView>
+                  <Label styleClass="cards-title" text="Fiche Client" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="Cette partie visualizer le fiche de client" wrappingWidth="150.953125" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="cards">
+               <children>
+                  <ImageView fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
                         <Image url="@../images/home/cards/fourniseur.png" />
                      </image>
                   </ImageView>
@@ -61,17 +72,6 @@
                      </image>
                   </ImageView>
                   <Label styleClass="cards-title" text="Produits" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="This is just description of client" wrappingWidth="150.953125" />
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" maxHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="10.0" styleClass="cards">
-               <children>
-                  <ImageView fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons/stock.png" />
-                     </image>
-                  </ImageView>
-                  <Label styleClass="cards-title" text="Stock" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="cards-desc" text="This is just description of client" wrappingWidth="150.953125" />
                </children>
             </VBox>
