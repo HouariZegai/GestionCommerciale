@@ -79,3 +79,14 @@
 }
 
 /* End JFXSnackBar (toast msg) */
+
+/* Start Cards */
+
+.cards {
+    -fx-padding: 10px 20px 20px 20px;
+    -fx-background-color: #FFF;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 6, 0, 0, 0);
+    -fx-background-radius: 5
+}
+
+/* End Cards */

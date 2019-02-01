@@ -14,6 +14,48 @@ import java.util.List;
 
 public class FactureDao {
 
+    public static List<Facture> getFacturesByClient(int numClient) { // Get all facture with ligne facture from database
+        if (DBConnection.con == null) // Check connection
+            return null;
+
+        List<Facture> factureList = new LinkedList<>();
+
+        String sql = "SELECT * FROM Facture WHERE NumClient = ?;";
+        try {
+            PreparedStatement prest = DBConnection.con.prepareStatement(sql);
+            prest.setInt(1, numClient);
+            ResultSet rsFac = prest.executeQuery();
+            while (rsFac.next()) {
+                Facture facture = new FactureBuilder()
+                        .setNumFacture(rsFac.getInt("NumFacture"))
+                        .setDateFacture(rsFac.getDate("DateFacture"))
+                        .setNumClient(rsFac.getInt("NumClient"))
+                        .setIdAdresseFacturation(rsFac.getInt("IDAdresseFacturation"))
+                        .setIdModeReglement(rsFac.getInt("IDModeReglement"))
+                        .setTotalHT(rsFac.getDouble("TotalHt"))
+                        .setTotalTVA(rsFac.getDouble("TotalTva"))
+                        .setTotalFraisPort(rsFac.getDouble("TotalFraisPort"))
+                        .setTotalTTC(rsFac.getDouble("TotalTtc"))
+                        .setRemise(rsFac.getDouble("Remise"))
+                        .setAcquittee(rsFac.getBoolean("Acquittee"))
+                        .setSaisiPar(rsFac.getString("SaisiPar"))
+                        .setSaisiLe(rsFac.getDate("SaisiLe"))
+                        .setObservations(rsFac.getString("Observations"))
+                        .setNumCommande(rsFac.getInt("NumCommande"))
+                        .setLigneFactures(null)
+                        .build();
+
+                factureList.add(facture);
+            }
+
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+
+
+        return factureList;
+    }
+
     public static List<Facture> getFactures() { // Get all facture with ligne facture from database
         if (DBConnection.con == null) // Check connection
             return null;
