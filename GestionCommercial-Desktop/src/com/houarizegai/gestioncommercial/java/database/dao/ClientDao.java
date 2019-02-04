@@ -2,6 +2,8 @@ package com.houarizegai.gestioncommercial.java.database.dao;
 
 import com.houarizegai.gestioncommercial.java.database.DBConnection;
 import com.houarizegai.gestioncommercial.java.database.models.Client;
+import com.houarizegai.gestioncommercial.java.database.models.Facture;
+import com.houarizegai.gestioncommercial.java.database.models.Reglement;
 import com.houarizegai.gestioncommercial.java.database.models.designpatterns.builder.ClientBuilder;
 import com.houarizegai.gestioncommercial.java.utils.UsefulMethods;
 
@@ -165,19 +167,6 @@ public class ClientDao {
         }
     }
 
-    public static int deleteClient(int numClient) { // Delete Client
-        String sql = "DELETE FROM Client WHERE numClient = ?;";
-        try {
-            PreparedStatement prest = DBConnection.con.prepareStatement(sql);
-            prest.setInt(1, numClient);
-            return prest.executeUpdate();
-        } catch (SQLException se) {
-            System.out.println("Delete Client Error SQL");
-            se.printStackTrace();
-            return -1;
-        }
-    }
-
     public static int addclient(Client client) {
 
         String sql = "INSERT INTO Client (`Societe`, `Civilite`, `NomClient`, `Prenom`, `Adresse`, `CodePostal`, `Ville`, `Pays`, `Telephone`, `Mobile`, `Fax`, `Email`, `Type`, `LivreMemeAdresse`, `FactureMemeAdresse`, `ExemptTva`, `SaisiPar`, `SaisiLe`, `AuteurModif`, `DateModif`, `Observations`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
@@ -216,5 +205,31 @@ public class ClientDao {
             se.printStackTrace();
             return 0;
         }
+    }
+
+    public static int deleteClient(int numClient) { // Delete Client
+        if(hasFactureNoPaid(numClient))
+            return -2;
+
+        /* Delete trace of client */
+        FactureDao.deleteFacturesOfClient(numClient);
+        ReglementDao.deleteReglementOfClient(numClient);
+
+        if(DBConnection.con == null)
+            return -1;
+        String sql = "DELETE FROM Client WHERE numClient = ?;";
+        try {
+            PreparedStatement prest = DBConnection.con.prepareStatement(sql);
+            prest.setInt(1, numClient);
+            return prest.executeUpdate();
+        } catch (SQLException se) {
+            System.out.println("Delete Client Error SQL");
+            se.printStackTrace();
+            return -1;
+        }
+    }
+
+    public static boolean hasFactureNoPaid(int numClient) {
+        return FactureDao.getTotalTTCFacturesOfClient(numClient) > ReglementDao.getTotalReglementsOfClient(numClient);
     }
 }

@@ -258,9 +258,35 @@ public class FactureDao {
         return ligneFactures;
     }
 
-    public static void main(String[] args) {
-        System.out.println(getLastFacture());
-//        for(Facture facture : getFactures())
-//            System.out.println(facture);
+    public static double getTotalTTCFacturesOfClient(int numClient) {
+        if(DBConnection.con == null)
+            return -1;
+        String sql = "SELECT SUM(`TotalTtc`) AS TotalTtc FROM `facture` WHERE NumClient=?;";
+        try {
+            PreparedStatement prest = DBConnection.con.prepareStatement(sql);
+            prest.setInt(1, numClient);
+            ResultSet rs = prest.executeQuery();
+            if(rs.next()) {
+                return rs.getDouble("TotalTtc");
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return 0d;
     }
+
+    public static int deleteFacturesOfClient(int numClient) {
+        if(DBConnection.con == null)
+            return -1;
+        String sql = "DELETE FROM Facture WHERE numClient = ?;";
+        try {
+            PreparedStatement prest = DBConnection.con.prepareStatement(sql);
+            prest.setInt(1, numClient);
+            return prest.executeUpdate();
+        } catch (SQLException se) {
+            se.printStackTrace();
+            return -2;
+        }
+    }
+
 }

@@ -214,4 +214,36 @@ public class ReglementDao {
             return -1;
         }
     }
+
+    public static double getTotalReglementsOfClient(int numClient) {
+        if(DBConnection.con == null)
+            return -1;
+        String sql = "SELECT SUM(Montant) AS `Montant` FROM `reglement` WHERE NumClient=?;";
+        try {
+            PreparedStatement prest = DBConnection.con.prepareStatement(sql);
+            prest.setInt(1, numClient);
+            ResultSet rs = prest.executeQuery();
+            if(rs.next()) {
+                return rs.getDouble("Montant");
+            }
+        } catch (SQLException se) {
+            se.printStackTrace();
+        }
+        return 0d;
+    }
+
+    public static int deleteReglementOfClient(int numClient) {
+        if(DBConnection.con == null)
+            return -1;
+        String sql = "DELETE FROM `Reglement` WHERE numClient = ?;";
+        try {
+            PreparedStatement prest = DBConnection.con.prepareStatement(sql);
+            prest.setInt(1, numClient);
+            return prest.executeUpdate();
+        } catch (SQLException se) {
+            se.printStackTrace();
+            return -2;
+        }
+    }
+    
 }

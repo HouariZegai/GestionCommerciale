@@ -55,16 +55,29 @@ public class DeleteClientController implements Initializable {
     private void onDelete() {
         int status = ClientDao.deleteClient(client.getNumClient());
 
-        if (status == -1) {
-            System.out.println("Connection error (cannot delete client)!");
-        } else {
-            Notifications notification = Notifications.create()
-                    .title("Vous avez supprimer le client !")
-                    .graphic(new ImageView(new Image("/com/houarizegai/gestioncommercial/resources/images/icons/valid.png")))
-                    .hideAfter(Duration.millis(2000))
-                    .position(Pos.BOTTOM_RIGHT);
-            notification.darkStyle();
-            notification.show();
+        switch (status) {
+            case -1:
+                System.out.println("Connection error (cannot delete client)!");
+                break;
+            case -2:
+                System.out.println("Client have facture not paid (cannot delete client)!");
+                Notifications notification = Notifications.create()
+                        .title("Client have facture not paid !")
+                        .graphic(new ImageView(new Image("/com/houarizegai/gestioncommercial/resources/images/icons/error.png")))
+                        .hideAfter(Duration.millis(4000))
+                        .position(Pos.BOTTOM_RIGHT);
+                notification.darkStyle();
+                notification.show();
+                break;
+            default:
+                Notifications notification2 = Notifications.create()
+                        .title("Vous avez supprimer le client !")
+                        .graphic(new ImageView(new Image("/com/houarizegai/gestioncommercial/resources/images/icons/valid.png")))
+                        .hideAfter(Duration.millis(4000))
+                        .position(Pos.BOTTOM_RIGHT);
+                notification2.darkStyle();
+                notification2.show();
+                break;
         }
 
         ClientController.dialogClientDelete.close();

@@ -518,11 +518,12 @@ public class FactureController implements Initializable {
     @FXML
     private void onSave() {
         if (fieldNumClient.getText() == null || fieldNumClient.getText().isEmpty()) {
-            toastMsg.show("Svp, selectionné le client", 2000);
+            toastMsg.show("Svp, selectionné le client", 2500);
             return;
         }
-        if(fieldMontantModePay.getText() != null && !fieldMontantModePay.getText().trim().matches(ProduitRegex.PRIX_HT)) {
-            toastMsg.show("Svp, taper un nombre dans le numero de mode reglement !", 2000);
+        if(fieldMontantModePay.getText() != null && !fieldMontantModePay.getText().isEmpty()
+                && !fieldMontantModePay.getText().trim().matches(ProduitRegex.PRIX_HT)) {
+            toastMsg.show("Svp, normé bien le montant de reglement !", 2500);
             return;
         }
 
