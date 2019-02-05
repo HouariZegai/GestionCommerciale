@@ -21,6 +21,8 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -47,9 +49,14 @@ public class ReglementController implements Initializable {
     // data of table (all reglement)
     private List<Reglement> reglements;
 
+    /* Filter table */
+    @FXML
+    private JFXDatePicker pickerStartDate, pickerEndDate;
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        comboSearchBy.getItems().addAll("Tout", "ID", "Date", "N° Facture", "Mode reglement", "Montant", "Observations");
+        comboSearchBy.getItems().addAll("Tout", "ID", "Date", "N° Client", "Mode reglement", "Montant", "Piece");
         comboSearchBy.getSelectionModel().selectFirst();
 
         toastMsg = new JFXSnackbar(root);
@@ -137,7 +144,7 @@ public class ReglementController implements Initializable {
         colMontant.setPrefWidth(150);
         colMontant.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableReglement, String> param) -> param.getValue().getValue().montant);
 
-        colObs = new JFXTreeTableColumn<>("OBSERVATIONS");
+        colObs = new JFXTreeTableColumn<>("PIECE");
         colObs.setPrefWidth(450);
         colObs.setCellValueFactory((TreeTableColumn.CellDataFeatures<TableReglement, String> param) -> param.getValue().getValue().obs);
 
@@ -240,4 +247,56 @@ public class ReglementController implements Initializable {
         return dialog;
     }
 
+    /* Start Filter table */
+
+    @FXML
+    public void onFilter() {
+        //pickerStartDate, pickerEndDate
+        tableReg.setPredicate((TreeItem<TableReglement> Reglement) -> {
+            /* Picker data */
+            String startDateStr = (pickerStartDate.getValue() == null)? "" : pickerStartDate.getValue().toString();
+            String endDateStr = (pickerEndDate.getValue() == null)? "" : pickerEndDate.getValue().toString();
+
+            String regDateStr = (Reglement.getValue().dateReg.getValue() == null) ? "" : Reglement.getValue().dateReg.getValue();
+
+            try {
+                Date startDate = (new SimpleDateFormat("yyyy-MM-dd")).parse(startDateStr);
+                Date endDate = (new SimpleDateFormat("yyyy-MM-dd")).parse(endDateStr);
+
+                Date regDate = (new SimpleDateFormat("yyyy-MM-dd")).parse(regDateStr);
+
+                return (regDate.compareTo(startDate) >= 0) && (regDate.compareTo(endDate) <= 0);
+
+            } catch(Exception e) {
+                return true;
+            }
+
+            /*
+            try {
+                Date date = (new SimpleDateFormat("yyyy-MM-dd")).parse(this.getDate());
+                Date date2 = (new SimpleDateFormat("yyyy-MM-dd")).parse(o.getDate());
+                return date.compareTo(date2);
+            } catch (Exception e) {
+                return 0;
+            }
+
+            */
+
+        });
+    }
+
+    @FXML
+    public void onReset() {
+        tableReg.setPredicate((TreeItem<TableReglement> Reglement) -> {
+            return true;
+        });
+
+        pickerStartDate.setValue(null);
+        pickerEndDate.setValue(null);
+
+        fieldSearch.setText(null);
+        comboSearchBy.getSelectionModel().selectFirst();
+    }
+
+    /* End Filter table */
 }

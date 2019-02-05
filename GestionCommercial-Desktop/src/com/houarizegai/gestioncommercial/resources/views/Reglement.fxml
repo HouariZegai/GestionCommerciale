@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
 <?import java.lang.String?>
@@ -35,6 +36,24 @@
                      <styleClass>
                         <String fx:value="btn" />
                         <String fx:value="btn-delete" />
+                     </styleClass>
+                  </JFXButton>
+               </children>
+            </HBox>
+            <HBox spacing="15.0">
+               <children>
+                  <JFXDatePicker fx:id="pickerStartDate" promptText="Date debut" styleClass="field" />
+                  <JFXDatePicker fx:id="pickerEndDate" promptText="Date fin" styleClass="field" />
+                  <JFXButton buttonType="RAISED" onAction="#onFilter" text="Filtrer">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-add" />
+                     </styleClass>
+                  </JFXButton>
+                  <JFXButton buttonType="RAISED" onAction="#onReset" text="Reset">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-print" />
                      </styleClass>
                   </JFXButton>
                </children>

@@ -76,6 +76,17 @@ public class AddReglementController implements Initializable {
             for (ModeReglement modeReglement : modeReglements)
                 comboModeReg.getItems().addAll(modeReglement.getLibModeReglement());
 
+        // action in combo
+        comboModeReg.setOnAction(e -> {
+            if(comboModeReg.getSelectionModel().getSelectedItem().equalsIgnoreCase("Chèque")) {
+                areaObs.setText(null);
+                areaObs.setDisable(false);
+            } else {
+                areaObs.setText(null);
+                areaObs.setDisable(true);
+            }
+        });
+
         // Get auto increment
         fieldIdReg.setText(String.valueOf(MainDao.getCurrentAutoIncrement("reglement")));
 

@@ -33,7 +33,7 @@
             </VBox>
             <VBox prefWidth="250.0" spacing="30.0">
                <children>
-                  <JFXTextArea fx:id="areaObs" maxWidth="-Infinity" prefHeight="152.0" prefWidth="227.0" promptText="Observations" styleClass="field" />
+                  <JFXTextArea fx:id="areaObs" maxWidth="-Infinity" prefHeight="152.0" prefWidth="227.0" promptText="Pièce" styleClass="field" />
                   <JFXTextField fx:id="fieldNumClient" editable="false" promptText="N° Client" styleClass="field" />
                </children>
             </VBox>

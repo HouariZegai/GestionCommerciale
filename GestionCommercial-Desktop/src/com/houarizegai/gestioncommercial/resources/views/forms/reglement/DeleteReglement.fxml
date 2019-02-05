@@ -64,7 +64,7 @@
             </GridPane>
             <VBox spacing="5.0">
                <children>
-                  <Label styleClass="delete-content-title" text="Observations :" />
+                  <Label styleClass="delete-content-title" text="Pièce :" />
                   <Text fx:id="txtObs" fill="#333333" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="delete-content-txt" wrappingWidth="248.341796875" />
                </children>
             </VBox>

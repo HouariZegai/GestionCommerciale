@@ -82,6 +82,17 @@ public class EditReglementController implements Initializable {
             for(ModeReglement modeReglement : modeReglements)
                 comboModeReg.getItems().addAll(modeReglement.getLibModeReglement());
 
+        // action in combo
+        comboModeReg.setOnAction(e -> {
+            if(comboModeReg.getSelectionModel().getSelectedItem().equalsIgnoreCase("Chèque")) {
+                areaObs.setText(null);
+                areaObs.setDisable(false);
+            } else {
+                areaObs.setText(null);
+                areaObs.setDisable(true);
+            }
+        });
+
         // Init list listener
         fieldMontant.textProperty().addListener((observable, oldValue, newValue) -> setValidFont(fieldMontant, iconMontant, newValue, ProduitRegex.PRIX_HT));
 

@@ -49,7 +49,7 @@ public class ReglementDao {
             ResultSet rs = prest.executeQuery();
             if (rs.next()) {
                 idModeReglement = rs.getInt("IDModeReglement");
-                System.out.println("id Reg: " + idModeReglement);
+                //System.out.println("id Reg: " + idModeReglement);
             }
         } catch (SQLException se) {
             se.printStackTrace();
