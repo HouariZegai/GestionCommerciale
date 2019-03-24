@@ -59,47 +59,47 @@ Gestion Commerciale - Desktop App
 
 ## Screenshots
 ### Login
-<img src="https://github.com/HouariZegai/GestionCommercial/blob/master/GestionCommercial-Desktop/screenshots/login.PNG" alt="login img" />
+![login img](screenshots/login.PNG)
 
 ### System
 #### Home
-<img src="https://github.com/HouariZegai/GestionCommercial/blob/master/GestionCommercial-Desktop/screenshots/system.PNG" alt="System img">
+![System img](screenshots/system.PNG)
 
 #### Menu
-<img src="https://github.com/HouariZegai/GestionCommercial/blob/master/GestionCommercial-Desktop/screenshots/menu.PNG" alt="menu img">
+![menu img](screenshots/menu.PNG)
 
 ### Settings
-<img src="https://github.com/HouariZegai/GestionCommercial/blob/master/GestionCommercial-Desktop/screenshots/other/settings.PNG" alt="settings img">
+![settings img](screenshots/other/settings.PNG)
 
 ### About me
-<img src="https://github.com/HouariZegai/GestionCommercial/blob/master/GestionCommercial-Desktop/screenshots/other/about_me.PNG" alt="about me img">
+![about me img](screenshots/other/about_me.PNG)
 
 ### Client
 #### View all client
-<img src="https://github.com/HouariZegai/GestionCommercial/blob/master/GestionCommercial-Desktop/screenshots/client/client.PNG" alt="view all client img">
+![view all client img](screenshots/client/client.PNG)
 
 #### New client
-<img src="https://github.com/HouariZegai/GestionCommercial/blob/master/GestionCommercial-Desktop/screenshots/client/new_client.PNG" alt="new client img">
+![new client img](screenshots/client/new_client.PNG)
 
 #### Edit client
-<img src="https://github.com/HouariZegai/GestionCommercial/blob/master/GestionCommercial-Desktop/screenshots/client/edit_client.PNG" alt="edit client img">
+![edit client img](screenshots/client/edit_client.PNG)
 
 #### Delete client
-<img src="https://github.com/HouariZegai/GestionCommercial/blob/master/GestionCommercial-Desktop/screenshots/client/delete_client.PNG" alt="delete client img">
+![delete client img](screenshots/client/delete_client.PNG)
 
 ### Client file (Fiche client)
 #### Select client
-<img src="https://github.com/HouariZegai/GestionCommercial/blob/master/GestionCommercial-Desktop/screenshots/f_client/f_client_select_client.PNG" alt="select client img">
+![select client img](screenshots/f_client/f_client_select_client.PNG)
 
 #### View all transaction of client (debit & credit)
-<img src="https://github.com/HouariZegai/GestionCommercial/blob/master/GestionCommercial-Desktop/screenshots/f_client/f_client.PNG" alt="view all transaction of client img">
+![view all transaction of client img](screenshots/f_client/f_client.PNG)
 
 ### Settlement(Reglement)
 #### View all settlement
-<img src="https://github.com/HouariZegai/GestionCommercial/blob/master/GestionCommercial-Desktop/screenshots/reglements/regl.PNG" alt="view all reglements img">
+![view all reglements img](screenshots/reglements/regl.PNG)
 
 #### New settlement
-<img src="https://github.com/HouariZegai/GestionCommercial/blob/master/GestionCommercial-Desktop/screenshots/reglements/new_reg.PNG" alt="new reglement img">
+![new reglement img](screenshots/reglements/new_reg.PNG)
 
 #### Delete settlement
-<img src="https://github.com/HouariZegai/GestionCommercial/blob/master/GestionCommercial-Desktop/screenshots/reglements/delete_reg.PNG" alt="delete reglement img">
+![delete reglement img](screenshots/reglements/delete_reg.PNG)
