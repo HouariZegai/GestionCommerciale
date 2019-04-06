@@ -7,7 +7,6 @@ import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
-import com.sun.javafx.sg.prism.NGNode;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
@@ -15,28 +14,35 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.*;
+import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
-import java.util.Stack;
 
 public class SystemController implements Initializable {
 
     @FXML // Root node (parent of all nodes)
     private StackPane root;
+    @FXML
+    private ScrollPane scrollPane;
+    @FXML
+    private AnchorPane paneHeader;
 
     @FXML // This label show date and time (dynamic clock)
     private Label lblDate;
@@ -59,10 +65,7 @@ public class SystemController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Make slider image fill parent
-        ImageView imgSlider = (ImageView) ViewManager.getInstance().get("Home").lookup("#slider-img");
-        imgSlider.fitWidthProperty().bind(holderPane.widthProperty());
-        imgSlider.fitHeightProperty().bind(holderPane.heightProperty());
+        initBinds();
 
         initMenu();
         initClock();
@@ -74,6 +77,20 @@ public class SystemController implements Initializable {
 
         // Show home view
         setNode(ViewManager.getInstance().get("Home"));
+    }
+
+    private void initBinds() {
+        // Container fill scroll
+        paneHeader.prefWidthProperty().bind(scrollPane.widthProperty());
+        paneHeader.prefHeightProperty().bind(scrollPane.heightProperty().subtract(20));
+
+        holderPane.prefWidthProperty().bind(paneHeader.prefWidthProperty());
+        holderPane.prefHeightProperty().bind(paneHeader.prefHeightProperty());
+
+        // Make slider image fill parent
+        ImageView imgSlider = (ImageView) ViewManager.getInstance().get("Home").lookup("#slider-img");
+        imgSlider.fitWidthProperty().bind(holderPane.widthProperty());
+        imgSlider.fitHeightProperty().bind(holderPane.heightProperty());
     }
 
     private void initMenu() { // initalize menu (show / hide)
