@@ -1,11 +1,13 @@
 package com.houarizegai.gestioncommerciale.java.controllers;
 
 import com.houarizegai.gestioncommerciale.java.Launcher;
+import com.houarizegai.gestioncommerciale.java.global.plugin.ViewManager;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
 import com.jfoenix.transitions.hamburger.HamburgerSlideCloseTransition;
+import com.sun.javafx.sg.prism.NGNode;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.KeyFrame;
@@ -15,16 +17,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.*;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -34,50 +31,36 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.Stack;
 
 public class SystemController implements Initializable {
 
-    // Root node (parent of all nodes)
-    @FXML
+    @FXML // Root node (parent of all nodes)
     private StackPane root;
 
     @FXML // This label show date and time (dynamic clock)
     private Label lblDate;
 
-    @FXML // icon show/hide menu
+    @FXML // menu icon
     private JFXHamburger hamburgerMenu;
-    // For make animation to hamburgerMenu
-    private HamburgerSlideCloseTransition burgerTask;
+
+    private HamburgerSlideCloseTransition burgerTask; // For make animation to menu icon
 
     @FXML
     private StackPane holderPane;
-    // Drawer (Left Menu)
-    @FXML
+
+    @FXML // Drawer (Left Menu)
     private JFXDrawer drawerMenu;
-    // content of drawer (view)
-    private VBox menuDrawerPane;
 
-    // [Client, Fournisseur, Produit] GUI (FXML)
-    private StackPane clientView, ficheClientView, fournisseurView, produitView, factureView, reglementView;
-    private VBox homeView;
+    private VBox menuDrawerPane; // content of drawer (view)
 
-    // For show Settings/About Dialog
+    // Settings & About dialogs
     public static JFXDialog dialogSettings, dialogAbout;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            homeView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommerciale/resources/views/Home.fxml"));
-            clientView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommerciale/resources/views/Client.fxml"));
-            fournisseurView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommerciale/resources/views/Fournisseur.fxml"));
-            produitView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommerciale/resources/views/Produit.fxml"));
-            factureView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommerciale/resources/views/Facture.fxml"));
-        } catch(IOException ioe) {
-            ioe.printStackTrace();
-        }
-
-        // Initialize the image (to fill parent)
-        ImageView imgSlider = (ImageView) ((StackPane) homeView.getChildren().get(0)).getChildren().get(0);
+        // Make slider image fill parent
+        ImageView imgSlider = (ImageView) ViewManager.getInstance().get("Home").lookup("#slider-img");
         imgSlider.fitWidthProperty().bind(holderPane.widthProperty());
         imgSlider.fitHeightProperty().bind(holderPane.heightProperty());
 
@@ -85,25 +68,18 @@ public class SystemController implements Initializable {
         initClock();
         initActionHomeBoxes();
 
-        // Launch Home view
-        setNode(homeView);
+        // Init about & settings dialog
+        dialogAbout = new JFXDialog(root, (AnchorPane) ViewManager.getInstance().get("About"), JFXDialog.DialogTransition.TOP);
+        dialogSettings = new JFXDialog(root, (VBox) ViewManager.getInstance().get("Settings"), JFXDialog.DialogTransition.BOTTOM);
 
-        // Init Dialog About
-        try {
-            AnchorPane aboutView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommerciale/resources/views/About.fxml"));
-            dialogAbout = new JFXDialog(root, aboutView, JFXDialog.DialogTransition.TOP);
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
+        // Show home view
+        setNode(ViewManager.getInstance().get("Home"));
     }
 
     private void initMenu() { // initalize menu (show / hide)
-        try {
-            menuDrawerPane = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommerciale/resources/views/Menu.fxml"));
-            drawerMenu.setSidePane(menuDrawerPane);
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
+        menuDrawerPane = (VBox) ViewManager.getInstance().get("Menu");
+        drawerMenu.setSidePane(menuDrawerPane);
+
         burgerTask = new HamburgerSlideCloseTransition(hamburgerMenu);
         //burgerTask.setRate(burgerTask.getRate() * -1);
         hamburgerMenu.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> showHideMenu());
@@ -113,58 +89,47 @@ public class SystemController implements Initializable {
             if(node.getAccessibleText() != null) {
                 if(node.getAccessibleText().equalsIgnoreCase("btnHome")) {
                     ((JFXButton) node).setOnAction(e -> {
-                        setNode(homeView);
+                        setNode(ViewManager.getInstance().get("Home"));
                         showHideMenu(); // Hide menu
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("btnClient")) {
                     ((JFXButton) node).setOnAction(e -> {
-                        setNode(clientView);
+                        setNode(ViewManager.getInstance().get("Client"));
                         showHideMenu(); // Hide menu
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("btnFicheClient")) {
                     ((JFXButton) node).setOnAction(e -> {
-                        try {
-                            ficheClientView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommerciale/resources/views/FicheClient.fxml"));
-                            setNode(ficheClientView);
-                        } catch (IOException ioe) {
-                            ioe.printStackTrace();
-                        }
+                        setNode(ViewManager.getInstance().get("FicheClient"));
                         showHideMenu(); // Hide menu
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("btnFournisseur")) {
                     ((JFXButton) node).setOnAction(e -> {
-                        setNode(fournisseurView);
+                        setNode(ViewManager.getInstance().get("Fournisseur"));
                         showHideMenu(); // Hide menu
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("btnProduit")) {
                     ((JFXButton) node).setOnAction(e -> {
-                        setNode(produitView);
+                        setNode(ViewManager.getInstance().get("Produit"));
                         showHideMenu(); // Hide menu
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("btnFacture")) {
                     ((JFXButton) node).setOnAction(e -> {
-                        setNode(factureView);
+                        setNode(ViewManager.getInstance().get("Facture"));
                         showHideMenu(); // Hide menu
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("btnReglement")) {
                     ((JFXButton) node).setOnAction(e -> {
-                        try {
-                            reglementView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommerciale/resources/views/Reglement.fxml"));
-                            setNode(reglementView);
-                        } catch (IOException ioe) {
-                            ioe.printStackTrace();
-                        }
+                        setNode(ViewManager.getInstance().get("Reglement"));
                         showHideMenu(); // Hide menu
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("onLogout")) {
                     ((JFXButton) node).setOnAction(e -> { // switch to login form
-                        try {
-                            Parent loginView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommerciale/resources/views/Login.fxml"));
-                            ((Stage) holderPane.getScene().getWindow()).setScene(new Scene(loginView));
-                            Launcher.centerOnScreen(); // make stage in the center
-                        } catch (IOException ioe) {
-                            ioe.printStackTrace();
-                        }
+                        ViewManager.getInstance().get("Login").getScene().setRoot(new Group()); // remove login from scene
+                        ((Stage) root.getScene().getWindow())
+                                .setScene(new Scene(ViewManager.getInstance().get("Login")));
+                        Launcher.centerOnScreen(); // make stage in the center
+                        showHideMenu(); // Hide menu
+                        clearAll();
                     });
                 } else if(node.getAccessibleText().equalsIgnoreCase("onExit")) {
                     // Exit application
@@ -207,41 +172,20 @@ public class SystemController implements Initializable {
 
     private void initActionHomeBoxes() { // Add action to boxes
         // Load views
+        ObservableList<Node> boxItems = ((HBox) ViewManager.getInstance().get("Home")
+                .lookup("#cards-container")).getChildren();
 
-        ObservableList<Node> boxItems = ((HBox) ((HBox) homeView.getChildren().get(1))).getChildren();
-
-        VBox boxClient = (VBox) boxItems.get(0);
-        VBox boxFicheClient = (VBox) boxItems.get(1);
-        VBox boxFournisseur = (VBox) boxItems.get(2);
-        VBox boxProduit = (VBox) boxItems.get(3);
-        VBox boxFacture = (VBox) boxItems.get(4);
-        VBox boxReglement = (VBox) boxItems.get(5);
-
-        boxClient.setOnMouseClicked(e -> setNode(clientView));
-        boxFicheClient.setOnMouseClicked(e -> {
-            try {
-                ficheClientView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommerciale/resources/views/FicheClient.fxml"));
-                setNode(ficheClientView);
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        });
-        boxFournisseur.setOnMouseClicked(e -> setNode(fournisseurView));
-        boxProduit.setOnMouseClicked(e -> setNode(produitView));
-        boxFacture.setOnMouseClicked(e -> setNode(factureView));
-        boxReglement.setOnMouseClicked(e -> {
-            try {
-                reglementView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommerciale/resources/views/Reglement.fxml"));
-                setNode(reglementView);
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
-            }
-        });
+        boxItems.get(0).setOnMouseClicked(e -> setNode(ViewManager.getInstance().get("Client")));
+        boxItems.get(1).setOnMouseClicked(e -> setNode(ViewManager.getInstance().get("FicheClient")));
+        boxItems.get(2).setOnMouseClicked(e -> setNode(ViewManager.getInstance().get("Fournisseur")));
+        boxItems.get(3).setOnMouseClicked(e -> setNode(ViewManager.getInstance().get("Produit")));
+        boxItems.get(4).setOnMouseClicked(e -> setNode(ViewManager.getInstance().get("Facture")));
+        boxItems.get(5).setOnMouseClicked(e -> setNode(ViewManager.getInstance().get("Reglement")));
     }
 
     private void setNode(Node node) {
         holderPane.getChildren().clear();
-        holderPane.getChildren().add((Node) node);
+        holderPane.getChildren().add(node);
         FadeTransition ft = new FadeTransition(Duration.millis(1000));
         ft.setNode(node);
         ft.setFromValue(0.1);
@@ -253,17 +197,15 @@ public class SystemController implements Initializable {
 
     @FXML
     private void onShowSettings() {
-        try {
-            VBox settingsView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommerciale/resources/views/Settings.fxml"));
-            dialogSettings = new JFXDialog(root, settingsView, JFXDialog.DialogTransition.BOTTOM);
-            dialogSettings.show();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
+        dialogSettings.show();
     }
 
     @FXML
     private void onShowAbout() {
         dialogAbout.show();
+    }
+
+    private void clearAll() {
+        setNode(ViewManager.getInstance().get("Home"));
     }
 }

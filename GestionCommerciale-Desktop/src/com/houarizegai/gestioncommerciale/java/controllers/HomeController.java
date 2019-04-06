@@ -17,18 +17,23 @@ public class HomeController implements Initializable {
 
     @FXML // image slider
     private ImageView imgSlider;
-    // counter Number of image using in slider
-    private final byte NUMBER_IMAGE_SLIDER = 3;
-    private int counter = 1;
+
+    private final int NUMBER_IMAGE_SLIDER = 3;
+    private final Image[] sliderImages = new Image[NUMBER_IMAGE_SLIDER];
+    private int sliderCounter = 0;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        sliderAutoChangePictures();
+        initSlider();
     }
 
-    private void sliderAutoChangePictures() {
-        // Make auto change the slider in duration
+    private void initSlider() {
+        // Load slider images
+        for(int i = 0; i < NUMBER_IMAGE_SLIDER; i++) {
+            sliderImages[i] = new Image("com/houarizegai/gestioncommerciale/resources/images/home/slider/" + i + ".png");
+        }
 
+        // Make auto change the slider in duration
         Timeline sliderTimer = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             FadeTransition ft = new FadeTransition();
             ft.setNode(imgSlider);
@@ -38,15 +43,13 @@ public class HomeController implements Initializable {
             ft.setCycleCount(0);
             ft.setAutoReverse(true);
             ft.play();
-            imgSlider.setImage(new Image("com/houarizegai/gestioncommerciale/resources/images/home/slider/" + counter + ".png"));
-            if (++counter > NUMBER_IMAGE_SLIDER) {
-                counter = 1;
-            }
+            sliderCounter = ++sliderCounter % NUMBER_IMAGE_SLIDER;
+            System.out.println(sliderCounter);
+            imgSlider.setImage(sliderImages[sliderCounter]);
         }),
                 new KeyFrame(Duration.seconds(4))
         );
         sliderTimer.setCycleCount(Animation.INDEFINITE);
         sliderTimer.play();
     }
-
 }

@@ -3,15 +3,18 @@ package com.houarizegai.gestioncommerciale.java.controllers;
 import com.houarizegai.gestioncommerciale.java.Launcher;
 import com.houarizegai.gestioncommerciale.java.database.dao.LoginDao;
 import com.houarizegai.gestioncommerciale.java.database.models.Login;
+import com.houarizegai.gestioncommerciale.java.global.plugin.ViewManager;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXSnackbar;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -40,6 +43,10 @@ public class LoginController implements Initializable {
                 onLogin();
             }
         });
+
+        // For test only
+        fieldUser.setText("houari");
+        fieldPass.setText("0000");
     }
 
     @FXML
@@ -64,17 +71,19 @@ public class LoginController implements Initializable {
                 toastMsg.show("Nom Utilisateur et/ou le mot de passe faux !", 2000);
                 break;
             case 1 : // Login to the system (show system gui)
-                Parent systemView = null;
-                try {
-                    systemView = FXMLLoader.load(getClass().getResource("/com/houarizegai/gestioncommerciale/resources/views/System.fxml"));
-                } catch (IOException ioe) {
-                    ioe.printStackTrace();
-                }
-                Stage stage = ((Stage) fieldUser.getScene().getWindow());
-                stage.setScene(new Scene(Objects.requireNonNull(systemView)));
+                if(ViewManager.getInstance().get("System").getScene() != null) // Remove system from scene
+                    ViewManager.getInstance().get("System").getScene().setRoot(new Group());
+                ((Stage) fieldUser.getScene().getWindow())
+                        .setScene(new Scene(ViewManager.getInstance().get("System")));
                 Launcher.centerOnScreen(); // make stage in the center
+                clearForm();
                 break;
         }
 
+    }
+
+    private void clearForm() { // Clear all inputs
+        fieldUser.setText(null);
+        fieldPass.setText(null);
     }
 }

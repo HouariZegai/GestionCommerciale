@@ -76,11 +76,6 @@
                         <String fx:value="font-social-media" />
                         <String fx:value="icon-tw" />
                      </styleClass></FontAwesomeIconView>
-                  <FontAwesomeIconView glyphName="GOOGLE_PLUS_SQUARE" onMouseClicked="#goGooglePlus" size="38">
-                     <styleClass>
-                        <String fx:value="font-social-media" />
-                        <String fx:value="icon-google" />
-                     </styleClass></FontAwesomeIconView>
                   <FontAwesomeIconView glyphName="INSTAGRAM" onMouseClicked="#goInstagram" size="38">
                      <styleClass>
                         <String fx:value="font-social-media" />

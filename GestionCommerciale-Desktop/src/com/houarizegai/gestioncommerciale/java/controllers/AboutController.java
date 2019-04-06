@@ -1,22 +1,15 @@
 package com.houarizegai.gestioncommerciale.java.controllers;
 
-import java.awt.Desktop;
+import javafx.fxml.FXML;
+
+import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 
-public class AboutController implements Initializable {
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
-    }
+public class AboutController {
 
     @FXML
     private void btnClose() {
@@ -35,7 +28,7 @@ public class AboutController implements Initializable {
     @FXML
     void goFacebook() {
         try {
-            Desktop.getDesktop().browse(new URI("https://www.facebook.com/HouarZegai"));
+            Desktop.getDesktop().browse(new URI("https://www.facebook.com/HZegai"));
         } catch (URISyntaxException | IOException ex) {
             Logger.getLogger(AboutController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -63,15 +56,6 @@ public class AboutController implements Initializable {
     void goTwitter() {
         try {
             Desktop.getDesktop().browse(new URI("https://www.twitter.com/HouariZegai"));
-        } catch (URISyntaxException | IOException ex) {
-            Logger.getLogger(AboutController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    @FXML
-    void goGooglePlus() {
-        try {
-            Desktop.getDesktop().browse(new URI("https://plus.google.com/+HouariZegaiTv"));
         } catch (URISyntaxException | IOException ex) {
             Logger.getLogger(AboutController.class.getName()).log(Level.SEVERE, null, ex);
         }
