@@ -1,42 +1,50 @@
-# Commercial Management System
- Gestion Commerciale
+<h1 align="center">Commercial Management System</h1>
+<p align="center">
+  <a href="https://www.java.com">
+    <img src="https://img.shields.io/badge/Java-8-red.svg">
+  </a>
+  <a href="https://raw.githubusercontent.com/HouariZegai/SpyGen/master/LICENSE">
+    <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg">
+  </a>
+</p>
 
-[![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/HouariZegai/GestionCommercial/master/LICENSE)
+
+<p align="center">
+  :computer: <b>FR:</b> Gestion Commerciale.
+</p>
 
 ## What this is ?
 This software supports the entire business process of your company, it can manage customers, suppliers, invoicing, delivery, stocks, regulations, ...and more.
 
 ## Features
-<ul>
-  <li>Desktop app for commercial management</li>
-  <li>Mobile app using for customer can register yourself remotely</li>
-  <li>Simple to use</li>
-  <li>Using design patterns (like: MVC and builder)</li>
-  <li>Using material design & UX library to build this apps</li>
-  <li>... and more</li>
-</ul>
+* Desktop app for commercial management
+* Mobile app using for customer can register yourself remotely
+* Simple to use
+* Using design patterns (like: MVC and builder)
+* Using material design & UX library to build this apps
+* ... and more
 
 ## Languages used
-<ul>
-  <li>Java (for desktop & mobile app)</li>
-  <li>PHP (for server)</li>
-  <li>CSS (for styling desktop app)</li>
-</ul>
+* Java (for desktop & mobile app)
+* PHP (for server)
+* CSS (for styling desktop app)
 
 ## Technology used
-<ul>
-  <li>JavaFX</li>
-</ul>
+* JavaFX
 
 ## Libraries used
-<ul>
-  <li>JFoenix (Material design)</li>
-  <li>ControlsFx (UX)</li>
-  <li>FontawesomeFx (Icons)</li>
-  <li>Volley (Request server)</li>
-  <li>Connector/J (JDBC)</li>
-</ul>
+* JFoenix (Material design)
+* ControlsFx (UX)
+* FontawesomeFx (Icons)
+* Volley (Request server)
+* Connector/J (JDBC)
 
 ## Installation
 
     Clone the project git clone https://github.com/HouariZegai/GestionCommercial.git
+
+
+## Contact me
+Email: houarizegai14@gmail.com  
+LinkedIn: [HouariZegai](https://linkedin.com/in/houarizegai)  
+Twitter: [@HouariZegai](https://twitter.com/houarizegai)
