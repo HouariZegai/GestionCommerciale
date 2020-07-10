@@ -43,8 +43,3 @@ This software supports the entire business process of your company, it can manag
 
     Clone the project git clone https://github.com/HouariZegai/GestionCommercial.git
 
-
-## Contact me
-Email: houarizegai14@gmail.com  
-LinkedIn: [HouariZegai](https://linkedin.com/in/houarizegai)  
-Twitter: [@HouariZegai](https://twitter.com/houarizegai)
